@@ -8,7 +8,6 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.io.File;
-import net.minecraft.client.MinecraftApplet;
 import net.minecraft.src.AchievementList;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Block;
@@ -31,19 +30,19 @@ import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GLAllocation;
 import net.minecraft.src.GameSettings;
 import net.minecraft.src.GameWindowListener;
-import net.minecraft.src.GuiAchievement;
-import net.minecraft.src.GuiChat;
-import net.minecraft.src.GuiConflictWarning;
-import net.minecraft.src.GuiConnecting;
-import net.minecraft.src.GuiErrorScreen;
-import net.minecraft.src.GuiGameOver;
-import net.minecraft.src.GuiIngame;
-import net.minecraft.src.GuiIngameMenu;
-import net.minecraft.src.GuiInventory;
-import net.minecraft.src.GuiMainMenu;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.GuiSleepMP;
-import net.minecraft.src.GuiUnused;
+import net.minecraft.client.gui.GuiAchievement;
+import net.minecraft.client.gui.GuiChat;
+import net.minecraft.client.gui.GuiConflictWarning;
+import net.minecraft.client.gui.GuiConnecting;
+import net.minecraft.client.gui.GuiErrorScreen;
+import net.minecraft.client.gui.GuiGameOver;
+import net.minecraft.client.gui.GuiIngame;
+import net.minecraft.client.gui.GuiIngameMenu;
+import net.minecraft.client.gui.GuiInventory;
+import net.minecraft.client.gui.GuiMainMenu;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiSleepMP;
+import net.minecraft.client.gui.GuiUnused;
 import net.minecraft.src.IChunkProvider;
 import net.minecraft.src.ISaveFormat;
 import net.minecraft.src.ISaveHandler;
@@ -140,7 +139,6 @@ public abstract class Minecraft implements Runnable {
    public ModelBiped playerModelBiped = new ModelBiped(0.0F);
    public MovingObjectPosition objectMouseOver = null;
    public GameSettings gameSettings;
-   protected MinecraftApplet mcApplet;
    public SoundManager sndManager = new SoundManager();
    public MouseHelper mouseHelper;
    public TexturePackList texturePackList;
@@ -167,20 +165,15 @@ public abstract class Minecraft implements Runnable {
    private int joinPlayerCounter = 0;
 
 
-   public Minecraft(Component var1, Canvas var2, MinecraftApplet var3, int var4, int var5, boolean var6) {
+   public Minecraft(Component var1, Canvas var2, /*MinecraftApplet var3,*/ int var4, int var5, boolean var6) {
       StatList.func_27360_a();
       this.tempDisplayHeight = var5;
       this.fullscreen = var6;
-      this.mcApplet = var3;
       new ThreadSleepForever(this, "Timer hack thread");
       this.mcCanvas = var2;
       this.displayWidth = var4;
       this.displayHeight = var5;
       this.fullscreen = var6;
-      if(var3 == null || "true".equals(var3.getParameter("stand-alone"))) {
-         this.hideQuitButton = false;
-      }
-
       theMinecraft = this;
    }
 
@@ -451,10 +444,6 @@ public abstract class Minecraft implements Runnable {
       try {
          this.statFileWriter.func_27175_b();
          this.statFileWriter.syncStats();
-         if(this.mcApplet != null) {
-            this.mcApplet.clearApplet();
-         }
-
          try {
             if(this.downloadResourcesThread != null) {
                this.downloadResourcesThread.closeMinecraft();
@@ -508,10 +497,6 @@ public abstract class Minecraft implements Runnable {
 
          while(this.running) {
             try {
-               if(this.mcApplet != null && !this.mcApplet.isActive()) {
-                  break;
-               }
-
                AxisAlignedBB.clearBoundingBoxPool();
                Vec3D.initialize();
                if(this.mcCanvas == null && Display.isCloseRequested()) {
@@ -1460,10 +1445,6 @@ public abstract class Minecraft implements Runnable {
 
    }
 
-   public static void startMainThread1(String var0, String var1) {
-      startMainThread(var0, var1, (String)null);
-   }
-
    public static void startMainThread(String var0, String var1, String var2) {
       boolean var3 = false;
       Frame var5 = new Frame("Minecraft");
@@ -1473,7 +1454,7 @@ public abstract class Minecraft implements Runnable {
       var6.setPreferredSize(new Dimension(854, 480));
       var5.pack();
       var5.setLocationRelativeTo((Component)null);
-      MinecraftImpl var7 = new MinecraftImpl(var5, var6, (MinecraftApplet)null, 854, 480, var3, var5);
+      MinecraftImpl var7 = new MinecraftImpl(var5, var6, 854, 480, var3, var5);
       Thread var8 = new Thread(var7, "Minecraft main thread");
       var8.setPriority(10);
       var7.minecraftUri = "www.minecraft.net";
@@ -1500,17 +1481,17 @@ public abstract class Minecraft implements Runnable {
    public static void main(String[] var0) {
       String var1 = null;
       String var2 = null;
-      var1 = "Player" + System.currentTimeMillis() % 1000L;
+      var1 = "Anonymous";
       if(var0.length > 0) {
          var1 = var0[0];
       }
 
-      var2 = "-";
+      var2 = "NoSession";
       if(var0.length > 1) {
          var2 = var0[1];
       }
 
-      startMainThread1(var1, var2);
+      startMainThread(var1, var2, null);
    }
 
    public static boolean isGuiEnabled() {
@@ -1527,14 +1508,6 @@ public abstract class Minecraft implements Runnable {
 
    public static boolean isDebugInfoEnabled() {
       return theMinecraft != null && theMinecraft.gameSettings.showDebugInfo;
-   }
-
-   public boolean lineIsCommand(String var1) {
-      if(var1.startsWith("/")) {
-         ;
-      }
-
-      return false;
    }
 
 }

@@ -1,13 +1,10 @@
 package net.minecraft.src;
 
 import java.util.Comparator;
-import net.minecraft.src.GuiSlotStatsBlock;
-import net.minecraft.src.GuiStats;
-import net.minecraft.src.StatBase;
-import net.minecraft.src.StatCrafting;
-import net.minecraft.src.StatList;
+import net.minecraft.client.gui.GuiSlotStatsBlock;
+import net.minecraft.client.gui.GuiStats;
 
-class SorterStatsBlock implements Comparator {
+public class SorterStatsBlock implements Comparator {
 
    // $FF: synthetic field
    final GuiStats statsGUI;
@@ -15,7 +12,7 @@ class SorterStatsBlock implements Comparator {
    final GuiSlotStatsBlock slotStatsBlockGUI;
 
 
-   SorterStatsBlock(GuiSlotStatsBlock var1, GuiStats var2) {
+   public SorterStatsBlock(GuiSlotStatsBlock var1, GuiStats var2) {
       this.slotStatsBlockGUI = var1;
       this.statsGUI = var2;
    }
@@ -57,6 +54,7 @@ class SorterStatsBlock implements Comparator {
 
    // $FF: synthetic method
    // $FF: bridge method
+   @Override
    public int compare(Object var1, Object var2) {
       return this.func_27297_a((StatCrafting)var1, (StatCrafting)var2);
    }
