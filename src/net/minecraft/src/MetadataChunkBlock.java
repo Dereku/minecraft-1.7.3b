@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.Chunk;
 import net.minecraft.src.EnumSkyBlock;
 import net.minecraft.src.World;

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.ChunkPosition;
 import net.minecraft.src.Entity;
 import net.minecraft.src.MathHelper;

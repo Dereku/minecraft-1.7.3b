@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.BlockBed;
+import net.minecraft.client.block.BlockBed;
 import net.minecraft.src.ChunkCoordIntPair;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.ChunkPosition;

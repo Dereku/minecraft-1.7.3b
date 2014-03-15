@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.Chunk;
 import net.minecraft.src.ChunkCache;
 import net.minecraft.src.Entity;

@@ -1,12 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Block;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayerSP;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
+import net.minecraft.client.block.Block;
 
 public class PlayerController {
 

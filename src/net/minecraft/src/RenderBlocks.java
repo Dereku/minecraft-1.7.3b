@@ -1,15 +1,15 @@
 package net.minecraft.src;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockBed;
-import net.minecraft.src.BlockDoor;
-import net.minecraft.src.BlockFluid;
-import net.minecraft.src.BlockPistonBase;
-import net.minecraft.src.BlockPistonExtension;
-import net.minecraft.src.BlockRail;
-import net.minecraft.src.BlockRedstoneRepeater;
-import net.minecraft.src.BlockRedstoneWire;
+import net.minecraft.client.block.Block;
+import net.minecraft.client.block.BlockBed;
+import net.minecraft.client.block.BlockDoor;
+import net.minecraft.client.block.BlockFluid;
+import net.minecraft.client.block.BlockPistonBase;
+import net.minecraft.client.block.BlockPistonExtension;
+import net.minecraft.client.block.BlockRail;
+import net.minecraft.client.block.BlockRedstoneRepeater;
+import net.minecraft.client.block.BlockRedstoneWire;
 import net.minecraft.src.EntityRenderer;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.Material;

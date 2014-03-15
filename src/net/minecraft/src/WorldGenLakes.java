@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 import java.util.Random;
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.EnumSkyBlock;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;

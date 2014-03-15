@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 import java.util.Random;
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockFlower;
+import net.minecraft.client.block.Block;
+import net.minecraft.client.block.BlockFlower;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 

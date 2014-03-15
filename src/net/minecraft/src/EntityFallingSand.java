@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.BlockSand;
+import net.minecraft.client.block.BlockSand;
 import net.minecraft.src.Entity;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.NBTTagCompound;

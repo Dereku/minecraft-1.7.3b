@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.BlockRail;
+import net.minecraft.client.block.BlockRail;
 import net.minecraft.src.EntityMinecart;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;

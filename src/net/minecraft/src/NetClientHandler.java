@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import net.minecraft.client.block.Block;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

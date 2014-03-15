@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.SignModel;
 import net.minecraft.src.TileEntity;

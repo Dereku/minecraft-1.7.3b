@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityTNTPrimed;
 import net.minecraft.src.Render;

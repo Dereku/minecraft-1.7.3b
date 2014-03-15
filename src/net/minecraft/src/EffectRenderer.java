@@ -3,7 +3,7 @@ package net.minecraft.src;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityDiggingFX;
 import net.minecraft.src.EntityFX;

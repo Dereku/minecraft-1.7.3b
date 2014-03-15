@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockCloth;
-import net.minecraft.src.BlockCrops;
-import net.minecraft.src.BlockSapling;
+import net.minecraft.client.block.Block;
+import net.minecraft.client.block.BlockCloth;
+import net.minecraft.client.block.BlockCrops;
+import net.minecraft.client.block.BlockSapling;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntitySheep;

@@ -2,8 +2,8 @@ package net.minecraft.src;
 
 import java.util.Random;
 import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockSand;
+import net.minecraft.client.block.Block;
+import net.minecraft.client.block.BlockSand;
 import net.minecraft.src.Chunk;
 import net.minecraft.src.IChunkProvider;
 import net.minecraft.src.IProgressUpdate;

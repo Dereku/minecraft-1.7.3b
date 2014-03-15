@@ -1,12 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Block;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.PlayerController;
-import net.minecraft.src.Session;
-import net.minecraft.src.World;
+import net.minecraft.client.block.Block;
 
 public class PlayerControllerTest extends PlayerController {
 
@@ -15,6 +10,7 @@ public class PlayerControllerTest extends PlayerController {
       this.isInTestMode = true;
    }
 
+   @Override
    public void func_6473_b(EntityPlayer var1) {
       for(int var2 = 0; var2 < 9; ++var2) {
          if(var1.inventory.mainInventory[var2] == null) {
@@ -26,13 +22,16 @@ public class PlayerControllerTest extends PlayerController {
 
    }
 
+   @Override
    public boolean shouldDrawHUD() {
       return false;
    }
 
+   @Override
    public void func_717_a(World var1) {
       super.func_717_a(var1);
    }
 
+   @Override
    public void updateController() {}
 }

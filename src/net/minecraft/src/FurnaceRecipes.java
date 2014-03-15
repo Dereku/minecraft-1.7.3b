@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import java.util.HashMap;
 import java.util.Map;
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 

@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.MathHelper;

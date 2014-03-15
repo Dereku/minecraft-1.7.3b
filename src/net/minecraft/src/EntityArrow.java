@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import java.util.List;
 import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.EntityPlayer;

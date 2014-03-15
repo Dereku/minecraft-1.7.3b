@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.ChunkProviderGenerate;
 import net.minecraft.src.IChunkProvider;
 import net.minecraft.src.MathHelper;

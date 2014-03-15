@@ -11,7 +11,7 @@ import net.minecraft.src.BiomeGenRainforest;
 import net.minecraft.src.BiomeGenSky;
 import net.minecraft.src.BiomeGenSwamp;
 import net.minecraft.src.BiomeGenTaiga;
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.EntityChicken;
 import net.minecraft.src.EntityCow;
 import net.minecraft.src.EntityCreeper;

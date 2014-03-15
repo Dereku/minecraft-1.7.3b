@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.ChunkProviderSky;
 import net.minecraft.src.IChunkProvider;
 import net.minecraft.src.MathHelper;

@@ -6,7 +6,7 @@ import java.util.Random;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.ChunkProviderLoadOrGenerate;
 import net.minecraft.src.ClippingHelperImpl;
 import net.minecraft.src.EffectRenderer;

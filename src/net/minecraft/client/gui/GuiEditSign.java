@@ -1,7 +1,7 @@
 package net.minecraft.client.gui;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.ChatAllowedCharacters;
 import net.minecraft.src.ChatAllowedCharacters;
 import net.minecraft.client.gui.GuiButton;

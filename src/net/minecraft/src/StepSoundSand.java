@@ -1,13 +1,12 @@
 package net.minecraft.src;
 
-import net.minecraft.src.StepSound;
+public final class StepSoundSand extends StepSound {
 
-final class StepSoundSand extends StepSound {
-
-   StepSoundSand(String var1, float var2, float var3) {
+   public StepSoundSand(String var1, float var2, float var3) {
       super(var1, var2, var3);
    }
 
+   @Override
    public String stepSoundDir() {
       return "step.gravel";
    }

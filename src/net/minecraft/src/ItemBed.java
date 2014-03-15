@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockBed;
+import net.minecraft.client.block.Block;
+import net.minecraft.client.block.BlockBed;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;

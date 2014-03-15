@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.BlockFluid;
+import net.minecraft.client.block.BlockFluid;
 import net.minecraft.src.EntityFX;
 import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;

@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockFurnace;
+import net.minecraft.client.block.Block;
+import net.minecraft.client.block.BlockFurnace;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.FurnaceRecipes;
 import net.minecraft.src.IInventory;

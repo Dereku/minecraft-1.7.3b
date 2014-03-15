@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockPistonBase;
+import net.minecraft.client.block.Block;
+import net.minecraft.client.block.BlockPistonBase;
 import net.minecraft.src.RenderBlocks;
 import net.minecraft.src.RenderHelper;
 import net.minecraft.src.Tessellator;

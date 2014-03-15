@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockDoor;
+import net.minecraft.client.block.Block;
+import net.minecraft.client.block.BlockDoor;
 import net.minecraft.src.Entity;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.MCHash;

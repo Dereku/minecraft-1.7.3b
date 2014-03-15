@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Block;
+import net.minecraft.client.block.Block;
 import net.minecraft.src.EnumToolMaterial;
 import net.minecraft.src.ItemTool;
 import net.minecraft.src.Material;

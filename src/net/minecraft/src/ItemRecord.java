@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockJukeBox;
+import net.minecraft.client.block.Block;
+import net.minecraft.client.block.BlockJukeBox;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;

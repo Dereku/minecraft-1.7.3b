@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockStep;
+import net.minecraft.client.block.Block;
+import net.minecraft.client.block.BlockStep;
 import net.minecraft.src.ItemBlock;
 import net.minecraft.src.ItemStack;
 
