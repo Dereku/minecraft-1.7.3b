@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.src.Container;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemStack;
 
 public interface ICrafting {
 

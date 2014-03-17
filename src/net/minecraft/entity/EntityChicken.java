@@ -1,8 +1,8 @@
 package net.minecraft.entity;
 
 import net.minecraft.entity.EntityAnimal;
-import net.minecraft.src.Item;
-import net.minecraft.src.Item;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.Item;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.world.World;

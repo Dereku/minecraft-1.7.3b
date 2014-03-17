@@ -41,6 +41,7 @@ public class GameSettings {
    public KeyBinding keyBindChat = new KeyBinding("key.chat", 20);
    public KeyBinding keyBindToggleFog = new KeyBinding("key.fog", 33);
    public KeyBinding keyBindSneak = new KeyBinding("key.sneak", 42);
+   public KeyBinding keyBindCommand = new KeyBinding("key.command", 53);
    public KeyBinding[] keyBindings;
    protected Minecraft mc;
    private File optionsFile;
@@ -55,8 +56,7 @@ public class GameSettings {
    public float field_22272_F;
    public float field_22271_G;
    public int guiScale;
-
-
+    
    public GameSettings(Minecraft var1, File var2) {
       this.keyBindings = new KeyBinding[]{this.keyBindForward, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindDrop, this.keyBindInventory, this.keyBindChat, this.keyBindToggleFog};
       this.difficulty = 2;

@@ -3,8 +3,8 @@ package net.minecraft.src;
 import net.minecraft.client.block.Block;
 import net.minecraft.client.block.BlockCloth;
 import net.minecraft.src.CraftingManager;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.ItemStack;
 
 public class RecipesDyes {
 

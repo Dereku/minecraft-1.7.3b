@@ -2,8 +2,8 @@ package net.minecraft.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemStack;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MathHelper;
 import net.minecraft.world.World;

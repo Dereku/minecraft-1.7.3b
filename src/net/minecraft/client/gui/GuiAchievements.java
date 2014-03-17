@@ -1,10 +1,10 @@
 package net.minecraft.client.gui;
 
 import java.util.Random;
-import net.minecraft.src.Achievement;
-import net.minecraft.src.Achievement;
-import net.minecraft.src.AchievementList;
-import net.minecraft.src.AchievementList;
+import net.minecraft.client.achiviements.Achievement;
+import net.minecraft.client.achiviements.Achievement;
+import net.minecraft.client.achiviements.AchievementList;
+import net.minecraft.client.achiviements.AchievementList;
 import net.minecraft.client.block.Block;
 import net.minecraft.client.block.Block;
 import net.minecraft.client.gui.GuiButton;

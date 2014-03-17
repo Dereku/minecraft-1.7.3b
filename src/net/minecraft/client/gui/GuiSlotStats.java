@@ -3,7 +3,7 @@ package net.minecraft.client.gui;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import net.minecraft.src.Item;
+import net.minecraft.client.item.Item;
 import net.minecraft.src.StatCrafting;
 import net.minecraft.src.StringTranslate;
 import net.minecraft.src.Tessellator;

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.MapCoord;
 import net.minecraft.src.MapDataBase;
 import net.minecraft.src.MapInfo;

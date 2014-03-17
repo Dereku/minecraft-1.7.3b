@@ -4,7 +4,7 @@ import java.util.List;
 import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.IInvBasic;
 import net.minecraft.src.IInventory;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemStack;
 
 public class InventoryBasic implements IInventory {
 

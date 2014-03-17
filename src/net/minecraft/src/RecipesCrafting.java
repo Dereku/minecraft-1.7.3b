@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import net.minecraft.client.block.Block;
 import net.minecraft.src.CraftingManager;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemStack;
 
 public class RecipesCrafting {
 

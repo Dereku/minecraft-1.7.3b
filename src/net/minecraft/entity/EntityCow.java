@@ -2,10 +2,10 @@ package net.minecraft.entity;
 
 import net.minecraft.entity.EntityAnimal;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.ItemStack;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.world.World;

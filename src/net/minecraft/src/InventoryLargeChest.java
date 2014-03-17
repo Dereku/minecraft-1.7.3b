@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.IInventory;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemStack;
 
 public class InventoryLargeChest implements IInventory {
 

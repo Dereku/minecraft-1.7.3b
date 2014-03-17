@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPlayerSP;
 import net.minecraft.entity.EntityPlayer;

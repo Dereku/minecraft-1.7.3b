@@ -5,7 +5,7 @@ import net.minecraft.client.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClientPlayerMP;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.NetClientHandler;
 import net.minecraft.src.Packet102WindowClick;
 import net.minecraft.src.Packet14BlockDig;

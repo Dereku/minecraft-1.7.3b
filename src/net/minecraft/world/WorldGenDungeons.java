@@ -2,10 +2,10 @@ package net.minecraft.world;
 
 import java.util.Random;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.Item;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.ItemStack;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
 import net.minecraft.world.tiles.TileEntityChest;

@@ -1,11 +1,9 @@
 package net.minecraft.src;
 
-import net.minecraft.src.AchievementList;
+import net.minecraft.client.item.ItemStack;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.achiviements.AchievementList;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Slot;
 
 public class SlotFurnace extends Slot {
 
@@ -17,10 +15,12 @@ public class SlotFurnace extends Slot {
       this.thePlayer = var1;
    }
 
+   @Override
    public boolean isItemValid(ItemStack var1) {
       return false;
    }
 
+   @Override
    public void onPickupFromSlot(ItemStack var1) {
       var1.onCrafting(this.thePlayer.worldObj, this.thePlayer);
       if(var1.itemID == Item.ingotIron.shiftedIndex) {

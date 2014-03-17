@@ -1,14 +1,7 @@
 package net.minecraft.entity;
 
-import net.minecraft.src.AchievementList;
-import net.minecraft.src.AchievementList;
-import net.minecraft.entity.EntityAnimal;
-import net.minecraft.entity.EntityLightningBolt;
-import net.minecraft.entity.EntityPigZombie;
-import net.minecraft.entity.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.Item;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.client.achiviements.AchievementList;
+import net.minecraft.client.item.Item;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.world.World;
 
@@ -20,32 +13,39 @@ public class EntityPig extends EntityAnimal {
       this.setSize(0.9F, 0.9F);
    }
 
+   @Override
    protected void entityInit() {
       this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
    }
 
+   @Override
    public void writeEntityToNBT(NBTTagCompound var1) {
       super.writeEntityToNBT(var1);
       var1.setBoolean("Saddle", this.getSaddled());
    }
 
+   @Override
    public void readEntityFromNBT(NBTTagCompound var1) {
       super.readEntityFromNBT(var1);
       this.setSaddled(var1.getBoolean("Saddle"));
    }
 
+   @Override
    protected String getLivingSound() {
       return "mob.pig";
    }
 
+   @Override
    protected String getHurtSound() {
       return "mob.pig";
    }
 
+   @Override
    protected String getDeathSound() {
       return "mob.pigdeath";
    }
 
+   @Override
    public boolean interact(EntityPlayer var1) {
       if(this.getSaddled() && !this.worldObj.multiplayerWorld && (this.riddenByEntity == null || this.riddenByEntity == var1)) {
          var1.mountEntity(this);
@@ -55,6 +55,7 @@ public class EntityPig extends EntityAnimal {
       }
    }
 
+   @Override
    protected int getDropItemId() {
       return this.fire > 0?Item.porkCooked.shiftedIndex:Item.porkRaw.shiftedIndex;
    }
@@ -72,6 +73,7 @@ public class EntityPig extends EntityAnimal {
 
    }
 
+   @Override
    public void onStruckByLightning(EntityLightningBolt var1) {
       if(!this.worldObj.multiplayerWorld) {
          EntityPigZombie var2 = new EntityPigZombie(this.worldObj);
@@ -81,6 +83,7 @@ public class EntityPig extends EntityAnimal {
       }
    }
 
+   @Override
    protected void fall(float var1) {
       super.fall(var1);
       if(var1 > 5.0F && this.riddenByEntity instanceof EntityPlayer) {

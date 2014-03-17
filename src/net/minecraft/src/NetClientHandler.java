@@ -1,5 +1,8 @@
 package net.minecraft.src;
 
+import net.minecraft.client.item.ItemStack;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.ItemMap;
 import net.minecraft.entity.EntityTNTPrimed;
 import net.minecraft.entity.EntityFallingSand;
 import net.minecraft.entity.EntityPlayerSP;

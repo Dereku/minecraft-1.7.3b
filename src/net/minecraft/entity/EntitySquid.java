@@ -2,10 +2,10 @@ package net.minecraft.entity;
 
 import net.minecraft.entity.EntityPlayer;
 import net.minecraft.entity.EntityWaterMob;
-import net.minecraft.src.Item;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.ItemStack;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;

@@ -9,6 +9,10 @@ public class GuiChat extends GuiScreen {
     private int updateCounter = 0;
     private static final String allowedCharacters = ChatAllowedCharacters.allowedCharacters;
 
+    public GuiChat(String string) {
+        message = string;
+    }
+
     @Override
     public void initGui() {
         Keyboard.enableRepeatEvents(true);

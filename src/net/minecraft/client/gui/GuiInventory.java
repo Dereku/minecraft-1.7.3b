@@ -1,7 +1,7 @@
 package net.minecraft.client.gui;
 
-import net.minecraft.src.AchievementList;
-import net.minecraft.src.AchievementList;
+import net.minecraft.client.achiviements.AchievementList;
+import net.minecraft.client.achiviements.AchievementList;
 import net.minecraft.entity.EntityPlayer;
 import net.minecraft.entity.EntityPlayer;
 import net.minecraft.client.gui.GuiAchievements;

@@ -1,8 +1,8 @@
 package net.minecraft.client.gui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Achievement;
-import net.minecraft.src.Achievement;
+import net.minecraft.client.achiviements.Achievement;
+import net.minecraft.client.achiviements.Achievement;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.render.RenderHelper;
 import net.minecraft.client.render.RenderHelper;

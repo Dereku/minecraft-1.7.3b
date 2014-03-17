@@ -1,19 +1,11 @@
 package net.minecraft.entity;
 
-import net.minecraft.src.AchievementList;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.AchievementList;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Material;
+import net.minecraft.client.achiviements.AchievementList;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.world.World;
 
@@ -39,6 +31,7 @@ public class EntityItem extends Entity {
       this.motionZ = (double)((float)(Math.random() * 0.20000000298023224D - 0.10000000149011612D));
    }
 
+   @Override
    protected boolean canTriggerWalking() {
       return false;
    }
@@ -49,8 +42,10 @@ public class EntityItem extends Entity {
       this.yOffset = this.height / 2.0F;
    }
 
+   @Override
    protected void entityInit() {}
 
+   @Override
    public void onUpdate() {
       super.onUpdate();
       if(this.delayBeforeCanPickup > 0) {
@@ -94,14 +89,17 @@ public class EntityItem extends Entity {
 
    }
 
+   @Override
    public boolean handleWaterMovement() {
       return this.worldObj.handleMaterialAcceleration(this.boundingBox, Material.water, this);
    }
 
+   @Override
    protected void dealFireDamage(int var1) {
       this.attackEntityFrom((Entity)null, var1);
    }
 
+   @Override
    public boolean attackEntityFrom(Entity var1, int var2) {
       this.setBeenAttacked();
       this.health -= var2;
@@ -112,12 +110,14 @@ public class EntityItem extends Entity {
       return false;
    }
 
+   @Override
    public void writeEntityToNBT(NBTTagCompound var1) {
       var1.setShort("Health", (short)((byte)this.health));
       var1.setShort("Age", (short)this.age);
       var1.setCompoundTag("Item", this.item.writeToNBT(new NBTTagCompound()));
    }
 
+   @Override
    public void readEntityFromNBT(NBTTagCompound var1) {
       this.health = var1.getShort("Health") & 255;
       this.age = var1.getShort("Age");
@@ -125,6 +125,7 @@ public class EntityItem extends Entity {
       this.item = new ItemStack(var2);
    }
 
+   @Override
    public void onCollideWithPlayer(EntityPlayer var1) {
       if(!this.worldObj.multiplayerWorld) {
          int var2 = this.item.stackSize;
@@ -132,6 +133,10 @@ public class EntityItem extends Entity {
             if(this.item.itemID == Block.wood.blockID) {
                var1.triggerAchievement(AchievementList.mineWood);
             }
+
+             if (this.item.itemID == Item.diamond.shiftedIndex) {
+                 var1.triggerAchievement(AchievementList.diamonds);
+             }
 
             if(this.item.itemID == Item.leather.shiftedIndex) {
                var1.triggerAchievement(AchievementList.killCow);

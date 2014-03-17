@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.chunk.ChunkCoordinates;
-import net.minecraft.src.Item;
+import net.minecraft.client.item.Item;
 import net.minecraft.src.TextureFX;
 
 public class TextureCompassFX extends TextureFX {

@@ -2,8 +2,8 @@ package net.minecraft.entity;
 
 import net.minecraft.client.block.Block;
 import net.minecraft.entity.EntityFX;
-import net.minecraft.src.Item;
-import net.minecraft.src.Item;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.Item;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.Tessellator;
 import net.minecraft.world.World;

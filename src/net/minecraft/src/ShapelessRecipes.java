@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import net.minecraft.src.IRecipe;
 import net.minecraft.src.InventoryCrafting;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemStack;
 
 public class ShapelessRecipes implements IRecipe {
 

@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import net.minecraft.src.Achievement;
+import net.minecraft.client.achiviements.Achievement;
 import net.minecraft.src.J_InvalidSyntaxException;
 import net.minecraft.src.J_JdomParser;
 import net.minecraft.src.J_JsonNode;

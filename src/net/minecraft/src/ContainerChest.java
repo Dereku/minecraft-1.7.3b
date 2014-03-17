@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.minecraft.src.Container;
 import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.IInventory;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.Slot;
 
 public class ContainerChest extends Container {

@@ -3,7 +3,7 @@ package net.minecraft.src;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
-import net.minecraft.src.AchievementMap;
+import net.minecraft.client.achiviements.AchievementMap;
 import net.minecraft.src.IStatType;
 import net.minecraft.src.StatList;
 import net.minecraft.src.StatTypeDistance;

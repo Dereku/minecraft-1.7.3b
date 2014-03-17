@@ -6,17 +6,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import net.minecraft.src.AchievementList;
+import net.minecraft.client.achiviements.AchievementList;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.CraftingManager;
-import net.minecraft.src.FurnaceRecipes;
-import net.minecraft.src.IRecipe;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.StatBase;
-import net.minecraft.src.StatBasic;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.StatCrafting;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.ItemStack;
 
 public class StatList {
 

@@ -6,8 +6,8 @@ import net.minecraft.src.ColorizerGrass;
 import net.minecraft.src.ColorizerGrass;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.Item;
-import net.minecraft.src.Item;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.Item;
 
 public class BlockTallGrass extends BlockFlower {
 

@@ -8,7 +8,7 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.io.File;
-import net.minecraft.src.AchievementList;
+import net.minecraft.client.achiviements.AchievementList;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.client.block.Block;
 import net.minecraft.world.chunk.ChunkCoordinates;
@@ -46,8 +46,8 @@ import net.minecraft.client.gui.GuiUnused;
 import net.minecraft.src.IChunkProvider;
 import net.minecraft.src.ISaveFormat;
 import net.minecraft.src.ISaveHandler;
-import net.minecraft.src.ItemRenderer;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemRenderer;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.LoadingScreenRenderer;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MinecraftError;
@@ -165,6 +165,7 @@ public abstract class Minecraft implements Runnable {
    private int joinPlayerCounter = 0;
 
 
+   @SuppressWarnings({"ResultOfObjectAllocationIgnored", "LeakingThisInConstructor"})
    public Minecraft(Component var1, Canvas var2, /*MinecraftApplet var3,*/ int var4, int var5, boolean var6) {
       StatList.func_27360_a();
       this.tempDisplayHeight = var5;
@@ -224,7 +225,6 @@ public abstract class Minecraft implements Runnable {
          try {
             Thread.sleep(1000L);
          } catch (InterruptedException var5) {
-            ;
          }
 
          Display.create();
@@ -250,7 +250,7 @@ public abstract class Minecraft implements Runnable {
 
       try {
          Controllers.create();
-      } catch (Exception var4) {
+      } catch (LWJGLException var4) {
          var4.printStackTrace();
       }
 
@@ -286,7 +286,6 @@ public abstract class Minecraft implements Runnable {
          this.downloadResourcesThread = new ThreadDownloadResources(this.mcDataDir, this);
          this.downloadResourcesThread.start();
       } catch (Exception var3) {
-         ;
       }
 
       this.checkGLError("Post startup");
@@ -449,7 +448,6 @@ public abstract class Minecraft implements Runnable {
                this.downloadResourcesThread.closeMinecraft();
             }
          } catch (Exception var9) {
-            ;
          }
 
          System.out.println("Stopping!");
@@ -457,13 +455,11 @@ public abstract class Minecraft implements Runnable {
          try {
             this.changeWorld1((World)null);
          } catch (Throwable var8) {
-            ;
          }
 
          try {
             GLAllocation.deleteTexturesAndDisplayLists();
          } catch (Throwable var7) {
-            ;
          }
 
          this.sndManager.closeMinecraft();
@@ -480,12 +476,14 @@ public abstract class Minecraft implements Runnable {
       System.gc();
    }
 
+   @Override
+   @SuppressWarnings({"SleepWhileInLoop", "CallToThreadYield"})
    public void run() {
       this.running = true;
 
       try {
          this.startGame();
-      } catch (Exception var17) {
+      } catch (LWJGLException var17) {
          var17.printStackTrace();
          this.onMinecraftCrash(new UnexpectedThrowable("Failed to start game", var17));
          return;
@@ -604,8 +602,7 @@ public abstract class Minecraft implements Runnable {
             }
          }
       } catch (MinecraftError var20) {
-         ;
-      } catch (Throwable var21) {
+      } catch (InterruptedException var21) {
          this.func_28002_e();
          var21.printStackTrace();
          this.onMinecraftCrash(new UnexpectedThrowable("Unexpected error", var21));
@@ -620,7 +617,6 @@ public abstract class Minecraft implements Runnable {
          field_28006_b = new byte[0];
          this.renderGlobal.func_28137_f();
       } catch (Throwable var4) {
-         ;
       }
 
       try {
@@ -628,14 +624,12 @@ public abstract class Minecraft implements Runnable {
          AxisAlignedBB.clearBoundingBoxes();
          Vec3D.clearVectorList();
       } catch (Throwable var3) {
-         ;
       }
 
       try {
          System.gc();
          this.changeWorld1((World)null);
       } catch (Throwable var2) {
-         ;
       }
 
       System.gc();
@@ -876,7 +870,7 @@ public abstract class Minecraft implements Runnable {
 
          Display.setFullscreen(this.fullscreen);
          Display.update();
-      } catch (Exception var2) {
+      } catch (LWJGLException var2) {
          var2.printStackTrace();
       }
 
@@ -958,7 +952,7 @@ public abstract class Minecraft implements Runnable {
          if(this.thePlayer.health <= 0) {
             this.displayGuiScreen((GuiScreen)null);
          } else if(this.thePlayer.isPlayerSleeping() && this.theWorld != null && this.theWorld.multiplayerWorld) {
-            this.displayGuiScreen(new GuiSleepMP());
+            this.displayGuiScreen(new GuiSleepMP(""));
          }
       } else if(this.currentScreen != null && this.currentScreen instanceof GuiSleepMP && !this.thePlayer.isPlayerSleeping()) {
          this.displayGuiScreen((GuiScreen)null);
@@ -1067,7 +1061,11 @@ public abstract class Minecraft implements Runnable {
                      }
 
                      if(this.isMultiplayerWorld() && Keyboard.getEventKey() == this.gameSettings.keyBindChat.keyCode) {
-                        this.displayGuiScreen(new GuiChat());
+                        this.displayGuiScreen(new GuiChat(""));
+                     }
+                     
+                     if(this.isMultiplayerWorld() && Keyboard.getEventKey() == this.gameSettings.keyBindCommand.keyCode) {
+                        this.displayGuiScreen(new GuiChat("/"));
                      }
                   }
 
@@ -1337,7 +1335,6 @@ public abstract class Minecraft implements Runnable {
             this.theWorld.getBlockId(var6.posX + var10, 64, var6.posZ + var8);
 
             while(this.theWorld.updatingLighting()) {
-               ;
             }
          }
       }

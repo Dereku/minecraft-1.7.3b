@@ -2,7 +2,7 @@ package net.minecraft.client.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.FontRenderer;
-import net.minecraft.src.Item;
+import net.minecraft.client.item.Item;
 import net.minecraft.client.render.RenderHelper;
 import net.minecraft.client.render.RenderItem;
 import net.minecraft.src.StatCollector;

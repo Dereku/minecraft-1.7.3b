@@ -5,10 +5,10 @@ import net.minecraft.client.block.Block;
 import net.minecraft.client.block.BlockFlower;
 import net.minecraft.entity.EntityItem;
 import net.minecraft.entity.EntityItem;
-import net.minecraft.src.Item;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.Item;
+import net.minecraft.client.item.ItemStack;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraft.world.World;
 

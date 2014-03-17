@@ -1,8 +1,8 @@
 package net.minecraft.entity;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Achievement;
-import net.minecraft.src.AchievementList;
+import net.minecraft.client.achiviements.Achievement;
+import net.minecraft.client.achiviements.AchievementList;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPickupFX;
 import net.minecraft.entity.EntityPlayer;
@@ -12,8 +12,8 @@ import net.minecraft.client.gui.GuiDispenser;
 import net.minecraft.client.gui.GuiEditSign;
 import net.minecraft.client.gui.GuiFurnace;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.src.Achievement;
-import net.minecraft.src.AchievementList;
+import net.minecraft.client.achiviements.Achievement;
+import net.minecraft.client.achiviements.AchievementList;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.MathHelper;

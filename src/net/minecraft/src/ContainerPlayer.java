@@ -7,7 +7,7 @@ import net.minecraft.src.IInventory;
 import net.minecraft.src.InventoryCraftResult;
 import net.minecraft.src.InventoryCrafting;
 import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.Slot;
 import net.minecraft.src.SlotArmor;
 import net.minecraft.src.SlotCrafting;

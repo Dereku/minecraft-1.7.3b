@@ -3,8 +3,8 @@ package net.minecraft.src;
 import net.minecraft.client.block.Block;
 import net.minecraft.src.ContainerPlayer;
 import net.minecraft.src.IInventory;
-import net.minecraft.src.ItemArmor;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemArmor;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.Slot;
 
 class SlotArmor extends Slot {

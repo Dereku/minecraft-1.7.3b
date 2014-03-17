@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import net.minecraft.world.chunk.ChunkCoordinates;
-import net.minecraft.src.ItemStack;
+import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.Packet;
 import net.minecraft.src.WatchableObject;
 
