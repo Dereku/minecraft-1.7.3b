@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 
 public class MovementInput {
 

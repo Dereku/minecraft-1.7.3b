@@ -1,10 +1,10 @@
 package net.minecraft.client.render;
 
 import java.util.Random;
-import net.minecraft.src.Entity;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPainting;
-import net.minecraft.src.EntityPainting;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityPainting;
+import net.minecraft.entity.EntityPainting;
 import net.minecraft.src.EnumArt;
 import net.minecraft.src.EnumArt;
 import net.minecraft.src.MathHelper;

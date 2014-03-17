@@ -1,5 +1,25 @@
 package net.minecraft.src;
 
+import net.minecraft.entity.EntityTNTPrimed;
+import net.minecraft.entity.EntityFallingSand;
+import net.minecraft.entity.EntityPlayerSP;
+import net.minecraft.entity.EntityLightningBolt;
+import net.minecraft.entity.EntityMinecart;
+import net.minecraft.entity.EntityPlayer;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntitySnowball;
+import net.minecraft.entity.EntityPainting;
+import net.minecraft.entity.EntityClientPlayerMP;
+import net.minecraft.entity.EntityPickupFX;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityArrow;
+import net.minecraft.entity.EntityFish;
+import net.minecraft.entity.EntityItem;
+import net.minecraft.entity.EntityEgg;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityFireball;
+import net.minecraft.entity.EntityOtherPlayerMP;
+import net.minecraft.entity.EntityBoat;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkCoordinates;
 import net.minecraft.world.tiles.TileEntityDispenser;

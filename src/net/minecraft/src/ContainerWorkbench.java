@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.minecraft.client.block.Block;
 import net.minecraft.src.Container;
 import net.minecraft.src.CraftingManager;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.InventoryCraftResult;
 import net.minecraft.src.InventoryCrafting;

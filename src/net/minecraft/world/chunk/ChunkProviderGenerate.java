@@ -1,10 +1,10 @@
 package net.minecraft.world.chunk;
 
 import java.util.Random;
-import net.minecraft.src.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.client.block.Block;
 import net.minecraft.client.block.BlockSand;
-import net.minecraft.src.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.src.IChunkProvider;
 import net.minecraft.src.IChunkProvider;

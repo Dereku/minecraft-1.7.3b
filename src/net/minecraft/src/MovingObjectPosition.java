@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Entity;
+import net.minecraft.entity.Entity;
 import net.minecraft.src.EnumMovingObjectType;
 import net.minecraft.src.Vec3D;
 

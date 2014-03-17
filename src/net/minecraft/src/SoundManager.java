@@ -3,7 +3,7 @@ package net.minecraft.src;
 import java.io.File;
 import java.util.Random;
 import net.minecraft.src.CodecMus;
-import net.minecraft.src.EntityLiving;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.src.GameSettings;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.SoundPool;

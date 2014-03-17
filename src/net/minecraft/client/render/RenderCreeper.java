@@ -1,9 +1,9 @@
 package net.minecraft.client.render;
 
-import net.minecraft.src.EntityCreeper;
-import net.minecraft.src.EntityCreeper;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityLiving;
+import net.minecraft.entity.EntityCreeper;
+import net.minecraft.entity.EntityCreeper;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.ModelBase;

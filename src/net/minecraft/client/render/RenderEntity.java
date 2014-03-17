@@ -1,7 +1,7 @@
 package net.minecraft.client.render;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.Entity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.Entity;
 import net.minecraft.client.render.Render;
 import org.lwjgl.opengl.GL11;
 

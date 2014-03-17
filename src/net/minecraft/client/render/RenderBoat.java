@@ -1,9 +1,9 @@
 package net.minecraft.client.render;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityBoat;
-import net.minecraft.src.EntityBoat;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityBoat;
+import net.minecraft.entity.EntityBoat;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.ModelBase;

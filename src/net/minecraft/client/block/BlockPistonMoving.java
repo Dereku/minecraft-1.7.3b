@@ -2,7 +2,7 @@ package net.minecraft.client.block;
 
 import java.util.Random;
 import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.Material;
 import net.minecraft.src.PistonBlockTextures;

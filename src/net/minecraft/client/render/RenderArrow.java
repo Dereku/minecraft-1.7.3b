@@ -1,9 +1,9 @@
 package net.minecraft.client.render;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityArrow;
-import net.minecraft.src.EntityArrow;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityArrow;
+import net.minecraft.entity.EntityArrow;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MathHelper;
 import net.minecraft.client.render.Render;

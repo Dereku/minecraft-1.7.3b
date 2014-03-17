@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
-import net.minecraft.src.EntityAnimal;
-import net.minecraft.src.EntityWaterMob;
+import net.minecraft.entity.EntityAnimal;
+import net.minecraft.entity.EntityWaterMob;
 import net.minecraft.src.IMob;
 import net.minecraft.src.Material;
 

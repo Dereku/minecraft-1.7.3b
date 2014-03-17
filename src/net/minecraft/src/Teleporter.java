@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import java.util.Random;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.Entity;
+import net.minecraft.entity.Entity;
 import net.minecraft.src.MathHelper;
 import net.minecraft.world.World;
 

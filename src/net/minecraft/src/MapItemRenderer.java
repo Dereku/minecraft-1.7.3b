@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GameSettings;
 import net.minecraft.src.MapColor;

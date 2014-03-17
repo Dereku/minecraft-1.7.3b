@@ -1,9 +1,9 @@
 package net.minecraft.client.render;
 
-import net.minecraft.src.EntityGhast;
-import net.minecraft.src.EntityGhast;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityLiving;
+import net.minecraft.entity.EntityGhast;
+import net.minecraft.entity.EntityGhast;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.src.ModelGhast;
 import net.minecraft.src.ModelGhast;
 import net.minecraft.client.render.RenderLiving;

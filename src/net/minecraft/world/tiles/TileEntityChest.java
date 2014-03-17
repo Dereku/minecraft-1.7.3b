@@ -1,7 +1,7 @@
 package net.minecraft.world.tiles;
 
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;

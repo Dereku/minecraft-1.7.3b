@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemFood;
 import net.minecraft.src.ItemStack;

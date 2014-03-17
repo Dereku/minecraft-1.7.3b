@@ -1,8 +1,8 @@
 package net.minecraft.client.render;
 
 import java.util.Comparator;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityLiving;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.world.WorldRenderer;
 
 public class RenderSorter implements Comparator {

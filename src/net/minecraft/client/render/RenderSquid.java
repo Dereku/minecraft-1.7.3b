@@ -1,11 +1,11 @@
 package net.minecraft.client.render;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntitySquid;
-import net.minecraft.src.EntitySquid;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntitySquid;
+import net.minecraft.entity.EntitySquid;
 import net.minecraft.src.ModelBase;
 import net.minecraft.src.ModelBase;
 import net.minecraft.client.render.RenderLiving;

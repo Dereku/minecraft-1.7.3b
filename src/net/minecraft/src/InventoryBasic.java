@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 import java.util.List;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.IInvBasic;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;

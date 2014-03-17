@@ -1,10 +1,10 @@
 package net.minecraft.client.block;
 
 import net.minecraft.client.block.BlockContainer;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityItem;
+import net.minecraft.entity.EntityItem;
+import net.minecraft.entity.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;

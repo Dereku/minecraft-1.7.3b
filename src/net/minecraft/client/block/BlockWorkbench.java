@@ -1,8 +1,8 @@
 package net.minecraft.client.block;
 
 import net.minecraft.client.block.Block;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
 import net.minecraft.world.World;

@@ -1,8 +1,8 @@
 package net.minecraft.world;
 
 import java.util.Random;
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.ChunkCoordIntPair;
 import net.minecraft.world.chunk.ChunkCoordIntPair;
 import net.minecraft.src.NoiseGeneratorOctaves2;

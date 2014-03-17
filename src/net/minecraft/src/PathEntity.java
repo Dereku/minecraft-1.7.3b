@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Entity;
+import net.minecraft.entity.Entity;
 import net.minecraft.src.PathPoint;
 import net.minecraft.src.Vec3D;
 

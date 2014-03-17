@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.world.tiles.TileEntity;
 
 public interface IWorldAccess {

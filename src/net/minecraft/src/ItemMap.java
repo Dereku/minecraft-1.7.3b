@@ -2,8 +2,8 @@ package net.minecraft.src;
 
 import net.minecraft.client.block.Block;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.ItemMapBase;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.MapColor;

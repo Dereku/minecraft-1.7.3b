@@ -1,10 +1,10 @@
 package net.minecraft.client.render;
 
 import java.util.Random;
-import net.minecraft.src.Entity;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLightningBolt;
-import net.minecraft.src.EntityLightningBolt;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLightningBolt;
+import net.minecraft.entity.EntityLightningBolt;
 import net.minecraft.client.render.Render;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.Tessellator;

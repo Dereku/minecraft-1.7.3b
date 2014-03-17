@@ -1,9 +1,9 @@
 package net.minecraft.client.render;
 
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntitySpider;
-import net.minecraft.src.EntitySpider;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntitySpider;
+import net.minecraft.entity.EntitySpider;
 import net.minecraft.src.ModelSpider;
 import net.minecraft.src.ModelSpider;
 import net.minecraft.client.render.RenderLiving;

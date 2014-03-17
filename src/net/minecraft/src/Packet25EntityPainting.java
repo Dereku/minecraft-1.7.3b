@@ -3,7 +3,7 @@ package net.minecraft.src;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import net.minecraft.src.EntityPainting;
+import net.minecraft.entity.EntityPainting;
 import net.minecraft.src.EnumArt;
 import net.minecraft.src.NetHandler;
 import net.minecraft.src.Packet;

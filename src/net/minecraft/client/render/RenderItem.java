@@ -2,10 +2,10 @@ package net.minecraft.client.render;
 
 import java.util.Random;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.Entity;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityItem;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityItem;
+import net.minecraft.entity.EntityItem;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.Item;

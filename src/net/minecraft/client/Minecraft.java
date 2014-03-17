@@ -17,11 +17,11 @@ import net.minecraft.src.ColorizerFoliage;
 import net.minecraft.src.ColorizerGrass;
 import net.minecraft.src.ColorizerWater;
 import net.minecraft.src.EffectRenderer;
-import net.minecraft.src.EntityClientPlayerMP;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayerSP;
-import net.minecraft.src.EntityRenderer;
+import net.minecraft.entity.EntityClientPlayerMP;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityPlayer;
+import net.minecraft.entity.EntityPlayerSP;
+import net.minecraft.entity.EntityRenderer;
 import net.minecraft.src.EnumMovingObjectType;
 import net.minecraft.src.EnumOS2;
 import net.minecraft.src.EnumOSMappingHelper;
@@ -235,7 +235,7 @@ public abstract class Minecraft implements Runnable {
       this.gameSettings = new GameSettings(this, this.mcDataDir);
       this.texturePackList = new TexturePackList(this, this.mcDataDir);
       this.renderEngine = new RenderEngine(this.texturePackList, this.gameSettings);
-      this.fontRenderer = new FontRenderer(this.gameSettings, "/font/default.png", this.renderEngine);
+      this.fontRenderer = new FontRenderer(this.gameSettings, "/font/default.png", this.renderEngine, false);
       ColorizerWater.func_28182_a(this.renderEngine.getTextureContents("/misc/watercolor.png"));
       ColorizerGrass.func_28181_a(this.renderEngine.getTextureContents("/misc/grasscolor.png"));
       ColorizerFoliage.func_28152_a(this.renderEngine.getTextureContents("/misc/foliagecolor.png"));
@@ -348,7 +348,7 @@ public abstract class Minecraft implements Runnable {
 
    public static File getMinecraftDir() {
       if(minecraftDir == null) {
-         minecraftDir = getAppDir("minecraft");
+         minecraftDir = getAppDir("minecraftburst");
       }
 
       return minecraftDir;

@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 import net.minecraft.client.block.Block;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemArmor;
 import net.minecraft.src.ItemStack;

@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import net.minecraft.client.block.Block;
 import net.minecraft.client.block.BlockBed;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.MathHelper;

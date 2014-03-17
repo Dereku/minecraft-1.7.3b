@@ -2,10 +2,10 @@ package net.minecraft.client.block;
 
 import java.util.Random;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.Item;

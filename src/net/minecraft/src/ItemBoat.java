@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 import net.minecraft.client.block.Block;
-import net.minecraft.src.EntityBoat;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityBoat;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.EnumMovingObjectType;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;

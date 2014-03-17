@@ -2,9 +2,9 @@ package net.minecraft.src;
 
 import java.util.Random;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.EnumToolMaterial;
 import net.minecraft.src.ItemArmor;
 import net.minecraft.src.ItemAxe;

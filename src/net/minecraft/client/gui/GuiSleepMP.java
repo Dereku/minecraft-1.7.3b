@@ -1,7 +1,7 @@
 package net.minecraft.client.gui;
 
-import net.minecraft.src.EntityClientPlayerMP;
-import net.minecraft.src.EntityClientPlayerMP;
+import net.minecraft.entity.EntityClientPlayerMP;
+import net.minecraft.entity.EntityClientPlayerMP;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.src.NetClientHandler;

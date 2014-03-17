@@ -2,9 +2,9 @@ package net.minecraft.src;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityClientPlayerMP;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityClientPlayerMP;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NetClientHandler;
 import net.minecraft.src.Packet102WindowClick;

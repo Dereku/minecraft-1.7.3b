@@ -1,8 +1,8 @@
 package net.minecraft.client.render;
 
 import net.minecraft.client.block.Block;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityLiving;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.src.Item;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;

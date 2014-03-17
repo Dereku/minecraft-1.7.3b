@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.EntityLiving;
+import net.minecraft.entity.EntityLiving;
 
 public abstract class ModelBase {
 

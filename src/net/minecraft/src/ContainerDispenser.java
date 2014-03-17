@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.src.Container;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.Slot;
 import net.minecraft.world.tiles.TileEntityDispenser;

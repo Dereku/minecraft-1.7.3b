@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.src.AchievementList;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;

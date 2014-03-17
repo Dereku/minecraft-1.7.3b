@@ -2,10 +2,10 @@ package net.minecraft.world.tiles;
 
 import java.util.HashMap;
 import java.util.Map;
-import net.minecraft.src.Entity;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityList;
-import net.minecraft.src.EntityList;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityList;
 import net.minecraft.client.render.RenderManager;
 import net.minecraft.client.render.RenderManager;
 import net.minecraft.world.tiles.TileEntity;

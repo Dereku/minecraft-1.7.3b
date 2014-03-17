@@ -1,11 +1,11 @@
 package net.minecraft.client.render;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityWolf;
-import net.minecraft.src.EntityWolf;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityWolf;
+import net.minecraft.entity.EntityWolf;
 import net.minecraft.src.ModelBase;
 import net.minecraft.src.ModelBase;
 import net.minecraft.client.render.RenderLiving;

@@ -1,10 +1,10 @@
 package net.minecraft.client.render;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Entity;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityLiving;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.MathHelper;

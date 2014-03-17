@@ -1,8 +1,8 @@
 package net.minecraft.world;
 
-import net.minecraft.src.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.ChunkProviderSky;
 import net.minecraft.world.chunk.ChunkProviderSky;
 import net.minecraft.src.IChunkProvider;
