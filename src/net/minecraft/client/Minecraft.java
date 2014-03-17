@@ -235,7 +235,7 @@ public abstract class Minecraft implements Runnable {
       this.gameSettings = new GameSettings(this, this.mcDataDir);
       this.texturePackList = new TexturePackList(this, this.mcDataDir);
       this.renderEngine = new RenderEngine(this.texturePackList, this.gameSettings);
-      this.fontRenderer = new FontRenderer(this.gameSettings, "/font/default.png", this.renderEngine, false);
+      this.fontRenderer = new FontRenderer(this.gameSettings);
       ColorizerWater.func_28182_a(this.renderEngine.getTextureContents("/misc/watercolor.png"));
       ColorizerGrass.func_28181_a(this.renderEngine.getTextureContents("/misc/grasscolor.png"));
       ColorizerFoliage.func_28152_a(this.renderEngine.getTextureContents("/misc/foliagecolor.png"));
