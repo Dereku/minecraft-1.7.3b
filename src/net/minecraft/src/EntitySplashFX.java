@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.src.EntityRainFX;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntitySplashFX extends EntityRainFX {
 

@@ -24,9 +24,9 @@ import net.minecraft.src.EntitySquid;
 import net.minecraft.src.EntityZombie;
 import net.minecraft.src.EnumCreatureType;
 import net.minecraft.src.SpawnListEntry;
-import net.minecraft.src.WorldGenBigTree;
-import net.minecraft.src.WorldGenTrees;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.world.WorldGenBigTree;
+import net.minecraft.world.WorldGenTrees;
+import net.minecraft.world.WorldGenerator;
 
 public class BiomeGenBase {
 

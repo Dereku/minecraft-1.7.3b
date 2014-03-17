@@ -4,7 +4,7 @@ import java.util.Random;
 import net.minecraft.client.block.Block;
 import net.minecraft.src.MapGenBase;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class MapGenCavesHell extends MapGenBase {
 

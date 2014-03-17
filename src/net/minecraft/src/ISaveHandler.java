@@ -3,8 +3,8 @@ package net.minecraft.src;
 import java.io.File;
 import java.util.List;
 import net.minecraft.src.IChunkLoader;
-import net.minecraft.src.WorldInfo;
-import net.minecraft.src.WorldProvider;
+import net.minecraft.world.WorldInfo;
+import net.minecraft.world.WorldProvider;
 
 public interface ISaveHandler {
 

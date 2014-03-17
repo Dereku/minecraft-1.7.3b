@@ -5,7 +5,7 @@ import net.minecraft.client.block.Block;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.PlayerController;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class PlayerControllerSP extends PlayerController {
 

@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.minecraft.src.Entity;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityTNTPrimed extends Entity {
 

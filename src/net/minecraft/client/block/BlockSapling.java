@@ -2,18 +2,18 @@ package net.minecraft.client.block;
 
 import java.util.Random;
 import net.minecraft.client.block.BlockFlower;
-import net.minecraft.src.World;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldGenBigTree;
-import net.minecraft.src.WorldGenBigTree;
-import net.minecraft.src.WorldGenForest;
-import net.minecraft.src.WorldGenForest;
-import net.minecraft.src.WorldGenTaiga2;
-import net.minecraft.src.WorldGenTaiga2;
-import net.minecraft.src.WorldGenTrees;
-import net.minecraft.src.WorldGenTrees;
-import net.minecraft.src.WorldGenerator;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.world.World;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldGenBigTree;
+import net.minecraft.world.WorldGenBigTree;
+import net.minecraft.world.WorldGenForest;
+import net.minecraft.world.WorldGenForest;
+import net.minecraft.world.WorldGenTaiga2;
+import net.minecraft.world.WorldGenTaiga2;
+import net.minecraft.world.WorldGenTrees;
+import net.minecraft.world.WorldGenTrees;
+import net.minecraft.world.WorldGenerator;
+import net.minecraft.world.WorldGenerator;
 
 public class BlockSapling extends BlockFlower {
 

@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.RenderEngine;
+import net.minecraft.client.render.RenderEngine;
 import org.lwjgl.opengl.GL11;
 
 public class TextureFX {

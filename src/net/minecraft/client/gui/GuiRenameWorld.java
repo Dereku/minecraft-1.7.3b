@@ -7,8 +7,8 @@ import net.minecraft.src.ISaveFormat;
 import net.minecraft.src.ISaveFormat;
 import net.minecraft.src.StringTranslate;
 import net.minecraft.src.StringTranslate;
-import net.minecraft.src.WorldInfo;
-import net.minecraft.src.WorldInfo;
+import net.minecraft.world.WorldInfo;
+import net.minecraft.world.WorldInfo;
 import org.lwjgl.input.Keyboard;
 
 public class GuiRenameWorld extends GuiScreen {

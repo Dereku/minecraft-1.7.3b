@@ -7,7 +7,7 @@ import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Slot;
 import net.minecraft.src.SlotFurnace;
-import net.minecraft.src.TileEntityFurnace;
+import net.minecraft.world.tiles.TileEntityFurnace;
 
 public class ContainerFurnace extends Container {
 

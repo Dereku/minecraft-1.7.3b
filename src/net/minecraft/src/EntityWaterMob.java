@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import net.minecraft.src.EntityCreature;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityWaterMob extends EntityCreature {
 

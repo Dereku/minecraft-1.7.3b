@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.minecraft.src.EntityAnimal;
 import net.minecraft.src.Item;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityChicken extends EntityAnimal {
 

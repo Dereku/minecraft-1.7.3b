@@ -8,10 +8,10 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.src.Packet130UpdateSign;
 import net.minecraft.src.Packet130UpdateSign;
-import net.minecraft.src.TileEntityRenderer;
-import net.minecraft.src.TileEntityRenderer;
-import net.minecraft.src.TileEntitySign;
-import net.minecraft.src.TileEntitySign;
+import net.minecraft.world.tiles.TileEntityRenderer;
+import net.minecraft.world.tiles.TileEntityRenderer;
+import net.minecraft.world.tiles.TileEntitySign;
+import net.minecraft.world.tiles.TileEntitySign;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 

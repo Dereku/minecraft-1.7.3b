@@ -5,8 +5,8 @@ import net.minecraft.src.ContainerDispenser;
 import net.minecraft.client.gui.GuiContainer;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.TileEntityDispenser;
-import net.minecraft.src.TileEntityDispenser;
+import net.minecraft.world.tiles.TileEntityDispenser;
+import net.minecraft.world.tiles.TileEntityDispenser;
 import org.lwjgl.opengl.GL11;
 
 public class GuiDispenser extends GuiContainer {

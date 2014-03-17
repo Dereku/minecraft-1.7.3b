@@ -10,11 +10,11 @@ import net.minecraft.src.MapData;
 import net.minecraft.src.MapItemRenderer;
 import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.Render;
-import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.RenderHelper;
-import net.minecraft.src.RenderManager;
-import net.minecraft.src.RenderPlayer;
+import net.minecraft.client.render.Render;
+import net.minecraft.client.render.RenderBlocks;
+import net.minecraft.client.render.RenderHelper;
+import net.minecraft.client.render.RenderManager;
+import net.minecraft.client.render.RenderPlayer;
 import net.minecraft.src.Tessellator;
 import org.lwjgl.opengl.GL11;
 

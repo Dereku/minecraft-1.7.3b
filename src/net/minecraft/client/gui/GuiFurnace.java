@@ -5,8 +5,8 @@ import net.minecraft.src.ContainerFurnace;
 import net.minecraft.client.gui.GuiContainer;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.TileEntityFurnace;
-import net.minecraft.src.TileEntityFurnace;
+import net.minecraft.world.tiles.TileEntityFurnace;
+import net.minecraft.world.tiles.TileEntityFurnace;
 import org.lwjgl.opengl.GL11;
 
 public class GuiFurnace extends GuiContainer {

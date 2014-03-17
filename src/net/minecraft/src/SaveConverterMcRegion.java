@@ -10,19 +10,10 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
-import net.minecraft.src.ChunkFile;
-import net.minecraft.src.ChunkFilePattern;
-import net.minecraft.src.ChunkFolderPattern;
-import net.minecraft.src.Empty2;
-import net.minecraft.src.IProgressUpdate;
-import net.minecraft.src.ISaveHandler;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.RegionFile;
-import net.minecraft.src.RegionFileCache;
-import net.minecraft.src.SaveFormatComparator;
-import net.minecraft.src.SaveFormatOld;
-import net.minecraft.src.SaveOldDir;
-import net.minecraft.src.WorldInfo;
+import net.minecraft.world.chunk.ChunkFile;
+import net.minecraft.world.chunk.ChunkFilePattern;
+import net.minecraft.world.chunk.ChunkFolderPattern;
+import net.minecraft.world.WorldInfo;
 
 public class SaveConverterMcRegion extends SaveFormatOld {
 
@@ -30,10 +21,12 @@ public class SaveConverterMcRegion extends SaveFormatOld {
       super(var1);
    }
 
+   @Override
    public String func_22178_a() {
       return "Scaevolus\' McRegion";
    }
 
+   @Override
    public List func_22176_b() {
       ArrayList var1 = new ArrayList();
       File[] var2 = this.field_22180_a.listFiles();
@@ -60,19 +53,23 @@ public class SaveConverterMcRegion extends SaveFormatOld {
       return var1;
    }
 
+   @Override
    public void flushCache() {
       RegionFileCache.clearRegionFileReferences();
    }
 
+   @Override
    public ISaveHandler getSaveLoader(String var1, boolean var2) {
       return new SaveOldDir(this.field_22180_a, var1, var2);
    }
 
+   @Override
    public boolean isOldMapFormat(String var1) {
       WorldInfo var2 = this.getWorldInfo(var1);
       return var2 != null && var2.getSaveVersion() == 0;
    }
 
+   @Override
    public boolean convertMapFormat(String var1, IProgressUpdate var2) {
       var2.setLoadingProgress(0);
       ArrayList var3 = new ArrayList();

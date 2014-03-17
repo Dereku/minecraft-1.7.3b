@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import net.minecraft.client.render.RenderEngine;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.IntBuffer;

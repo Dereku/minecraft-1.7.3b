@@ -25,12 +25,12 @@ import net.minecraft.src.Material;
 import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntityDispenser;
-import net.minecraft.src.TileEntityDispenser;
-import net.minecraft.src.World;
-import net.minecraft.src.World;
+import net.minecraft.world.tiles.TileEntity;
+import net.minecraft.world.tiles.TileEntity;
+import net.minecraft.world.tiles.TileEntityDispenser;
+import net.minecraft.world.tiles.TileEntityDispenser;
+import net.minecraft.world.World;
+import net.minecraft.world.World;
 
 public class BlockDispenser extends BlockContainer {
 

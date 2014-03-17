@@ -4,14 +4,14 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
-import net.minecraft.src.Chunk;
-import net.minecraft.src.ChunkLoader;
+import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.ChunkLoader;
 import net.minecraft.src.CompressedStreamTools;
 import net.minecraft.src.IChunkLoader;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.RegionFileCache;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldInfo;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldInfo;
 
 public class McRegionChunkLoader implements IChunkLoader {
 

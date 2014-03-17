@@ -4,10 +4,10 @@ import java.util.Random;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.EntityWolf;
 import net.minecraft.src.SpawnListEntry;
-import net.minecraft.src.WorldGenBigTree;
-import net.minecraft.src.WorldGenForest;
-import net.minecraft.src.WorldGenTrees;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.world.WorldGenBigTree;
+import net.minecraft.world.WorldGenForest;
+import net.minecraft.world.WorldGenTrees;
+import net.minecraft.world.WorldGenerator;
 
 public class BiomeGenForest extends BiomeGenBase {
 

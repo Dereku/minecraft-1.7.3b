@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.client.block.Block;
-import net.minecraft.src.Chunk;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemMapBase;
@@ -9,7 +9,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.MapColor;
 import net.minecraft.src.MapData;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class ItemMap extends ItemMapBase {
 

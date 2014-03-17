@@ -7,8 +7,8 @@ import java.util.Set;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.ChunkPosition;
-import net.minecraft.src.ChunkPosition;
+import net.minecraft.world.chunk.ChunkPosition;
+import net.minecraft.world.chunk.ChunkPosition;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.Item;
@@ -17,8 +17,8 @@ import net.minecraft.src.Material;
 import net.minecraft.src.Material;
 import net.minecraft.src.ModelBed;
 import net.minecraft.src.ModelBed;
-import net.minecraft.src.World;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
+import net.minecraft.world.World;
 
 public class BlockRedstoneWire extends Block {
 

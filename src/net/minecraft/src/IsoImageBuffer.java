@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 import java.awt.image.BufferedImage;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class IsoImageBuffer {
 

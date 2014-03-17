@@ -5,9 +5,9 @@ import java.util.List;
 import net.minecraft.src.IChunkLoader;
 import net.minecraft.src.McRegionChunkLoader;
 import net.minecraft.src.SaveHandler;
-import net.minecraft.src.WorldInfo;
-import net.minecraft.src.WorldProvider;
-import net.minecraft.src.WorldProviderHell;
+import net.minecraft.world.WorldInfo;
+import net.minecraft.world.WorldProvider;
+import net.minecraft.world.WorldProviderHell;
 
 public class SaveOldDir extends SaveHandler {
 

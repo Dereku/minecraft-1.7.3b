@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
 import net.minecraft.client.block.Block;
-import net.minecraft.src.Chunk;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraft.src.EnumSkyBlock;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class MetadataChunkBlock {
 

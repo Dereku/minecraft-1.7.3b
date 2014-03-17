@@ -6,7 +6,7 @@ import net.minecraft.src.EntityMob;
 import net.minecraft.src.EntitySkeleton;
 import net.minecraft.src.Item;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityCreeper extends EntityMob {
 

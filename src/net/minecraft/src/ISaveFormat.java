@@ -3,7 +3,7 @@ package net.minecraft.src;
 import java.util.List;
 import net.minecraft.src.IProgressUpdate;
 import net.minecraft.src.ISaveHandler;
-import net.minecraft.src.WorldInfo;
+import net.minecraft.world.WorldInfo;
 
 public interface ISaveFormat {
 

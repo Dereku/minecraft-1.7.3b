@@ -3,8 +3,8 @@ package net.minecraft.client.block;
 import java.util.Iterator;
 import java.util.Random;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.ChunkCoordinates;
+import net.minecraft.world.chunk.ChunkCoordinates;
+import net.minecraft.world.chunk.ChunkCoordinates;
 import net.minecraft.src.Entity;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
@@ -19,8 +19,8 @@ import net.minecraft.src.Material;
 import net.minecraft.src.Material;
 import net.minecraft.src.ModelBed;
 import net.minecraft.src.ModelBed;
-import net.minecraft.src.World;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
+import net.minecraft.world.World;
 
 public class BlockBed extends Block {
 

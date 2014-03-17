@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import java.util.Random;
 import net.minecraft.src.IChunkProvider;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class MapGenBase {
 

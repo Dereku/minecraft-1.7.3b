@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 import net.minecraft.src.Material;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.WorldChunkManager;
+import net.minecraft.world.tiles.TileEntity;
+import net.minecraft.world.WorldChunkManager;
 
 public interface IBlockAccess {
 

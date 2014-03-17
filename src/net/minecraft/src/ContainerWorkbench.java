@@ -11,7 +11,7 @@ import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Slot;
 import net.minecraft.src.SlotCrafting;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class ContainerWorkbench extends Container {
 

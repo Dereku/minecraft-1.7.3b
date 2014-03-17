@@ -6,12 +6,12 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntityNote;
-import net.minecraft.src.TileEntityNote;
-import net.minecraft.src.World;
-import net.minecraft.src.World;
+import net.minecraft.world.tiles.TileEntity;
+import net.minecraft.world.tiles.TileEntity;
+import net.minecraft.world.tiles.TileEntityNote;
+import net.minecraft.world.tiles.TileEntityNote;
+import net.minecraft.world.World;
+import net.minecraft.world.World;
 
 public class BlockNote extends BlockContainer {
 

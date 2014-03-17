@@ -5,7 +5,7 @@ import net.minecraft.src.EntityMob;
 import net.minecraft.src.Item;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntitySpider extends EntityMob {
 

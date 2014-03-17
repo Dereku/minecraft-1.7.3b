@@ -10,8 +10,8 @@ import net.minecraft.src.Item;
 import net.minecraft.src.Item;
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
-import net.minecraft.src.World;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
+import net.minecraft.world.World;
 
 public class BlockWeb extends Block {
 

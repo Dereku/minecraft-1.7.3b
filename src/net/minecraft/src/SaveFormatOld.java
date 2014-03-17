@@ -12,7 +12,7 @@ import net.minecraft.src.ISaveHandler;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.SaveFormatComparator;
 import net.minecraft.src.SaveHandler;
-import net.minecraft.src.WorldInfo;
+import net.minecraft.world.WorldInfo;
 
 public class SaveFormatOld implements ISaveFormat {
 

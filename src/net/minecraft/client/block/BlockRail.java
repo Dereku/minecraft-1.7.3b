@@ -7,7 +7,7 @@ import net.minecraft.src.Material;
 import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.RailLogic;
 import net.minecraft.src.Vec3D;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class BlockRail extends Block {
 

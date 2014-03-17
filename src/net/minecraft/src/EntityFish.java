@@ -13,7 +13,7 @@ import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.StatList;
 import net.minecraft.src.Vec3D;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityFish extends Entity {
 

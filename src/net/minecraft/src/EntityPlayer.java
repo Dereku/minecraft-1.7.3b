@@ -6,7 +6,7 @@ import net.minecraft.src.AchievementList;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.client.block.Block;
 import net.minecraft.client.block.BlockBed;
-import net.minecraft.src.ChunkCoordinates;
+import net.minecraft.world.chunk.ChunkCoordinates;
 import net.minecraft.src.Container;
 import net.minecraft.src.ContainerPlayer;
 import net.minecraft.src.Entity;
@@ -33,10 +33,10 @@ import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
 import net.minecraft.src.StatBase;
 import net.minecraft.src.StatList;
-import net.minecraft.src.TileEntityDispenser;
-import net.minecraft.src.TileEntityFurnace;
-import net.minecraft.src.TileEntitySign;
-import net.minecraft.src.World;
+import net.minecraft.world.tiles.TileEntityDispenser;
+import net.minecraft.world.tiles.TileEntityFurnace;
+import net.minecraft.world.tiles.TileEntitySign;
+import net.minecraft.world.World;
 
 public abstract class EntityPlayer extends EntityLiving {
 

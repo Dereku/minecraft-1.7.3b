@@ -1,5 +1,13 @@
 package net.minecraft.src;
 
+import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.ChunkCoordinates;
+import net.minecraft.world.tiles.TileEntityDispenser;
+import net.minecraft.world.tiles.TileEntity;
+import net.minecraft.world.tiles.TileEntityFurnace;
+import net.minecraft.world.tiles.TileEntitySign;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldClient;
 import net.minecraft.client.block.Block;
 import java.io.BufferedReader;
 import java.io.IOException;

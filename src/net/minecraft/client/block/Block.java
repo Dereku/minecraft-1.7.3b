@@ -25,9 +25,9 @@ import net.minecraft.src.StatList;
 import net.minecraft.src.StepSound;
 import net.minecraft.src.StepSoundSand;
 import net.minecraft.src.StepSoundStone;
-import net.minecraft.src.TileEntitySign;
+import net.minecraft.world.tiles.TileEntitySign;
 import net.minecraft.src.Vec3D;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class Block {
 

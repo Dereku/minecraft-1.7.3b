@@ -3,8 +3,8 @@ package net.minecraft.client.gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.src.World;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
+import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 public class GuiGameOver extends GuiScreen {

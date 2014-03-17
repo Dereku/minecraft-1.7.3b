@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.RedstoneUpdateInfo;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class BlockRedstoneTorch extends BlockTorch {
 

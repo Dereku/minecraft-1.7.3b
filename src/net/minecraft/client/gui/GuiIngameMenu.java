@@ -12,8 +12,8 @@ import net.minecraft.src.StatCollector;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.StatList;
 import net.minecraft.src.StatList;
-import net.minecraft.src.World;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
+import net.minecraft.world.World;
 
 public class GuiIngameMenu extends GuiScreen {
 

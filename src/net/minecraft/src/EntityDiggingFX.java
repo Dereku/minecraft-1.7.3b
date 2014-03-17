@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.minecraft.client.block.Block;
 import net.minecraft.src.EntityFX;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityDiggingFX extends EntityFX {
 

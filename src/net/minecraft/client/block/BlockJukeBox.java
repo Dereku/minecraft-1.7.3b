@@ -9,12 +9,12 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntityRecordPlayer;
-import net.minecraft.src.TileEntityRecordPlayer;
-import net.minecraft.src.World;
-import net.minecraft.src.World;
+import net.minecraft.world.tiles.TileEntity;
+import net.minecraft.world.tiles.TileEntity;
+import net.minecraft.world.tiles.TileEntityRecordPlayer;
+import net.minecraft.world.tiles.TileEntityRecordPlayer;
+import net.minecraft.world.World;
+import net.minecraft.world.World;
 
 public class BlockJukeBox extends BlockContainer {
 

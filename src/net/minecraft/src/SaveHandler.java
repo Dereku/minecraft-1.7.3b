@@ -8,15 +8,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
-import net.minecraft.src.ChunkLoader;
+import net.minecraft.world.chunk.ChunkLoader;
 import net.minecraft.src.CompressedStreamTools;
 import net.minecraft.src.IChunkLoader;
 import net.minecraft.src.ISaveHandler;
 import net.minecraft.src.MinecraftException;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.WorldInfo;
-import net.minecraft.src.WorldProvider;
-import net.minecraft.src.WorldProviderHell;
+import net.minecraft.world.WorldInfo;
+import net.minecraft.world.WorldProvider;
+import net.minecraft.world.WorldProviderHell;
 
 public class SaveHandler implements ISaveHandler {
 

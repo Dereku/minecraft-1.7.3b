@@ -5,8 +5,8 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.TileEntitySign;
-import net.minecraft.src.World;
+import net.minecraft.world.tiles.TileEntitySign;
+import net.minecraft.world.World;
 
 public class ItemSign extends Item {
 

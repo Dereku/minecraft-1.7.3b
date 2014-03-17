@@ -4,7 +4,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemFood;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class ItemSoup extends ItemFood {
 

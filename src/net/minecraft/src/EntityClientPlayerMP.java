@@ -19,7 +19,7 @@ import net.minecraft.src.Packet3Chat;
 import net.minecraft.src.Packet9Respawn;
 import net.minecraft.src.Session;
 import net.minecraft.src.StatBase;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityClientPlayerMP extends EntityPlayerSP {
 

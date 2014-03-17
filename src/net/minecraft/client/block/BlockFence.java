@@ -5,8 +5,8 @@ import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.client.block.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
-import net.minecraft.src.World;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
+import net.minecraft.world.World;
 
 public class BlockFence extends Block {
 

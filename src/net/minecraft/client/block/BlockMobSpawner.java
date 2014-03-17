@@ -4,10 +4,10 @@ import java.util.Random;
 import net.minecraft.client.block.BlockContainer;
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntityMobSpawner;
-import net.minecraft.src.TileEntityMobSpawner;
+import net.minecraft.world.tiles.TileEntity;
+import net.minecraft.world.tiles.TileEntity;
+import net.minecraft.world.tiles.TileEntityMobSpawner;
+import net.minecraft.world.tiles.TileEntityMobSpawner;
 
 public class BlockMobSpawner extends BlockContainer {
 

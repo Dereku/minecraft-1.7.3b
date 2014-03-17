@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.util.Arrays;
 import javax.imageio.ImageIO;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.Chunk;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraft.src.IsoImageBuffer;
 import net.minecraft.src.Material;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class TerrainTextureManager {
 

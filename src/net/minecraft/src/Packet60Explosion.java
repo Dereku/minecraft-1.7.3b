@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import net.minecraft.src.ChunkPosition;
+import net.minecraft.world.chunk.ChunkPosition;
 import net.minecraft.src.NetHandler;
 import net.minecraft.src.Packet;
 

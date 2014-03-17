@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Set;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.client.block.BlockBed;
-import net.minecraft.src.ChunkCoordIntPair;
-import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.ChunkPosition;
+import net.minecraft.world.chunk.ChunkCoordIntPair;
+import net.minecraft.world.chunk.ChunkCoordinates;
+import net.minecraft.world.chunk.ChunkPosition;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntitySheep;
@@ -22,7 +22,7 @@ import net.minecraft.src.PathEntity;
 import net.minecraft.src.PathPoint;
 import net.minecraft.src.Pathfinder;
 import net.minecraft.src.SpawnListEntry;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public final class SpawnerAnimals {
 

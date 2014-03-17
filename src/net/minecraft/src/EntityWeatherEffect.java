@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.src.Entity;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public abstract class EntityWeatherEffect extends Entity {
 

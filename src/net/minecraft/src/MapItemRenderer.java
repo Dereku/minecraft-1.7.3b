@@ -8,7 +8,7 @@ import net.minecraft.src.GameSettings;
 import net.minecraft.src.MapColor;
 import net.minecraft.src.MapCoord;
 import net.minecraft.src.MapData;
-import net.minecraft.src.RenderEngine;
+import net.minecraft.client.render.RenderEngine;
 import net.minecraft.src.Tessellator;
 import org.lwjgl.opengl.GL11;
 

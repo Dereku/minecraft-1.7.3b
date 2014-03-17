@@ -5,8 +5,8 @@ import net.minecraft.src.ContainerWorkbench;
 import net.minecraft.client.gui.GuiContainer;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.World;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
+import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 public class GuiCrafting extends GuiContainer {

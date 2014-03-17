@@ -18,7 +18,7 @@
  */
 package net.minecraft.client.gui.fonts;
 
-import net.minecraft.src.RenderEngine;
+import net.minecraft.client.render.RenderEngine;
 import net.minecraft.src.Tessellator;
 import java.lang.ref.WeakReference;
 import java.util.WeakHashMap;

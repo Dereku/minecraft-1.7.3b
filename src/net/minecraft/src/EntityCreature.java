@@ -5,7 +5,7 @@ import net.minecraft.src.EntityLiving;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.PathEntity;
 import net.minecraft.src.Vec3D;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityCreature extends EntityLiving {
 

@@ -4,7 +4,7 @@ import net.minecraft.src.Entity;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityFX extends Entity {
 

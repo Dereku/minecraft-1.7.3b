@@ -4,9 +4,9 @@ import java.util.Random;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.EntityWolf;
 import net.minecraft.src.SpawnListEntry;
-import net.minecraft.src.WorldGenTaiga1;
-import net.minecraft.src.WorldGenTaiga2;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.world.WorldGenTaiga1;
+import net.minecraft.world.WorldGenTaiga2;
+import net.minecraft.world.WorldGenerator;
 
 public class BiomeGenTaiga extends BiomeGenBase {
 

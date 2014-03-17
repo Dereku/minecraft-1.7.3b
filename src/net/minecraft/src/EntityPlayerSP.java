@@ -19,10 +19,10 @@ import net.minecraft.src.MovementInput;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.Session;
 import net.minecraft.src.StatBase;
-import net.minecraft.src.TileEntityDispenser;
-import net.minecraft.src.TileEntityFurnace;
-import net.minecraft.src.TileEntitySign;
-import net.minecraft.src.World;
+import net.minecraft.world.tiles.TileEntityDispenser;
+import net.minecraft.world.tiles.TileEntityFurnace;
+import net.minecraft.world.tiles.TileEntitySign;
+import net.minecraft.world.World;
 
 public class EntityPlayerSP extends EntityPlayer {
 

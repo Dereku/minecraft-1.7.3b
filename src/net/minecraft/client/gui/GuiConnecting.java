@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.src.NetClientHandler;
 import net.minecraft.src.StringTranslate;
 import net.minecraft.src.ThreadConnectToServer;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class GuiConnecting extends GuiScreen {
 

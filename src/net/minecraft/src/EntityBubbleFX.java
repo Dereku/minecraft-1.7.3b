@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.minecraft.src.EntityFX;
 import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityBubbleFX extends EntityFX {
 

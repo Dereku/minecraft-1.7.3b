@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import net.minecraft.src.EntityFX;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntitySnowShovelFX extends EntityFX {
 

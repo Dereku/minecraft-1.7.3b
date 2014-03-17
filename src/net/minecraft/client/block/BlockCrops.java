@@ -9,8 +9,8 @@ import net.minecraft.src.Item;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
+import net.minecraft.world.World;
 
 public class BlockCrops extends BlockFlower {
 

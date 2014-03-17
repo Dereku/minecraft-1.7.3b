@@ -8,10 +8,10 @@ import net.minecraft.client.gui.GuiAchievements;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiContainer;
 import net.minecraft.client.gui.GuiStats;
-import net.minecraft.src.RenderHelper;
-import net.minecraft.src.RenderHelper;
-import net.minecraft.src.RenderManager;
-import net.minecraft.src.RenderManager;
+import net.minecraft.client.render.RenderHelper;
+import net.minecraft.client.render.RenderHelper;
+import net.minecraft.client.render.RenderManager;
+import net.minecraft.client.render.RenderManager;
 import org.lwjgl.opengl.GL11;
 
 public class GuiInventory extends GuiContainer {

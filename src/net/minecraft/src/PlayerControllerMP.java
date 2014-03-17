@@ -13,7 +13,7 @@ import net.minecraft.src.Packet15Place;
 import net.minecraft.src.Packet16BlockItemSwitch;
 import net.minecraft.src.Packet7UseEntity;
 import net.minecraft.src.PlayerController;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class PlayerControllerMP extends PlayerController {
 

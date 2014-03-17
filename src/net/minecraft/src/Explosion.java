@@ -7,11 +7,11 @@ import java.util.Random;
 import java.util.Set;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.client.block.Block;
-import net.minecraft.src.ChunkPosition;
+import net.minecraft.world.chunk.ChunkPosition;
 import net.minecraft.src.Entity;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.Vec3D;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class Explosion {
 

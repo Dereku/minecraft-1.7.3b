@@ -20,7 +20,7 @@ import net.minecraft.src.NBTTagFloat;
 import net.minecraft.src.NBTTagList;
 import net.minecraft.src.StepSound;
 import net.minecraft.src.Vec3D;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public abstract class Entity {
 

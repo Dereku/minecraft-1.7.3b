@@ -4,7 +4,7 @@ import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityOtherPlayerMP extends EntityPlayer {
 

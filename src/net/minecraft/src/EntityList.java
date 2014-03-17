@@ -28,7 +28,7 @@ import net.minecraft.src.EntityTNTPrimed;
 import net.minecraft.src.EntityWolf;
 import net.minecraft.src.EntityZombie;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityList {
 

@@ -2,5 +2,5 @@ package net.minecraft.src;
 
 
 // $FF: synthetic class
-class Empty2 {
+public class Empty2 {
 }

@@ -4,7 +4,7 @@ import net.minecraft.client.block.Block;
 import net.minecraft.src.EntityCreature;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public abstract class EntityAnimal extends EntityCreature {
 

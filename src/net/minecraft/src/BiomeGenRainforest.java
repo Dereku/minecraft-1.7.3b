@@ -2,9 +2,9 @@ package net.minecraft.src;
 
 import java.util.Random;
 import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.WorldGenBigTree;
-import net.minecraft.src.WorldGenTrees;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.world.WorldGenBigTree;
+import net.minecraft.world.WorldGenTrees;
+import net.minecraft.world.WorldGenerator;
 
 public class BiomeGenRainforest extends BiomeGenBase {
 

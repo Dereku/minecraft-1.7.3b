@@ -7,7 +7,7 @@ import net.minecraft.src.EnumSkyBlock;
 import net.minecraft.src.IMob;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 
 public class EntityMob extends EntityCreature implements IMob {
 
