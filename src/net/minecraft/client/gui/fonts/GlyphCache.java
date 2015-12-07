@@ -97,7 +97,7 @@ public class GlyphCache {
      * Transparent (alpha zero) white background color for use with
      * BufferedImage.clearRect().
      */
-    private static Color BACK_COLOR = new Color(255, 255, 255, 0);
+    private static final Color BACK_COLOR = new Color(255, 255, 255, 0);
 
     /**
      * The point size at which every OpenType font is rendered.
@@ -125,24 +125,24 @@ public class GlyphCache {
      * All font glyphs are packed inside this image and are then loaded from
      * here into an OpenGL texture.
      */
-    private BufferedImage glyphCacheImage = new BufferedImage(TEXTURE_WIDTH, TEXTURE_HEIGHT, BufferedImage.TYPE_INT_ARGB);
+    private final BufferedImage glyphCacheImage = new BufferedImage(TEXTURE_WIDTH, TEXTURE_HEIGHT, BufferedImage.TYPE_INT_ARGB);
 
     /**
      * The Graphics2D associated with glyphCacheImage and used for bit blitting
      * between stringImage.
      */
-    private Graphics2D glyphCacheGraphics = glyphCacheImage.createGraphics();
+    private final Graphics2D glyphCacheGraphics = glyphCacheImage.createGraphics();
 
     /**
      * Needed for all text layout operations that create GlyphVectors (maps
      * point size to pixel size).
      */
-    private FontRenderContext fontRenderContext = glyphCacheGraphics.getFontRenderContext();
+    private final FontRenderContext fontRenderContext = glyphCacheGraphics.getFontRenderContext();
 
     /**
      * Intermediate data array for use with textureImage.getRgb().
      */
-    private int imageData[] = new int[TEXTURE_WIDTH * TEXTURE_HEIGHT];
+    private final int imageData[] = new int[TEXTURE_WIDTH * TEXTURE_HEIGHT];
 
     /**
      * A big-endian direct int buffer used with glTexSubImage2D() and
@@ -151,19 +151,19 @@ public class GlyphCache {
      * big-endian byte ordering to ensure that the integers holding packed RGBA
      * colors are stored into memory in a predictable order.
      */
-    private IntBuffer imageBuffer = ByteBuffer.allocateDirect(4 * TEXTURE_WIDTH * TEXTURE_HEIGHT).order(ByteOrder.BIG_ENDIAN).asIntBuffer();
+    private final IntBuffer imageBuffer = ByteBuffer.allocateDirect(4 * TEXTURE_WIDTH * TEXTURE_HEIGHT).order(ByteOrder.BIG_ENDIAN).asIntBuffer();
 
     /**
      * A single integer direct buffer with native byte ordering used for
      * returning values from glGenTextures().
      */
-    private IntBuffer singleIntBuffer = GLAllocation.createDirectIntBuffer(1);
+    private final IntBuffer singleIntBuffer = GLAllocation.createDirectIntBuffer(1);
 
     /**
      * List of all available physical fonts on the system. Used by lookupFont()
      * to find alternate fonts.
      */
-    private List<Font> allFonts = Arrays.asList(GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts());
+    private final List<Font> allFonts = Arrays.asList(GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts());
 
     /**
      * A list of all fonts that have been returned so far by lookupFont(), and
@@ -173,7 +173,7 @@ public class GlyphCache {
      * for the various styles (i.e. bold, italic, etc.) of a font. This list
      * starts with Java's "SansSerif" logical font.
      */
-    private List<Font> usedFonts = new ArrayList();
+    private final List<Font> usedFonts = new ArrayList();
 
     /**
      * ID of current OpenGL cache texture being used by cacheGlyphs() to store
@@ -188,7 +188,7 @@ public class GlyphCache {
      * cache can include different styles of the same font family like bold or
      * italic.
      */
-    private LinkedHashMap<Font, Integer> fontCache = new LinkedHashMap();
+    private final LinkedHashMap<Font, Integer> fontCache = new LinkedHashMap();
 
     /**
      * A cache of pre-rendered glyphs mapping each glyph by its glyphcode to the
@@ -197,7 +197,7 @@ public class GlyphCache {
      * 32 are the index of the font in the fontCache. This makes for a single
      * globally unique number to identify any glyph from any font.
      */
-    private LinkedHashMap<Long, Entry> glyphCache = new LinkedHashMap();
+    private final LinkedHashMap<Long, Entry> glyphCache = new LinkedHashMap();
 
     /**
      * The X coordinate of the upper=left corner in glyphCacheImage where the

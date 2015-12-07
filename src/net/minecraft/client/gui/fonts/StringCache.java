@@ -18,7 +18,6 @@
  */
 package net.minecraft.client.gui.fonts;
 
-import net.minecraft.client.render.RenderEngine;
 import net.minecraft.src.Tessellator;
 import java.lang.ref.WeakReference;
 import java.util.WeakHashMap;
@@ -96,13 +95,13 @@ public class StringCache {
      * Reference to the unicode.FontRenderer class. Needed for creating
      * GlyphVectors and retrieving glyph texture coordinates.
      */
-    private GlyphCache glyphCache;
+    private final GlyphCache glyphCache;
 
     /**
      * Color codes from original FontRender class. First 16 entries are the
      * primary chat colors; second 16 are darker versions used for drop shadows.
      */
-    private int colorTable[];
+    private final int colorTable[];
 
     /**
      * A cache of recently seen strings to their fully layed-out state, complete
@@ -110,7 +109,7 @@ public class StringCache {
      * images needed to display this string. The weakRefCache holds strong
      * references to the Key objects used in this map.
      */
-    private WeakHashMap<Key, Entry> stringCache = new WeakHashMap();
+    private final WeakHashMap<Key, Entry> stringCache = new WeakHashMap();
 
     /**
      * Every String passed to the public renderString() function is added to
@@ -121,7 +120,7 @@ public class StringCache {
      * strings in weakRefCache can map to a single Key if those strings only
      * differ by their ASCII digits).
      */
-    private WeakHashMap<String, Key> weakRefCache = new WeakHashMap();
+    private final WeakHashMap<String, Key> weakRefCache = new WeakHashMap();
 
     /**
      * Temporary Key object re-used for lookups with stringCache.get(). Using a
@@ -129,7 +128,7 @@ public class StringCache {
      * in the critical rendering path. Of course, new Key objects are always
      * created when adding a mapping to stringCache.
      */
-    private Key lookupKey = new Key();
+    private final Key lookupKey = new Key();
 
     /**
      * Pre-cached glyphs for the ASCII digits 0-9 (in that order). Used by
@@ -139,7 +138,7 @@ public class StringCache {
      * font style (combination of Font.PLAIN, Font.BOLD, and Font.ITALIC), and
      * each of the nested elements is index by the digit value 0-9.
      */
-    private Glyph[][] digitGlyphs = new Glyph[4][];
+    private final Glyph[][] digitGlyphs = new Glyph[4][];
 
     /**
      * True if digitGlyphs[] has been assigned and cacheString() can begin
@@ -164,7 +163,7 @@ public class StringCache {
      * later against Thread.currentThread(), the StringCache code can avoid
      * calling cacheGlyphs() when it's not safe to do so.
      */
-    private Thread mainThread;
+    private final Thread mainThread;
 
     /**
      * Wraps a String and acts as the key into stringCache. The hashCode() and
@@ -366,7 +365,7 @@ public class StringCache {
          */
         @Override
         public int compareTo(Integer i) {
-            return (stringIndex == i.intValue()) ? 0 : (stringIndex < i.intValue()) ? -1 : 1;
+            return (stringIndex == i) ? 0 : (stringIndex < i) ? -1 : 1;
         }
     }
 

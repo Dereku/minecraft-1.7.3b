@@ -1,11 +1,16 @@
 package net.minecraft.src;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import net.minecraft.client.gui.fonts.StringCache;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import java.util.Random;
-import net.minecraft.client.gui.fonts.ConfigParser;
+import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 
 public class FontRenderer {
@@ -17,13 +22,9 @@ public class FontRenderer {
     /**
      * Array of width of all the characters in default.png
      */
-    @SuppressWarnings("MismatchedReadAndWriteOfArray")
-    private int[] charWidth = new int[256];
     public int fontTextureName = 0;
     public int FONT_HEIGHT = 18;
     public Random fontRandom = new Random();
-    @SuppressWarnings("MismatchedReadAndWriteOfArray")
-    private byte[] glyphWidth = new byte[65536];
     private int[] colorCode = new int[32];
     private float posX;
     private float red;
@@ -33,13 +34,8 @@ public class FontRenderer {
     private int textColor;
  
     public FontRenderer(GameSettings par1GameSettings) {
-        int var9 = 0;
-        int var10;
-        int var11;
-        int var12;
-        int var13;
-        int var15;
-        int var16;
+        int var9, var10, var11, var12;
+        int var13, var15, var16;
 
         for (var9 = 0; var9 < 32; ++var9) {
             var10 = (var9 >> 3 & 1) * 85;
@@ -72,15 +68,31 @@ public class FontRenderer {
             this.stringCache = new StringCache(this.colorCode);
 
             /* Read optional config file to override the default font name/size */
-            //TODO: вынести настройки в основной конфиг.
-            ConfigParser config = new ConfigParser();
-            if (config.loadConfig("/config/BetterFonts.cfg")) {
-                String fontName = config.getFontName("SansSerif");
-                int fontSize = config.getFontSize(18);
-                boolean antiAlias = config.getBoolean("font.antialias", false);
-                dropShadowEnabled = config.getBoolean("font.dropshadow", true);
-                this.stringCache.setDefaultFont(fontName, fontSize, antiAlias);
-                System.out.println("BetterFonts configuration loaded");
+            Properties properties = new Properties();
+            File cfg = new File(Minecraft.getMinecraftDir().getAbsolutePath() + File.separator + "BetterFonts.properties");
+            try {
+                properties.load(new FileInputStream(cfg));
+            } catch (Exception ex) {
+                properties.setProperty("fontName", "SansSerif");
+                properties.setProperty("fontSize", "18");
+                properties.setProperty("antialias", "false");
+                properties.setProperty("dropshadow", "true");
+                try {
+                    properties.store(new FileOutputStream(cfg), null);
+                } catch (IOException ex1) {
+                    //Ignore
+                }
+            }
+            
+            try {
+                dropShadowEnabled = Boolean.parseBoolean(properties.getProperty("dropshadow", "true"));
+                this.stringCache.setDefaultFont(
+                        properties.getProperty("fontName", "SansSerif"), 
+                        Integer.parseInt(properties.getProperty("fontSize", "18")), 
+                        Boolean.parseBoolean(properties.getProperty("antialias", "false")));
+            } catch (Exception ex) {
+                dropShadowEnabled = true;
+                this.stringCache.setDefaultFont("SansSerif", 18, false);
             }
         }
     }
