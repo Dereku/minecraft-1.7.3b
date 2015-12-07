@@ -2,15 +2,8 @@ package net.minecraft.entity;
 
 import java.util.Random;
 import net.minecraft.client.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAnimal;
-import net.minecraft.entity.EntityItem;
-import net.minecraft.entity.EntityPlayer;
-import net.minecraft.client.item.Item;
 import net.minecraft.client.item.Item;
 import net.minecraft.client.item.ItemStack;
-import net.minecraft.client.item.ItemStack;
-import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.world.World;
 
@@ -21,7 +14,7 @@ public class EntitySheep extends EntityAnimal {
 
    public EntitySheep(World var1) {
       super(var1);
-      this.texture = "/mob/sheep.png";
+      this.texture = "/assets/mob/sheep.png";
       this.setSize(0.9F, 1.3F);
    }
 

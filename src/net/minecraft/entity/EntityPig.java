@@ -9,13 +9,13 @@ public class EntityPig extends EntityAnimal {
 
    public EntityPig(World var1) {
       super(var1);
-      this.texture = "/mob/pig.png";
+      this.texture = "/assets/mob/pig.png";
       this.setSize(0.9F, 0.9F);
    }
 
    @Override
    protected void entityInit() {
-      this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
+      this.dataWatcher.addObject(16, (byte)0);
    }
 
    @Override

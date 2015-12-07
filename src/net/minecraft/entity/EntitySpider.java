@@ -1,12 +1,7 @@
 package net.minecraft.entity;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityMob;
-import net.minecraft.client.item.Item;
 import net.minecraft.client.item.Item;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.world.World;
 
@@ -14,7 +9,7 @@ public class EntitySpider extends EntityMob {
 
    public EntitySpider(World var1) {
       super(var1);
-      this.texture = "/mob/spider.png";
+      this.texture = "/assets/mob/spider.png";
       this.setSize(1.4F, 0.9F);
       this.moveSpeed = 0.8F;
    }

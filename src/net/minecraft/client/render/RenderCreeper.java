@@ -65,7 +65,7 @@ public class RenderCreeper extends RenderLiving {
       if(var1.getPowered()) {
          if(var2 == 1) {
             float var4 = (float)var1.ticksExisted + var3;
-            this.loadTexture("/armor/power.png");
+            this.loadTexture("/assets/armor/power.png");
             GL11.glMatrixMode(5890 /*GL_TEXTURE*/);
             GL11.glLoadIdentity();
             float var5 = var4 * 0.01F;

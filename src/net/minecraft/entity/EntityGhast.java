@@ -1,17 +1,9 @@
 package net.minecraft.entity;
 
 import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityFireball;
-import net.minecraft.entity.EntityFlying;
-import net.minecraft.src.IMob;
 import net.minecraft.src.IMob;
 import net.minecraft.client.item.Item;
-import net.minecraft.client.item.Item;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.Vec3D;
 import net.minecraft.src.Vec3D;
 import net.minecraft.world.World;
 
@@ -29,7 +21,7 @@ public class EntityGhast extends EntityFlying implements IMob {
 
    public EntityGhast(World var1) {
       super(var1);
-      this.texture = "/mob/ghast.png";
+      this.texture = "/assets/mob/ghast.png";
       this.setSize(4.0F, 4.0F);
       this.isImmuneToFire = true;
    }
@@ -42,7 +34,7 @@ public class EntityGhast extends EntityFlying implements IMob {
    public void onUpdate() {
       super.onUpdate();
       byte var1 = this.dataWatcher.getWatchableObjectByte(16);
-      this.texture = var1 == 1?"/mob/ghast_fire.png":"/mob/ghast.png";
+      this.texture = var1 == 1?"/assets/mob/ghast_fire.png":"/assets/mob/ghast.png";
    }
 
    protected void updateEntityActionState() {

@@ -1,17 +1,3 @@
 # This file NEEDS to be in UTF-8 format!
- !"#$%&'()*+,-./
-0123456789:;<=>?
-@ABCDEFGHIJKLMNO
-PQRSTUVWXYZ[\]^_
-¸abcdefghijklmno
-pqrstuvwxyz{|}~ё
-# Русская раскладка:
-ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏ
-ÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞß
-àáâãäåæçèéêëìíîï
-ðñòóôõö÷øùúûüýþÿ
-#Mac OS X
-АБВГДЕЖЗИЙКЛМНОП
-РСТУФХЦЧШЩЪЫЬЭЮЯ
-абвгдежзийклмноп
-рстуфхцчшщъыьэюя
+# Old standart? Nope.
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_¸abcdefghijklmnopqrstuvwxyz{|}~АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя

@@ -16,7 +16,7 @@ public class RenderPig extends RenderLiving {
    }
 
    protected boolean renderSaddledPig(EntityPig var1, int var2, float var3) {
-      this.loadTexture("/mob/saddle.png");
+      this.loadTexture("/assets/mob/saddle.png");
       return var2 == 0 && var1.getSaddled();
    }
 

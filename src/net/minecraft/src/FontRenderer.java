@@ -20,7 +20,7 @@ public class FontRenderer {
     @SuppressWarnings("MismatchedReadAndWriteOfArray")
     private int[] charWidth = new int[256];
     public int fontTextureName = 0;
-    public int FONT_HEIGHT = 9;
+    public int FONT_HEIGHT = 18;
     public Random fontRandom = new Random();
     @SuppressWarnings("MismatchedReadAndWriteOfArray")
     private byte[] glyphWidth = new byte[65536];
@@ -156,50 +156,6 @@ public class FontRenderer {
      */
     public int getStringWidth(String par1Str) {
         return this.stringCache.getStringWidth(par1Str);
-    }
-
-    /**
-     * Returns the width of this character as rendered.
-     */
-    public int getCharWidth(char par1) {
-        if (par1 == 167) {
-            return -1;
-        } else if (par1 == 32) {
-            return 4;
-        } else {
-            int var2 = ChatAllowedCharacters.allowedCharacters.indexOf(par1);
-
-            if (var2 >= 0) {
-                return this.charWidth[var2 + 32];
-            } else if (this.glyphWidth[par1] != 0) {
-                int var3 = this.glyphWidth[par1] >>> 4;
-                int var4 = this.glyphWidth[par1] & 15;
-
-                if (var4 > 7) {
-                    var4 = 15;
-                    var3 = 0;
-                }
-
-                ++var4;
-                return (var4 - var3) / 2 + 1;
-            } else {
-                return 0;
-            }
-        }
-    }
-
-    /**
-     * Trims a string to fit a specified Width.
-     */
-    public String trimStringToWidth(String par1Str, int par2) {
-        return this.trimStringToWidth(par1Str, par2, false);
-    }
-
-    /**
-     * Trims a string to a specified width, and will reverse it if par3 is set.
-     */
-    public String trimStringToWidth(String par1Str, int par2, boolean par3) {
-        return this.stringCache.trimStringToWidth(par1Str, par2, par3);
     }
 
     /**

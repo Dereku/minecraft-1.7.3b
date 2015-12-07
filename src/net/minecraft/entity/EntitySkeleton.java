@@ -1,15 +1,8 @@
 package net.minecraft.entity;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityArrow;
-import net.minecraft.entity.EntityMob;
-import net.minecraft.client.item.Item;
 import net.minecraft.client.item.Item;
 import net.minecraft.client.item.ItemStack;
-import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.world.World;
 
@@ -20,7 +13,7 @@ public class EntitySkeleton extends EntityMob {
 
    public EntitySkeleton(World var1) {
       super(var1);
-      this.texture = "/mob/skeleton.png";
+      this.texture = "/assets/mob/skeleton.png";
    }
 
    protected String getLivingSound() {

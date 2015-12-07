@@ -1,5 +1,6 @@
 package net.minecraft.client.render;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityBoat;
@@ -37,11 +38,11 @@ public class RenderBoat extends Render {
          GL11.glRotatef(MathHelper.sin(var10) * var10 * var11 / 10.0F * (float)var1.forwardDirection, 1.0F, 0.0F, 0.0F);
       }
 
-      this.loadTexture("/terrain.png");
+      this.loadTexture(Minecraft.TERRAIN_TEXTURE);
       float var12 = 0.75F;
       GL11.glScalef(var12, var12, var12);
       GL11.glScalef(1.0F / var12, 1.0F / var12, 1.0F / var12);
-      this.loadTexture("/item/boat.png");
+      this.loadTexture("/assets/item/boat.png");
       GL11.glScalef(-1.0F, -1.0F, 1.0F);
       this.modelBoat.render(0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
       GL11.glPopMatrix();

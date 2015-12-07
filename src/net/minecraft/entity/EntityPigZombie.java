@@ -1,14 +1,8 @@
 package net.minecraft.entity;
 
 import java.util.List;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityPlayer;
-import net.minecraft.entity.EntityZombie;
-import net.minecraft.client.item.Item;
 import net.minecraft.client.item.Item;
 import net.minecraft.client.item.ItemStack;
-import net.minecraft.client.item.ItemStack;
-import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.world.World;
 
@@ -21,7 +15,7 @@ public class EntityPigZombie extends EntityZombie {
 
    public EntityPigZombie(World var1) {
       super(var1);
-      this.texture = "/mob/pigzombie.png";
+      this.texture = "/assets/mob/pigzombie.png";
       this.moveSpeed = 0.5F;
       this.attackStrength = 5;
       this.isImmuneToFire = true;

@@ -21,7 +21,7 @@ public class RenderSnowball extends Render {
       GL11.glTranslatef((float)var2, (float)var4, (float)var6);
       GL11.glEnable('\u803a');
       GL11.glScalef(0.5F, 0.5F, 0.5F);
-      this.loadTexture("/gui/items.png");
+      this.loadTexture("/assets/gui/items.png");
       Tessellator var10 = Tessellator.instance;
       float var11 = (float)(this.itemIconIndex % 16 * 16 + 0) / 256.0F;
       float var12 = (float)(this.itemIconIndex % 16 * 16 + 16) / 256.0F;

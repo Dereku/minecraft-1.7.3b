@@ -46,7 +46,7 @@ public class TileEntitySignRenderer extends TileEntitySpecialRenderer {
          this.signModel.signStick.showModel = false;
       }
 
-      this.bindTextureByName("/item/sign.png");
+      this.bindTextureByName("/assets/item/sign.png");
       GL11.glPushMatrix();
       GL11.glScalef(var10, -var10, -var10);
       this.signModel.renderSign();

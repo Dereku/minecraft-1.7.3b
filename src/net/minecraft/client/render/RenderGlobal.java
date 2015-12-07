@@ -756,7 +756,7 @@ public class RenderGlobal implements IWorldAccess {
          GL11.glRotatef(0.0F, 0.0F, 0.0F, 1.0F);
          GL11.glRotatef(this.worldObj.getCelestialAngle(var1) * 360.0F, 1.0F, 0.0F, 0.0F);
          var11 = 30.0F;
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture("/terrain/sun.png"));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture("/assets/terrain/sun.png"));
          var17.startDrawingQuads();
          var17.addVertexWithUV((double)(-var11), 100.0D, (double)(-var11), 0.0D, 0.0D);
          var17.addVertexWithUV((double)var11, 100.0D, (double)(-var11), 1.0D, 0.0D);
@@ -764,7 +764,7 @@ public class RenderGlobal implements IWorldAccess {
          var17.addVertexWithUV((double)(-var11), 100.0D, (double)var11, 0.0D, 1.0D);
          var17.draw();
          var11 = 20.0F;
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture("/terrain/moon.png"));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture("/assets/terrain/moon.png"));
          var17.startDrawingQuads();
          var17.addVertexWithUV((double)(-var11), -100.0D, (double)var11, 1.0D, 1.0D);
          var17.addVertexWithUV((double)var11, -100.0D, (double)var11, 0.0D, 1.0D);
@@ -806,7 +806,7 @@ public class RenderGlobal implements IWorldAccess {
             byte var3 = 32;
             int var4 = 256 / var3;
             Tessellator var5 = Tessellator.instance;
-            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture("/environment/clouds.png"));
+            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture("/assets/environment/clouds.png"));
             GL11.glEnable(3042 /*GL_BLEND*/);
             GL11.glBlendFunc(770, 771);
             Vec3D var6 = this.worldObj.drawClouds(var1);
@@ -870,7 +870,7 @@ public class RenderGlobal implements IWorldAccess {
       int var12 = MathHelper.floor_double(var8 / 2048.0D);
       var6 -= (double)(var11 * 2048 /*GL_EXP*/);
       var8 -= (double)(var12 * 2048 /*GL_EXP*/);
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture("/environment/clouds.png"));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture("/assets/environment/clouds.png"));
       GL11.glEnable(3042 /*GL_BLEND*/);
       GL11.glBlendFunc(770, 771);
       Vec3D var13 = this.worldObj.drawClouds(var1);
@@ -1150,7 +1150,7 @@ public class RenderGlobal implements IWorldAccess {
       if(var3 == 0) {
          if(this.damagePartialTime > 0.0F) {
             GL11.glBlendFunc(774, 768);
-            int var7 = this.renderEngine.getTexture("/terrain.png");
+            int var7 = this.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE);
             GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var7);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.5F);
             GL11.glPushMatrix();
@@ -1184,7 +1184,7 @@ public class RenderGlobal implements IWorldAccess {
          GL11.glBlendFunc(770, 771);
          float var16 = MathHelper.sin((float)System.currentTimeMillis() / 100.0F) * 0.2F + 0.8F;
          GL11.glColor4f(var16, var16, var16, MathHelper.sin((float)System.currentTimeMillis() / 200.0F) * 0.2F + 0.5F);
-         var8 = this.renderEngine.getTexture("/terrain.png");
+         var8 = this.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE);
          GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var8);
          int var17 = var2.blockX;
          int var18 = var2.blockY;

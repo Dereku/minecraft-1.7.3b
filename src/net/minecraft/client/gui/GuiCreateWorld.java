@@ -49,11 +49,8 @@ public class GuiCreateWorld extends GuiScreen {
 
    private void func_22129_j() {
       this.folderName = this.textboxWorldName.getText().trim();
-      char[] var1 = ChatAllowedCharacters.allowedCharactersArray;
-      int var2 = var1.length;
 
-      for(int var3 = 0; var3 < var2; ++var3) {
-         char var4 = var1[var3];
+      for(char var4 : ChatAllowedCharacters.disallowedCharactersInNamesArray) {
          this.folderName = this.folderName.replace(var4, '_');
       }
 
@@ -72,10 +69,12 @@ public class GuiCreateWorld extends GuiScreen {
       return var1;
    }
 
+   @Override
    public void onGuiClosed() {
       Keyboard.enableRepeatEvents(false);
    }
 
+   @Override
    protected void actionPerformed(GuiButton var1) {
       if(var1.enabled) {
          if(var1.id == 1) {
@@ -108,6 +107,7 @@ public class GuiCreateWorld extends GuiScreen {
       }
    }
 
+   @Override
    protected void keyTyped(char var1, int var2) {
       if(this.textboxWorldName.isFocused) {
          this.textboxWorldName.textboxKeyTyped(var1, var2);
@@ -123,12 +123,14 @@ public class GuiCreateWorld extends GuiScreen {
       this.func_22129_j();
    }
 
+   @Override
    protected void mouseClicked(int var1, int var2, int var3) {
       super.mouseClicked(var1, var2, var3);
       this.textboxWorldName.mouseClicked(var1, var2, var3);
       this.textboxSeed.mouseClicked(var1, var2, var3);
    }
 
+   @Override
    public void drawScreen(int var1, int var2, float var3) {
       StringTranslate var4 = StringTranslate.getInstance();
       this.drawDefaultBackground();
@@ -142,6 +144,7 @@ public class GuiCreateWorld extends GuiScreen {
       super.drawScreen(var1, var2, var3);
    }
 
+   @Override
    public void selectNextField() {
       if(this.textboxWorldName.isFocused) {
          this.textboxWorldName.setFocused(false);

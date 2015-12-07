@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.RenderEngine;
 import org.lwjgl.opengl.GL11;
 
@@ -21,9 +22,9 @@ public class TextureFX {
 
    public void bindImage(RenderEngine var1) {
       if(this.tileImage == 0) {
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var1.getTexture("/terrain.png"));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var1.getTexture(Minecraft.TERRAIN_TEXTURE));
       } else if(this.tileImage == 1) {
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var1.getTexture("/gui/items.png"));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var1.getTexture("/assets/gui/items.png"));
       }
 
    }

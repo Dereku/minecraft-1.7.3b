@@ -26,7 +26,7 @@ public class GuiCrafting extends GuiContainer {
    }
 
    protected void drawGuiContainerBackgroundLayer(float var1) {
-      int var2 = this.mc.renderEngine.getTexture("/gui/crafting.png");
+      int var2 = this.mc.renderEngine.getTexture("/assets/gui/crafting.png");
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       this.mc.renderEngine.bindTexture(var2);
       int var3 = (this.width - this.xSize) / 2;

@@ -1,5 +1,6 @@
 package net.minecraft.client.render;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.client.block.Block;
 import net.minecraft.src.AxisAlignedBB;
@@ -61,7 +62,7 @@ public abstract class Render {
       GL11.glTranslatef((float)var2, (float)var4, (float)var6);
       float var16 = var1.width * 1.4F;
       GL11.glScalef(var16, var16, var16);
-      this.loadTexture("/terrain.png");
+      this.loadTexture(Minecraft.TERRAIN_TEXTURE);
       Tessellator var17 = Tessellator.instance;
       float var18 = 0.5F;
       float var19 = 0.0F;
@@ -113,7 +114,7 @@ public abstract class Render {
       GL11.glEnable(3042 /*GL_BLEND*/);
       GL11.glBlendFunc(770, 771);
       RenderEngine var10 = this.renderManager.renderEngine;
-      var10.bindTexture(var10.getTexture("%clamp%/misc/shadow.png"));
+      var10.bindTexture(var10.getTexture("%clamp%/assets/misc/shadow.png"));
       World var11 = this.getWorldFromRenderManager();
       GL11.glDepthMask(false);
       float var12 = this.shadowSize;

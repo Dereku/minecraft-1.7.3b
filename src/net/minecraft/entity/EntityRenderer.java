@@ -536,7 +536,7 @@ public class EntityRenderer {
 
          this.setupFog(0, var1);
          GL11.glEnable(2912 /*GL_FOG*/);
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/terrain.png"));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE));
          RenderHelper.disableStandardItemLighting();
          var5.sortAndRender(var4, 0, (double)var1);
          GL11.glShadeModel(7424 /*GL_FLAT*/);
@@ -559,7 +559,7 @@ public class EntityRenderer {
          this.setupFog(0, var1);
          GL11.glEnable(3042 /*GL_BLEND*/);
          GL11.glDisable(2884 /*GL_CULL_FACE*/);
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/terrain.png"));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE));
          if(this.mc.gameSettings.fancyGraphics) {
             if(this.mc.gameSettings.ambientOcclusion) {
                GL11.glShadeModel(7425 /*GL_SMOOTH*/);
@@ -691,7 +691,7 @@ public class EntityRenderer {
          GL11.glEnable(3042 /*GL_BLEND*/);
          GL11.glBlendFunc(770, 771);
          GL11.glAlphaFunc(516, 0.01F);
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/environment/snow.png"));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/environment/snow.png"));
          double var9 = var3.lastTickPosX + (var3.posX - var3.lastTickPosX) * (double)var1;
          double var11 = var3.lastTickPosY + (var3.posY - var3.lastTickPosY) * (double)var1;
          double var13 = var3.lastTickPosZ + (var3.posZ - var3.lastTickPosZ) * (double)var1;
@@ -764,7 +764,7 @@ public class EntityRenderer {
             }
          }
 
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/environment/rain.png"));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/environment/rain.png"));
          if(this.mc.gameSettings.fancyGraphics) {
             var16 = 10;
          }

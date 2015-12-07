@@ -84,7 +84,6 @@ import net.minecraft.src.TexturePortalFX;
 import net.minecraft.src.TextureWatchFX;
 import net.minecraft.src.TextureWaterFX;
 import net.minecraft.src.TextureWaterFlowFX;
-import net.minecraft.src.ThreadCheckHasPaid;
 import net.minecraft.src.ThreadDownloadResources;
 import net.minecraft.src.ThreadSleepForever;
 import net.minecraft.src.Timer;
@@ -104,7 +103,8 @@ import org.lwjgl.util.glu.GLU;
 
 public abstract class Minecraft implements Runnable {
 
-   public static byte[] field_28006_b = new byte[10485760];
+   public static final String TERRAIN_TEXTURE = "/assets/terrain.png";
+   public static final String PARTICLES_TEXTURE = "/assets/particles.png";
    private static Minecraft theMinecraft;
    public PlayerController playerController;
    private boolean fullscreen = false;
@@ -236,9 +236,9 @@ public abstract class Minecraft implements Runnable {
       this.texturePackList = new TexturePackList(this, this.mcDataDir);
       this.renderEngine = new RenderEngine(this.texturePackList, this.gameSettings);
       this.fontRenderer = new FontRenderer(this.gameSettings);
-      ColorizerWater.func_28182_a(this.renderEngine.getTextureContents("/misc/watercolor.png"));
-      ColorizerGrass.func_28181_a(this.renderEngine.getTextureContents("/misc/grasscolor.png"));
-      ColorizerFoliage.func_28152_a(this.renderEngine.getTextureContents("/misc/foliagecolor.png"));
+      ColorizerWater.func_28182_a(this.renderEngine.getTextureContents("/assets/misc/watercolor.png"));
+      ColorizerGrass.func_28181_a(this.renderEngine.getTextureContents("/assets/misc/grasscolor.png"));
+      ColorizerFoliage.func_28152_a(this.renderEngine.getTextureContents("/assets/misc/foliagecolor.png"));
       this.entityRenderer = new EntityRenderer(this);
       RenderManager.instance.itemRenderer = new ItemRenderer(this);
       this.statFileWriter = new StatFileWriter(this.session, this.mcDataDir);
@@ -313,7 +313,7 @@ public abstract class Minecraft implements Runnable {
       GL11.glDisable(2896 /*GL_LIGHTING*/);
       GL11.glEnable(3553 /*GL_TEXTURE_2D*/);
       GL11.glDisable(2912 /*GL_FOG*/);
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture("/title/mojang.png"));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture("/assets/title/mojang.png"));
       var2.startDrawingQuads();
       var2.setColorOpaque_I(16777215);
       var2.addVertexWithUV(0.0D, (double)this.displayHeight, 0.0D, 0.0D, 0.0D);
@@ -478,143 +478,144 @@ public abstract class Minecraft implements Runnable {
 
    @Override
    @SuppressWarnings({"SleepWhileInLoop", "CallToThreadYield"})
-   public void run() {
-      this.running = true;
+    public void run() {
+        this.running = true;
 
-      try {
-         this.startGame();
-      } catch (LWJGLException var17) {
-         var17.printStackTrace();
-         this.onMinecraftCrash(new UnexpectedThrowable("Failed to start game", var17));
-         return;
-      }
+        try {
+            this.startGame();
+        } catch (LWJGLException var17) {
+            var17.printStackTrace();
+            this.onMinecraftCrash(new UnexpectedThrowable("Failed to start game", var17));
+            return;
+        }
 
-      try {
-         long var1 = System.currentTimeMillis();
-         int var3 = 0;
+        try {
+            long var1 = System.currentTimeMillis();
+            int var3 = 0;
 
-         while(this.running) {
-            try {
-               AxisAlignedBB.clearBoundingBoxPool();
-               Vec3D.initialize();
-               if(this.mcCanvas == null && Display.isCloseRequested()) {
-                  this.shutdown();
-               }
+            while (this.running) {
+                try {
+                    AxisAlignedBB.clearBoundingBoxPool();
+                    Vec3D.initialize();
+                    if (this.mcCanvas == null && Display.isCloseRequested()) {
+                        this.shutdown();
+                    }
 
-               if(this.isGamePaused && this.theWorld != null) {
-                  float var4 = this.timer.renderPartialTicks;
-                  this.timer.updateTimer();
-                  this.timer.renderPartialTicks = var4;
-               } else {
-                  this.timer.updateTimer();
-               }
+                    if (this.isGamePaused && this.theWorld != null) {
+                        float var4 = this.timer.renderPartialTicks;
+                        this.timer.updateTimer();
+                        this.timer.renderPartialTicks = var4;
+                    } else {
+                        this.timer.updateTimer();
+                    }
 
-               long var23 = System.nanoTime();
+                    long var23 = System.nanoTime();
 
-               for(int var6 = 0; var6 < this.timer.elapsedTicks; ++var6) {
-                  ++this.ticksRan;
+                    for (int var6 = 0; var6 < this.timer.elapsedTicks; ++var6) {
+                        ++this.ticksRan;
 
-                  try {
-                     this.runTick();
-                  } catch (MinecraftException var16) {
-                     this.theWorld = null;
-                     this.changeWorld1((World)null);
-                     this.displayGuiScreen(new GuiConflictWarning());
-                  }
-               }
+                        try {
+                            this.runTick();
+                        } catch (MinecraftException var16) {
+                            this.theWorld = null;
+                            this.changeWorld1((World) null);
+                            this.displayGuiScreen(new GuiConflictWarning());
+                        }
+                    }
 
-               long var24 = System.nanoTime() - var23;
-               this.checkGLError("Pre render");
-               RenderBlocks.fancyGrass = this.gameSettings.fancyGraphics;
-               this.sndManager.func_338_a(this.thePlayer, this.timer.renderPartialTicks);
-               GL11.glEnable(3553 /*GL_TEXTURE_2D*/);
-               if(this.theWorld != null) {
-                  this.theWorld.updatingLighting();
-               }
+                    long var24 = System.nanoTime() - var23;
+                    this.checkGLError("Pre render");
+                    RenderBlocks.fancyGrass = this.gameSettings.fancyGraphics;
+                    this.sndManager.func_338_a(this.thePlayer, this.timer.renderPartialTicks);
+                    GL11.glEnable(3553 /*GL_TEXTURE_2D*/);
+                    if (this.theWorld != null) {
+                        this.theWorld.updatingLighting();
+                    }
 
-               if(!Keyboard.isKeyDown(65)) {
-                  Display.update();
-               }
+                    if (!Keyboard.isKeyDown(65)) {
+                        Display.update();
+                    }
 
-               if(this.thePlayer != null && this.thePlayer.isEntityInsideOpaqueBlock()) {
-                  this.gameSettings.thirdPersonView = false;
-               }
+                    if (this.thePlayer != null && this.thePlayer.isEntityInsideOpaqueBlock()) {
+                        this.gameSettings.thirdPersonView = false;
+                    }
 
-               if(!this.skipRenderWorld) {
-                  if(this.playerController != null) {
-                     this.playerController.setPartialTime(this.timer.renderPartialTicks);
-                  }
+                    if (!this.skipRenderWorld) {
+                        if (this.playerController != null) {
+                            this.playerController.setPartialTime(this.timer.renderPartialTicks);
+                        }
 
-                  this.entityRenderer.updateCameraAndRender(this.timer.renderPartialTicks);
-               }
+                        this.entityRenderer.updateCameraAndRender(this.timer.renderPartialTicks);
+                    }
 
-               if(!Display.isActive()) {
-                  if(this.fullscreen) {
-                     this.toggleFullscreen();
-                  }
+                    if (!Display.isActive()) {
+                        if (this.fullscreen) {
+                            this.toggleFullscreen();
+                        }
 
-                  Thread.sleep(10L);
-               }
+                        Thread.sleep(10L);
+                    }
 
-               if(this.gameSettings.showDebugInfo) {
-                  this.displayDebugInfo(var24);
-               } else {
-                  this.prevFrameTime = System.nanoTime();
-               }
+                    if (this.gameSettings.showDebugInfo) {
+                        this.displayDebugInfo(var24);
+                    } else {
+                        this.prevFrameTime = System.nanoTime();
+                    }
 
-               this.guiAchievement.updateAchievementWindow();
-               Thread.yield();
-               if(Keyboard.isKeyDown(65)) {
-                  Display.update();
-               }
+                    this.guiAchievement.updateAchievementWindow();
+                    Thread.yield();
+                    if (Keyboard.isKeyDown(65)) {
+                        Display.update();
+                    }
 
-               this.screenshotListener();
-               if(this.mcCanvas != null && !this.fullscreen && (this.mcCanvas.getWidth() != this.displayWidth || this.mcCanvas.getHeight() != this.displayHeight)) {
-                  this.displayWidth = this.mcCanvas.getWidth();
-                  this.displayHeight = this.mcCanvas.getHeight();
-                  if(this.displayWidth <= 0) {
-                     this.displayWidth = 1;
-                  }
+                    this.screenshotListener();
+                    if (this.mcCanvas != null && !this.fullscreen && (this.mcCanvas.getWidth() != this.displayWidth || this.mcCanvas.getHeight() != this.displayHeight)) {
+                        this.displayWidth = this.mcCanvas.getWidth();
+                        this.displayHeight = this.mcCanvas.getHeight();
+                        if (this.displayWidth <= 0) {
+                            this.displayWidth = 1;
+                        }
 
-                  if(this.displayHeight <= 0) {
-                     this.displayHeight = 1;
-                  }
+                        if (this.displayHeight <= 0) {
+                            this.displayHeight = 1;
+                        }
 
-                  this.resize(this.displayWidth, this.displayHeight);
-               }
+                        this.resize(this.displayWidth, this.displayHeight);
+                    }
 
-               this.checkGLError("Post render");
-               ++var3;
+                    this.checkGLError("Post render");
+                    ++var3;
 
-               for(this.isGamePaused = !this.isMultiplayerWorld() && this.currentScreen != null && this.currentScreen.doesGuiPauseGame(); System.currentTimeMillis() >= var1 + 1000L; var3 = 0) {
-                  this.debug = var3 + " fps, " + WorldRenderer.chunksUpdated + " chunk updates";
-                  WorldRenderer.chunksUpdated = 0;
-                  var1 += 1000L;
-               }
-            } catch (MinecraftException var18) {
-               this.theWorld = null;
-               this.changeWorld1((World)null);
-               this.displayGuiScreen(new GuiConflictWarning());
-            } catch (OutOfMemoryError var19) {
-               this.func_28002_e();
-               this.displayGuiScreen(new GuiErrorScreen());
-               System.gc();
+                    for (this.isGamePaused = !this.isMultiplayerWorld() && this.currentScreen != null && this.currentScreen.doesGuiPauseGame(); System.currentTimeMillis() >= var1 + 1000L; var3 = 0) {
+                        this.debug = var3 + " fps, " + WorldRenderer.chunksUpdated + " chunk updates";
+                        WorldRenderer.chunksUpdated = 0;
+                        var1 += 1000L;
+                    }
+                } catch (MinecraftException var18) {
+                    this.theWorld = null;
+                    this.changeWorld1((World) null);
+                    this.displayGuiScreen(new GuiConflictWarning());
+                } catch (OutOfMemoryError var19) {
+                    this.func_28002_e();
+                    this.displayGuiScreen(new GuiErrorScreen());
+                    System.gc();
+                }
             }
-         }
-      } catch (MinecraftError var20) {
-      } catch (InterruptedException var21) {
-         this.func_28002_e();
-         var21.printStackTrace();
-         this.onMinecraftCrash(new UnexpectedThrowable("Unexpected error", var21));
-      } finally {
-         this.shutdownMinecraftApplet();
-      }
+        } catch (MinecraftError var21) {
+            var21.printStackTrace();
+            this.onMinecraftCrash(new UnexpectedThrowable("Unexpected error", var21));
+        } catch (InterruptedException var21) {
+            this.func_28002_e();
+            var21.printStackTrace();
+            this.onMinecraftCrash(new UnexpectedThrowable("Unexpected error", var21));
+        } finally {
+            this.shutdownMinecraftApplet();
+        }
 
-   }
+    }
 
    public void func_28002_e() {
       try {
-         field_28006_b = new byte[0];
          this.renderGlobal.func_28137_f();
       } catch (Throwable var4) {
       }
@@ -916,15 +917,7 @@ public abstract class Minecraft implements Runnable {
 
    }
 
-   private void func_28001_B() {
-      (new ThreadCheckHasPaid(this)).start();
-   }
-
    public void runTick() {
-      if(this.ticksRan == 6000) {
-         this.func_28001_B();
-      }
-
       this.statFileWriter.func_27178_d();
       this.ingameGUI.updateTick();
       this.entityRenderer.getMouseOver(1.0F);
@@ -943,7 +936,7 @@ public abstract class Minecraft implements Runnable {
          this.playerController.updateController();
       }
 
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture("/terrain.png"));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE));
       if(!this.isGamePaused) {
          this.renderEngine.updateDynamicTextures();
       }

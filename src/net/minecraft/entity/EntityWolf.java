@@ -3,24 +3,11 @@ package net.minecraft.entity;
 import java.util.Iterator;
 import java.util.List;
 import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAnimal;
-import net.minecraft.entity.EntityArrow;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityPlayer;
-import net.minecraft.entity.EntitySheep;
-import net.minecraft.client.item.Item;
 import net.minecraft.client.item.Item;
 import net.minecraft.client.item.ItemFood;
-import net.minecraft.client.item.ItemFood;
-import net.minecraft.client.item.ItemStack;
 import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.MathHelper;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.PathEntity;
 import net.minecraft.src.PathEntity;
 import net.minecraft.world.World;
 
@@ -37,7 +24,7 @@ public class EntityWolf extends EntityAnimal {
 
    public EntityWolf(World var1) {
       super(var1);
-      this.texture = "/mob/wolf.png";
+      this.texture = "/assets/mob/wolf.png";
       this.setSize(0.8F, 0.8F);
       this.moveSpeed = 1.1F;
       this.health = 8;
@@ -55,7 +42,7 @@ public class EntityWolf extends EntityAnimal {
    }
 
    public String getEntityTexture() {
-      return this.isWolfTamed()?"/mob/wolf_tame.png":(this.isWolfAngry()?"/mob/wolf_angry.png":super.getEntityTexture());
+      return this.isWolfTamed()?"/assets/mob/wolf_tame.png":(this.isWolfAngry()?"/assets/mob/wolf_angry.png":super.getEntityTexture());
    }
 
    public void writeEntityToNBT(NBTTagCompound var1) {

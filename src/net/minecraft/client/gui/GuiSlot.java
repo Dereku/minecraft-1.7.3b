@@ -187,7 +187,7 @@ public abstract class GuiSlot {
       GL11.glDisable(2896 /*GL_LIGHTING*/);
       GL11.glDisable(2912 /*GL_FOG*/);
       Tessellator var16 = Tessellator.instance;
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/gui/background.png"));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/gui/background.png"));
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       float var17 = 32.0F;
       var16.startDrawingQuads();
@@ -305,7 +305,7 @@ public abstract class GuiSlot {
 
    private void overlayBackground(int var1, int var2, int var3, int var4) {
       Tessellator var5 = Tessellator.instance;
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/gui/background.png"));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/gui/background.png"));
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       float var6 = 32.0F;
       var5.startDrawingQuads();

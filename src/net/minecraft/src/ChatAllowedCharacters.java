@@ -2,32 +2,29 @@ package net.minecraft.src;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 
 public class ChatAllowedCharacters {
 
-   public static final String allowedCharacters = getAllowedCharacters();
-   public static final char[] allowedCharactersArray = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '\"', ':'};
+    public static final String allowedCharacters = getAllowedCharacters();
+    public static final char[] disallowedCharactersInNamesArray = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '\"', ':'};
 
-
-   private static String getAllowedCharacters() {
-      String var0 = "";
-
-      try {
-         BufferedReader var1 = new BufferedReader(new InputStreamReader(ChatAllowedCharacters.class.getResourceAsStream("/font.txt"), "UTF-8"));
-         String var2 = "";
-
-         while((var2 = var1.readLine()) != null) {
-            if(!var2.startsWith("#")) {
-               var0 = var0 + var2;
-            }
-         }
-
-         var1.close();
-      } catch (Exception var3) {
-         ;
-      }
-
-      return var0;
-   }
+    private static String getAllowedCharacters() {
+        StringBuilder sb;
+        InputStreamReader isr = new InputStreamReader(ChatAllowedCharacters.class.getResourceAsStream("/font.txt"), Charset.forName("UTF-8"));
+        try (BufferedReader var1 = new BufferedReader(isr)) {
+            String tmp;
+            sb = new StringBuilder();
+            while ((tmp = var1.readLine()) != null) {
+                if (!tmp.startsWith("#")) {
+                    sb.append(tmp);
+                }
+            } 
+        } catch (Exception var3) {
+            return "";
+        }
+        
+        return sb.toString();
+    }
 
 }

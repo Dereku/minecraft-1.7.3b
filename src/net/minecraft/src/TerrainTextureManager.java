@@ -4,10 +4,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Arrays;
 import javax.imageio.ImageIO;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.block.Block;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.src.IsoImageBuffer;
-import net.minecraft.src.Material;
 import net.minecraft.world.World;
 
 public class TerrainTextureManager {
@@ -23,7 +22,7 @@ public class TerrainTextureManager {
 
    public TerrainTextureManager() {
       try {
-         BufferedImage var1 = ImageIO.read(TerrainTextureManager.class.getResource("/terrain.png"));
+         BufferedImage var1 = ImageIO.read(TerrainTextureManager.class.getResource(Minecraft.TERRAIN_TEXTURE));
          int[] var2 = new int[65536];
          var1.getRGB(0, 0, 256, 256, var2, 0, 256);
 

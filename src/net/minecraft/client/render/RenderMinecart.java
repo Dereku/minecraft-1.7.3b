@@ -1,5 +1,6 @@
 package net.minecraft.client.render;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.Entity;
@@ -71,7 +72,7 @@ public class RenderMinecart extends Render {
       }
 
       if(var1.minecartType != 0) {
-         this.loadTexture("/terrain.png");
+         this.loadTexture(Minecraft.TERRAIN_TEXTURE);
          float var25 = 0.75F;
          GL11.glScalef(var25, var25, var25);
          GL11.glTranslatef(0.0F, 0.3125F, 0.0F);
@@ -87,7 +88,7 @@ public class RenderMinecart extends Render {
          GL11.glScalef(1.0F / var25, 1.0F / var25, 1.0F / var25);
       }
 
-      this.loadTexture("/item/cart.png");
+      this.loadTexture("/assets/item/cart.png");
       GL11.glScalef(-1.0F, -1.0F, 1.0F);
       this.modelMinecart.render(0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
       GL11.glPopMatrix();

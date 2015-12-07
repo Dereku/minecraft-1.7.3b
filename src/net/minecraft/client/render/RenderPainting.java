@@ -2,15 +2,9 @@ package net.minecraft.client.render;
 
 import java.util.Random;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityPainting;
 import net.minecraft.entity.EntityPainting;
 import net.minecraft.src.EnumArt;
-import net.minecraft.src.EnumArt;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.MathHelper;
-import net.minecraft.client.render.Render;
-import net.minecraft.src.Tessellator;
 import net.minecraft.src.Tessellator;
 import org.lwjgl.opengl.GL11;
 
@@ -25,7 +19,7 @@ public class RenderPainting extends Render {
       GL11.glTranslatef((float)var2, (float)var4, (float)var6);
       GL11.glRotatef(var8, 0.0F, 1.0F, 0.0F);
       GL11.glEnable('\u803a');
-      this.loadTexture("/art/kz.png");
+      this.loadTexture("/assets/art_kz.png");
       EnumArt var10 = var1.art;
       float var11 = 0.0625F;
       GL11.glScalef(var11, var11, var11);

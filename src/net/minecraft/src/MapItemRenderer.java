@@ -80,7 +80,7 @@ public class MapItemRenderer {
       var17.draw();
       GL11.glEnable(3008 /*GL_ALPHA_TEST*/);
       GL11.glDisable(3042 /*GL_BLEND*/);
-      var2.bindTexture(var2.getTexture("/misc/mapicons.png"));
+      var2.bindTexture(var2.getTexture("/assets/misc/mapicons.png"));
       Iterator var19 = var3.field_28173_i.iterator();
 
       while(var19.hasNext()) {

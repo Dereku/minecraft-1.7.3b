@@ -1,6 +1,7 @@
 package net.minecraft.client.gui;
 
 import java.util.Random;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.achiviements.Achievement;
 import net.minecraft.client.achiviements.Achievement;
 import net.minecraft.client.achiviements.AchievementList;
@@ -163,8 +164,8 @@ public class GuiAchievements extends GuiScreen {
          var5 = guiMapRight - 1;
       }
 
-      int var6 = this.mc.renderEngine.getTexture("/terrain.png");
-      int var7 = this.mc.renderEngine.getTexture("/achievement/bg.png");
+      int var6 = this.mc.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE);
+      int var7 = this.mc.renderEngine.getTexture("/assets/achievement/bg.png");
       int var8 = (this.width - this.achievementsPaneWidth) / 2;
       int var9 = (this.height - this.achievementsPaneHeight) / 2;
       int var10 = var8 + 16;

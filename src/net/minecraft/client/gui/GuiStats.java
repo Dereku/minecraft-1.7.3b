@@ -98,7 +98,7 @@ public class GuiStats extends GuiScreen {
    }
 
    private void drawSprite(int var1, int var2, int var3, int var4) {
-      int var5 = this.mc.renderEngine.getTexture("/gui/slot.png");
+      int var5 = this.mc.renderEngine.getTexture("/assets/gui/slot.png");
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       this.mc.renderEngine.bindTexture(var5);
       Tessellator var10 = Tessellator.instance;

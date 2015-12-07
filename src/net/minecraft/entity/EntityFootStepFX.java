@@ -1,10 +1,7 @@
 package net.minecraft.entity;
 
-import net.minecraft.entity.EntityFX;
-import net.minecraft.src.MathHelper;
 import net.minecraft.client.render.RenderEngine;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.Tessellator;
 import net.minecraft.src.Tessellator;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
@@ -23,6 +20,7 @@ public class EntityFootStepFX extends EntityFX {
       this.field_27020_o = 200;
    }
 
+   @Override
    public void renderParticle(Tessellator var1, float var2, float var3, float var4, float var5, float var6, float var7) {
       float var8 = ((float)this.field_27018_a + var2) / (float)this.field_27020_o;
       var8 *= var8;
@@ -38,7 +36,7 @@ public class EntityFootStepFX extends EntityFX {
       float var12 = (float)(this.posY - interpPosY);
       float var13 = (float)(this.posZ - interpPosZ);
       float var14 = this.worldObj.getLightBrightness(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ));
-      this.currentFootSteps.bindTexture(this.currentFootSteps.getTexture("/misc/footprint.png"));
+      this.currentFootSteps.bindTexture(this.currentFootSteps.getTexture("/assets/misc/footprint.png"));
       GL11.glEnable(3042 /*GL_BLEND*/);
       GL11.glBlendFunc(770, 771);
       var1.startDrawingQuads();
@@ -52,6 +50,7 @@ public class EntityFootStepFX extends EntityFX {
       GL11.glEnable(2896 /*GL_LIGHTING*/);
    }
 
+   @Override
    public void onUpdate() {
       ++this.field_27018_a;
       if(this.field_27018_a == this.field_27020_o) {
@@ -60,6 +59,7 @@ public class EntityFootStepFX extends EntityFX {
 
    }
 
+   @Override
    public int getFXLayer() {
       return 3;
    }

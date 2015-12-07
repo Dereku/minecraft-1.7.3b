@@ -1,20 +1,17 @@
 package net.minecraft.client.achiviements;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AchievementMap {
 
    public static AchievementMap instance = new AchievementMap();
-   private Map guidMap = new HashMap();
+   private final Map guidMap = new HashMap();
 
 
    private AchievementMap() {
 //      try {
-//         BufferedReader var1 = new BufferedReader(new InputStreamReader(AchievementMap.class.getResourceAsStream("/achievement/map.txt")));
+//         BufferedReader var1 = new BufferedReader(new InputStreamReader(AchievementMap.class.getResourceAsStream("/assets/achievement/map.txt")));
 //
 //         String var2;
 //         while((var2 = var1.readLine()) != null) {
@@ -31,7 +28,7 @@ public class AchievementMap {
    }
 
    public static String getGuid(int var0) {
-      return (String)instance.guidMap.get(Integer.valueOf(var0));
+      return (String)instance.guidMap.get(var0);
    }
 
 }

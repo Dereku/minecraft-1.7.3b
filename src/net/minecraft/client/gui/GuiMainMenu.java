@@ -23,7 +23,7 @@ public class GuiMainMenu extends GuiScreen {
     public GuiMainMenu() {
         try {
             ArrayList var1 = new ArrayList();
-            BufferedReader var2 = new BufferedReader(new InputStreamReader(GuiMainMenu.class.getResourceAsStream("/title/splashes.txt"), Charset.forName("UTF-8")));
+            BufferedReader var2 = new BufferedReader(new InputStreamReader(GuiMainMenu.class.getResourceAsStream("/assets/title/splashes.txt"), Charset.forName("UTF-8")));
             String var3 = "";
 
             while ((var3 = var2.readLine()) != null) {
@@ -102,7 +102,7 @@ public class GuiMainMenu extends GuiScreen {
         short var5 = 274;
         int var6 = this.width / 2 - var5 / 2;
         byte var7 = 30;
-        GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/title/mclogo.png"));
+        GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/title/mclogo.png"));
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.drawTexturedModalRect(var6 + 0, var7 + 0, 0, 0, 155, 44);
         this.drawTexturedModalRect(var6 + 155, var7 + 0, 0, 45, 155, 44);

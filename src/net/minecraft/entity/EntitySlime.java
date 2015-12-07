@@ -1,15 +1,9 @@
 package net.minecraft.entity;
 
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityPlayer;
-import net.minecraft.src.IMob;
 import net.minecraft.src.IMob;
 import net.minecraft.client.item.Item;
-import net.minecraft.client.item.Item;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.world.World;
 
@@ -22,7 +16,7 @@ public class EntitySlime extends EntityLiving implements IMob {
 
    public EntitySlime(World var1) {
       super(var1);
-      this.texture = "/mob/slime.png";
+      this.texture = "/assets/mob/slime.png";
       int var2 = 1 << this.rand.nextInt(3);
       this.yOffset = 0.0F;
       this.slimeJumpDelay = this.rand.nextInt(20) + 10;

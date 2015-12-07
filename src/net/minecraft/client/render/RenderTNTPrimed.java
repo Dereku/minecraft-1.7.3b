@@ -1,5 +1,6 @@
 package net.minecraft.client.render;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.Entity;
@@ -39,7 +40,7 @@ public class RenderTNTPrimed extends Render {
       }
 
       var10 = (1.0F - ((float)var1.fuse - var9 + 1.0F) / 100.0F) * 0.8F;
-      this.loadTexture("/terrain.png");
+      this.loadTexture(Minecraft.TERRAIN_TEXTURE);
       this.blockRenderer.renderBlockOnInventory(Block.tnt, 0, var1.getEntityBrightness(var9));
       if(var1.fuse / 5 % 2 == 0) {
          GL11.glDisable(3553 /*GL_TEXTURE_2D*/);

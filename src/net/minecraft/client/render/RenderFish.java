@@ -1,15 +1,10 @@
 package net.minecraft.client.render;
 
-import net.minecraft.entity.Entity;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFish;
-import net.minecraft.entity.EntityFish;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.MathHelper;
-import net.minecraft.client.render.Render;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.Tessellator;
-import net.minecraft.src.Vec3D;
 import net.minecraft.src.Vec3D;
 import org.lwjgl.opengl.GL11;
 
@@ -22,7 +17,7 @@ public class RenderFish extends Render {
       GL11.glScalef(0.5F, 0.5F, 0.5F);
       byte var10 = 1;
       byte var11 = 2;
-      this.loadTexture("/particles.png");
+      this.loadTexture(Minecraft.PARTICLES_TEXTURE);
       Tessellator var12 = Tessellator.instance;
       float var13 = (float)(var10 * 8 + 0) / 128.0F;
       float var14 = (float)(var10 * 8 + 8) / 128.0F;
@@ -44,8 +39,7 @@ public class RenderFish extends Render {
       GL11.glPopMatrix();
       if(var1.angler != null) {
          float var20 = (var1.angler.prevRotationYaw + (var1.angler.rotationYaw - var1.angler.prevRotationYaw) * var9) * 3.1415927F / 180.0F;
-         double var21 = (double)MathHelper.sin(var20);
-         double var23 = (double)MathHelper.cos(var20);
+         double var21, var23;
          float var25 = var1.angler.getSwingProgress(var9);
          float var26 = MathHelper.sin(MathHelper.sqrt_float(var25) * 3.1415927F);
          Vec3D var27 = Vec3D.createVector(-0.5D, 0.03D, 0.8D);

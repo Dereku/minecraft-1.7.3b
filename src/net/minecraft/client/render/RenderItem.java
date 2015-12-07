@@ -1,6 +1,7 @@
 package net.minecraft.client.render;
 
 import java.util.Random;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.Entity;
@@ -59,7 +60,7 @@ public class RenderItem extends Render {
       float var18;
       if(var10.itemID < 256 && RenderBlocks.renderItemIn3d(Block.blocksList[var10.itemID].getRenderType())) {
          GL11.glRotatef(var12, 0.0F, 1.0F, 0.0F);
-         this.loadTexture("/terrain.png");
+         this.loadTexture(Minecraft.TERRAIN_TEXTURE);
          float var28 = 0.25F;
          if(!Block.blocksList[var10.itemID].renderAsNormalBlock() && var10.itemID != Block.stairSingle.blockID && Block.blocksList[var10.itemID].getRenderType() != 16) {
             var28 = 0.5F;
@@ -83,9 +84,9 @@ public class RenderItem extends Render {
          GL11.glScalef(0.5F, 0.5F, 0.5F);
          int var14 = var10.getIconIndex();
          if(var10.itemID < 256) {
-            this.loadTexture("/terrain.png");
+            this.loadTexture(Minecraft.TERRAIN_TEXTURE);
          } else {
-            this.loadTexture("/gui/items.png");
+            this.loadTexture("/assets/gui/items.png");
          }
 
          Tessellator var15 = Tessellator.instance;
@@ -137,7 +138,7 @@ public class RenderItem extends Render {
    public void drawItemIntoGui(FontRenderer var1, RenderEngine var2, int var3, int var4, int var5, int var6, int var7) {
       float var11;
       if(var3 < 256 && RenderBlocks.renderItemIn3d(Block.blocksList[var3].getRenderType())) {
-         var2.bindTexture(var2.getTexture("/terrain.png"));
+         var2.bindTexture(var2.getTexture(Minecraft.TERRAIN_TEXTURE));
          Block var14 = Block.blocksList[var3];
          GL11.glPushMatrix();
          GL11.glTranslatef((float)(var6 - 2), (float)(var7 + 3), -3.0F);
@@ -162,9 +163,9 @@ public class RenderItem extends Render {
       } else if(var5 >= 0) {
          GL11.glDisable(2896 /*GL_LIGHTING*/);
          if(var3 < 256) {
-            var2.bindTexture(var2.getTexture("/terrain.png"));
+            var2.bindTexture(var2.getTexture(Minecraft.TERRAIN_TEXTURE));
          } else {
-            var2.bindTexture(var2.getTexture("/gui/items.png"));
+            var2.bindTexture(var2.getTexture("/assets/gui/items.png"));
          }
 
          int var8 = Item.itemsList[var3].getColorFromDamage(var4);

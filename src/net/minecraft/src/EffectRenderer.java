@@ -3,22 +3,21 @@ package net.minecraft.src;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDiggingFX;
 import net.minecraft.entity.EntityFX;
-import net.minecraft.src.MathHelper;
 import net.minecraft.client.render.RenderEngine;
-import net.minecraft.src.Tessellator;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 public class EffectRenderer {
 
    protected World worldObj;
-   private List[] fxLayers = new List[4];
-   private RenderEngine renderer;
-   private Random rand = new Random();
+   private final List[] fxLayers = new List[4];
+   private final RenderEngine renderer;
+   private final Random rand = new Random();
 
 
    public EffectRenderer(World var1, RenderEngine var2) {
@@ -67,18 +66,18 @@ public class EffectRenderer {
       EntityFX.interpPosZ = var1.lastTickPosZ + (var1.posZ - var1.lastTickPosZ) * (double)var2;
 
       for(int var8 = 0; var8 < 3; ++var8) {
-         if(this.fxLayers[var8].size() != 0) {
+         if(!this.fxLayers[var8].isEmpty()) {
             int var9 = 0;
             if(var8 == 0) {
-               var9 = this.renderer.getTexture("/particles.png");
+               var9 = this.renderer.getTexture(Minecraft.PARTICLES_TEXTURE);
             }
 
             if(var8 == 1) {
-               var9 = this.renderer.getTexture("/terrain.png");
+               var9 = this.renderer.getTexture(Minecraft.TERRAIN_TEXTURE);
             }
 
             if(var8 == 2) {
-               var9 = this.renderer.getTexture("/gui/items.png");
+               var9 = this.renderer.getTexture("/assets/gui/items.png");
             }
 
             GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var9);
@@ -98,7 +97,7 @@ public class EffectRenderer {
 
    public void func_1187_b(Entity var1, float var2) {
       byte var3 = 3;
-      if(this.fxLayers[var3].size() != 0) {
+      if(!this.fxLayers[var3].isEmpty()) {
          Tessellator var4 = Tessellator.instance;
 
          for(int var5 = 0; var5 < this.fxLayers[var3].size(); ++var5) {

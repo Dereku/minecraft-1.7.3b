@@ -1,16 +1,9 @@
 package net.minecraft.client.gui;
 
 import net.minecraft.client.block.Block;
-import net.minecraft.client.block.Block;
 import net.minecraft.src.ChatAllowedCharacters;
-import net.minecraft.src.ChatAllowedCharacters;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.src.Packet130UpdateSign;
 import net.minecraft.src.Packet130UpdateSign;
 import net.minecraft.world.tiles.TileEntityRenderer;
-import net.minecraft.world.tiles.TileEntityRenderer;
-import net.minecraft.world.tiles.TileEntitySign;
 import net.minecraft.world.tiles.TileEntitySign;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;

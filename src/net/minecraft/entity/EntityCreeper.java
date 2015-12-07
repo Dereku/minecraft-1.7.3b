@@ -1,12 +1,6 @@
 package net.minecraft.entity;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLightningBolt;
-import net.minecraft.entity.EntityMob;
-import net.minecraft.entity.EntitySkeleton;
 import net.minecraft.client.item.Item;
-import net.minecraft.client.item.Item;
-import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.world.World;
 
@@ -18,7 +12,7 @@ public class EntityCreeper extends EntityMob {
 
    public EntityCreeper(World var1) {
       super(var1);
-      this.texture = "/mob/creeper.png";
+      this.texture = "/assets/mob/creeper.png";
    }
 
    protected void entityInit() {

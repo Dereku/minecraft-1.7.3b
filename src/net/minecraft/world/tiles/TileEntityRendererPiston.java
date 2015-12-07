@@ -4,14 +4,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.block.Block;
 import net.minecraft.client.block.BlockPistonBase;
 import net.minecraft.client.render.RenderBlocks;
-import net.minecraft.client.render.RenderBlocks;
-import net.minecraft.client.render.RenderHelper;
 import net.minecraft.client.render.RenderHelper;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.Tessellator;
-import net.minecraft.world.tiles.TileEntity;
-import net.minecraft.world.tiles.TileEntityPiston;
-import net.minecraft.world.tiles.TileEntitySpecialRenderer;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
@@ -24,7 +18,7 @@ public class TileEntityRendererPiston extends TileEntitySpecialRenderer {
       Block var9 = Block.blocksList[var1.getStoredBlockID()];
       if(var9 != null && var1.func_31008_a(var8) < 1.0F) {
          Tessellator var10 = Tessellator.instance;
-         this.bindTextureByName("/terrain.png");
+         this.bindTextureByName(Minecraft.TERRAIN_TEXTURE);
          RenderHelper.disableStandardItemLighting();
          GL11.glBlendFunc(770, 771);
          GL11.glEnable(3042 /*GL_BLEND*/);

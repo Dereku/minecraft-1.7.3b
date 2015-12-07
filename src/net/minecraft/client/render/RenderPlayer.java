@@ -49,7 +49,7 @@ public class RenderPlayer extends RenderLiving {
          Item var5 = var4.getItem();
          if(var5 instanceof ItemArmor) {
             ItemArmor var6 = (ItemArmor)var5;
-            this.loadTexture("/armor/" + armorFilenamePrefix[var6.renderIndex] + "_" + (var2 == 2?2:1) + ".png");
+            this.loadTexture("/assets/armor/" + armorFilenamePrefix[var6.renderIndex] + "_" + (var2 == 2?2:1) + ".png");
             ModelBiped var7 = var2 == 2?this.modelArmor:this.modelArmorChestplate;
             var7.bipedHead.showModel = var2 == 0;
             var7.bipedHeadwear.showModel = var2 == 0;
