@@ -606,7 +606,7 @@ public abstract class Minecraft implements Runnable {
             var21.printStackTrace();
             this.onMinecraftCrash(new UnexpectedThrowable("Unexpected error", var21));
         } finally {
-            this.shutdownMinecraftApplet();
+//            this.shutdownMinecraftApplet();
         }
 
     }
@@ -1226,7 +1226,7 @@ public abstract class Minecraft implements Runnable {
 
    public void initStatWriter(World var1) {
        if (this.statFileWriter == null) {
-           if (var1.worldName == null) {
+           if (var1 == null) {
                this.statFileWriter = new StatFileWriter(this.session, this.mcDataDir);
            } else {
                File file = new File(this.mcDataDir.getAbsolutePath() + File.separator + "saves" + File.separator + var1.worldName);

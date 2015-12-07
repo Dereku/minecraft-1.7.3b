@@ -49,7 +49,7 @@ import net.minecraft.client.gui.GuiScreen;
 public class NetClientHandler extends NetHandler {
 
    private boolean disconnected = false;
-   private NetworkManager netManager;
+   public NetworkManager netManager;
    public String field_1209_a;
    private Minecraft mc;
    private WorldClient worldClient;
