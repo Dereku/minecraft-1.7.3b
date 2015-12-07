@@ -1,9 +1,6 @@
 package net.minecraft.src;
 
 import java.nio.FloatBuffer;
-import net.minecraft.src.ClippingHelper;
-import net.minecraft.src.GLAllocation;
-import net.minecraft.src.MathHelper;
 import org.lwjgl.opengl.GL11;
 
 public class ClippingHelperImpl extends ClippingHelper {

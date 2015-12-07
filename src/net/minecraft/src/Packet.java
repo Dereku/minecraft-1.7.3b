@@ -8,66 +8,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import net.minecraft.src.Empty1;
-import net.minecraft.src.NetHandler;
-import net.minecraft.src.Packet0KeepAlive;
-import net.minecraft.src.Packet100OpenWindow;
-import net.minecraft.src.Packet101CloseWindow;
-import net.minecraft.src.Packet102WindowClick;
-import net.minecraft.src.Packet103SetSlot;
-import net.minecraft.src.Packet104WindowItems;
-import net.minecraft.src.Packet105UpdateProgressbar;
-import net.minecraft.src.Packet106Transaction;
-import net.minecraft.src.Packet10Flying;
-import net.minecraft.src.Packet11PlayerPosition;
-import net.minecraft.src.Packet12PlayerLook;
-import net.minecraft.src.Packet130UpdateSign;
-import net.minecraft.src.Packet131MapData;
-import net.minecraft.src.Packet13PlayerLookMove;
-import net.minecraft.src.Packet14BlockDig;
-import net.minecraft.src.Packet15Place;
-import net.minecraft.src.Packet16BlockItemSwitch;
-import net.minecraft.src.Packet17Sleep;
-import net.minecraft.src.Packet18Animation;
-import net.minecraft.src.Packet19EntityAction;
-import net.minecraft.src.Packet1Login;
-import net.minecraft.src.Packet200Statistic;
-import net.minecraft.src.Packet20NamedEntitySpawn;
-import net.minecraft.src.Packet21PickupSpawn;
-import net.minecraft.src.Packet22Collect;
-import net.minecraft.src.Packet23VehicleSpawn;
-import net.minecraft.src.Packet24MobSpawn;
-import net.minecraft.src.Packet255KickDisconnect;
-import net.minecraft.src.Packet25EntityPainting;
-import net.minecraft.src.Packet27Position;
-import net.minecraft.src.Packet28EntityVelocity;
-import net.minecraft.src.Packet29DestroyEntity;
-import net.minecraft.src.Packet2Handshake;
-import net.minecraft.src.Packet30Entity;
-import net.minecraft.src.Packet31RelEntityMove;
-import net.minecraft.src.Packet32EntityLook;
-import net.minecraft.src.Packet33RelEntityMoveLook;
-import net.minecraft.src.Packet34EntityTeleport;
-import net.minecraft.src.Packet38EntityStatus;
-import net.minecraft.src.Packet39AttachEntity;
-import net.minecraft.src.Packet3Chat;
-import net.minecraft.src.Packet40EntityMetadata;
-import net.minecraft.src.Packet4UpdateTime;
-import net.minecraft.src.Packet50PreChunk;
-import net.minecraft.src.Packet51MapChunk;
-import net.minecraft.src.Packet52MultiBlockChange;
-import net.minecraft.src.Packet53BlockChange;
-import net.minecraft.src.Packet54PlayNoteBlock;
-import net.minecraft.src.Packet5PlayerInventory;
-import net.minecraft.src.Packet60Explosion;
-import net.minecraft.src.Packet61DoorChange;
-import net.minecraft.src.Packet6SpawnPosition;
-import net.minecraft.src.Packet70Bed;
-import net.minecraft.src.Packet71Weather;
-import net.minecraft.src.Packet7UseEntity;
-import net.minecraft.src.Packet8UpdateHealth;
-import net.minecraft.src.Packet9Respawn;
-import net.minecraft.src.PacketCounter;
 
 public abstract class Packet {
 
@@ -143,8 +83,8 @@ public abstract class Packet {
 
       PacketCounter var4 = (PacketCounter)packetStats.get(Integer.valueOf(var6));
       if(var4 == null) {
-         var4 = new PacketCounter((Empty1)null);
-         packetStats.put(Integer.valueOf(var6), var4);
+         var4 = new PacketCounter();
+         packetStats.put(var6, var4);
       }
 
       var4.addPacket(var3.getPacketSize());
