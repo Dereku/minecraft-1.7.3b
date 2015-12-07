@@ -18,7 +18,7 @@ public class StatFileWriter {
     public StatFileWriter(Session var1, File var2) {
         File var3 = new File(var2, "stats");
         if (!var3.exists()) {
-            var3.mkdir();
+            var3.mkdirs();
         }
 
         File[] var4 = var2.listFiles();

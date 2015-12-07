@@ -606,7 +606,7 @@ public abstract class Minecraft implements Runnable {
             var21.printStackTrace();
             this.onMinecraftCrash(new UnexpectedThrowable("Unexpected error", var21));
         } finally {
-//            this.shutdownMinecraftApplet();
+            this.shutdownMinecraftApplet();
         }
 
     }
@@ -1223,13 +1223,20 @@ public abstract class Minecraft implements Runnable {
    public void changeWorld2(World var1, String var2) {
       this.changeWorld(var1, var2, (EntityPlayer)null);
    }
+   
+   public void initStatWriter(World world) {
+       this.initStatWriter(world, "");
+   }
 
-   public void initStatWriter(World var1) {
+   public void initStatWriter(World var1, String name) {
+       File file;
        if (this.statFileWriter == null) {
            if (var1 == null) {
-               this.statFileWriter = new StatFileWriter(this.session, this.mcDataDir);
+               file = new File(this.mcDataDir.getAbsolutePath() + File.separator + "remote" + File.separator + name);
+               file.mkdirs();
+               this.statFileWriter = new StatFileWriter(this.session, file);
            } else {
-               File file = new File(this.mcDataDir.getAbsolutePath() + File.separator + "saves" + File.separator + var1.worldName);
+               file = new File(this.mcDataDir.getAbsolutePath() + File.separator + "saves" + File.separator + var1.worldName);
                System.out.println(file.getAbsolutePath());
                this.statFileWriter = new StatFileWriter(this.session, file.getAbsoluteFile());
            }

@@ -6,13 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClientPlayerMP;
 import net.minecraft.entity.EntityPlayer;
 import net.minecraft.client.item.ItemStack;
-import net.minecraft.src.NetClientHandler;
-import net.minecraft.src.Packet102WindowClick;
-import net.minecraft.src.Packet14BlockDig;
-import net.minecraft.src.Packet15Place;
-import net.minecraft.src.Packet16BlockItemSwitch;
-import net.minecraft.src.Packet7UseEntity;
-import net.minecraft.src.PlayerController;
 import net.minecraft.world.World;
 
 public class PlayerControllerMP extends PlayerController {
@@ -32,9 +25,10 @@ public class PlayerControllerMP extends PlayerController {
    public PlayerControllerMP(Minecraft var1, NetClientHandler var2) {
       super(var1);
       this.netClientHandler = var2;
-      var1.initStatWriter(null);
+      var1.initStatWriter(null, var2.var4.getInetAddress().toString().replace("/", ""));
    }
 
+   @Override
    public void flipPlayer(EntityPlayer var1) {
       var1.rotationYaw = -180.0F;
    }
