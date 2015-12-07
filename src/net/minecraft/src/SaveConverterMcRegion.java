@@ -30,13 +30,9 @@ public class SaveConverterMcRegion extends SaveFormatOld {
    public List func_22176_b() {
       ArrayList var1 = new ArrayList();
       File[] var2 = this.field_22180_a.listFiles();
-      File[] var3 = var2;
-      int var4 = var2.length;
-
-      for(int var5 = 0; var5 < var4; ++var5) {
-         File var6 = var3[var5];
-         if(var6.isDirectory()) {
-            String var7 = var6.getName();
+      for(File var3 : var2) {
+         if(var3.isDirectory()) {
+            String var7 = var3.getName();
             WorldInfo var8 = this.getWorldInfo(var7);
             if(var8 != null) {
                boolean var9 = var8.getSaveVersion() != 19132;

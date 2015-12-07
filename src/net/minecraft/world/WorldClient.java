@@ -4,26 +4,14 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
 import net.minecraft.world.chunk.ChunkCoordinates;
-import net.minecraft.world.chunk.ChunkCoordinates;
-import net.minecraft.world.chunk.ChunkProviderClient;
 import net.minecraft.world.chunk.ChunkProviderClient;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.Entity;
-import net.minecraft.src.IChunkProvider;
 import net.minecraft.src.IChunkProvider;
 import net.minecraft.src.IWorldAccess;
-import net.minecraft.src.IWorldAccess;
-import net.minecraft.src.MCHash;
 import net.minecraft.src.MCHash;
 import net.minecraft.src.NetClientHandler;
-import net.minecraft.src.NetClientHandler;
-import net.minecraft.src.Packet255KickDisconnect;
 import net.minecraft.src.Packet255KickDisconnect;
 import net.minecraft.src.SaveHandlerMP;
-import net.minecraft.src.SaveHandlerMP;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldBlockPositionType;
-import net.minecraft.world.WorldProvider;
 
 public class WorldClient extends World {
 

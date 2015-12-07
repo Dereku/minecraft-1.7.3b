@@ -104,7 +104,7 @@ public class CanvasIsomPreview extends Canvas implements KeyListener, MouseListe
 
    public void loadWorld(String var1) {
       this.field_1785_i = this.field_1784_j = 0;
-      this.worldObj = new World(new SaveHandler(new File(this.dataFolder, "saves"), var1, false), var1, (new Random()).nextLong());
+      this.worldObj = new World(new SaveHandler(new File(this.dataFolder, "saves"), var1, false), var1, (new Random()).nextLong(), var1);
       this.worldObj.skylightSubtracted = 0;
       List var2 = this.imageBufferList;
       synchronized(this.imageBufferList) {

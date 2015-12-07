@@ -241,8 +241,6 @@ public abstract class Minecraft implements Runnable {
       ColorizerFoliage.func_28152_a(this.renderEngine.getTextureContents("/assets/misc/foliagecolor.png"));
       this.entityRenderer = new EntityRenderer(this);
       RenderManager.instance.itemRenderer = new ItemRenderer(this);
-      this.statFileWriter = new StatFileWriter(this.session, this.mcDataDir);
-      AchievementList.openInventory.setStatStringFormatter(new StatStringFormatKeyInv(this));
       this.loadScreen();
       Keyboard.create();
       Mouse.create();
@@ -398,16 +396,14 @@ public abstract class Minecraft implements Runnable {
             this.currentScreen.onGuiClosed();
          }
 
-         if(var1 instanceof GuiMainMenu) {
-            this.statFileWriter.func_27175_b();
-         }
-
-         this.statFileWriter.syncStats();
-         if(var1 == null && this.theWorld == null) {
-            var1 = new GuiMainMenu();
-         } else if(var1 == null && this.thePlayer.health <= 0) {
-            var1 = new GuiGameOver();
-         }
+          if (this.statFileWriter != null) {
+              this.statFileWriter.syncStats();
+              if (var1 == null && this.theWorld == null) {
+                  var1 = new GuiMainMenu();
+              } else if (var1 == null && this.thePlayer.health <= 0) {
+                  var1 = new GuiGameOver();
+              }
+          }
 
          if(var1 instanceof GuiMainMenu) {
             this.ingameGUI.clearChatMessages();
@@ -441,8 +437,9 @@ public abstract class Minecraft implements Runnable {
 
    public void shutdownMinecraftApplet() {
       try {
-         this.statFileWriter.func_27175_b();
-         this.statFileWriter.syncStats();
+          if (this.statFileWriter != null) {
+              this.statFileWriter.syncStats();
+          }
          try {
             if(this.downloadResourcesThread != null) {
                this.downloadResourcesThread.closeMinecraft();
@@ -609,7 +606,7 @@ public abstract class Minecraft implements Runnable {
             var21.printStackTrace();
             this.onMinecraftCrash(new UnexpectedThrowable("Unexpected error", var21));
         } finally {
-            this.shutdownMinecraftApplet();
+//            this.shutdownMinecraftApplet();
         }
 
     }
@@ -918,7 +915,8 @@ public abstract class Minecraft implements Runnable {
    }
 
    public void runTick() {
-      this.statFileWriter.func_27178_d();
+       if (this.statFileWriter != null) {
+      this.statFileWriter.func_27178_d();}
       this.ingameGUI.updateTick();
       this.entityRenderer.getMouseOver(1.0F);
       int var3;
@@ -1156,7 +1154,8 @@ public abstract class Minecraft implements Runnable {
       } else {
          ISaveHandler var5 = this.saveLoader.getSaveLoader(var1, false);
          World var6 = null;
-         var6 = new World(var5, var2, var3);
+         var6 = new World(var5, var2, var3, var1);
+         this.initStatWriter(var6);
          if(var6.isNewWorld) {
             this.statFileWriter.readStat(StatList.createWorldStat, 1);
             this.statFileWriter.readStat(StatList.startGameStat, 1);
@@ -1225,76 +1224,89 @@ public abstract class Minecraft implements Runnable {
       this.changeWorld(var1, var2, (EntityPlayer)null);
    }
 
-   public void changeWorld(World var1, String var2, EntityPlayer var3) {
-      this.statFileWriter.func_27175_b();
-      this.statFileWriter.syncStats();
-      this.renderViewEntity = null;
-      this.loadingScreen.printText(var2);
-      this.loadingScreen.displayLoadingString("");
-      this.sndManager.playStreaming((String)null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-      if(this.theWorld != null) {
-         this.theWorld.saveWorldIndirectly(this.loadingScreen);
-      }
-
-      this.theWorld = var1;
-      if(var1 != null) {
-         this.playerController.func_717_a(var1);
-         if(!this.isMultiplayerWorld()) {
-            if(var3 == null) {
-               this.thePlayer = (EntityPlayerSP)var1.func_4085_a(EntityPlayerSP.class);
-            }
-         } else if(this.thePlayer != null) {
-            this.thePlayer.preparePlayerToSpawn();
-            if(var1 != null) {
-               var1.entityJoinedWorld(this.thePlayer);
-            }
-         }
-
-         if(!var1.multiplayerWorld) {
-            this.preloadWorld(var2);
-         }
-
-         if(this.thePlayer == null) {
-            this.thePlayer = (EntityPlayerSP)this.playerController.createPlayer(var1);
-            this.thePlayer.preparePlayerToSpawn();
-            this.playerController.flipPlayer(this.thePlayer);
-         }
-
-         this.thePlayer.movementInput = new MovementInputFromOptions(this.gameSettings);
-         if(this.renderGlobal != null) {
-            this.renderGlobal.changeWorld(var1);
-         }
-
-         if(this.effectRenderer != null) {
-            this.effectRenderer.clearEffects(var1);
-         }
-
-         this.playerController.func_6473_b(this.thePlayer);
-         if(var3 != null) {
-            var1.emptyMethod1();
-         }
-
-         IChunkProvider var4 = var1.getIChunkProvider();
-         if(var4 instanceof ChunkProviderLoadOrGenerate) {
-            ChunkProviderLoadOrGenerate var5 = (ChunkProviderLoadOrGenerate)var4;
-            int var6 = MathHelper.floor_float((float)((int)this.thePlayer.posX)) >> 4;
-            int var7 = MathHelper.floor_float((float)((int)this.thePlayer.posZ)) >> 4;
-            var5.setCurrentChunkOver(var6, var7);
-         }
-
-         var1.spawnPlayerWithLoadedChunks(this.thePlayer);
-         if(var1.isNewWorld) {
-            var1.saveWorldIndirectly(this.loadingScreen);
-         }
-
-         this.renderViewEntity = this.thePlayer;
-      } else {
-         this.thePlayer = null;
-      }
-
-      System.gc();
-      this.systemTime = 0L;
+   public void initStatWriter(World var1) {
+       if (this.statFileWriter == null) {
+           if (var1.worldName == null) {
+               this.statFileWriter = new StatFileWriter(this.session, this.mcDataDir);
+           } else {
+               File file = new File(this.mcDataDir.getAbsolutePath() + File.separator + "saves" + File.separator + var1.worldName);
+               System.out.println(file.getAbsolutePath());
+               this.statFileWriter = new StatFileWriter(this.session, file.getAbsoluteFile());
+           }
+           AchievementList.openInventory.setStatStringFormatter(new StatStringFormatKeyInv(this));
+       }
    }
+    public void changeWorld(World var1, String var2, EntityPlayer var3) {
+        this.renderViewEntity = null;
+        this.loadingScreen.printText(var2);
+        this.loadingScreen.displayLoadingString("");
+        this.sndManager.playStreaming((String) null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+        if (this.theWorld != null) {
+            this.theWorld.saveWorldIndirectly(this.loadingScreen);
+        }
+
+        this.theWorld = var1;
+        if (var1 != null) {
+            this.initStatWriter(var1);
+            this.statFileWriter.syncStats();
+            this.playerController.func_717_a(var1);
+            if (!this.isMultiplayerWorld()) {
+                if (var3 == null) {
+                    this.thePlayer = (EntityPlayerSP) var1.func_4085_a(EntityPlayerSP.class);
+                }
+            } else if (this.thePlayer != null) {
+                this.thePlayer.preparePlayerToSpawn();
+                if (var1 != null) {
+                    var1.entityJoinedWorld(this.thePlayer);
+                }
+            }
+
+            if (!var1.multiplayerWorld) {
+                this.preloadWorld(var2);
+            }
+
+            if (this.thePlayer == null) {
+                this.thePlayer = (EntityPlayerSP) this.playerController.createPlayer(var1);
+                this.thePlayer.preparePlayerToSpawn();
+                this.playerController.flipPlayer(this.thePlayer);
+            }
+
+            this.thePlayer.movementInput = new MovementInputFromOptions(this.gameSettings);
+            if (this.renderGlobal != null) {
+                this.renderGlobal.changeWorld(var1);
+            }
+
+            if (this.effectRenderer != null) {
+                this.effectRenderer.clearEffects(var1);
+            }
+
+            this.playerController.func_6473_b(this.thePlayer);
+            if (var3 != null) {
+                var1.emptyMethod1();
+            }
+
+            IChunkProvider var4 = var1.getIChunkProvider();
+            if (var4 instanceof ChunkProviderLoadOrGenerate) {
+                ChunkProviderLoadOrGenerate var5 = (ChunkProviderLoadOrGenerate) var4;
+                int var6 = MathHelper.floor_float((float) ((int) this.thePlayer.posX)) >> 4;
+                int var7 = MathHelper.floor_float((float) ((int) this.thePlayer.posZ)) >> 4;
+                var5.setCurrentChunkOver(var6, var7);
+            }
+
+            var1.spawnPlayerWithLoadedChunks(this.thePlayer);
+            if (var1.isNewWorld) {
+                var1.saveWorldIndirectly(this.loadingScreen);
+            }
+
+            this.renderViewEntity = this.thePlayer;
+        } else {
+            this.thePlayer = null;
+            this.statFileWriter = null;
+        }
+
+        System.gc();
+        this.systemTime = 0L;
+    }
 
    private void convertMapFormat(String var1, String var2) {
       this.loadingScreen.printText("Converting World to " + this.saveLoader.func_22178_a());

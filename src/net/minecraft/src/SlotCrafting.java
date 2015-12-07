@@ -24,24 +24,26 @@ public class SlotCrafting extends Slot {
       return false;
    }
 
+   @Override
    public void onPickupFromSlot(ItemStack var1) {
       var1.onCrafting(this.thePlayer.worldObj, this.thePlayer);
       if(var1.itemID == Block.workbench.blockID) {
-         this.thePlayer.addStat(AchievementList.buildWorkBench, 1);
+         this.thePlayer.triggerAchievement(AchievementList.buildWorkBench);
       } else if(var1.itemID == Item.pickaxeWood.shiftedIndex) {
-         this.thePlayer.addStat(AchievementList.buildPickaxe, 1);
+         this.thePlayer.triggerAchievement(AchievementList.buildPickaxe);
       } else if(var1.itemID == Block.stoneOvenIdle.blockID) {
-         this.thePlayer.addStat(AchievementList.buildFurnace, 1);
+         this.thePlayer.triggerAchievement(AchievementList.buildFurnace);
       } else if(var1.itemID == Item.hoeWood.shiftedIndex) {
-         this.thePlayer.addStat(AchievementList.buildHoe, 1);
+         this.thePlayer.triggerAchievement(AchievementList.buildHoe);
       } else if(var1.itemID == Item.bread.shiftedIndex) {
-         this.thePlayer.addStat(AchievementList.makeBread, 1);
+         this.thePlayer.triggerAchievement(AchievementList.makeBread);
       } else if(var1.itemID == Item.cake.shiftedIndex) {
-         this.thePlayer.addStat(AchievementList.bakeCake, 1);
+         this.thePlayer.triggerAchievement(AchievementList.bakeCake);
       } else if(var1.itemID == Item.pickaxeStone.shiftedIndex) {
-         this.thePlayer.addStat(AchievementList.buildBetterPickaxe, 1);
+         this.thePlayer.triggerAchievement(AchievementList.buildPickaxe);
+         this.thePlayer.triggerAchievement(AchievementList.buildBetterPickaxe);
       } else if(var1.itemID == Item.swordWood.shiftedIndex) {
-         this.thePlayer.addStat(AchievementList.buildSword, 1);
+         this.thePlayer.triggerAchievement(AchievementList.buildSword);
       }
 
       for(int var2 = 0; var2 < this.craftMatrix.getSizeInventory(); ++var2) {

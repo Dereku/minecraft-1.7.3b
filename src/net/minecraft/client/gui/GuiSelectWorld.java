@@ -4,21 +4,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.List;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiCreateWorld;
-import net.minecraft.client.gui.GuiRenameWorld;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiWorldSlot;
-import net.minecraft.client.gui.GuiYesNo;
-import net.minecraft.src.ISaveFormat;
 import net.minecraft.src.ISaveFormat;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.PlayerControllerSP;
 import net.minecraft.src.PlayerControllerSP;
 import net.minecraft.src.SaveFormatComparator;
-import net.minecraft.src.SaveFormatComparator;
-import net.minecraft.src.StringTranslate;
 import net.minecraft.src.StringTranslate;
 
 public class GuiSelectWorld extends GuiScreen {
@@ -86,6 +75,7 @@ public class GuiSelectWorld extends GuiScreen {
       this.buttonDelete.enabled = false;
    }
 
+   @Override
    protected void actionPerformed(GuiButton var1) {
       if(var1.enabled) {
          if(var1.id == 2) {
