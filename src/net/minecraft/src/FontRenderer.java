@@ -15,7 +15,6 @@ import org.lwjgl.opengl.GL11;
 
 public class FontRenderer {
 
-    public static boolean betterFontsEnabled = true;
     public StringCache stringCache;
     public boolean dropShadowEnabled = true;
 
@@ -125,18 +124,9 @@ public class FontRenderer {
     }
 
     /**
-     * Render string either left or right aligned depending on bidiFlag
-     */
-    private int renderStringAligned(String par1Str, int par2, int par3, int par4, int par5, boolean par6) {
-        int var7 = this.getStringWidth(par1Str);
-        par2 = par2 + par4 - var7;
-
-        return this.renderString(par1Str, par2, par3, par5, par6);
-    }
-
-    /**
      * Render single line string by setting GL color, current (posX,posY), and
      * calling renderStringAtPos()
+     * par5 - drawWithShadow
      */
     private int renderString(String par1Str, int par2, int par3, int par4, boolean par5) {
         if (par1Str == null) {
@@ -184,22 +174,21 @@ public class FontRenderer {
     /**
      * Splits and draws a String with wordwrap (maximum length is parameter k)
      */
-    public void drawSplitString(String par1Str, int par2, int par3, int par4, int par5) {
+    public void drawSplitString(String par1Str, int par2, int par3, int stringWidth, int par5) {
         this.textColor = par5;
         par1Str = this.trimStringNewline(par1Str);
-        this.renderSplitString(par1Str, par2, par3, par4, false);
+        this.renderSplitString(par1Str, par2, par3, stringWidth, false);
     }
 
     /**
      * Perform actual work of rendering a multi-line string with wordwrap and
      * with darker drop shadow color if flag is set
      */
-    private void renderSplitString(String par1Str, int par2, int par3, int par4, boolean par5) {
-        List var6 = Arrays.asList(this.wrapFormattedStringToWidth(par1Str, par2).split("\n"));
-
-        for (Iterator var7 = var6.iterator(); var7.hasNext(); par3 += this.FONT_HEIGHT) {
+    private void renderSplitString(String text, int posX, int posY, int stringWidth, boolean withShadow) {
+        List var6 = Arrays.asList(this.wrapFormattedStringToWidth(text, stringWidth).split("\n"));
+        for (Iterator var7 = var6.iterator(); var7.hasNext(); posY += (this.FONT_HEIGHT / 2)) {
             String var8 = (String) var7.next();
-            this.renderStringAligned(var8, par2, par3, par4, this.textColor, par5);
+            this.renderString(var8, posX, posY, textColor, withShadow);
         }
     }
 
@@ -207,25 +196,25 @@ public class FontRenderer {
      * Returns the width of the wordwrapped String (maximum length is parameter
      * k)
      */
-    public int splitStringWidth(String par1Str, int par2) {
-        return this.FONT_HEIGHT * Arrays.asList(this.wrapFormattedStringToWidth(par1Str, par2).split("\n")).size();
+    public int splitStringWidth(String text, int toSize ){
+        return this.FONT_HEIGHT * Arrays.asList(this.wrapFormattedStringToWidth(text, toSize).split("\n")).size();
     }
 
     /**
      * Inserts newline and formatting into a string to wrap it within the
      * specified width.
      */
-    private String wrapFormattedStringToWidth(String par1Str, int par2) {
-        int var3 = this.stringCache.sizeStringToWidth(par1Str, par2);
+    private String wrapFormattedStringToWidth(String text, int toSize) {
+        int var3 = this.stringCache.sizeStringToWidth(text, toSize);
 
-        if (par1Str.length() <= var3) {
-            return par1Str;
+        if (text.length() <= var3) {
+            return text;
         } else {
-            String var4 = par1Str.substring(0, var3);
-            char var5 = par1Str.charAt(var3);
+            String var4 = text.substring(0, var3);
+            char var5 = text.charAt(var3);
             boolean var6 = var5 == 32 || var5 == 10;
-            String var7 = getFormatFromString(var4) + par1Str.substring(var3 + (var6 ? 1 : 0));
-            return var4 + "\n" + this.wrapFormattedStringToWidth(var7, par2);
+            String var7 = getFormatFromString(var4) + text.substring(var3 + (var6 ? 1 : 0));
+            return var4 + "\n" + this.wrapFormattedStringToWidth(var7, toSize);
         }
     }
 

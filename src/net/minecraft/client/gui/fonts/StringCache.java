@@ -95,7 +95,7 @@ public class StringCache {
      * Reference to the unicode.FontRenderer class. Needed for creating
      * GlyphVectors and retrieving glyph texture coordinates.
      */
-    private final GlyphCache glyphCache;
+    public final GlyphCache glyphCache;
 
     /**
      * Color codes from original FontRender class. First 16 entries are the
@@ -718,7 +718,7 @@ public class StringCache {
         width += width;
 
         /* The glyph array for a string is sorted by the string's logical character position */
-        Glyph glyphs[] = cacheString(str).glyphs;
+        Glyph[] glyphs = cacheString(str).glyphs;
 
         /* Index of the last whitespace found in the string; used if breakAtSpaces is true */
         int wsIndex = -1;

@@ -166,7 +166,7 @@ public abstract class Minecraft implements Runnable {
 
 
    @SuppressWarnings({"ResultOfObjectAllocationIgnored", "LeakingThisInConstructor"})
-   public Minecraft(Component var1, Canvas var2, /*MinecraftApplet var3,*/ int var4, int var5, boolean var6) {
+   public Minecraft(Component var1, Canvas var2, int var4, int var5, boolean var6) {
       StatList.func_27360_a();
       this.tempDisplayHeight = var5;
       this.fullscreen = var6;
@@ -605,7 +605,10 @@ public abstract class Minecraft implements Runnable {
             this.func_28002_e();
             var21.printStackTrace();
             this.onMinecraftCrash(new UnexpectedThrowable("Unexpected error", var21));
-        } finally {
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            this.onMinecraftCrash(new UnexpectedThrowable("Unexpected error", ex));
+        }finally {
             this.shutdownMinecraftApplet();
         }
 

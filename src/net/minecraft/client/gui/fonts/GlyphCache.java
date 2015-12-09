@@ -37,8 +37,19 @@ import java.awt.Font;
 import java.awt.RenderingHints;
 import java.awt.Rectangle;
 import java.awt.AlphaComposite;
+import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
+import sun.font.CreatedFontTracker;
+import sun.font.GlyphLayout;
+import sun.font.StandardGlyphVector;
+import sun.font.SunLayoutEngine;
 
 /**
  * The GlyphCache class is responsible for caching pre-rendered images of every
@@ -132,7 +143,7 @@ public class GlyphCache {
      * between stringImage.
      */
     private final Graphics2D glyphCacheGraphics = glyphCacheImage.createGraphics();
-
+    
     /**
      * Needed for all text layout operations that create GlyphVectors (maps
      * point size to pixel size).
@@ -302,7 +313,15 @@ public class GlyphCache {
     void setDefaultFont(String name, int size, boolean antiAlias) {
         System.out.println("BetterFonts loading font \"" + name + "\"");
         usedFonts.clear();
-        usedFonts.add(new Font(name, Font.PLAIN, 1));
+        File file = new File(Minecraft.getMinecraftDir().getAbsolutePath() + File.separator + "font", "Exo2.ttf");
+        try {
+            Font font = Font.createFont(Font.TRUETYPE_FONT, file);
+            usedFonts.add(font);
+        } catch (FontFormatException | IOException ex) {
+            Logger.getLogger(GlyphCache.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//        usedFonts.add(new Font(name, Font.TRUETYPE_FONT, size));
+        
 
         fontSize = size;
         antiAliasEnabled = antiAlias;
@@ -321,12 +340,18 @@ public class GlyphCache {
      * Font.LAYOUT_LEFT_TO_RIGHT
      * @return the newly created GlyphVector
      */
-    GlyphVector layoutGlyphVector(Font font, char text[], int start, int limit, int layoutFlags) {
+    GlyphVector layoutGlyphVector(Font font, char[] text, int start, int limit, int layoutFlags) {
         /* Ensure this font is already in fontCache so it can be referenced by cacheGlyphs() later on */
         if (!fontCache.containsKey(font)) {
             fontCache.put(font, fontCache.size());
         }
-        return font.layoutGlyphVector(fontRenderContext, text, start, limit, layoutFlags);
+        GlyphLayout gl = GlyphLayout.get(SunLayoutEngine.instance());
+        StandardGlyphVector tgv = new StandardGlyphVector(font, text, fontRenderContext);
+        StandardGlyphVector sgv = gl.layout(font, fontRenderContext, text, start, limit/* - start*/, layoutFlags, tgv);
+        GlyphLayout.done(gl);
+        return tgv;
+//        return font.layoutGlyphVector(fontRenderContext, text, start, limit, layoutFlags);
+//        return font.createGlyphVector(fontRenderContext, text);
     }
 
     /**
