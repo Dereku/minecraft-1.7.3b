@@ -39,18 +39,12 @@ import java.awt.Rectangle;
 import java.awt.AlphaComposite;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
-import sun.font.CreatedFontTracker;
-import sun.font.GlyphLayout;
-import sun.font.StandardGlyphVector;
-import sun.font.SunLayoutEngine;
 
 /**
  * The GlyphCache class is responsible for caching pre-rendered images of every
@@ -348,13 +342,7 @@ public class GlyphCache {
         if (!fontCache.containsKey(font)) {
             fontCache.put(font, fontCache.size());
         }
-        GlyphLayout gl = GlyphLayout.get(SunLayoutEngine.instance());
-        StandardGlyphVector tgv = new StandardGlyphVector(font, text, fontRenderContext);
-        StandardGlyphVector sgv = gl.layout(font, fontRenderContext, text, start, limit/* - start*/, layoutFlags, tgv);
-        GlyphLayout.done(gl);
-        return tgv;
-//        return font.layoutGlyphVector(fontRenderContext, text, start, limit, layoutFlags);
-//        return font.createGlyphVector(fontRenderContext, text);
+        return font.layoutGlyphVector(fontRenderContext, text, start, limit, layoutFlags);
     }
 
     /**

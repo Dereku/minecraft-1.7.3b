@@ -67,15 +67,15 @@ public class World implements IBlockAccess {
     public int field_27172_i;
     public boolean editingBlocks;
     private long lockTimestamp;
-    protected int autosavePeriod;
+    public int autosavePeriod;
     public int difficultySetting;
     public Random rand;
     public boolean isNewWorld;
     public final WorldProvider worldProvider;
     protected List worldAccesses;
-    protected IChunkProvider chunkProvider;
+    public IChunkProvider chunkProvider;
     protected final ISaveHandler saveHandler;
-    protected WorldInfo worldInfo;
+    public WorldInfo worldInfo;
     public boolean findingSpawnPoint;
     private boolean allPlayersSleeping;
     public MapStorage mapStorage;

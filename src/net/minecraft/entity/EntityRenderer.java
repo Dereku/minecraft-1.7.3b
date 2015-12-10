@@ -4,26 +4,9 @@ import java.nio.FloatBuffer;
 import java.util.List;
 import java.util.Random;
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.client.block.Block;
 import net.minecraft.world.chunk.ChunkProviderLoadOrGenerate;
-import net.minecraft.src.ClippingHelperImpl;
-import net.minecraft.src.EffectRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityPlayer;
-import net.minecraft.entity.EntityRainFX;
-import net.minecraft.entity.EntitySmokeFX;
-import net.minecraft.src.Frustrum;
-import net.minecraft.src.GLAllocation;
-import net.minecraft.src.IChunkProvider;
-import net.minecraft.client.item.ItemRenderer;
-import net.minecraft.src.Material;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.MouseFilter;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.PlayerControllerTest;
 import net.minecraft.client.render.RenderGlobal;
 import net.minecraft.client.render.RenderHelper;
 import net.minecraft.src.AxisAlignedBB;
@@ -33,18 +16,21 @@ import net.minecraft.src.Frustrum;
 import net.minecraft.src.GLAllocation;
 import net.minecraft.src.IChunkProvider;
 import net.minecraft.client.item.ItemRenderer;
+import net.minecraft.client.render.RenderBlocks;
+import net.minecraft.client.render.RenderManager;
+import net.minecraft.src.Config;
+import net.minecraft.src.ItemRendererHD;
 import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MouseFilter;
 import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.PlayerControllerTest;
 import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.Tessellator;
-import net.minecraft.src.Vec3D;
 import net.minecraft.src.Vec3D;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldProvider;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
@@ -62,10 +48,6 @@ public class EntityRenderer {
    private Entity pointedEntity = null;
    private MouseFilter mouseFilterXAxis = new MouseFilter();
    private MouseFilter mouseFilterYAxis = new MouseFilter();
-   private MouseFilter mouseFilterDummy1 = new MouseFilter();
-   private MouseFilter mouseFilterDummy2 = new MouseFilter();
-   private MouseFilter mouseFilterDummy3 = new MouseFilter();
-   private MouseFilter mouseFilterDummy4 = new MouseFilter();
    private float thirdPersonDistance = 4.0F;
    private float field_22227_s = 4.0F;
    private float debugCamYaw = 0.0F;
@@ -92,6 +74,8 @@ public class EntityRenderer {
    float fogColorBlue;
    private float fogColor2;
    private float fogColor1;
+   public boolean zoomMode = false;
+   private WorldProvider updatedWorldProvider = null;
 
 
    public EntityRenderer(Minecraft var1) {
@@ -184,6 +168,20 @@ public class EntityRenderer {
          var3 = 60.0F;
       }
 
+       if (Keyboard.isKeyDown(this.mc.gameSettings.ofKeyBindZoom.keyCode)) {
+           if (!this.zoomMode) {
+               this.zoomMode = true;
+               this.mc.gameSettings.smoothCamera = true;
+           }
+
+           if (this.zoomMode) {
+               var3 /= 4.0F;
+           }
+       } else if (this.zoomMode) {
+           this.zoomMode = false;
+           this.mc.gameSettings.smoothCamera = false;
+       }
+      
       if(var2.health <= 0) {
          float var4 = (float)var2.deathTime + var1;
          var3 /= (1.0F - 500.0F / (var4 + 500.0F)) * 2.0F + 1.0F;
@@ -235,7 +233,7 @@ public class EntityRenderer {
       if(var2.isPlayerSleeping()) {
          var3 = (float)((double)var3 + 1.0D);
          GL11.glTranslatef(0.0F, 0.3F, 0.0F);
-         if(!this.mc.gameSettings.debugCamEnable) {
+         if(!this.mc.gameSettings.field_22273_E) { 
             int var10 = this.mc.theWorld.getBlockId(MathHelper.floor_double(var2.posX), MathHelper.floor_double(var2.posY), MathHelper.floor_double(var2.posZ));
             if(var10 == Block.bed.blockID) {
                int var11 = this.mc.theWorld.getBlockMetadata(MathHelper.floor_double(var2.posX), MathHelper.floor_double(var2.posY), MathHelper.floor_double(var2.posZ));
@@ -250,7 +248,7 @@ public class EntityRenderer {
          double var27 = (double)(this.field_22227_s + (this.thirdPersonDistance - this.field_22227_s) * var1);
          float var13;
          float var28;
-         if(this.mc.gameSettings.debugCamEnable) {
+         if(this.mc.gameSettings.field_22273_E) { 
             var28 = this.prevDebugCamYaw + (this.debugCamYaw - this.prevDebugCamYaw) * var1;
             var13 = this.prevDebugCamPitch + (this.debugCamPitch - this.prevDebugCamPitch) * var1;
             GL11.glTranslatef(0.0F, 0.0F, (float)(-var27));
@@ -289,7 +287,7 @@ public class EntityRenderer {
          GL11.glTranslatef(0.0F, 0.0F, -0.1F);
       }
 
-      if(!this.mc.gameSettings.debugCamEnable) {
+      if(!this.mc.gameSettings.field_22273_E) {
          GL11.glRotatef(var2.prevRotationPitch + (var2.rotationPitch - var2.prevRotationPitch) * var1, 1.0F, 0.0F, 0.0F);
          GL11.glRotatef(var2.prevRotationYaw + (var2.rotationYaw - var2.prevRotationYaw) * var1 + 180.0F, 0.0F, 1.0F, 0.0F);
       }
@@ -303,6 +301,20 @@ public class EntityRenderer {
 
    private void setupCameraTransform(float var1, int var2) {
       this.farPlaneDistance = (float)(256 >> this.mc.gameSettings.renderDistance);
+       if (Config.isFarView()) {
+           if (this.farPlaneDistance < 256.0F) {
+               this.farPlaneDistance *= 3.0F;
+           } else {
+               this.farPlaneDistance *= 2.0F;
+           }
+       }
+
+       if (Config.isFogFancy()) {
+           this.farPlaneDistance *= 0.95F;
+       } else {
+           this.farPlaneDistance *= 0.83F;
+       }
+       
       GL11.glMatrixMode(5889 /*GL_PROJECTION*/);
       GL11.glLoadIdentity();
       float var3 = 0.07F;
@@ -369,7 +381,85 @@ public class EntityRenderer {
 
    }
 
+    public void updateWorldLightLevels() {
+        if (this.mc != null) {
+            if (this.mc.theWorld != null) {
+                if (this.mc.theWorld.worldProvider != null) {
+                    float brightness = this.mc.gameSettings.ofBrightness;
+                    float[] lightLevels = this.mc.theWorld.worldProvider.lightBrightnessTable;
+                    float minLevel = 0.05F;
+
+                    if (this.mc.theWorld.worldProvider != null && this.mc.theWorld.worldProvider.isNether) {
+                        minLevel = 0.1F + brightness * 0.15F;
+                    }
+
+                    float k = 3.0F * (1.0F - brightness);
+
+                    for (int i = 0; i <= 15; ++i) {
+                        float f1 = 1.0F - (float) i / 15.0F;
+
+                        lightLevels[i] = (1.0F - f1) / (f1 * k + 1.0F) * (1.0F - minLevel) + minLevel;
+                    }
+
+                    Config.setLightLevels(lightLevels);
+                }
+            }
+        }
+    }
+   
    public void updateCameraAndRender(float var1) {
+       World world = this.mc.theWorld;
+
+       if (world != null && world.worldProvider != null && this.updatedWorldProvider != world.worldProvider) {
+           this.updateWorldLightLevels();
+           this.updatedWorldProvider = this.mc.theWorld.worldProvider;
+       }
+
+       RenderBlocks.fancyGrass = Config.isGrassFancy();
+       if (Config.isBetterGrassFancy()) {
+           RenderBlocks.fancyGrass = true;
+       }
+
+       Block.leaves.setGraphicsLevel(Config.isTreesFancy());
+       Config.setMinecraft(this.mc);
+       if (Config.getIconWidthTerrain() > 16 && !(this.itemRenderer instanceof ItemRendererHD)) {
+           this.itemRenderer = new ItemRendererHD(this.mc);
+           RenderManager.instance.itemRenderer = this.itemRenderer;
+       }
+
+       if (world != null) {
+           world.autosavePeriod = this.mc.gameSettings.ofAutoSaveTicks;
+       }
+
+       if (!Config.isWeatherEnabled() && world != null && world.worldInfo != null) {
+           world.worldInfo.setIsRaining(false);
+       }
+
+       if (world != null) {
+           long scaledresolution = world.getWorldTime();
+           long j = scaledresolution % 24000L;
+
+           if (Config.isTimeDayOnly()) {
+               if (j <= 1000L) {
+                   world.setWorldTime(scaledresolution - j + 1001L);
+               }
+
+               if (j >= 11000L) {
+                   world.setWorldTime(scaledresolution - j + 24001L);
+               }
+           }
+
+           if (Config.isTimeNightOnly()) {
+               if (j <= 14000L) {
+                   world.setWorldTime(scaledresolution - j + 14001L);
+               }
+
+               if (j >= 22000L) {
+                   world.setWorldTime(scaledresolution - j + 24000L + 14001L);
+               }
+           }
+       }
+       
       if(!Display.isActive()) {
          if(System.currentTimeMillis() - this.prevFrameTime > 500L) {
             this.mc.displayInGameMenu();

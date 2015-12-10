@@ -62,7 +62,7 @@ public abstract class EntityLiving extends Entity {
    protected float moveStrafing;
    protected float moveForward;
    protected float randomYawVelocity;
-   protected boolean isJumping = false;
+   public boolean isJumping = false;
    protected float defaultPitch = 0.0F;
    protected float moveSpeed = 0.7F;
    private Entity currentTarget;

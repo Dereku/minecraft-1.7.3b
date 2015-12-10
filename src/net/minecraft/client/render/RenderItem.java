@@ -4,21 +4,11 @@ import java.util.Random;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityItem;
 import net.minecraft.entity.EntityItem;
 import net.minecraft.src.FontRenderer;
-import net.minecraft.src.FontRenderer;
-import net.minecraft.client.item.Item;
 import net.minecraft.client.item.Item;
 import net.minecraft.client.item.ItemStack;
-import net.minecraft.client.item.ItemStack;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.MathHelper;
-import net.minecraft.client.render.Render;
-import net.minecraft.client.render.RenderBlocks;
-import net.minecraft.client.render.RenderEngine;
-import net.minecraft.src.Tessellator;
 import net.minecraft.src.Tessellator;
 import org.lwjgl.opengl.GL11;
 
@@ -156,9 +146,9 @@ public class RenderItem extends Render {
          }
 
          GL11.glRotatef(-90.0F, 0.0F, 1.0F, 0.0F);
-         this.renderBlocks.useInventoryTint = this.field_27004_a;
+//         this.renderBlocks.useInventoryTint = this.field_27004_a;
          this.renderBlocks.renderBlockOnInventory(var14, var4, 1.0F);
-         this.renderBlocks.useInventoryTint = true;
+//         this.renderBlocks.useInventoryTint = true;
          GL11.glPopMatrix();
       } else if(var5 >= 0) {
          GL11.glDisable(2896 /*GL_LIGHTING*/);

@@ -2,17 +2,10 @@ package net.minecraft.client.block;
 
 import java.util.Random;
 import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.client.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.Entity;
 import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.Material;
 import net.minecraft.src.Material;
 import net.minecraft.src.Vec3D;
-import net.minecraft.src.Vec3D;
-import net.minecraft.world.World;
 import net.minecraft.world.World;
 
 public abstract class BlockFluid extends Block {

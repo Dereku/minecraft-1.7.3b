@@ -201,7 +201,7 @@ public class Block {
         return this;
     }
 
-    protected Block setLightOpacity(int var1) {
+    public Block setLightOpacity(int var1) {
         lightOpacity[this.blockID] = var1;
         return this;
     }

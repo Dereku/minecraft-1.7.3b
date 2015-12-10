@@ -2,26 +2,14 @@ package net.minecraft.client.block;
 
 import java.util.ArrayList;
 import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.client.block.Block;
-import net.minecraft.client.block.BlockPistonMoving;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.entity.EntityPlayer;
-import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.Material;
-import net.minecraft.src.Material;
-import net.minecraft.src.MathHelper;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.PistonBlockTextures;
-import net.minecraft.src.PistonBlockTextures;
-import net.minecraft.world.tiles.TileEntity;
 import net.minecraft.world.tiles.TileEntity;
 import net.minecraft.world.tiles.TileEntityPiston;
-import net.minecraft.world.tiles.TileEntityPiston;
-import net.minecraft.world.World;
 import net.minecraft.world.World;
 
 public class BlockPistonBase extends Block {

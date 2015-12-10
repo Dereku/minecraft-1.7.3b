@@ -1,29 +1,34 @@
 package net.minecraft.src;
 
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.ClippingHelper;
-import net.minecraft.src.ClippingHelperImpl;
-import net.minecraft.src.ICamera;
-
 public class Frustrum implements ICamera {
 
-   private ClippingHelper clippingHelper = ClippingHelperImpl.getInstance();
-   private double xPosition;
-   private double yPosition;
-   private double zPosition;
+    private final ClippingHelper clippingHelper = ClippingHelperImpl.getInstance();
+    private double xPosition;
+    private double yPosition;
+    private double zPosition;
 
+    @Override
+    public void setPosition(double d, double d1, double d2) {
+        this.xPosition = d;
+        this.yPosition = d1;
+        this.zPosition = d2;
+    }
 
-   public void setPosition(double var1, double var3, double var5) {
-      this.xPosition = var1;
-      this.yPosition = var3;
-      this.zPosition = var5;
-   }
+    public boolean isBoxInFrustum(double d, double d1, double d2, double d3, double d4, double d5) {
+        return this.clippingHelper.isBoxInFrustum(d - this.xPosition, d1 - this.yPosition, d2 - this.zPosition, d3 - this.xPosition, d4 - this.yPosition, d5 - this.zPosition);
+    }
 
-   public boolean isBoxInFrustum(double var1, double var3, double var5, double var7, double var9, double var11) {
-      return this.clippingHelper.isBoxInFrustum(var1 - this.xPosition, var3 - this.yPosition, var5 - this.zPosition, var7 - this.xPosition, var9 - this.yPosition, var11 - this.zPosition);
-   }
+    @Override
+    public boolean isBoundingBoxInFrustum(AxisAlignedBB axisalignedbb) {
+        return this.isBoxInFrustum(axisalignedbb.minX, axisalignedbb.minY, axisalignedbb.minZ, axisalignedbb.maxX, axisalignedbb.maxY, axisalignedbb.maxZ);
+    }
 
-   public boolean isBoundingBoxInFrustum(AxisAlignedBB var1) {
-      return this.isBoxInFrustum(var1.minX, var1.minY, var1.minZ, var1.maxX, var1.maxY, var1.maxZ);
-   }
+    public boolean isBoxInFrustumFully(double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
+        return this.clippingHelper.isBoxInFrustumFully(minX - this.xPosition, minY - this.yPosition, minZ - this.zPosition, maxX - this.xPosition, maxY - this.yPosition, maxZ - this.zPosition);
+    }
+
+    @Override
+    public boolean isBoundingBoxInFrustumFully(AxisAlignedBB aab) {
+        return this.isBoxInFrustumFully(aab.minX, aab.minY, aab.minZ, aab.maxX, aab.maxY, aab.maxZ);
+    }
 }
