@@ -72,7 +72,7 @@ public class FontRenderer {
             try {
                 properties.load(new FileInputStream(cfg));
             } catch (Exception ex) {
-                properties.setProperty("fontName", "SansSerif");
+                properties.setProperty("fontName", "local");
                 properties.setProperty("fontSize", "18");
                 properties.setProperty("antialias", "false");
                 properties.setProperty("dropshadow", "true");
@@ -86,12 +86,12 @@ public class FontRenderer {
             try {
                 dropShadowEnabled = Boolean.parseBoolean(properties.getProperty("dropshadow", "true"));
                 this.stringCache.setDefaultFont(
-                        properties.getProperty("fontName", "SansSerif"), 
+                        properties.getProperty("fontName", "local"), 
                         Integer.parseInt(properties.getProperty("fontSize", "18")), 
                         Boolean.parseBoolean(properties.getProperty("antialias", "false")));
             } catch (Exception ex) {
                 dropShadowEnabled = true;
-                this.stringCache.setDefaultFont("SansSerif", 18, false);
+                this.stringCache.setDefaultFont("local", 18, false);
             }
         }
     }

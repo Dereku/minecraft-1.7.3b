@@ -41,6 +41,7 @@ import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -313,15 +314,17 @@ public class GlyphCache {
     void setDefaultFont(String name, int size, boolean antiAlias) {
         System.out.println("BetterFonts loading font \"" + name + "\"");
         usedFonts.clear();
-        File file = new File(Minecraft.getMinecraftDir().getAbsolutePath() + File.separator + "font", "Exo2.ttf");
-        try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, file);
-            usedFonts.add(font);
-        } catch (FontFormatException | IOException ex) {
-            Logger.getLogger(GlyphCache.class.getName()).log(Level.SEVERE, null, ex);
+        if (name.equalsIgnoreCase("local")) {
+            InputStream is = Minecraft.class.getResourceAsStream("/assets/font/font.ttf");
+            try {
+                Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+                usedFonts.add(font);
+            } catch (FontFormatException | IOException ex) {
+                Logger.getLogger(GlyphCache.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            usedFonts.add(new Font(name, Font.TRUETYPE_FONT, size));
         }
-//        usedFonts.add(new Font(name, Font.TRUETYPE_FONT, size));
-        
 
         fontSize = size;
         antiAliasEnabled = antiAlias;
