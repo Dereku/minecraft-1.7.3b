@@ -64,7 +64,7 @@ public class FontRenderer {
             this.colorCode[var9] = (var11 & 255) << 16 | (var12 & 255) << 8 | var13 & 255;
         }
         if (this.stringCache == null) {
-            this.stringCache = new StringCache(this.colorCode);
+            this.stringCache = new StringCache(this.colorCode, par1GameSettings.mc);
 
             /* Read optional config file to override the default font name/size */
             Properties properties = new Properties();

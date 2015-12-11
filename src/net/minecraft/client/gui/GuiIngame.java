@@ -74,12 +74,12 @@ public class GuiIngame extends Gui {
       }
 
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/gui/gui.png"));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture("/assets/gui/gui.png"));
       InventoryPlayer var11 = this.mc.thePlayer.inventory;
       this.zLevel = -90.0F;
       this.drawTexturedModalRect(var6 / 2 - 91, var7 - 22, 0, 0, 182, 22);
       this.drawTexturedModalRect(var6 / 2 - 91 - 1 + var11.currentItem * 20, var7 - 22 - 1, 0, 22, 24, 22);
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/gui/icons.png"));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture("/assets/gui/icons.png"));
       GL11.glEnable(3042 /*GL_BLEND*/);
       GL11.glBlendFunc(775, 769);
       this.drawTexturedModalRect(var6 / 2 - 7, var7 / 2 - 7, 0, 0, 16, 16);
@@ -294,7 +294,7 @@ public class GuiIngame extends Gui {
       GL11.glBlendFunc(770, 771);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       GL11.glDisable(3008 /*GL_ALPHA_TEST*/);
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("%blur%/assets/misc/pumpkinblur.png"));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture("%blur%/assets/misc/pumpkinblur.png"));
       Tessellator var3 = Tessellator.instance;
       var3.startDrawingQuads();
       var3.addVertexWithUV(0.0D, (double)var2, -90.0D, 0.0D, 1.0D);
@@ -323,7 +323,7 @@ public class GuiIngame extends Gui {
       GL11.glDepthMask(false);
       GL11.glBlendFunc(0, 769);
       GL11.glColor4f(this.prevVignetteBrightness, this.prevVignetteBrightness, this.prevVignetteBrightness, 1.0F);
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("%blur%/assets/misc/vignette.png"));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture("%blur%/assets/misc/vignette.png"));
       Tessellator var4 = Tessellator.instance;
       var4.startDrawingQuads();
       var4.addVertexWithUV(0.0D, (double)var3, -90.0D, 0.0D, 1.0D);
@@ -349,7 +349,7 @@ public class GuiIngame extends Gui {
       GL11.glDepthMask(false);
       GL11.glBlendFunc(770, 771);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, var1);
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture(Minecraft.TERRAIN_TEXTURE));
       float var4 = (float)(Block.portal.blockIndexInTexture % 16) / 16.0F;
       float var5 = (float)(Block.portal.blockIndexInTexture / 16) / 16.0F;
       float var6 = (float)(Block.portal.blockIndexInTexture % 16 + 1) / 16.0F;
@@ -379,12 +379,12 @@ public class GuiIngame extends Gui {
             GL11.glTranslatef((float)(-(var2 + 8)), (float)(-(var3 + 12)), 0.0F);
          }
 
-         itemRenderer.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, var5, var2, var3);
+         itemRenderer.renderItemIntoGUI(this.mc.fontRenderer, this.mc.z, var5, var2, var3);
          if(var6 > 0.0F) {
             GL11.glPopMatrix();
          }
 
-         itemRenderer.renderItemOverlayIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, var5, var2, var3);
+         itemRenderer.renderItemOverlayIntoGUI(this.mc.fontRenderer, this.mc.z, var5, var2, var3);
       }
    }
 

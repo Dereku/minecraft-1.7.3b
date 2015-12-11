@@ -1,7 +1,5 @@
 package net.minecraft.src;
 
-import net.minecraft.src.MCHashEntry;
-
 public class MCHash {
 
    private transient MCHashEntry[] slots = new MCHashEntry[16];

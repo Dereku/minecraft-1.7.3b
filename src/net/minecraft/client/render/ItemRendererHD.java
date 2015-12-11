@@ -30,10 +30,10 @@ public class ItemRendererHD extends ItemRenderer {
             } else {
                 GL11.glPushMatrix();
                 if (itemstack.itemID < 256) {
-                    GL11.glBindTexture(3553, this.minecraft.renderEngine.getTexture("/assets/terrain.png"));
+                    GL11.glBindTexture(3553, this.minecraft.z.getTexture("/assets/terrain.png"));
                     num = Config.getIconWidthTerrain();
                 } else {
-                    GL11.glBindTexture(3553, this.minecraft.renderEngine.getTexture("/assets/gui/items.png"));
+                    GL11.glBindTexture(3553, this.minecraft.z.getTexture("/assets/gui/items.png"));
                     num = Config.getIconWidthItems();
                 }
 

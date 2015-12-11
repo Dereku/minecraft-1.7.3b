@@ -152,8 +152,8 @@ public class GuiAchievements extends GuiScreen {
             var5 = guiMapRight - 1;
         }
 
-        int var6 = this.mc.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE);
-        int var7 = this.mc.renderEngine.getTexture("/assets/achievement/bg.png");
+        int var6 = this.mc.z.getTexture(Minecraft.TERRAIN_TEXTURE);
+        int var7 = this.mc.z.getTexture("/assets/achievement/bg.png");
         int var8 = (this.width - this.achievementsPaneWidth) / 2;
         int var9 = (this.height - this.achievementsPaneHeight) / 2;
         int var10 = var8 + 16;
@@ -166,7 +166,7 @@ public class GuiAchievements extends GuiScreen {
         GL11.glDisable(2896 /*GL_LIGHTING*/);
         GL11.glEnable('\u803a');
         GL11.glEnable(2903 /*GL_COLOR_MATERIAL*/);
-        this.mc.renderEngine.bindTexture(var6);
+        this.mc.z.bindTexture(var6);
         int var12 = var4 + 288 >> 4;
         int var13 = var5 + 288 >> 4;
         int var14 = (var4 + 288) % 16;
@@ -265,7 +265,7 @@ public class GuiAchievements extends GuiScreen {
                     GL11.glColor4f(var35, var35, var35, 1.0F);
                 }
 
-                this.mc.renderEngine.bindTexture(var7);
+                this.mc.z.bindTexture(var7);
                 frameWidth = var10 + var16;
                 stringWidth = var11 + frameHeight;
                 if (var30.getSpecial()) {
@@ -282,7 +282,7 @@ public class GuiAchievements extends GuiScreen {
 
                 GL11.glEnable(2896 /*GL_LIGHTING*/);
                 GL11.glEnable(2884 /*GL_CULL_FACE*/);
-                var29.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, var30.theItemStack, frameWidth + 3, stringWidth + 3);
+                var29.renderItemIntoGUI(this.mc.fontRenderer, this.mc.z, var30.theItemStack, frameWidth + 3, stringWidth + 3);
                 GL11.glDisable(2896 /*GL_LIGHTING*/);
                 if (!this.statFileWriter.canUnlockAchievement(var30)) {
                     var29.field_27004_a = true;
@@ -298,7 +298,7 @@ public class GuiAchievements extends GuiScreen {
         GL11.glDisable(2929 /*GL_DEPTH_TEST*/);
         GL11.glEnable(3042 /*GL_BLEND*/);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.mc.renderEngine.bindTexture(var7);
+        this.mc.z.bindTexture(var7);
         this.drawTexturedModalRect(var8, var9, 0, 0, this.achievementsPaneWidth, this.achievementsPaneHeight);
         GL11.glPopMatrix();
         this.zLevel = 0.0F;

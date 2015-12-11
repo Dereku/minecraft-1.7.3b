@@ -41,7 +41,7 @@ public class Tessellator {
     private int bufferSize;
     private boolean renderingChunk = false;
 
-    private Tessellator(int i) {
+    public Tessellator(int i) {
         this.bufferSize = i;
         this.byteBuffer = GLAllocation.createDirectByteBuffer(i * 4);
         this.intBuffer = this.byteBuffer.asIntBuffer();
@@ -51,6 +51,7 @@ public class Tessellator {
             this.vertexBuffers = GLAllocation.createDirectIntBuffer(this.vboCount);
             ARBVertexBufferObject.glGenBuffersARB(this.vertexBuffers);
         }
+
     }
 
     public void draw() {
@@ -58,7 +59,10 @@ public class Tessellator {
             throw new IllegalStateException("Not tesselating!");
         } else {
             this.isDrawing = false;
-            if (this.vertexCount > 0) {
+            if (!this.renderingChunk) {
+                GL11.glEnd();
+//                this.checkOpenGlError();
+            } else if (this.vertexCount > 0) {
                 this.byteBuffer.position(0);
                 this.byteBuffer.limit(this.rawBufferIndex * 4);
                 GL11.glEnableClientState('聸');
@@ -79,6 +83,7 @@ public class Tessellator {
                     this.floatBuffer.position(0);
                     GL11.glVertexPointer(3, 32, this.floatBuffer);
                 }
+
                 if (this.drawMode == 7 && Tessellator.convertQuadsToTriangles) {
                     GL11.glDrawArrays(4, 0, this.vertexCount);
                 } else {
@@ -97,6 +102,7 @@ public class Tessellator {
     private void reset() {
         this.vertexCount = 0;
         this.byteBuffer.clear();
+        this.intBuffer.clear();
         this.rawBufferIndex = 0;
         this.addedVertices = 0;
     }
@@ -105,13 +111,17 @@ public class Tessellator {
         this.startDrawing(7);
     }
 
-    public void startDrawing(int var1) {
+    public void startDrawing(int i) {
         if (this.isDrawing) {
             throw new IllegalStateException("Already tesselating!");
         } else {
+            if (!this.renderingChunk) {
+                GL11.glBegin(i);
+            }
+
             this.isDrawing = true;
             this.reset();
-            this.drawMode = var1;
+            this.drawMode = i;
             this.hasNormals = false;
             this.hasColor = false;
             this.hasTexture = false;
@@ -119,25 +129,26 @@ public class Tessellator {
         }
     }
 
-    public void setTextureUV(double var1, double var3) {
+    public void setTextureUV(double d, double d1) {
         this.hasTexture = true;
-        this.textureU = var1;
-        this.textureV = var3;
+        this.textureU = d;
+        this.textureV = d1;
         if (!this.renderingChunk) {
-            GL11.glTexCoord2f((float) var1, (float) var3);
+            GL11.glTexCoord2f((float) d, (float) d1);
         }
+
     }
 
-    public void setColorOpaque_F(float var1, float var2, float var3) {
-        this.setColorOpaque((int) (var1 * 255.0F), (int) (var2 * 255.0F), (int) (var3 * 255.0F));
+    public void setColorOpaque_F(float f, float f1, float f2) {
+        this.setColorOpaque((int) (f * 255.0F), (int) (f1 * 255.0F), (int) (f2 * 255.0F));
     }
 
-    public void setColorRGBA_F(float var1, float var2, float var3, float var4) {
-        this.setColorRGBA((int) (var1 * 255.0F), (int) (var2 * 255.0F), (int) (var3 * 255.0F), (int) (var4 * 255.0F));
+    public void setColorRGBA_F(float f, float f1, float f2, float f3) {
+        this.setColorRGBA((int) (f * 255.0F), (int) (f1 * 255.0F), (int) (f2 * 255.0F), (int) (f3 * 255.0F));
     }
 
-    public void setColorOpaque(int var1, int var2, int var3) {
-        this.setColorRGBA(var1, var2, var3, 255);
+    public void setColorOpaque(int i, int j, int k) {
+        this.setColorRGBA(i, j, k, 255);
     }
 
     public void setColorRGBA(int i, int j, int k, int l) {
@@ -186,9 +197,9 @@ public class Tessellator {
         }
     }
 
-    public void addVertexWithUV(double var1, double var3, double var5, double var7, double var9) {
-        this.setTextureUV(var7, var9);
-        this.addVertex(var1, var3, var5);
+    public void addVertexWithUV(double d, double d1, double d2, double d3, double d4) {
+        this.setTextureUV(d3, d4);
+        this.addVertex(d, d1, d2);
     }
 
     public void addVertex(double d, double d1, double d2) {
@@ -227,21 +238,24 @@ public class Tessellator {
                 this.draw();
                 this.isDrawing = true;
             }
+
         }
     }
 
-    public void setColorOpaque_I(int var1) {
-        int var2 = var1 >> 16 & 255;
-        int var3 = var1 >> 8 & 255;
-        int var4 = var1 & 255;
-        this.setColorOpaque(var2, var3, var4);
+    public void setColorOpaque_I(int i) {
+        int j = i >> 16 & 255;
+        int k = i >> 8 & 255;
+        int l = i & 255;
+
+        this.setColorOpaque(j, k, l);
     }
 
-    public void setColorRGBA_I(int var1, int var2) {
-        int var3 = var1 >> 16 & 255;
-        int var4 = var1 >> 8 & 255;
-        int var5 = var1 & 255;
-        this.setColorRGBA(var3, var4, var5, var2);
+    public void setColorRGBA_I(int i, int j) {
+        int k = i >> 16 & 255;
+        int l = i >> 8 & 255;
+        int i1 = i & 255;
+
+        this.setColorRGBA(k, l, i1, j);
     }
 
     public void disableColor() {
@@ -263,20 +277,21 @@ public class Tessellator {
         } else {
             System.out.println("ERROR: NORMALS IN CHUNK MODE !!!");
         }
+
     }
 
-    public void setTranslationD(double var1, double var3, double var5) {
-        this.xOffset = var1;
-        this.yOffset = var3;
-        this.zOffset = var5;
+    public void setTranslationD(double d, double d1, double d2) {
+        this.xOffset = d;
+        this.yOffset = d1;
+        this.zOffset = d2;
     }
 
-    public void setTranslationF(float var1, float var2, float var3) {
-        this.xOffset += (double) var1;
-        this.yOffset += (double) var2;
-        this.zOffset += (double) var3;
+    public void setTranslationF(float f, float f1, float f2) {
+        this.xOffset += (double) f;
+        this.yOffset += (double) f1;
+        this.zOffset += (double) f2;
     }
-    
+
     public void setRenderingChunk(boolean flag) {
         this.renderingChunk = flag;
     }
@@ -292,5 +307,4 @@ public class Tessellator {
         }
 
     }
-
 }

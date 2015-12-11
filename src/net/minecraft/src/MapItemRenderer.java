@@ -3,13 +3,7 @@ package net.minecraft.src;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.src.FontRenderer;
-import net.minecraft.src.GameSettings;
-import net.minecraft.src.MapColor;
-import net.minecraft.src.MapCoord;
-import net.minecraft.src.MapData;
 import net.minecraft.client.render.RenderEngine;
-import net.minecraft.src.Tessellator;
 import org.lwjgl.opengl.GL11;
 
 public class MapItemRenderer {
@@ -64,7 +58,7 @@ public class MapItemRenderer {
          }
       }
 
-      var2.createTextureFromBytes(this.intArray, 128, 128, this.bufferedImage);
+      var2.func_28150_a(this.intArray, 128, 128, this.bufferedImage);
       byte var15 = 0;
       byte var16 = 0;
       Tessellator var17 = Tessellator.instance;

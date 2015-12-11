@@ -91,11 +91,12 @@ public class RenderBlocks {
     public boolean field_22355_ae;
     public static float[][] redstoneColors = new float[16][];
 
-public RenderBlocks(IBlockAccess iblockaccess) {
+    public RenderBlocks(IBlockAccess iblockaccess) {
         this.blockAccess = iblockaccess;
     }
 
-    public RenderBlocks() {}
+    public RenderBlocks() {
+    }
 
     public void renderBlockUsingTexture(Block block, int i, int j, int k, int l) {
         this.overrideBlockTexture = l;
@@ -113,7 +114,7 @@ public RenderBlocks(IBlockAccess iblockaccess) {
         int l = block.getRenderType();
 
         block.setBlockBoundsBasedOnState(this.blockAccess, i, j, k);
-        return l == 0 ? this.renderStandardBlock(block, i, j, k) : (l == 4 ? this.renderBlockFluids(block, i, j, k) : (l == 13 ? this.renderBlockCactus(block, i, j, k) : (l == 1 ? this.renderBlockReed(block, i, j, k) : (l == 6 ? this.renderBlockCrops(block, i, j, k) : (l == 2 ? this.renderBlockTorch(block, i, j, k) : (l == 3 ? this.renderBlockFire(block, i, j, k) : (l == 5 ? this.renderBlockRedstoneWire(block, i, j, k) : (l == 8 ? this.renderBlockLadder(block, i, j, k) : (l == 7 ? this.renderBlockDoor(block, i, j, k) : (l == 9 ? this.renderBlockMinecartTrack((BlockRail) block, i, j, k) : (l == 10 ? this.renderBlockStairs(block, i, j, k) : (l == 11 ? this.renderBlockFence(block, i, j, k) : (l == 12 ? this.renderBlockLever(block, i, j, k) : (l == 14 ? this.renderBlockBed(block, i, j, k) : (l == 15 ? this.renderBlockRepeater(block, i, j, k) : (l == 16 ? this.func_31074_b(block, i, j, k, false) : (l == 17 ? this.func_31080_c(block, i, j, k, true) : (Config.hasModLoader() ? Config.callBoolean("ModLoader", "RenderWorldBlock", new Object[] { this, this.blockAccess, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), block, Integer.valueOf(l)}) : false))))))))))))))))));
+        return l == 0 ? this.renderStandardBlock(block, i, j, k) : (l == 4 ? this.renderBlockFluids(block, i, j, k) : (l == 13 ? this.renderBlockCactus(block, i, j, k) : (l == 1 ? this.renderBlockReed(block, i, j, k) : (l == 6 ? this.renderBlockCrops(block, i, j, k) : (l == 2 ? this.renderBlockTorch(block, i, j, k) : (l == 3 ? this.renderBlockFire(block, i, j, k) : (l == 5 ? this.renderBlockRedstoneWire(block, i, j, k) : (l == 8 ? this.renderBlockLadder(block, i, j, k) : (l == 7 ? this.renderBlockDoor(block, i, j, k) : (l == 9 ? this.renderBlockMinecartTrack((BlockRail) block, i, j, k) : (l == 10 ? this.renderBlockStairs(block, i, j, k) : (l == 11 ? this.renderBlockFence(block, i, j, k) : (l == 12 ? this.renderBlockLever(block, i, j, k) : (l == 14 ? this.renderBlockBed(block, i, j, k) : (l == 15 ? this.renderBlockRepeater(block, i, j, k) : (l == 16 ? this.func_31074_b(block, i, j, k, false) : (l == 17 ? this.func_31080_c(block, i, j, k, true) : (Config.hasModLoader() ? Config.callBoolean("ModLoader", "RenderWorldBlock", new Object[]{this, this.blockAccess, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), block, Integer.valueOf(l)}) : false))))))))))))))))));
     }
 
     private boolean renderBlockBed(Block block, int i, int j, int k) {
@@ -197,25 +198,25 @@ public RenderBlocks(IBlockAccess iblockaccess) {
         tessellator.addVertexWithUV(d21, d23, d25, d18, d20);
         f17 = ModelBed.headInvisibleFace[i1];
         if (flag) {
-            f17 = ModelBed.headInvisibleFace[ModelBed.headInvisibleFace[i1]];
+            f17 = ModelBed.headInvisibleFace[ModelBed.footInvisibleFaceRemap[i1]];
         }
 
         byte j11 = 4;
 
         switch (i1) {
-        case 0:
-            j11 = 5;
-            break;
+            case 0:
+                j11 = 5;
+                break;
 
-        case 1:
-            j11 = 3;
+            case 1:
+                j11 = 3;
 
-        case 2:
-        default:
-            break;
+            case 2:
+            default:
+                break;
 
-        case 3:
-            j11 = 2;
+            case 3:
+                j11 = 2;
         }
 
         float f21;
@@ -318,24 +319,24 @@ public RenderBlocks(IBlockAccess iblockaccess) {
         double d4 = 0.0D;
 
         switch (i1) {
-        case 0:
-            d4 = -0.3125D;
-            d2 = BlockRedstoneRepeater.repeaterTorchOffset[j1];
-            break;
+            case 0:
+                d4 = -0.3125D;
+                d2 = BlockRedstoneRepeater.repeaterTorchOffset[j1];
+                break;
 
-        case 1:
-            d3 = 0.3125D;
-            d1 = -BlockRedstoneRepeater.repeaterTorchOffset[j1];
-            break;
+            case 1:
+                d3 = 0.3125D;
+                d1 = -BlockRedstoneRepeater.repeaterTorchOffset[j1];
+                break;
 
-        case 2:
-            d4 = 0.3125D;
-            d2 = -BlockRedstoneRepeater.repeaterTorchOffset[j1];
-            break;
+            case 2:
+                d4 = 0.3125D;
+                d2 = -BlockRedstoneRepeater.repeaterTorchOffset[j1];
+                break;
 
-        case 3:
-            d3 = -0.3125D;
-            d1 = BlockRedstoneRepeater.repeaterTorchOffset[j1];
+            case 3:
+                d3 = -0.3125D;
+                d1 = BlockRedstoneRepeater.repeaterTorchOffset[j1];
         }
 
         this.renderTorchAtAngle(block, (double) i + d1, (double) j + d, (double) k + d2, 0.0D, 0.0D);
@@ -395,46 +396,46 @@ public RenderBlocks(IBlockAccess iblockaccess) {
 
         if (flag1) {
             switch (i1) {
-            case 0:
-                this.field_31087_g = 3;
-                this.field_31086_h = 3;
-                this.field_31085_i = 3;
-                this.field_31084_j = 3;
-                block.setBlockBounds(0.0F, 0.25F, 0.0F, 1.0F, 1.0F, 1.0F);
-                break;
+                case 0:
+                    this.field_31087_g = 3;
+                    this.field_31086_h = 3;
+                    this.field_31085_i = 3;
+                    this.field_31084_j = 3;
+                    block.setBlockBounds(0.0F, 0.25F, 0.0F, 1.0F, 1.0F, 1.0F);
+                    break;
 
-            case 1:
-                block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.75F, 1.0F);
-                break;
+                case 1:
+                    block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.75F, 1.0F);
+                    break;
 
-            case 2:
-                this.field_31085_i = 1;
-                this.field_31084_j = 2;
-                block.setBlockBounds(0.0F, 0.0F, 0.25F, 1.0F, 1.0F, 1.0F);
-                break;
+                case 2:
+                    this.field_31085_i = 1;
+                    this.field_31084_j = 2;
+                    block.setBlockBounds(0.0F, 0.0F, 0.25F, 1.0F, 1.0F, 1.0F);
+                    break;
 
-            case 3:
-                this.field_31085_i = 2;
-                this.field_31084_j = 1;
-                this.field_31083_k = 3;
-                this.field_31082_l = 3;
-                block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.75F);
-                break;
+                case 3:
+                    this.field_31085_i = 2;
+                    this.field_31084_j = 1;
+                    this.field_31083_k = 3;
+                    this.field_31082_l = 3;
+                    block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.75F);
+                    break;
 
-            case 4:
-                this.field_31087_g = 1;
-                this.field_31086_h = 2;
-                this.field_31083_k = 2;
-                this.field_31082_l = 1;
-                block.setBlockBounds(0.25F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-                break;
+                case 4:
+                    this.field_31087_g = 1;
+                    this.field_31086_h = 2;
+                    this.field_31083_k = 2;
+                    this.field_31082_l = 1;
+                    block.setBlockBounds(0.25F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+                    break;
 
-            case 5:
-                this.field_31087_g = 2;
-                this.field_31086_h = 1;
-                this.field_31083_k = 1;
-                this.field_31082_l = 2;
-                block.setBlockBounds(0.0F, 0.0F, 0.0F, 0.75F, 1.0F, 1.0F);
+                case 5:
+                    this.field_31087_g = 2;
+                    this.field_31086_h = 1;
+                    this.field_31083_k = 1;
+                    this.field_31082_l = 2;
+                    block.setBlockBounds(0.0F, 0.0F, 0.0F, 0.75F, 1.0F, 1.0F);
             }
 
             this.renderStandardBlock(block, i, j, k);
@@ -447,40 +448,40 @@ public RenderBlocks(IBlockAccess iblockaccess) {
             block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
         } else {
             switch (i1) {
-            case 0:
-                this.field_31087_g = 3;
-                this.field_31086_h = 3;
-                this.field_31085_i = 3;
-                this.field_31084_j = 3;
+                case 0:
+                    this.field_31087_g = 3;
+                    this.field_31086_h = 3;
+                    this.field_31085_i = 3;
+                    this.field_31084_j = 3;
 
-            case 1:
-            default:
-                break;
+                case 1:
+                default:
+                    break;
 
-            case 2:
-                this.field_31085_i = 1;
-                this.field_31084_j = 2;
-                break;
+                case 2:
+                    this.field_31085_i = 1;
+                    this.field_31084_j = 2;
+                    break;
 
-            case 3:
-                this.field_31085_i = 2;
-                this.field_31084_j = 1;
-                this.field_31083_k = 3;
-                this.field_31082_l = 3;
-                break;
+                case 3:
+                    this.field_31085_i = 2;
+                    this.field_31084_j = 1;
+                    this.field_31083_k = 3;
+                    this.field_31082_l = 3;
+                    break;
 
-            case 4:
-                this.field_31087_g = 1;
-                this.field_31086_h = 2;
-                this.field_31083_k = 2;
-                this.field_31082_l = 1;
-                break;
+                case 4:
+                    this.field_31087_g = 1;
+                    this.field_31086_h = 2;
+                    this.field_31083_k = 2;
+                    this.field_31082_l = 1;
+                    break;
 
-            case 5:
-                this.field_31087_g = 2;
-                this.field_31086_h = 1;
-                this.field_31083_k = 1;
-                this.field_31082_l = 2;
+                case 5:
+                    this.field_31087_g = 2;
+                    this.field_31086_h = 1;
+                    this.field_31083_k = 1;
+                    this.field_31082_l = 2;
             }
 
             this.renderStandardBlock(block, i, j, k);
@@ -575,76 +576,76 @@ public RenderBlocks(IBlockAccess iblockaccess) {
         double d = flag ? 16.0D : 8.0D;
 
         switch (i1) {
-        case 0:
-            this.field_31087_g = 3;
-            this.field_31086_h = 3;
-            this.field_31085_i = 3;
-            this.field_31084_j = 3;
-            block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
-            this.renderStandardBlock(block, i, j, k);
-            this.func_31076_a((double) ((float) i + 0.375F), (double) ((float) i + 0.625F), (double) ((float) j + 0.25F), (double) ((float) j + 0.25F + f1), (double) ((float) k + 0.625F), (double) ((float) k + 0.625F), f * 0.8F, d);
-            this.func_31076_a((double) ((float) i + 0.625F), (double) ((float) i + 0.375F), (double) ((float) j + 0.25F), (double) ((float) j + 0.25F + f1), (double) ((float) k + 0.375F), (double) ((float) k + 0.375F), f * 0.8F, d);
-            this.func_31076_a((double) ((float) i + 0.375F), (double) ((float) i + 0.375F), (double) ((float) j + 0.25F), (double) ((float) j + 0.25F + f1), (double) ((float) k + 0.375F), (double) ((float) k + 0.625F), f * 0.6F, d);
-            this.func_31076_a((double) ((float) i + 0.625F), (double) ((float) i + 0.625F), (double) ((float) j + 0.25F), (double) ((float) j + 0.25F + f1), (double) ((float) k + 0.625F), (double) ((float) k + 0.375F), f * 0.6F, d);
-            break;
+            case 0:
+                this.field_31087_g = 3;
+                this.field_31086_h = 3;
+                this.field_31085_i = 3;
+                this.field_31084_j = 3;
+                block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
+                this.renderStandardBlock(block, i, j, k);
+                this.func_31076_a((double) ((float) i + 0.375F), (double) ((float) i + 0.625F), (double) ((float) j + 0.25F), (double) ((float) j + 0.25F + f1), (double) ((float) k + 0.625F), (double) ((float) k + 0.625F), f * 0.8F, d);
+                this.func_31076_a((double) ((float) i + 0.625F), (double) ((float) i + 0.375F), (double) ((float) j + 0.25F), (double) ((float) j + 0.25F + f1), (double) ((float) k + 0.375F), (double) ((float) k + 0.375F), f * 0.8F, d);
+                this.func_31076_a((double) ((float) i + 0.375F), (double) ((float) i + 0.375F), (double) ((float) j + 0.25F), (double) ((float) j + 0.25F + f1), (double) ((float) k + 0.375F), (double) ((float) k + 0.625F), f * 0.6F, d);
+                this.func_31076_a((double) ((float) i + 0.625F), (double) ((float) i + 0.625F), (double) ((float) j + 0.25F), (double) ((float) j + 0.25F + f1), (double) ((float) k + 0.625F), (double) ((float) k + 0.375F), f * 0.6F, d);
+                break;
 
-        case 1:
-            block.setBlockBounds(0.0F, 0.75F, 0.0F, 1.0F, 1.0F, 1.0F);
-            this.renderStandardBlock(block, i, j, k);
-            this.func_31076_a((double) ((float) i + 0.375F), (double) ((float) i + 0.625F), (double) ((float) j - 0.25F + 1.0F - f1), (double) ((float) j - 0.25F + 1.0F), (double) ((float) k + 0.625F), (double) ((float) k + 0.625F), f * 0.8F, d);
-            this.func_31076_a((double) ((float) i + 0.625F), (double) ((float) i + 0.375F), (double) ((float) j - 0.25F + 1.0F - f1), (double) ((float) j - 0.25F + 1.0F), (double) ((float) k + 0.375F), (double) ((float) k + 0.375F), f * 0.8F, d);
-            this.func_31076_a((double) ((float) i + 0.375F), (double) ((float) i + 0.375F), (double) ((float) j - 0.25F + 1.0F - f1), (double) ((float) j - 0.25F + 1.0F), (double) ((float) k + 0.375F), (double) ((float) k + 0.625F), f * 0.6F, d);
-            this.func_31076_a((double) ((float) i + 0.625F), (double) ((float) i + 0.625F), (double) ((float) j - 0.25F + 1.0F - f1), (double) ((float) j - 0.25F + 1.0F), (double) ((float) k + 0.625F), (double) ((float) k + 0.375F), f * 0.6F, d);
-            break;
+            case 1:
+                block.setBlockBounds(0.0F, 0.75F, 0.0F, 1.0F, 1.0F, 1.0F);
+                this.renderStandardBlock(block, i, j, k);
+                this.func_31076_a((double) ((float) i + 0.375F), (double) ((float) i + 0.625F), (double) ((float) j - 0.25F + 1.0F - f1), (double) ((float) j - 0.25F + 1.0F), (double) ((float) k + 0.625F), (double) ((float) k + 0.625F), f * 0.8F, d);
+                this.func_31076_a((double) ((float) i + 0.625F), (double) ((float) i + 0.375F), (double) ((float) j - 0.25F + 1.0F - f1), (double) ((float) j - 0.25F + 1.0F), (double) ((float) k + 0.375F), (double) ((float) k + 0.375F), f * 0.8F, d);
+                this.func_31076_a((double) ((float) i + 0.375F), (double) ((float) i + 0.375F), (double) ((float) j - 0.25F + 1.0F - f1), (double) ((float) j - 0.25F + 1.0F), (double) ((float) k + 0.375F), (double) ((float) k + 0.625F), f * 0.6F, d);
+                this.func_31076_a((double) ((float) i + 0.625F), (double) ((float) i + 0.625F), (double) ((float) j - 0.25F + 1.0F - f1), (double) ((float) j - 0.25F + 1.0F), (double) ((float) k + 0.625F), (double) ((float) k + 0.375F), f * 0.6F, d);
+                break;
 
-        case 2:
-            this.field_31085_i = 1;
-            this.field_31084_j = 2;
-            block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.25F);
-            this.renderStandardBlock(block, i, j, k);
-            this.func_31081_b((double) ((float) i + 0.375F), (double) ((float) i + 0.375F), (double) ((float) j + 0.625F), (double) ((float) j + 0.375F), (double) ((float) k + 0.25F), (double) ((float) k + 0.25F + f1), f * 0.6F, d);
-            this.func_31081_b((double) ((float) i + 0.625F), (double) ((float) i + 0.625F), (double) ((float) j + 0.375F), (double) ((float) j + 0.625F), (double) ((float) k + 0.25F), (double) ((float) k + 0.25F + f1), f * 0.6F, d);
-            this.func_31081_b((double) ((float) i + 0.375F), (double) ((float) i + 0.625F), (double) ((float) j + 0.375F), (double) ((float) j + 0.375F), (double) ((float) k + 0.25F), (double) ((float) k + 0.25F + f1), f * 0.5F, d);
-            this.func_31081_b((double) ((float) i + 0.625F), (double) ((float) i + 0.375F), (double) ((float) j + 0.625F), (double) ((float) j + 0.625F), (double) ((float) k + 0.25F), (double) ((float) k + 0.25F + f1), f, d);
-            break;
+            case 2:
+                this.field_31085_i = 1;
+                this.field_31084_j = 2;
+                block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.25F);
+                this.renderStandardBlock(block, i, j, k);
+                this.func_31081_b((double) ((float) i + 0.375F), (double) ((float) i + 0.375F), (double) ((float) j + 0.625F), (double) ((float) j + 0.375F), (double) ((float) k + 0.25F), (double) ((float) k + 0.25F + f1), f * 0.6F, d);
+                this.func_31081_b((double) ((float) i + 0.625F), (double) ((float) i + 0.625F), (double) ((float) j + 0.375F), (double) ((float) j + 0.625F), (double) ((float) k + 0.25F), (double) ((float) k + 0.25F + f1), f * 0.6F, d);
+                this.func_31081_b((double) ((float) i + 0.375F), (double) ((float) i + 0.625F), (double) ((float) j + 0.375F), (double) ((float) j + 0.375F), (double) ((float) k + 0.25F), (double) ((float) k + 0.25F + f1), f * 0.5F, d);
+                this.func_31081_b((double) ((float) i + 0.625F), (double) ((float) i + 0.375F), (double) ((float) j + 0.625F), (double) ((float) j + 0.625F), (double) ((float) k + 0.25F), (double) ((float) k + 0.25F + f1), f, d);
+                break;
 
-        case 3:
-            this.field_31085_i = 2;
-            this.field_31084_j = 1;
-            this.field_31083_k = 3;
-            this.field_31082_l = 3;
-            block.setBlockBounds(0.0F, 0.0F, 0.75F, 1.0F, 1.0F, 1.0F);
-            this.renderStandardBlock(block, i, j, k);
-            this.func_31081_b((double) ((float) i + 0.375F), (double) ((float) i + 0.375F), (double) ((float) j + 0.625F), (double) ((float) j + 0.375F), (double) ((float) k - 0.25F + 1.0F - f1), (double) ((float) k - 0.25F + 1.0F), f * 0.6F, d);
-            this.func_31081_b((double) ((float) i + 0.625F), (double) ((float) i + 0.625F), (double) ((float) j + 0.375F), (double) ((float) j + 0.625F), (double) ((float) k - 0.25F + 1.0F - f1), (double) ((float) k - 0.25F + 1.0F), f * 0.6F, d);
-            this.func_31081_b((double) ((float) i + 0.375F), (double) ((float) i + 0.625F), (double) ((float) j + 0.375F), (double) ((float) j + 0.375F), (double) ((float) k - 0.25F + 1.0F - f1), (double) ((float) k - 0.25F + 1.0F), f * 0.5F, d);
-            this.func_31081_b((double) ((float) i + 0.625F), (double) ((float) i + 0.375F), (double) ((float) j + 0.625F), (double) ((float) j + 0.625F), (double) ((float) k - 0.25F + 1.0F - f1), (double) ((float) k - 0.25F + 1.0F), f, d);
-            break;
+            case 3:
+                this.field_31085_i = 2;
+                this.field_31084_j = 1;
+                this.field_31083_k = 3;
+                this.field_31082_l = 3;
+                block.setBlockBounds(0.0F, 0.0F, 0.75F, 1.0F, 1.0F, 1.0F);
+                this.renderStandardBlock(block, i, j, k);
+                this.func_31081_b((double) ((float) i + 0.375F), (double) ((float) i + 0.375F), (double) ((float) j + 0.625F), (double) ((float) j + 0.375F), (double) ((float) k - 0.25F + 1.0F - f1), (double) ((float) k - 0.25F + 1.0F), f * 0.6F, d);
+                this.func_31081_b((double) ((float) i + 0.625F), (double) ((float) i + 0.625F), (double) ((float) j + 0.375F), (double) ((float) j + 0.625F), (double) ((float) k - 0.25F + 1.0F - f1), (double) ((float) k - 0.25F + 1.0F), f * 0.6F, d);
+                this.func_31081_b((double) ((float) i + 0.375F), (double) ((float) i + 0.625F), (double) ((float) j + 0.375F), (double) ((float) j + 0.375F), (double) ((float) k - 0.25F + 1.0F - f1), (double) ((float) k - 0.25F + 1.0F), f * 0.5F, d);
+                this.func_31081_b((double) ((float) i + 0.625F), (double) ((float) i + 0.375F), (double) ((float) j + 0.625F), (double) ((float) j + 0.625F), (double) ((float) k - 0.25F + 1.0F - f1), (double) ((float) k - 0.25F + 1.0F), f, d);
+                break;
 
-        case 4:
-            this.field_31087_g = 1;
-            this.field_31086_h = 2;
-            this.field_31083_k = 2;
-            this.field_31082_l = 1;
-            block.setBlockBounds(0.0F, 0.0F, 0.0F, 0.25F, 1.0F, 1.0F);
-            this.renderStandardBlock(block, i, j, k);
-            this.func_31077_c((double) ((float) i + 0.25F), (double) ((float) i + 0.25F + f1), (double) ((float) j + 0.375F), (double) ((float) j + 0.375F), (double) ((float) k + 0.625F), (double) ((float) k + 0.375F), f * 0.5F, d);
-            this.func_31077_c((double) ((float) i + 0.25F), (double) ((float) i + 0.25F + f1), (double) ((float) j + 0.625F), (double) ((float) j + 0.625F), (double) ((float) k + 0.375F), (double) ((float) k + 0.625F), f, d);
-            this.func_31077_c((double) ((float) i + 0.25F), (double) ((float) i + 0.25F + f1), (double) ((float) j + 0.375F), (double) ((float) j + 0.625F), (double) ((float) k + 0.375F), (double) ((float) k + 0.375F), f * 0.6F, d);
-            this.func_31077_c((double) ((float) i + 0.25F), (double) ((float) i + 0.25F + f1), (double) ((float) j + 0.625F), (double) ((float) j + 0.375F), (double) ((float) k + 0.625F), (double) ((float) k + 0.625F), f * 0.6F, d);
-            break;
+            case 4:
+                this.field_31087_g = 1;
+                this.field_31086_h = 2;
+                this.field_31083_k = 2;
+                this.field_31082_l = 1;
+                block.setBlockBounds(0.0F, 0.0F, 0.0F, 0.25F, 1.0F, 1.0F);
+                this.renderStandardBlock(block, i, j, k);
+                this.func_31077_c((double) ((float) i + 0.25F), (double) ((float) i + 0.25F + f1), (double) ((float) j + 0.375F), (double) ((float) j + 0.375F), (double) ((float) k + 0.625F), (double) ((float) k + 0.375F), f * 0.5F, d);
+                this.func_31077_c((double) ((float) i + 0.25F), (double) ((float) i + 0.25F + f1), (double) ((float) j + 0.625F), (double) ((float) j + 0.625F), (double) ((float) k + 0.375F), (double) ((float) k + 0.625F), f, d);
+                this.func_31077_c((double) ((float) i + 0.25F), (double) ((float) i + 0.25F + f1), (double) ((float) j + 0.375F), (double) ((float) j + 0.625F), (double) ((float) k + 0.375F), (double) ((float) k + 0.375F), f * 0.6F, d);
+                this.func_31077_c((double) ((float) i + 0.25F), (double) ((float) i + 0.25F + f1), (double) ((float) j + 0.625F), (double) ((float) j + 0.375F), (double) ((float) k + 0.625F), (double) ((float) k + 0.625F), f * 0.6F, d);
+                break;
 
-        case 5:
-            this.field_31087_g = 2;
-            this.field_31086_h = 1;
-            this.field_31083_k = 1;
-            this.field_31082_l = 2;
-            block.setBlockBounds(0.75F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-            this.renderStandardBlock(block, i, j, k);
-            this.func_31077_c((double) ((float) i - 0.25F + 1.0F - f1), (double) ((float) i - 0.25F + 1.0F), (double) ((float) j + 0.375F), (double) ((float) j + 0.375F), (double) ((float) k + 0.625F), (double) ((float) k + 0.375F), f * 0.5F, d);
-            this.func_31077_c((double) ((float) i - 0.25F + 1.0F - f1), (double) ((float) i - 0.25F + 1.0F), (double) ((float) j + 0.625F), (double) ((float) j + 0.625F), (double) ((float) k + 0.375F), (double) ((float) k + 0.625F), f, d);
-            this.func_31077_c((double) ((float) i - 0.25F + 1.0F - f1), (double) ((float) i - 0.25F + 1.0F), (double) ((float) j + 0.375F), (double) ((float) j + 0.625F), (double) ((float) k + 0.375F), (double) ((float) k + 0.375F), f * 0.6F, d);
-            this.func_31077_c((double) ((float) i - 0.25F + 1.0F - f1), (double) ((float) i - 0.25F + 1.0F), (double) ((float) j + 0.625F), (double) ((float) j + 0.375F), (double) ((float) k + 0.625F), (double) ((float) k + 0.625F), f * 0.6F, d);
+            case 5:
+                this.field_31087_g = 2;
+                this.field_31086_h = 1;
+                this.field_31083_k = 1;
+                this.field_31082_l = 2;
+                block.setBlockBounds(0.75F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+                this.renderStandardBlock(block, i, j, k);
+                this.func_31077_c((double) ((float) i - 0.25F + 1.0F - f1), (double) ((float) i - 0.25F + 1.0F), (double) ((float) j + 0.375F), (double) ((float) j + 0.375F), (double) ((float) k + 0.625F), (double) ((float) k + 0.375F), f * 0.5F, d);
+                this.func_31077_c((double) ((float) i - 0.25F + 1.0F - f1), (double) ((float) i - 0.25F + 1.0F), (double) ((float) j + 0.625F), (double) ((float) j + 0.625F), (double) ((float) k + 0.375F), (double) ((float) k + 0.625F), f, d);
+                this.func_31077_c((double) ((float) i - 0.25F + 1.0F - f1), (double) ((float) i - 0.25F + 1.0F), (double) ((float) j + 0.375F), (double) ((float) j + 0.625F), (double) ((float) k + 0.375F), (double) ((float) k + 0.375F), f * 0.6F, d);
+                this.func_31077_c((double) ((float) i - 0.25F + 1.0F - f1), (double) ((float) i - 0.25F + 1.0F), (double) ((float) j + 0.625F), (double) ((float) j + 0.375F), (double) ((float) k + 0.625F), (double) ((float) k + 0.625F), f * 0.6F, d);
         }
 
         this.field_31087_g = 0;
@@ -1363,7 +1364,7 @@ public RenderBlocks(IBlockAccess iblockaccess) {
         float f2 = (float) (l >> 8 & 255) / 255.0F;
         float f3 = (float) (l & 255) / 255.0F;
 
-        if (EntityRenderer.anaglyphEnable) {
+        if (EntityRenderer.field_28135_a) {
             float d = (f1 * 30.0F + f2 * 59.0F + f3 * 11.0F) / 100.0F;
             float f5 = (f1 * 30.0F + f2 * 70.0F) / 100.0F;
             float d1 = (f1 * 30.0F + f3 * 70.0F) / 100.0F;
@@ -1552,7 +1553,7 @@ public RenderBlocks(IBlockAccess iblockaccess) {
         float f2 = (float) (l & 255) / 255.0F;
         boolean flag = block.shouldSideBeRendered(this.blockAccess, i, j + 1, k, 1);
         boolean flag1 = block.shouldSideBeRendered(this.blockAccess, i, j - 1, k, 0);
-        boolean[] aflag = new boolean[] { block.shouldSideBeRendered(this.blockAccess, i, j, k - 1, 2), block.shouldSideBeRendered(this.blockAccess, i, j, k + 1, 3), block.shouldSideBeRendered(this.blockAccess, i - 1, j, k, 4), block.shouldSideBeRendered(this.blockAccess, i + 1, j, k, 5)};
+        boolean[] aflag = new boolean[]{block.shouldSideBeRendered(this.blockAccess, i, j, k - 1, 2), block.shouldSideBeRendered(this.blockAccess, i, j, k + 1, 3), block.shouldSideBeRendered(this.blockAccess, i - 1, j, k, 4), block.shouldSideBeRendered(this.blockAccess, i + 1, j, k, 5)};
 
         if (!flag && !flag1 && !aflag[0] && !aflag[1] && !aflag[2] && !aflag[3]) {
             return false;
@@ -1629,7 +1630,7 @@ public RenderBlocks(IBlockAccess iblockaccess) {
                 }
 
                 if (k1 == 2) {
-                    ii = i - 1;
+                    ii = ii - 1;
                 }
 
                 if (k1 == 3) {
@@ -1650,35 +1651,35 @@ public RenderBlocks(IBlockAccess iblockaccess) {
                         f15 = f10;
                         f17 = (float) i;
                         f20 = (float) (i + 1);
-                        f19 = (float) k;
+                        f19 = (float) kk;
                         f21 = (float) kk;
                     } else if (k1 == 1) {
                         f13 = f9;
                         f15 = f8;
                         f17 = (float) (i + 1);
                         f20 = (float) i;
-                        f19 = (float) (k + 1);
+                        f19 = (float) (kk + 1);
                         f21 = (float) (kk + 1);
                     } else if (k1 == 2) {
                         f13 = f8;
                         f15 = f7;
                         f17 = (float) i;
                         f20 = (float) i;
-                        f19 = (float) (k + 1);
+                        f19 = (float) (kk + 1);
                         f21 = (float) kk;
                     } else {
                         f13 = f10;
                         f15 = f9;
                         f17 = (float) (i + 1);
                         f20 = (float) (i + 1);
-                        f19 = (float) k;
+                        f19 = (float) kk;
                         f21 = (float) (kk + 1);
                     }
 
                     flag2 = true;
                     double d4 = (double) ((float) (j3 + 0) / 256.0F);
                     double d5 = ((double) (j3 + 16) - 0.01D) / 256.0D;
-                    double d6 = (double) (((float) k + (1.0F - f13) * 16.0F) / 256.0F);
+                    double d6 = (double) (((float) kk + (1.0F - f13) * 16.0F) / 256.0F);
                     double d7 = (double) (((float) kk + (1.0F - f15) * 16.0F) / 256.0F);
                     double d8 = ((double) (kk + 16) - 0.01D) / 256.0D;
                     float f22 = block.getBlockBrightness(this.blockAccess, i, jj, l2);
@@ -1797,7 +1798,7 @@ public RenderBlocks(IBlockAccess iblockaccess) {
         float f1 = (float) (l >> 8 & 255) / 255.0F;
         float f2 = (float) (l & 255) / 255.0F;
 
-        if (EntityRenderer.anaglyphEnable) {
+        if (EntityRenderer.field_28135_a) {
             float f3 = (f * 30.0F + f1 * 59.0F + f2 * 11.0F) / 100.0F;
             float f4 = (f * 30.0F + f1 * 70.0F) / 100.0F;
             float f5 = (f * 30.0F + f2 * 70.0F) / 100.0F;
@@ -2660,7 +2661,7 @@ public RenderBlocks(IBlockAccess iblockaccess) {
         float f1 = (float) (l >> 8 & 255) / 255.0F;
         float f2 = (float) (l & 255) / 255.0F;
 
-        if (EntityRenderer.anaglyphEnable) {
+        if (EntityRenderer.field_28135_a) {
             float f3 = (f * 30.0F + f1 * 59.0F + f2 * 11.0F) / 100.0F;
             float f4 = (f * 30.0F + f1 * 70.0F) / 100.0F;
             float f5 = (f * 30.0F + f2 * 70.0F) / 100.0F;
@@ -3687,7 +3688,7 @@ public RenderBlocks(IBlockAccess iblockaccess) {
 
                     block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
                 } else if (Config.hasModLoader()) {
-                    Config.callVoid("ModLoader", "RenderInvBlock", new Object[] { this, block, Integer.valueOf(i), Integer.valueOf(k)});
+                    Config.callVoid("ModLoader", "RenderInvBlock", new Object[]{this, block, Integer.valueOf(i), Integer.valueOf(k)});
                 }
             }
         } else {
@@ -3727,7 +3728,7 @@ public RenderBlocks(IBlockAccess iblockaccess) {
     }
 
     public static boolean renderItemIn3d(int i) {
-        return i == 0 ? true : (i == 13 ? true : (i == 10 ? true : (i == 11 ? true : (i == 16 ? true : (Config.hasModLoader() ? Config.callBoolean("ModLoader", "RenderBlockIsItemFull3D", new Object[] { Integer.valueOf(i)}) : false)))));
+        return i == 0 ? true : (i == 13 ? true : (i == 10 ? true : (i == 11 ? true : (i == 16 ? true : (Config.hasModLoader() ? Config.callBoolean("ModLoader", "RenderBlockIsItemFull3D", new Object[]{Integer.valueOf(i)}) : false)))));
     }
 
     static {
@@ -3750,7 +3751,7 @@ public RenderBlocks(IBlockAccess iblockaccess) {
                 f3 = 0.0F;
             }
 
-            RenderBlocks.redstoneColors[i] = new float[] { f1, f2, f3};
+            RenderBlocks.redstoneColors[i] = new float[]{f1, f2, f3};
         }
 
     }

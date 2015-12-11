@@ -82,7 +82,7 @@ public class TexturePackCustom extends TexturePackBase {
 
    public void func_6484_b(Minecraft var1) {
       if(this.texturePackThumbnail != null) {
-         var1.renderEngine.deleteTexture(this.texturePackName);
+         var1.z.deleteTexture(this.texturePackName);
       }
 
       this.closeTexturePackFile();
@@ -90,13 +90,13 @@ public class TexturePackCustom extends TexturePackBase {
 
    public void bindThumbnailTexture(Minecraft var1) {
       if(this.texturePackThumbnail != null && this.texturePackName < 0) {
-         this.texturePackName = var1.renderEngine.allocateAndSetupTexture(this.texturePackThumbnail);
+         this.texturePackName = var1.z.allocateAndSetupTexture(this.texturePackThumbnail);
       }
 
       if(this.texturePackThumbnail != null) {
-         var1.renderEngine.bindTexture(this.texturePackName);
+         var1.z.bindTexture(this.texturePackName);
       } else {
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var1.renderEngine.getTexture("/assets/gui/unknown_pack.png"));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var1.z.getTexture("/assets/gui/unknown_pack.png"));
       }
 
    }

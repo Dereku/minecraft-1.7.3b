@@ -18,7 +18,6 @@
  */
 package net.minecraft.client.gui.fonts;
 
-import net.minecraft.src.Tessellator;
 import java.lang.ref.WeakReference;
 import java.util.WeakHashMap;
 import java.util.ArrayList;
@@ -28,6 +27,8 @@ import java.awt.font.GlyphVector;
 import java.awt.Font;
 import java.awt.Point;
 import java.text.Bidi;
+import net.minecraft.client.Minecraft;
+import net.minecraft.src.TessellatorOld;
 import org.lwjgl.opengl.GL11;
 
 /**
@@ -164,6 +165,7 @@ public class StringCache {
      * calling cacheGlyphs() when it's not safe to do so.
      */
     private final Thread mainThread;
+    private final Minecraft mc;
 
     /**
      * Wraps a String and acts as the key into stringCache. The hashCode() and
@@ -431,12 +433,13 @@ public class StringCache {
      * text color codes followed by 16 darker version of the color codes for use
      * as drop shadows
      */
-    public StringCache(int colors[]) {
+    public StringCache(int[] colors, Minecraft minecraft) {
         /* StringCache is created by the main game thread; remember it for later thread safety checks */
         mainThread = Thread.currentThread();
 
         glyphCache = new GlyphCache();
         colorTable = colors;
+        mc = minecraft;
 
         /* Pre-cache the ASCII digits to allow for fast glyph substitution */
         cacheDightGlyphs();
@@ -539,7 +542,7 @@ public class StringCache {
         }
 
         /* Using the Tessellator to queue up data in a vertex array and then draw all at once should be faster than immediate mode */
-        Tessellator tessellator = Tessellator.instance;
+        TessellatorOld tessellator = TessellatorOld.instance;
         tessellator.startDrawingQuads();
         tessellator.setColorRGBA(color >> 16 & 0xff, color >> 8 & 0xff, color & 0xff, color >> 24 & 0xff);
 
@@ -590,6 +593,7 @@ public class StringCache {
 
                 GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.textureName);
                 boundTextureName = texture.textureName;
+//                this.mc.z.bindTexture(boundTextureName);
             }
 
             /* The divide by 2.0F is needed to align with the scaled GUI coordinate system; startX/startY are already scaled */
@@ -802,7 +806,7 @@ public class StringCache {
             color = colorTable[colorCode] & 0xffffff | color & 0xff000000;
         }
 
-        Tessellator.instance.setColorRGBA(color >> 16 & 0xff, color >> 8 & 0xff, color & 0xff, color >> 24 & 0xff);
+        TessellatorOld.instance.setColorRGBA(color >> 16 & 0xff, color >> 8 & 0xff, color & 0xff, color >> 24 & 0xff);
         return color;
     }
 

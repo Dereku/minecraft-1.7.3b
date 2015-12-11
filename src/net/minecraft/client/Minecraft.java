@@ -123,7 +123,7 @@ public abstract class Minecraft implements Runnable {
    public Canvas mcCanvas;
    public boolean hideQuitButton = true;
    public volatile boolean isGamePaused = false;
-   public RenderEngine renderEngine;
+   public RenderEngine z;
    public FontRenderer fontRenderer;
    public GuiScreen currentScreen = null;
    public LoadingScreenRenderer loadingScreen = new LoadingScreenRenderer(this);
@@ -234,11 +234,11 @@ public abstract class Minecraft implements Runnable {
       this.saveLoader = new SaveConverterMcRegion(new File(this.mcDataDir, "saves"));
       this.gameSettings = new GameSettings(this, this.mcDataDir);
       this.texturePackList = new TexturePackList(this, this.mcDataDir);
-      this.renderEngine = new RenderEngine(this.texturePackList, this.gameSettings);
+      this.z = new RenderEngine(this.texturePackList, this.gameSettings);
       this.fontRenderer = new FontRenderer(this.gameSettings);
-      ColorizerWater.func_28182_a(this.renderEngine.getTextureContents("/assets/misc/watercolor.png"));
-      ColorizerGrass.func_28181_a(this.renderEngine.getTextureContents("/assets/misc/grasscolor.png"));
-      ColorizerFoliage.func_28152_a(this.renderEngine.getTextureContents("/assets/misc/foliagecolor.png"));
+      ColorizerWater.func_28182_a(this.z.func_28149_a("/assets/misc/watercolor.png"));
+      ColorizerGrass.func_28181_a(this.z.func_28149_a("/assets/misc/grasscolor.png"));
+      ColorizerFoliage.func_28152_a(this.z.func_28149_a("/assets/misc/foliagecolor.png"));
       this.entityRenderer = new EntityRenderer(this);
       RenderManager.instance.itemRenderer = new ItemRenderer(this);
       this.loadScreen();
@@ -267,18 +267,18 @@ public abstract class Minecraft implements Runnable {
       this.checkGLError("Startup");
       this.glCapabilities = new OpenGlCapsChecker();
       this.sndManager.loadSoundSettings(this.gameSettings);
-      this.renderEngine.registerTextureFX(this.textureLavaFX);
-      this.renderEngine.registerTextureFX(this.textureWaterFX);
-      this.renderEngine.registerTextureFX(new TexturePortalFX());
-      this.renderEngine.registerTextureFX(new TextureCompassFX(this));
-      this.renderEngine.registerTextureFX(new TextureWatchFX(this));
-      this.renderEngine.registerTextureFX(new TextureWaterFlowFX());
-      this.renderEngine.registerTextureFX(new TextureLavaFlowFX());
-      this.renderEngine.registerTextureFX(new TextureFlamesFX(0));
-      this.renderEngine.registerTextureFX(new TextureFlamesFX(1));
-      this.renderGlobal = new RenderGlobal(this, this.renderEngine);
+      this.z.registerTextureFX(this.textureLavaFX);
+      this.z.registerTextureFX(this.textureWaterFX);
+      this.z.registerTextureFX(new TexturePortalFX());
+      this.z.registerTextureFX(new TextureCompassFX(this));
+      this.z.registerTextureFX(new TextureWatchFX(this));
+      this.z.registerTextureFX(new TextureWaterFlowFX());
+      this.z.registerTextureFX(new TextureLavaFlowFX());
+      this.z.registerTextureFX(new TextureFlamesFX(0));
+      this.z.registerTextureFX(new TextureFlamesFX(1));
+      this.renderGlobal = new RenderGlobal(this, this.z);
       GL11.glViewport(0, 0, this.displayWidth, this.displayHeight);
-      this.effectRenderer = new EffectRenderer(this.theWorld, this.renderEngine);
+      this.effectRenderer = new EffectRenderer(this.theWorld, this.z);
 
       try {
          this.downloadResourcesThread = new ThreadDownloadResources(this.mcDataDir, this);
@@ -311,7 +311,7 @@ public abstract class Minecraft implements Runnable {
       GL11.glDisable(2896 /*GL_LIGHTING*/);
       GL11.glEnable(3553 /*GL_TEXTURE_2D*/);
       GL11.glDisable(2912 /*GL_FOG*/);
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture("/assets/title/mojang.png"));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.z.getTexture("/assets/title/mojang.png"));
       var2.startDrawingQuads();
       var2.setColorOpaque_I(16777215);
       var2.addVertexWithUV(0.0D, (double)this.displayHeight, 0.0D, 0.0D, 0.0D);
@@ -937,9 +937,9 @@ public abstract class Minecraft implements Runnable {
          this.playerController.updateController();
       }
 
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.z.getTexture(Minecraft.TERRAIN_TEXTURE));
       if(!this.isGamePaused) {
-         this.renderEngine.updateDynamicTextures();
+         this.z.updateDynamicTextures();
       }
 
       if(this.currentScreen == null && this.thePlayer != null) {
