@@ -86,7 +86,7 @@ public class GameSettings {
     public KeyBinding keyBindSneak = new KeyBinding("key.sneak", 42);
     public KeyBinding keyBindCommand = new KeyBinding("key.command", 53);
     public KeyBinding[] keyBindings;
-    protected Minecraft mc;
+    public Minecraft mc;
     private File optionsFile;
     public int difficulty;
     public boolean hideGUI;

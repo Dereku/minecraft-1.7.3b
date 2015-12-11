@@ -34,9 +34,9 @@ import org.lwjgl.opengl.GLContext;
 public class RenderEngine {
 
     public static boolean useMipmaps = false;
-    private HashMap textureMap = new HashMap();
+    private final HashMap<String, Integer> textureMap = new HashMap<>();
     private HashMap field_28151_c = new HashMap();
-    private HashMap textureNameToImageMap = new HashMap();
+    private HashMap<Integer, BufferedImage> textureNameToImageMap = new HashMap<>();
     private IntBuffer singleIntBuffer = GLAllocation.createDirectIntBuffer(1);
     private ByteBuffer imageData;
     private List textureList;
@@ -61,7 +61,7 @@ public class RenderEngine {
         this.urlToImageDataMap = new HashMap();
         this.clampTexture = false;
         this.blurTexture = false;
-        this.missingTextureImage = new BufferedImage(64, 64, 2);
+        this.missingTextureImage = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
         this.texturePack = texturepacklist;
         this.options = gamesettings;
         Graphics g = this.missingTextureImage.getGraphics();
@@ -69,7 +69,7 @@ public class RenderEngine {
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, 64, 64);
         g.setColor(Color.BLACK);
-        g.drawString("missingtex", 1, 10);
+        g.drawString("Missing", 15, 15);
         g.dispose();
     }
 
@@ -133,7 +133,7 @@ public class RenderEngine {
 
     public int getTexture(String s) {
         TexturePackBase texturepackbase = this.texturePack.selectedTexturePack;
-        Integer integer = (Integer) this.textureMap.get(s);
+        Integer integer = this.textureMap.get(s);
 
         if (integer != null) {
             return integer;
@@ -172,14 +172,14 @@ public class RenderEngine {
                     }
                 }
 
-                this.textureMap.put(s, Integer.valueOf(j));
+                this.textureMap.put(s, j);
                 return j;
             } catch (IOException ioexception) {
                 ioexception.printStackTrace();
                 GLAllocation.generateTextureNames(this.singleIntBuffer);
                 j = this.singleIntBuffer.get(0);
                 this.setupTexture(this.missingTextureImage, j);
-                this.textureMap.put(s, Integer.valueOf(j));
+                this.textureMap.put(s, j);
                 return j;
             }
         }
@@ -202,9 +202,8 @@ public class RenderEngine {
         this.singleIntBuffer.clear();
         GLAllocation.generateTextureNames(this.singleIntBuffer);
         int i = this.singleIntBuffer.get(0);
-
         this.setupTexture(bufferedimage, i);
-        this.textureNameToImageMap.put(Integer.valueOf(i), bufferedimage);
+        this.textureNameToImageMap.put(i, bufferedimage);
         return i;
     }
 
@@ -652,16 +651,13 @@ public class RenderEngine {
         this.dynamicTexturesUpdated = false;
         Config.setFontRendererUpdated(false);
         TexturePackBase texturepackbase = this.texturePack.selectedTexturePack;
-        Iterator iterator3 = this.textureNameToImageMap.keySet().iterator();
-
-        while (iterator3.hasNext()) {
-            int i = ((Integer) iterator3.next());
-            BufferedImage bufferedimage = (BufferedImage) this.textureNameToImageMap.get(Integer.valueOf(i));
-
+        for (int i : this.textureNameToImageMap.keySet()) {
+            BufferedImage bufferedimage = this.textureNameToImageMap.get(i);
             this.setupTexture(bufferedimage, i);
         }
 
         ThreadDownloadImageData s1;
+        Iterator iterator3;
 
         for (iterator3 = this.urlToImageDataMap.values().iterator(); iterator3.hasNext(); s1.textureSetupComplete = false) {
             s1 = (ThreadDownloadImageData) iterator3.next();
@@ -691,7 +687,7 @@ public class RenderEngine {
                 if (bufferedImage == null) {
                     break;
                 }
-                int j = ((Integer) this.textureMap.get(s11)).intValue();
+                int j = ((Integer) this.textureMap.get(s11));
 
                 this.setupTexture(bufferedImage, j);
                 this.blurTexture = false;

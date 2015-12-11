@@ -1230,7 +1230,7 @@ public class RenderGlobal implements IWorldAccess {
         if (i == 0) {
             if (this.damagePartialTime > 0.0F) {
                 GL11.glBlendFunc(774, 768);
-                int f1 = this.renderEngine.getTexture("/terrain.png");
+                int f1 = this.renderEngine.getTexture("/assets/terrain.png");
 
                 GL11.glBindTexture(3553, f1);
                 GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.5F);

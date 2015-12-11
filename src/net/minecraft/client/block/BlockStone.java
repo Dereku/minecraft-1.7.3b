@@ -1,8 +1,6 @@
 package net.minecraft.client.block;
 
 import java.util.Random;
-import net.minecraft.client.block.Block;
-import net.minecraft.src.Material;
 import net.minecraft.src.Material;
 
 public class BlockStone extends Block {
@@ -11,6 +9,7 @@ public class BlockStone extends Block {
       super(var1, var2, Material.rock);
    }
 
+   @Override
    public int idDropped(int var1, Random var2) {
       return Block.cobblestone.blockID;
    }

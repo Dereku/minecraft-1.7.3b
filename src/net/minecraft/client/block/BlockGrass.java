@@ -1,14 +1,9 @@
 package net.minecraft.client.block;
 
 import java.util.Random;
-import net.minecraft.client.block.Block;
-import net.minecraft.src.ColorizerGrass;
 import net.minecraft.src.ColorizerGrass;
 import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.Material;
-import net.minecraft.src.Material;
-import net.minecraft.world.World;
 import net.minecraft.world.World;
 
 public class BlockGrass extends Block {
@@ -19,6 +14,7 @@ public class BlockGrass extends Block {
       this.setTickOnLoad(true);
    }
 
+   @Override
    public int getBlockTexture(IBlockAccess var1, int var2, int var3, int var4, int var5) {
       if(var5 == 1) {
          return 0;
@@ -30,6 +26,7 @@ public class BlockGrass extends Block {
       }
    }
 
+   @Override
    public int colorMultiplier(IBlockAccess var1, int var2, int var3, int var4) {
       var1.getWorldChunkManager().func_4069_a(var2, var4, 1, 1);
       double var5 = var1.getWorldChunkManager().temperature[0];
@@ -37,6 +34,7 @@ public class BlockGrass extends Block {
       return ColorizerGrass.getGrassColor(var5, var7);
    }
 
+   @Override
    public void updateTick(World var1, int var2, int var3, int var4, Random var5) {
       if(!var1.multiplayerWorld) {
          if(var1.getBlockLightValue(var2, var3 + 1, var4) < 4 && Block.lightOpacity[var1.getBlockId(var2, var3 + 1, var4)] > 2) {
@@ -58,6 +56,7 @@ public class BlockGrass extends Block {
       }
    }
 
+   @Override
    public int idDropped(int var1, Random var2) {
       return Block.dirt.idDropped(0, var2);
    }

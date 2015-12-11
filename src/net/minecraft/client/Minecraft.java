@@ -467,9 +467,7 @@ public abstract class Minecraft implements Runnable {
          if(!this.hasCrashed) {
             System.exit(0);
          }
-
       }
-
       System.gc();
    }
 
@@ -1240,7 +1238,6 @@ public abstract class Minecraft implements Runnable {
                this.statFileWriter = new StatFileWriter(this.session, file);
            } else {
                file = new File(this.mcDataDir.getAbsolutePath() + File.separator + "saves" + File.separator + var1.worldName);
-               System.out.println(file.getAbsolutePath());
                this.statFileWriter = new StatFileWriter(this.session, file.getAbsoluteFile());
            }
            AchievementList.openInventory.setStatStringFormatter(new StatStringFormatKeyInv(this));

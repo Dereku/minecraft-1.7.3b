@@ -1,18 +1,8 @@
 package net.minecraft.client.gui;
 
-import net.minecraft.client.gui.GuiAchievements;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.client.gui.GuiOptions;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiStats;
-import net.minecraft.src.MathHelper;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.StatCollector;
-import net.minecraft.src.StatCollector;
 import net.minecraft.src.StatList;
-import net.minecraft.src.StatList;
-import net.minecraft.world.World;
 import net.minecraft.world.World;
 
 public class GuiIngameMenu extends GuiScreen {
