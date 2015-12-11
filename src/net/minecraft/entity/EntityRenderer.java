@@ -229,7 +229,7 @@ public class EntityRenderer {
             float f1 = entityplayer.distanceWalkedModified - entityplayer.prevDistanceWalkedModified;
             float f2 = -(entityplayer.distanceWalkedModified + f1 * f);
             float f3 = entityplayer.prevCameraYaw + (entityplayer.cameraYaw - entityplayer.prevCameraYaw) * f;
-            float f4 = entityplayer.cameraPitch + (entityplayer.prevCameraPitch - entityplayer.cameraPitch) * f;
+            float f4 = entityplayer.cameraPitch + (entityplayer.cameraPitch - entityplayer.prevCameraPitch) * f;
 
             GL11.glTranslatef(MathHelper.sin(f2 * 3.141593F) * f3 * 0.5F, -Math.abs(MathHelper.cos(f2 * 3.141593F) * f3), 0.0F);
             GL11.glRotatef(MathHelper.sin(f2 * 3.141593F) * f3 * 3.0F, 0.0F, 0.0F, 1.0F);

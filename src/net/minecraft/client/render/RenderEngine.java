@@ -136,7 +136,7 @@ public class RenderEngine {
         Integer integer = (Integer) this.textureMap.get(s);
 
         if (integer != null) {
-            return integer.intValue();
+            return integer;
         } else {
             int j;
 
@@ -441,13 +441,11 @@ public class RenderEngine {
             if (tex.tileImage == texturefx.tileImage && tex.iconIndex == texturefx.iconIndex) {
                 this.textureList.remove(i);
                 --i;
-                Config.dbg("Texture removed: " + tex + ", image: " + tex.tileImage + ", index: " + tex.iconIndex);
             }
         }
 
         this.textureList.add(texturefx);
         texturefx.onTick();
-        Config.dbg("Texture registered: " + texturefx + ", image: " + texturefx.tileImage + ", index: " + texturefx.iconIndex);
         this.dynamicTexturesUpdated = false;
     }
 
@@ -657,7 +655,7 @@ public class RenderEngine {
         Iterator iterator3 = this.textureNameToImageMap.keySet().iterator();
 
         while (iterator3.hasNext()) {
-            int i = ((Integer) iterator3.next()).intValue();
+            int i = ((Integer) iterator3.next());
             BufferedImage bufferedimage = (BufferedImage) this.textureNameToImageMap.get(Integer.valueOf(i));
 
             this.setupTexture(bufferedimage, i);
@@ -678,7 +676,6 @@ public class RenderEngine {
             s11 = (String) iterator3.next();
 
             try {
-                System.out.println("Loading " + s11);
                 if (s11.startsWith("##")) {
                     bufferedImage = this.unwrapImageByColumns(this.readTextureImage(texturepackbase.getResourceAsStream(s11.substring(2))));
                 } else if (s11.startsWith("%clamp%")) {
@@ -690,7 +687,10 @@ public class RenderEngine {
                 } else {
                     bufferedImage = this.readTextureImage(texturepackbase.getResourceAsStream(s11));
                 }
-
+                
+                if (bufferedImage == null) {
+                    break;
+                }
                 int j = ((Integer) this.textureMap.get(s11)).intValue();
 
                 this.setupTexture(bufferedImage, j);
@@ -730,6 +730,10 @@ public class RenderEngine {
     }
 
     private BufferedImage readTextureImage(InputStream inputstream) throws IOException {
+        if (inputstream == null) {
+            return null;
+        }
+        
         BufferedImage bufferedimage = ImageIO.read(inputstream);
 
         inputstream.close();

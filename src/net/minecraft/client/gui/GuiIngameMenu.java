@@ -66,11 +66,13 @@ public class GuiIngameMenu extends GuiScreen {
 
    }
 
+   @Override
    public void updateScreen() {
       super.updateScreen();
       ++this.updateCounter;
    }
 
+   @Override
    public void drawScreen(int var1, int var2, float var3) {
       this.drawDefaultBackground();
       boolean var4 = !this.mc.theWorld.func_650_a(this.updateCounter2++);
