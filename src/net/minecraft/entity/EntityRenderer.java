@@ -673,7 +673,7 @@ public class EntityRenderer {
 
             this.setupFog(0, f);
             GL11.glEnable(2912 /*GL_FOG*/);
-            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture("/assets/terrain.png"));
+            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/terrain.png"));
             RenderHelper.disableStandardItemLighting();
             if (Config.isUseAlphaFunc()) {
                 GL11.glAlphaFunc(516, Config.getAlphaFuncLevel());
@@ -701,7 +701,7 @@ public class EntityRenderer {
             this.setupFog(0, f);
             GL11.glEnable(3042 /*GL_BLEND*/);
             GL11.glDisable(2884 /*GL_CULL_FACE*/);
-            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture("/assets/terrain.png"));
+            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/terrain.png"));
             if (Config.isWaterFancy()) {
                 if (this.mc.gameSettings.ambientOcclusion) {
                     GL11.glShadeModel(7425 /*GL_SMOOTH*/);
@@ -840,7 +840,7 @@ public class EntityRenderer {
                 GL11.glEnable(3042 /*GL_BLEND*/);
                 GL11.glBlendFunc(770, 771);
                 GL11.glAlphaFunc(516, 0.01F);
-                GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture("/assets/environment/snow.png"));
+                GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/environment/snow.png"));
                 double d0 = entityliving.lastTickPosX + (entityliving.posX - entityliving.lastTickPosX) * (double) f;
                 double d1 = entityliving.lastTickPosY + (entityliving.posY - entityliving.lastTickPosY) * (double) f;
                 double d2 = entityliving.lastTickPosZ + (entityliving.posZ - entityliving.lastTickPosZ) * (double) f;
@@ -918,7 +918,7 @@ public class EntityRenderer {
                     }
                 }
 
-                GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture("/assets/environment/rain.png"));
+                GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/environment/rain.png"));
                 if (Config.isRainFancy()) {
                     b0 = 10;
                 }

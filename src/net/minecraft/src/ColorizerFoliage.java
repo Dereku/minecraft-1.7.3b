@@ -6,7 +6,7 @@ public class ColorizerFoliage {
    private static int[] foliageBuffer = new int[65536];
 
 
-   public static void func_28152_a(int[] var0) {
+   public static void loadBuffer(int[] var0) {
       foliageBuffer = var0;
    }
 

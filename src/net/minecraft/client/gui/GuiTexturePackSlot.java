@@ -28,7 +28,7 @@ class GuiTexturePackSlot extends GuiSlot {
    protected void elementClicked(int var1, boolean var2) {
       List var3 = GuiTexturePacks.func_22119_c(this.parentTexturePackGui).texturePackList.availableTexturePacks();
       GuiTexturePacks.func_22122_d(this.parentTexturePackGui).texturePackList.setTexturePack((TexturePackBase)var3.get(var1));
-      GuiTexturePacks.func_22117_e(this.parentTexturePackGui).z.refreshTextures();
+      GuiTexturePacks.func_22117_e(this.parentTexturePackGui).renderEngine.refreshTextures();
    }
 
    protected boolean isSelected(int var1) {

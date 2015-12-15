@@ -154,7 +154,7 @@ public class GuiScreen extends Gui {
       GL11.glDisable(2896 /*GL_LIGHTING*/);
       GL11.glDisable(2912 /*GL_FOG*/);
       Tessellator var2 = Tessellator.instance;
-      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture("/assets/gui/background.png"));
+      GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/gui/background.png"));
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       float var3 = 32.0F;
       var2.startDrawingQuads();

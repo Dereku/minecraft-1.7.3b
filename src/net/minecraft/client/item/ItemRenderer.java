@@ -36,19 +36,19 @@ public class ItemRenderer {
 
    public ItemRenderer(Minecraft var1) {
       this.mc = var1;
-      this.mapItemRenderer = new MapItemRenderer(var1.fontRenderer, var1.gameSettings, var1.z);
+      this.mapItemRenderer = new MapItemRenderer(var1.fontRenderer, var1.gameSettings, var1.renderEngine);
    }
 
    public void renderItem(EntityLiving var1, ItemStack var2) {
       GL11.glPushMatrix();
       if(var2.itemID < 256 && RenderBlocks.renderItemIn3d(Block.blocksList[var2.itemID].getRenderType())) {
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture(Minecraft.TERRAIN_TEXTURE));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE));
          this.renderBlocksInstance.renderBlockOnInventory(Block.blocksList[var2.itemID], var2.getItemDamage(), var1.getEntityBrightness(1.0F));
       } else {
          if(var2.itemID < 256) {
-            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture(Minecraft.TERRAIN_TEXTURE));
+            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE));
          } else {
-            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTexture("/assets/gui/items.png"));
+            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/gui/items.png"));
          }
 
          Tessellator var3 = Tessellator.instance;
@@ -194,7 +194,7 @@ public class ItemRenderer {
          GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
          GL11.glRotatef(var8 * -85.0F, 0.0F, 0.0F, 1.0F);
          GL11.glEnable('\u803a');
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTextureForDownloadableImage(this.mc.thePlayer.skinUrl, this.mc.thePlayer.getEntityTexture()));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTextureForDownloadableImage(this.mc.thePlayer.skinUrl, this.mc.thePlayer.getEntityTexture()));
 
          for(int var17 = 0; var17 < 2; ++var17) {
             int var21 = var17 * 2 - 1;
@@ -225,7 +225,7 @@ public class ItemRenderer {
          GL11.glTranslatef(-1.0F, -1.0F, 0.0F);
          var10 = 0.015625F;
          GL11.glScalef(var10, var10, var10);
-         this.mc.z.bindTexture(this.mc.z.getTexture("/assets/misc/mapbg.png"));
+         this.mc.renderEngine.bindTexture(this.mc.renderEngine.getTexture("/assets/misc/mapbg.png"));
          Tessellator var19 = Tessellator.instance;
          GL11.glNormal3f(0.0F, 0.0F, -1.0F);
          var19.startDrawingQuads();
@@ -236,7 +236,7 @@ public class ItemRenderer {
          var19.addVertexWithUV((double)(0 - var20), (double)(0 - var20), 0.0D, 0.0D, 0.0D);
          var19.draw();
          MapData var22 = Item.map.func_28012_a(var5, this.mc.theWorld);
-         this.mapItemRenderer.renderMap(this.mc.thePlayer, this.mc.z, var22);
+         this.mapItemRenderer.renderMap(this.mc.thePlayer, this.mc.renderEngine, var22);
          GL11.glPopMatrix();
       } else if(var5 != null) {
          GL11.glPushMatrix();
@@ -277,7 +277,7 @@ public class ItemRenderer {
          var10 = MathHelper.sin(MathHelper.sqrt_float(var8) * 3.1415927F);
          GL11.glRotatef(var10 * 70.0F, 0.0F, 1.0F, 0.0F);
          GL11.glRotatef(-var9 * 20.0F, 0.0F, 0.0F, 1.0F);
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.z.getTextureForDownloadableImage(this.mc.thePlayer.skinUrl, this.mc.thePlayer.getEntityTexture()));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTextureForDownloadableImage(this.mc.thePlayer.skinUrl, this.mc.thePlayer.getEntityTexture()));
          GL11.glTranslatef(-1.0F, 3.6F, 3.5F);
          GL11.glRotatef(120.0F, 0.0F, 0.0F, 1.0F);
          GL11.glRotatef(200.0F, 1.0F, 0.0F, 0.0F);
@@ -300,7 +300,7 @@ public class ItemRenderer {
       GL11.glDisable(3008 /*GL_ALPHA_TEST*/);
       int var2;
       if(this.mc.thePlayer.isBurning()) {
-         var2 = this.mc.z.getTexture(Minecraft.TERRAIN_TEXTURE);
+         var2 = this.mc.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE);
          GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var2);
          this.renderFireInFirstPerson(var1);
       }
@@ -309,7 +309,7 @@ public class ItemRenderer {
          var2 = MathHelper.floor_double(this.mc.thePlayer.posX);
          int var3 = MathHelper.floor_double(this.mc.thePlayer.posY);
          int var4 = MathHelper.floor_double(this.mc.thePlayer.posZ);
-         int var5 = this.mc.z.getTexture(Minecraft.TERRAIN_TEXTURE);
+         int var5 = this.mc.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE);
          GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var5);
          int var6 = this.mc.theWorld.getBlockId(var2, var3, var4);
          if(this.mc.theWorld.isBlockNormalCube(var2, var3, var4)) {
@@ -334,7 +334,7 @@ public class ItemRenderer {
       }
 
       if(this.mc.thePlayer.isInsideOfMaterial(Material.water)) {
-         var2 = this.mc.z.getTexture("/assets/misc/water.png");
+         var2 = this.mc.renderEngine.getTexture("/assets/misc/water.png");
          GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var2);
          this.renderWarpedTextureOverlay(var1);
       }

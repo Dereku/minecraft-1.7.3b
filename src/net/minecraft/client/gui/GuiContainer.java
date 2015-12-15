@@ -70,8 +70,8 @@ public abstract class GuiContainer extends GuiScreen {
       InventoryPlayer var12 = this.mc.thePlayer.inventory;
       if(var12.getItemStack() != null) {
          GL11.glTranslatef(0.0F, 0.0F, 32.0F);
-         itemRenderer.renderItemIntoGUI(this.fontRenderer, this.mc.z, var12.getItemStack(), var1 - var4 - 8, var2 - var5 - 8);
-         itemRenderer.renderItemOverlayIntoGUI(this.fontRenderer, this.mc.z, var12.getItemStack(), var1 - var4 - 8, var2 - var5 - 8);
+         itemRenderer.renderItemIntoGUI(this.fontRenderer, this.mc.renderEngine, var12.getItemStack(), var1 - var4 - 8, var2 - var5 - 8);
+         itemRenderer.renderItemOverlayIntoGUI(this.fontRenderer, this.mc.renderEngine, var12.getItemStack(), var1 - var4 - 8, var2 - var5 - 8);
       }
 
       GL11.glDisable('\u803a');
@@ -108,15 +108,15 @@ public abstract class GuiContainer extends GuiScreen {
          int var5 = var1.getBackgroundIconIndex();
          if(var5 >= 0) {
             GL11.glDisable(2896 /*GL_LIGHTING*/);
-            this.mc.z.bindTexture(this.mc.z.getTexture("/assets/gui/items.png"));
+            this.mc.renderEngine.bindTexture(this.mc.renderEngine.getTexture("/assets/gui/items.png"));
             this.drawTexturedModalRect(var2, var3, var5 % 16 * 16, var5 / 16 * 16, 16, 16);
             GL11.glEnable(2896 /*GL_LIGHTING*/);
             return;
          }
       }
 
-      itemRenderer.renderItemIntoGUI(this.fontRenderer, this.mc.z, var4, var2, var3);
-      itemRenderer.renderItemOverlayIntoGUI(this.fontRenderer, this.mc.z, var4, var2, var3);
+      itemRenderer.renderItemIntoGUI(this.fontRenderer, this.mc.renderEngine, var4, var2, var3);
+      itemRenderer.renderItemOverlayIntoGUI(this.fontRenderer, this.mc.renderEngine, var4, var2, var3);
    }
 
    private Slot getSlotAtPosition(int var1, int var2) {

@@ -35,29 +35,28 @@ public class RenderEngine {
 
     public static boolean useMipmaps = false;
     private final HashMap<String, Integer> textureMap = new HashMap<>();
-    private HashMap field_28151_c = new HashMap();
-    private HashMap<Integer, BufferedImage> textureNameToImageMap = new HashMap<>();
-    private IntBuffer singleIntBuffer = GLAllocation.createDirectIntBuffer(1);
+    private final HashMap<String, int[]> texturesCache = new HashMap<>();
+    private final HashMap<Integer, BufferedImage> textureNameToImageMap = new HashMap<>();
+    private final HashMap<Integer, Dimension> textureDimensionsMap = new HashMap<>();
+    private final HashMap<String, byte[]> textureDataMap = new HashMap<>();
+    private final ArrayList<TextureFX> textureList = new ArrayList<>();
+    private final IntBuffer singleIntBuffer = GLAllocation.createDirectIntBuffer(1);
+    private final Map urlToImageDataMap;
+    private final GameSettings options;
+    private final TexturePackList texturePack;
+    private final BufferedImage missingTextureImage;
     private ByteBuffer imageData;
-    private List textureList;
-    private Map urlToImageDataMap;
-    private GameSettings options;
     private boolean clampTexture;
     private boolean blurTexture;
-    private TexturePackList texturePack;
-    private BufferedImage missingTextureImage;
     private int terrainTextureId = -1;
     private int guiItemsTextureId = -1;
     private boolean hdTexturesInstalled = false;
-    private Map textureDimensionsMap = new HashMap();
-    private Map textureDataMap = new HashMap();
     private int tickCounter = 0;
     private ByteBuffer[] mipImageDatas;
     private boolean dynamicTexturesUpdated = false;
 
     public RenderEngine(TexturePackList texturepacklist, GameSettings gamesettings) {
         this.allocateImageData(256);
-        this.textureList = new ArrayList();
         this.urlToImageDataMap = new HashMap();
         this.clampTexture = false;
         this.blurTexture = false;
@@ -73,48 +72,45 @@ public class RenderEngine {
         g.dispose();
     }
 
-    public int[] func_28149_a(String s) {
+    public int[] getTextureRGBArray(String path) {
         TexturePackBase texturepackbase = this.texturePack.selectedTexturePack;
-        int[] ai = (int[]) ((int[]) this.field_28151_c.get(s));
-
-        if (ai != null) {
-            return ai;
+        int[] texture = this.texturesCache.get(path);
+        if (texture != null) {
+            return texture;
         } else {
-            int[] ai2;
-
             try {
-                if (s.startsWith("##")) {
-                    ai2 = this.func_28148_b(this.unwrapImageByColumns(this.readTextureImage(texturepackbase.getResourceAsStream(s.substring(2)))));
-                } else if (s.startsWith("%clamp%")) {
+                if (path.startsWith("##")) {
+                    texture = this.getRGBArray(this.unwrapImageByColumns(this.readTextureImage(texturepackbase.getResourceAsStream(path.substring(2)))));
+                } else if (path.startsWith("%clamp%")) {
                     this.clampTexture = true;
-                    ai2 = this.func_28148_b(this.readTextureImage(texturepackbase.getResourceAsStream(s.substring(7))));
+                    texture = this.getRGBArray(this.readTextureImage(texturepackbase.getResourceAsStream(path.substring(7))));
                     this.clampTexture = false;
-                } else if (s.startsWith("%blur%")) {
+                } else if (path.startsWith("%blur%")) {
                     this.blurTexture = true;
-                    ai2 = this.func_28148_b(this.readTextureImage(texturepackbase.getResourceAsStream(s.substring(6))));
+                    texture = this.getRGBArray(this.readTextureImage(texturepackbase.getResourceAsStream(path.substring(6))));
                     this.blurTexture = false;
                 } else {
-                    InputStream inputstream = texturepackbase.getResourceAsStream(s);
+                    InputStream inputstream = texturepackbase.getResourceAsStream(path);
 
                     if (inputstream == null) {
-                        ai2 = this.func_28148_b(this.missingTextureImage);
+                        texture = this.getRGBArray(this.missingTextureImage);
                     } else {
-                        ai2 = this.func_28148_b(this.readTextureImage(inputstream));
+                        texture = this.getRGBArray(this.readTextureImage(inputstream));
                     }
                 }
 
-                this.field_28151_c.put(s, ai2);
-                return ai2;
+                this.texturesCache.put(path, texture);
+                return texture;
             } catch (IOException ioexception) {
                 ioexception.printStackTrace();
-                ai2 = this.func_28148_b(this.missingTextureImage);
-                this.field_28151_c.put(s, ai2);
-                return ai2;
+                texture = this.getRGBArray(this.missingTextureImage);
+                this.texturesCache.put(path, texture);
+                return texture;
             }
         }
     }
 
-    private int[] func_28148_b(BufferedImage bufferedimage) {
+    private int[] getRGBArray(BufferedImage bufferedimage) {
         int i = bufferedimage.getWidth();
         int j = bufferedimage.getHeight();
         int[] ai = new int[i * j];
@@ -123,7 +119,7 @@ public class RenderEngine {
         return ai;
     }
 
-    private int[] func_28147_a(BufferedImage bufferedimage, int[] ai) {
+    private int[] fillRGBArray(BufferedImage bufferedimage, int[] ai) {
         int i = bufferedimage.getWidth();
         int j = bufferedimage.getHeight();
 
@@ -131,56 +127,54 @@ public class RenderEngine {
         return ai;
     }
 
-    public int getTexture(String s) {
+    public int getTexture(String path) {
         TexturePackBase texturepackbase = this.texturePack.selectedTexturePack;
-        Integer integer = this.textureMap.get(s);
+        Integer id = this.textureMap.get(path);
 
-        if (integer != null) {
-            return integer;
+        if (id != null) {
+            return id;
         } else {
-            int j;
-
             try {
                 this.singleIntBuffer.clear();
                 GLAllocation.generateTextureNames(this.singleIntBuffer);
-                j = this.singleIntBuffer.get(0);
-                if (s.startsWith("##")) {
-                    this.setupTexture(this.unwrapImageByColumns(this.readTextureImage(texturepackbase.getResourceAsStream(s.substring(2)))), j);
-                } else if (s.startsWith("%clamp%")) {
+                id = this.singleIntBuffer.get(0);
+                if (path.startsWith("##")) {
+                    this.setupTexture(this.unwrapImageByColumns(this.readTextureImage(texturepackbase.getResourceAsStream(path.substring(2)))), id);
+                } else if (path.startsWith("%clamp%")) {
                     this.clampTexture = true;
-                    this.setupTexture(this.readTextureImage(texturepackbase.getResourceAsStream(s.substring(7))), j);
+                    this.setupTexture(this.readTextureImage(texturepackbase.getResourceAsStream(path.substring(7))), id);
                     this.clampTexture = false;
-                } else if (s.startsWith("%blur%")) {
+                } else if (path.startsWith("%blur%")) {
                     this.blurTexture = true;
-                    this.setupTexture(this.readTextureImage(texturepackbase.getResourceAsStream(s.substring(6))), j);
+                    this.setupTexture(this.readTextureImage(texturepackbase.getResourceAsStream(path.substring(6))), id);
                     this.blurTexture = false;
                 } else {
-                    InputStream inputstream = texturepackbase.getResourceAsStream(s);
+                    InputStream inputstream = texturepackbase.getResourceAsStream(path);
 
                     if (inputstream == null) {
-                        this.setupTexture(this.missingTextureImage, j);
+                        this.setupTexture(this.missingTextureImage, id);
                     } else {
-                        if (s.equals("/assets/terrain.png")) {
-                            this.terrainTextureId = j;
+                        if (path.equals("/assets/terrain.png")) {
+                            this.terrainTextureId = id;
                         }
 
-                        if (s.equals("/assets/gui/items.png")) {
-                            this.guiItemsTextureId = j;
+                        if (path.equals("/assets/gui/items.png")) {
+                            this.guiItemsTextureId = id;
                         }
 
-                        this.setupTexture(this.readTextureImage(inputstream), j);
+                        this.setupTexture(this.readTextureImage(inputstream), id);
                     }
                 }
 
-                this.textureMap.put(s, j);
-                return j;
+                this.textureMap.put(path, id);
+                return id;
             } catch (IOException ioexception) {
                 ioexception.printStackTrace();
                 GLAllocation.generateTextureNames(this.singleIntBuffer);
-                j = this.singleIntBuffer.get(0);
-                this.setupTexture(this.missingTextureImage, j);
-                this.textureMap.put(s, j);
-                return j;
+                id = this.singleIntBuffer.get(0);
+                this.setupTexture(this.missingTextureImage, id);
+                this.textureMap.put(path, id);
+                return id;
             }
         }
     }
@@ -382,7 +376,7 @@ public class RenderEngine {
     }
 
     public void deleteTexture(int i) {
-        this.textureNameToImageMap.remove(Integer.valueOf(i));
+        this.textureNameToImageMap.remove(i);
         this.singleIntBuffer.clear();
         this.singleIntBuffer.put(i);
         this.singleIntBuffer.flip();
@@ -435,7 +429,7 @@ public class RenderEngine {
 
     public void registerTextureFX(TextureFX texturefx) {
         for (int i = 0; i < this.textureList.size(); ++i) {
-            TextureFX tex = (TextureFX) this.textureList.get(i);
+            TextureFX tex = this.textureList.get(i);
 
             if (tex.tileImage == texturefx.tileImage && tex.iconIndex == texturefx.iconIndex) {
                 this.textureList.remove(i);
@@ -503,14 +497,14 @@ public class RenderEngine {
     public void updateDynamicTextures() {
         this.checkHdTextures();
         ++this.tickCounter;
-        this.terrainTextureId = this.getTexture("/assets/terrain.png");
+        this.terrainTextureId = this.getTexture(Minecraft.TERRAIN_TEXTURE);
         this.guiItemsTextureId = this.getTexture("/assets/gui/items.png");
 
         int i;
         TextureFX texturefx1;
 
         for (i = 0; i < this.textureList.size(); ++i) {
-            texturefx1 = (TextureFX) this.textureList.get(i);
+            texturefx1 = this.textureList.get(i);
             texturefx1.anaglyphEnabled = this.options.anaglyph;
             if (!texturefx1.getClass().getName().equals("ModTextureStatic") || !this.dynamicTexturesUpdated) {
                 boolean tid = false;
@@ -583,7 +577,7 @@ public class RenderEngine {
         this.dynamicTexturesUpdated = true;
 
         for (i = 0; i < this.textureList.size(); ++i) {
-            texturefx1 = (TextureFX) this.textureList.get(i);
+            texturefx1 = this.textureList.get(i);
             if (texturefx1.textureId > 0) {
                 this.imageData.clear();
                 this.imageData.put(texturefx1.imageData);
@@ -683,11 +677,11 @@ public class RenderEngine {
                 } else {
                     bufferedImage = this.readTextureImage(texturepackbase.getResourceAsStream(s11));
                 }
-                
+
                 if (bufferedImage == null) {
                     break;
                 }
-                int j = ((Integer) this.textureMap.get(s11));
+                int j = this.textureMap.get(s11);
 
                 this.setupTexture(bufferedImage, j);
                 this.blurTexture = false;
@@ -697,7 +691,7 @@ public class RenderEngine {
             }
         }
 
-        iterator3 = this.field_28151_c.keySet().iterator();
+        iterator3 = this.texturesCache.keySet().iterator();
 
         while (iterator3.hasNext()) {
             s11 = (String) iterator3.next();
@@ -715,7 +709,7 @@ public class RenderEngine {
                     bufferedImage = this.readTextureImage(texturepackbase.getResourceAsStream(s11));
                 }
 
-                this.func_28147_a(bufferedImage, (int[]) ((int[]) this.field_28151_c.get(s11)));
+                this.fillRGBArray(bufferedImage, (int[]) ((int[]) this.texturesCache.get(s11)));
                 this.blurTexture = false;
                 this.clampTexture = false;
             } catch (IOException ioexception2) {
@@ -729,7 +723,7 @@ public class RenderEngine {
         if (inputstream == null) {
             return null;
         }
-        
+
         BufferedImage bufferedimage = ImageIO.read(inputstream);
 
         inputstream.close();
@@ -743,7 +737,7 @@ public class RenderEngine {
     }
 
     private void setTextureDimension(int id, Dimension dim) {
-        this.textureDimensionsMap.put(new Integer(id), dim);
+        this.textureDimensionsMap.put(id, dim);
         if (id == this.terrainTextureId) {
             Config.setIconWidthTerrain(dim.width / 16);
             this.updateDinamicTextures(0, dim);
@@ -757,14 +751,14 @@ public class RenderEngine {
     }
 
     private Dimension getTextureDimensions(int id) {
-        return (Dimension) this.textureDimensionsMap.get(new Integer(id));
+        return this.textureDimensionsMap.get(id);
     }
 
     private void updateDinamicTextures(int texNum, Dimension dim) {
         this.checkHdTextures();
 
         for (int i = 0; i < this.textureList.size(); ++i) {
-            TextureFX tex = (TextureFX) this.textureList.get(i);
+            TextureFX tex = this.textureList.get(i);
 
             if (tex.tileImage == texNum && tex instanceof TextureHDFX) {
                 TextureHDFX texHD = (TextureHDFX) tex;
@@ -777,7 +771,19 @@ public class RenderEngine {
     }
 
     public boolean updateCustomTexture(TextureFX texturefx, ByteBuffer imgData, int tileWidth) {
-        return texturefx.iconIndex == Block.waterStill.blockIndexInTexture ? (Config.isGeneratedWater() ? false : this.updateCustomTexture(texturefx, "/custom_water_still.png", imgData, tileWidth, Config.isAnimatedWater(), 1)) : (texturefx.iconIndex == Block.waterStill.blockIndexInTexture + 1 ? (Config.isGeneratedWater() ? false : this.updateCustomTexture(texturefx, "/custom_water_flowing.png", imgData, tileWidth, Config.isAnimatedWater(), 1)) : (texturefx.iconIndex == Block.lavaStill.blockIndexInTexture ? (Config.isGeneratedLava() ? false : this.updateCustomTexture(texturefx, "/custom_lava_still.png", imgData, tileWidth, Config.isAnimatedLava(), 1)) : (texturefx.iconIndex == Block.lavaStill.blockIndexInTexture + 1 ? (Config.isGeneratedLava() ? false : this.updateCustomTexture(texturefx, "/custom_lava_flowing.png", imgData, tileWidth, Config.isAnimatedLava(), 1)) : (texturefx.iconIndex == Block.portal.blockIndexInTexture ? this.updateCustomTexture(texturefx, "/custom_portal.png", imgData, tileWidth, Config.isAnimatedPortal(), 1) : (texturefx.iconIndex == Block.fire.blockIndexInTexture ? this.updateCustomTexture(texturefx, "/custom_fire_n_s.png", imgData, tileWidth, Config.isAnimatedFire(), 1) : (texturefx.iconIndex == Block.fire.blockIndexInTexture + 16 ? this.updateCustomTexture(texturefx, "/custom_fire_e_w.png", imgData, tileWidth, Config.isAnimatedFire(), 1) : false))))));
+        return texturefx.iconIndex == Block.waterStill.blockIndexInTexture
+                ? (Config.isGeneratedWater() ? false
+                        : this.updateCustomTexture(texturefx, "/custom_water_still.png", imgData, tileWidth, Config.isAnimatedWater(), 1))
+                : (texturefx.iconIndex == Block.waterStill.blockIndexInTexture + 1 ? (Config.isGeneratedWater() ? false
+                                : this.updateCustomTexture(texturefx, "/custom_water_flowing.png", imgData, tileWidth, Config.isAnimatedWater(), 1))
+                        : (texturefx.iconIndex == Block.lavaStill.blockIndexInTexture ? (Config.isGeneratedLava() ? false
+                                        : this.updateCustomTexture(texturefx, "/custom_lava_still.png", imgData, tileWidth, Config.isAnimatedLava(), 1))
+                                : (texturefx.iconIndex == Block.lavaStill.blockIndexInTexture + 1 ? (Config.isGeneratedLava() ? false
+                                                : this.updateCustomTexture(texturefx, "/custom_lava_flowing.png", imgData, tileWidth, Config.isAnimatedLava(), 1))
+                                        : (texturefx.iconIndex == Block.portal.blockIndexInTexture ? this.updateCustomTexture(texturefx, "/custom_portal.png", imgData, tileWidth, Config.isAnimatedPortal(), 1)
+                                                : (texturefx.iconIndex == Block.fire.blockIndexInTexture ? this.updateCustomTexture(texturefx, "/custom_fire_n_s.png", imgData, tileWidth, Config.isAnimatedFire(), 1)
+                                                        : (texturefx.iconIndex == Block.fire.blockIndexInTexture + 16 ? this.updateCustomTexture(texturefx, "/custom_fire_e_w.png", imgData, tileWidth, Config.isAnimatedFire(), 1)
+                                                                : false))))));
     }
 
     private boolean updateDefaultTexture(TextureFX texturefx, ByteBuffer imgData, int tileWidth) {
@@ -845,7 +851,7 @@ public class RenderEngine {
         if (tileData != null) {
             return tileData;
         } else {
-            byte[] terrainData = this.getCustomTextureData("/terrain.png", tileWidth * 16);
+            byte[] terrainData = this.getCustomTextureData(Minecraft.TERRAIN_TEXTURE, tileWidth * 16);
 
             if (terrainData == null) {
                 return null;
@@ -881,7 +887,7 @@ public class RenderEngine {
     }
 
     public byte[] getCustomTextureData(String imagePath, int tileWidth) {
-        byte[] imageBytes = (byte[]) ((byte[]) this.textureDataMap.get(imagePath));
+        byte[] imageBytes = this.textureDataMap.get(imagePath);
 
         if (imageBytes == null) {
             if (this.textureDataMap.containsKey(imagePath)) {

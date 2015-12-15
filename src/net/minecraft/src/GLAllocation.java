@@ -32,7 +32,7 @@ public class GLAllocation {
 
    public static synchronized void func_28194_b(int var0) {
       int var1 = displayLists.indexOf(Integer.valueOf(var0));
-      GL11.glDeleteLists(((Integer)displayLists.get(var1)).intValue(), ((Integer)displayLists.get(var1 + 1)).intValue());
+      GL11.glDeleteLists(((Integer)displayLists.get(var1)), ((Integer)displayLists.get(var1 + 1)));
       displayLists.remove(var1);
       displayLists.remove(var1);
    }

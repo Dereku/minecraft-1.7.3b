@@ -265,7 +265,7 @@ public class GameSettings {
 
         if (enumoptions == EnumOptions.ANAGLYPH) {
             this.anaglyph = !this.anaglyph;
-            this.mc.z.refreshTextures();
+            this.mc.renderEngine.refreshTextures();
         }
 
         if (enumoptions == EnumOptions.FRAMERATE_LIMIT) {
@@ -308,12 +308,12 @@ public class GameSettings {
                 this.ofMipmapLevel = 0;
             }
 
-            this.mc.z.refreshTextures();
+            this.mc.renderEngine.refreshTextures();
         }
 
         if (enumoptions == EnumOptions.MIPMAP_TYPE) {
             this.ofMipmapLinear = !this.ofMipmapLinear;
-            this.mc.z.refreshTextures();
+            this.mc.renderEngine.refreshTextures();
         }
 
         if (enumoptions == EnumOptions.LOAD_FAR) {
@@ -384,7 +384,7 @@ public class GameSettings {
                 this.ofAnimatedWater = 0;
             }
 
-            this.mc.z.refreshTextures();
+            this.mc.renderEngine.refreshTextures();
         }
 
         if (enumoptions == EnumOptions.ANIMATED_LAVA) {
@@ -393,17 +393,17 @@ public class GameSettings {
                 this.ofAnimatedLava = 0;
             }
 
-            this.mc.z.refreshTextures();
+            this.mc.renderEngine.refreshTextures();
         }
 
         if (enumoptions == EnumOptions.ANIMATED_FIRE) {
             this.ofAnimatedFire = !this.ofAnimatedFire;
-            this.mc.z.refreshTextures();
+            this.mc.renderEngine.refreshTextures();
         }
 
         if (enumoptions == EnumOptions.ANIMATED_PORTAL) {
             this.ofAnimatedPortal = !this.ofAnimatedPortal;
-            this.mc.z.refreshTextures();
+            this.mc.renderEngine.refreshTextures();
         }
 
         if (enumoptions == EnumOptions.ANIMATED_REDSTONE) {

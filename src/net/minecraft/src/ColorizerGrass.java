@@ -6,7 +6,7 @@ public class ColorizerGrass {
    private static int[] grassBuffer = new int[65536];
 
 
-   public static void func_28181_a(int[] var0) {
+   public static void loadBuffer(int[] var0) {
       grassBuffer = var0;
    }
 

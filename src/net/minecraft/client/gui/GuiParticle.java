@@ -31,7 +31,7 @@ public class GuiParticle extends Gui {
    }
 
    public void draw(float var1) {
-      this.mc.z.bindTexture(this.mc.z.getTexture("/assets/gui/particles.png"));
+      this.mc.renderEngine.bindTexture(this.mc.renderEngine.getTexture("/assets/gui/particles.png"));
 
       for(int var2 = 0; var2 < this.particles.size(); ++var2) {
          Particle var3 = (Particle)this.particles.get(var2);

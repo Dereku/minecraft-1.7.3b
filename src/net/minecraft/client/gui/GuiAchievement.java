@@ -107,7 +107,7 @@ public class GuiAchievement extends Gui {
             var9 *= var9;
             int var5 = this.achievementWindowWidth - 160;
             int var6 = 0 - (int)(var9 * 36.0D);
-            int var7 = this.theGame.z.getTexture("/assets/achievement/bg.png");
+            int var7 = this.theGame.renderEngine.getTexture("/assets/achievement/bg.png");
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             GL11.glEnable(3553 /*GL_TEXTURE_2D*/);
             GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var7);
@@ -128,7 +128,7 @@ public class GuiAchievement extends Gui {
             GL11.glEnable('\u803a');
             GL11.glEnable(2903 /*GL_COLOR_MATERIAL*/);
             GL11.glEnable(2896 /*GL_LIGHTING*/);
-            this.itemRender.renderItemIntoGUI(this.theGame.fontRenderer, this.theGame.z, this.theAchievement.theItemStack, var5 + 8, var6 + 8);
+            this.itemRender.renderItemIntoGUI(this.theGame.fontRenderer, this.theGame.renderEngine, this.theAchievement.theItemStack, var5 + 8, var6 + 8);
             GL11.glDisable(2896 /*GL_LIGHTING*/);
             GL11.glDepthMask(true);
             GL11.glEnable(2929 /*GL_DEPTH_TEST*/);

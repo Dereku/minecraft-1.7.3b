@@ -49,7 +49,7 @@ public class StatList {
    private static boolean itemStatsInitialized;
 
 
-   public static void func_27360_a() {}
+   public static void call() {}
 
    public static void initBreakableStats() {
       objectUseStats = initUsableStats(objectUseStats, "stat.useItem", 16908288, 0, Block.blocksList.length);
