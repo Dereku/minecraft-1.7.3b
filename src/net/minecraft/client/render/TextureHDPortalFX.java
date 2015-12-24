@@ -4,8 +4,8 @@ import java.util.Random;
 import net.minecraft.client.block.Block;
 import net.minecraft.src.Config;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.TextureFX;
-import net.minecraft.src.TexturePackBase;
+import net.minecraft.client.texture.TextureFX;
+import net.minecraft.client.texture.TexturePackBase;
 
 public class TextureHDPortalFX extends TextureFX implements TextureHDFX {
 

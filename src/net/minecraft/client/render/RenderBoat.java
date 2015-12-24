@@ -7,10 +7,10 @@ import net.minecraft.entity.EntityBoat;
 import net.minecraft.entity.EntityBoat;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.ModelBase;
-import net.minecraft.src.ModelBase;
-import net.minecraft.src.ModelBoat;
-import net.minecraft.src.ModelBoat;
+import net.minecraft.client.models.ModelBase;
+import net.minecraft.client.models.ModelBase;
+import net.minecraft.client.models.ModelBoat;
+import net.minecraft.client.models.ModelBoat;
 import net.minecraft.client.render.Render;
 import org.lwjgl.opengl.GL11;
 

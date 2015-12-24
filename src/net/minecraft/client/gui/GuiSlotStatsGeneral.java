@@ -2,10 +2,10 @@ package net.minecraft.client.gui;
 
 import net.minecraft.client.gui.GuiSlot;
 import net.minecraft.client.gui.GuiStats;
-import net.minecraft.src.StatBase;
-import net.minecraft.src.StatBase;
-import net.minecraft.src.StatList;
-import net.minecraft.src.StatList;
+import net.minecraft.stats.StatBase;
+import net.minecraft.stats.StatBase;
+import net.minecraft.stats.StatList;
+import net.minecraft.stats.StatList;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.Tessellator;
 

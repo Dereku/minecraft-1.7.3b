@@ -35,7 +35,7 @@ import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MetadataChunkBlock;
 import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.src.NextTickListEntry;
 import net.minecraft.src.PathEntity;
 import net.minecraft.src.Pathfinder;

@@ -2,8 +2,8 @@ package net.minecraft.client.gui;
 
 import net.minecraft.src.ChatAllowedCharacters;
 import net.minecraft.src.ChatAllowedCharacters;
-import net.minecraft.src.FontRenderer;
-import net.minecraft.src.FontRenderer;
+import net.minecraft.client.render.FontRenderer;
+import net.minecraft.client.render.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 

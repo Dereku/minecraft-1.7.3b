@@ -5,8 +5,8 @@ import net.minecraft.client.gui.GuiSlot;
 import net.minecraft.client.gui.GuiTexturePacks;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.TexturePackBase;
-import net.minecraft.src.TexturePackBase;
+import net.minecraft.client.texture.TexturePackBase;
+import net.minecraft.client.texture.TexturePackBase;
 import org.lwjgl.opengl.GL11;
 
 class GuiTexturePackSlot extends GuiSlot {

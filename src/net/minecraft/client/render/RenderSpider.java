@@ -4,8 +4,8 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntitySpider;
 import net.minecraft.entity.EntitySpider;
-import net.minecraft.src.ModelSpider;
-import net.minecraft.src.ModelSpider;
+import net.minecraft.client.models.ModelSpider;
+import net.minecraft.client.models.ModelSpider;
 import net.minecraft.client.render.RenderLiving;
 import org.lwjgl.opengl.GL11;
 

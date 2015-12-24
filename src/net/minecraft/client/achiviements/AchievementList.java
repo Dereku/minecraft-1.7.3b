@@ -3,7 +3,7 @@ package net.minecraft.client.achiviements;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.block.Block;
-import net.minecraft.client.item.Item;
+import net.minecraft.item.Item;
 
 public class AchievementList {
 

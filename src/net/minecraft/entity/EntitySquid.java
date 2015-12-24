@@ -1,10 +1,10 @@
 package net.minecraft.entity;
 
-import net.minecraft.client.item.Item;
-import net.minecraft.client.item.ItemStack;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class EntitySquid extends EntityWaterMob {

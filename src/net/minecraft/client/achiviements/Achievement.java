@@ -2,10 +2,10 @@ package net.minecraft.client.achiviements;
 
 import net.minecraft.client.block.Block;
 import net.minecraft.src.IStatStringFormat;
-import net.minecraft.client.item.Item;
-import net.minecraft.client.item.ItemStack;
-import net.minecraft.src.StatBase;
-import net.minecraft.src.StatCollector;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatBase;
+import net.minecraft.stats.StatCollector;
 
 public class Achievement extends StatBase {
 

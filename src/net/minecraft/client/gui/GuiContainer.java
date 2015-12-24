@@ -1,18 +1,18 @@
 package net.minecraft.client.gui;
 
-import net.minecraft.src.Container;
-import net.minecraft.src.Container;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.Container;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.InventoryPlayer;
-import net.minecraft.client.item.ItemStack;
-import net.minecraft.client.item.ItemStack;
+import net.minecraft.inventory.InventoryPlayer;
+import net.minecraft.inventory.InventoryPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemStack;
 import net.minecraft.client.render.RenderHelper;
 import net.minecraft.client.render.RenderHelper;
 import net.minecraft.client.render.RenderItem;
 import net.minecraft.client.render.RenderItem;
-import net.minecraft.src.Slot;
-import net.minecraft.src.Slot;
+import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.Slot;
 import net.minecraft.src.StringTranslate;
 import net.minecraft.src.StringTranslate;
 import org.lwjgl.input.Keyboard;

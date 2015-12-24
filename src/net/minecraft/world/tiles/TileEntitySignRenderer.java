@@ -1,8 +1,8 @@
 package net.minecraft.world.tiles;
 
 import net.minecraft.client.block.Block;
-import net.minecraft.src.FontRenderer;
-import net.minecraft.src.FontRenderer;
+import net.minecraft.client.render.FontRenderer;
+import net.minecraft.client.render.FontRenderer;
 import net.minecraft.src.SignModel;
 import net.minecraft.src.SignModel;
 import net.minecraft.world.tiles.TileEntity;

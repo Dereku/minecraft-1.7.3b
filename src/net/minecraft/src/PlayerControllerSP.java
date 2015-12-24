@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.block.Block;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.client.item.ItemStack;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.PlayerController;
 import net.minecraft.world.World;
 

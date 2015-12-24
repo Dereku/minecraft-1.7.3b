@@ -4,8 +4,8 @@ import net.minecraft.client.block.BlockSand;
 import net.minecraft.entity.Entity;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class EntityFallingSand extends Entity {

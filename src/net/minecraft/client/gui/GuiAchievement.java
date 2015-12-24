@@ -10,8 +10,8 @@ import net.minecraft.client.render.RenderItem;
 import net.minecraft.client.render.RenderItem;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.StatCollector;
+import net.minecraft.stats.StatCollector;
+import net.minecraft.stats.StatCollector;
 import org.lwjgl.opengl.GL11;
 
 public class GuiAchievement extends Gui {

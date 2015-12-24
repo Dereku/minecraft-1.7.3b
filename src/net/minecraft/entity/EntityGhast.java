@@ -2,7 +2,7 @@ package net.minecraft.entity;
 
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.IMob;
-import net.minecraft.client.item.Item;
+import net.minecraft.item.Item;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.Vec3D;
 import net.minecraft.world.World;

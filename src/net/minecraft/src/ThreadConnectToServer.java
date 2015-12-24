@@ -1,5 +1,7 @@
 package net.minecraft.src;
 
+import net.minecraft.network.NetClientHandler;
+import net.minecraft.network.packets.Packet2Handshake;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.UnknownHostException;

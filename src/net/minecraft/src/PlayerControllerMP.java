@@ -1,11 +1,17 @@
 package net.minecraft.src;
 
+import net.minecraft.network.NetClientHandler;
+import net.minecraft.network.packets.Packet15Place;
+import net.minecraft.network.packets.Packet102WindowClick;
+import net.minecraft.network.packets.Packet16BlockItemSwitch;
+import net.minecraft.network.packets.Packet14BlockDig;
+import net.minecraft.network.packets.Packet7UseEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClientPlayerMP;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.client.item.ItemStack;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class PlayerControllerMP extends PlayerController {

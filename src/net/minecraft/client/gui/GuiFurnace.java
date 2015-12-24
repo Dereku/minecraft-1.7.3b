@@ -1,10 +1,10 @@
 package net.minecraft.client.gui;
 
-import net.minecraft.src.ContainerFurnace;
-import net.minecraft.src.ContainerFurnace;
+import net.minecraft.inventory.ContainerFurnace;
+import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.client.gui.GuiContainer;
-import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.InventoryPlayer;
+import net.minecraft.inventory.InventoryPlayer;
+import net.minecraft.inventory.InventoryPlayer;
 import net.minecraft.world.tiles.TileEntityFurnace;
 import net.minecraft.world.tiles.TileEntityFurnace;
 import org.lwjgl.opengl.GL11;

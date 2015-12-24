@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import net.minecraft.stats.StatCollector;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

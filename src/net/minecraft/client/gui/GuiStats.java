@@ -1,12 +1,12 @@
 package net.minecraft.client.gui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.FontRenderer;
-import net.minecraft.client.item.Item;
+import net.minecraft.client.render.FontRenderer;
+import net.minecraft.item.Item;
 import net.minecraft.client.render.RenderHelper;
 import net.minecraft.client.render.RenderItem;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.StatFileWriter;
+import net.minecraft.stats.StatCollector;
+import net.minecraft.stats.StatFileWriter;
 import net.minecraft.src.StringTranslate;
 import net.minecraft.src.Tessellator;
 import org.lwjgl.opengl.GL11;

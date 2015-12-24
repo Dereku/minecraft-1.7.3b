@@ -9,8 +9,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.src.IChunkProvider;
 import net.minecraft.src.IWorldAccess;
 import net.minecraft.src.MCHash;
-import net.minecraft.src.NetClientHandler;
-import net.minecraft.src.Packet255KickDisconnect;
+import net.minecraft.network.NetClientHandler;
+import net.minecraft.network.packets.Packet255KickDisconnect;
 import net.minecraft.src.SaveHandlerMP;
 
 public class WorldClient extends World {

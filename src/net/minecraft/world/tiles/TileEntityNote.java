@@ -2,8 +2,8 @@ package net.minecraft.world.tiles;
 
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.tiles.TileEntity;
 import net.minecraft.world.World;
 

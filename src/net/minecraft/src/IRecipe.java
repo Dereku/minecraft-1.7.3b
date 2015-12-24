@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
-import net.minecraft.src.InventoryCrafting;
-import net.minecraft.client.item.ItemStack;
+import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.ItemStack;
 
 public interface IRecipe {
 

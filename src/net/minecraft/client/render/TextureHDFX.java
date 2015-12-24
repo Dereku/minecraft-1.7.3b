@@ -1,6 +1,6 @@
 package net.minecraft.client.render;
 
-import net.minecraft.src.TexturePackBase;
+import net.minecraft.client.texture.TexturePackBase;
 
 public interface TextureHDFX {
 

@@ -4,8 +4,8 @@ import net.minecraft.entity.EntityGhast;
 import net.minecraft.entity.EntityGhast;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.src.ModelGhast;
-import net.minecraft.src.ModelGhast;
+import net.minecraft.client.models.ModelGhast;
+import net.minecraft.client.models.ModelGhast;
 import net.minecraft.client.render.RenderLiving;
 import org.lwjgl.opengl.GL11;
 

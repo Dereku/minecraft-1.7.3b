@@ -2,9 +2,9 @@ package net.minecraft.entity;
 
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.src.IMob;
-import net.minecraft.client.item.Item;
+import net.minecraft.item.Item;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class EntitySlime extends EntityLiving implements IMob {

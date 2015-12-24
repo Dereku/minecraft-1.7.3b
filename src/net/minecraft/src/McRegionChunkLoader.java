@@ -8,8 +8,8 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkLoader;
 import net.minecraft.src.CompressedStreamTools;
 import net.minecraft.src.IChunkLoader;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.RegionFileCache;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.storage.region.RegionFileCache;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldInfo;
 

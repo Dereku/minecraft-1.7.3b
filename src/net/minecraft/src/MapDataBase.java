@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 
 public abstract class MapDataBase {
 

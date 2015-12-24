@@ -1,6 +1,6 @@
 package net.minecraft.entity;
 
-import net.minecraft.client.item.Item;
+import net.minecraft.item.Item;
 import net.minecraft.src.MathHelper;
 import net.minecraft.world.World;
 

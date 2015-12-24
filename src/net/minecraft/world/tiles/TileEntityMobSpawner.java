@@ -6,8 +6,8 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.tiles.TileEntity;
 
 public class TileEntityMobSpawner extends TileEntity {

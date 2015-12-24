@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.InventoryBasic;
+import net.minecraft.inventory.InventoryBasic;
 
 public interface IInvBasic {
 

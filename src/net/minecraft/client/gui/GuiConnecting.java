@@ -1,7 +1,7 @@
 package net.minecraft.client.gui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.NetClientHandler;
+import net.minecraft.network.NetClientHandler;
 import net.minecraft.src.StringTranslate;
 import net.minecraft.src.ThreadConnectToServer;
 import net.minecraft.world.World;

@@ -1,7 +1,7 @@
 package net.minecraft.world.tiles;
 
-import net.minecraft.src.FontRenderer;
-import net.minecraft.src.FontRenderer;
+import net.minecraft.client.render.FontRenderer;
+import net.minecraft.client.render.FontRenderer;
 import net.minecraft.client.render.RenderEngine;
 import net.minecraft.client.render.RenderEngine;
 import net.minecraft.world.tiles.TileEntity;

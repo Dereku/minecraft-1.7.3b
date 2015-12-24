@@ -6,18 +6,18 @@ import net.minecraft.entity.EntityPlayer;
 import net.minecraft.entity.EntityPlayer;
 import net.minecraft.src.FurnaceRecipes;
 import net.minecraft.src.FurnaceRecipes;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.IInventory;
-import net.minecraft.client.item.Item;
-import net.minecraft.client.item.Item;
-import net.minecraft.client.item.ItemStack;
-import net.minecraft.client.item.ItemStack;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagList;
-import net.minecraft.src.NBTTagList;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.tiles.TileEntity;
 
 public class TileEntityFurnace extends TileEntity implements IInventory {

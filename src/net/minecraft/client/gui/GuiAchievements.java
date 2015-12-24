@@ -8,8 +8,8 @@ import net.minecraft.client.block.Block;
 import net.minecraft.src.MathHelper;
 import net.minecraft.client.render.RenderHelper;
 import net.minecraft.client.render.RenderItem;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.StatFileWriter;
+import net.minecraft.stats.StatCollector;
+import net.minecraft.stats.StatFileWriter;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 

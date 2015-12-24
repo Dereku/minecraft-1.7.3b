@@ -4,8 +4,8 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityPig;
 import net.minecraft.entity.EntityPig;
-import net.minecraft.src.ModelBase;
-import net.minecraft.src.ModelBase;
+import net.minecraft.client.models.ModelBase;
+import net.minecraft.client.models.ModelBase;
 import net.minecraft.client.render.RenderLiving;
 
 public class RenderPig extends RenderLiving {

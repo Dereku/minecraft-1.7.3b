@@ -1,10 +1,10 @@
 package net.minecraft.client.gui;
 
-import net.minecraft.src.ContainerWorkbench;
-import net.minecraft.src.ContainerWorkbench;
+import net.minecraft.inventory.ContainerWorkbench;
+import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.client.gui.GuiContainer;
-import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.InventoryPlayer;
+import net.minecraft.inventory.InventoryPlayer;
+import net.minecraft.inventory.InventoryPlayer;
 import net.minecraft.world.World;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;

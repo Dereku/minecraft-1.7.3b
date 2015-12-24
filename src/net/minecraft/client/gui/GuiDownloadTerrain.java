@@ -2,10 +2,10 @@ package net.minecraft.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.src.NetClientHandler;
-import net.minecraft.src.NetClientHandler;
-import net.minecraft.src.Packet0KeepAlive;
-import net.minecraft.src.Packet0KeepAlive;
+import net.minecraft.network.NetClientHandler;
+import net.minecraft.network.NetClientHandler;
+import net.minecraft.network.packets.Packet0KeepAlive;
+import net.minecraft.network.packets.Packet0KeepAlive;
 import net.minecraft.src.StringTranslate;
 import net.minecraft.src.StringTranslate;
 

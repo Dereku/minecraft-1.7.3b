@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import net.minecraft.src.ModelRenderer;
+import net.minecraft.client.models.ModelRenderer;
 
 public class SignModel {
 

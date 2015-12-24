@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import net.minecraft.client.render.FontRenderer;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
 import net.minecraft.entity.EntityPlayer;

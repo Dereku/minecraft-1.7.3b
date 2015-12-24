@@ -1,8 +1,8 @@
 package net.minecraft.client.gui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.FontRenderer;
-import net.minecraft.src.FontRenderer;
+import net.minecraft.client.render.FontRenderer;
+import net.minecraft.client.render.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import org.lwjgl.opengl.GL11;
 

@@ -7,7 +7,7 @@ import java.util.List;
 import net.minecraft.src.ISaveFormat;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.PlayerControllerSP;
-import net.minecraft.src.SaveFormatComparator;
+import net.minecraft.storage.SaveFormatComparator;
 import net.minecraft.src.StringTranslate;
 
 public class GuiSelectWorld extends GuiScreen {

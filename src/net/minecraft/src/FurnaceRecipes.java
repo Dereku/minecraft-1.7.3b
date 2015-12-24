@@ -3,8 +3,8 @@ package net.minecraft.src;
 import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.client.block.Block;
-import net.minecraft.client.item.Item;
-import net.minecraft.client.item.ItemStack;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class FurnaceRecipes {
 

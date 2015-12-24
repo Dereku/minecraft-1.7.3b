@@ -6,14 +6,14 @@ import net.minecraft.client.block.Block;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.client.item.Item;
-import net.minecraft.client.item.Item;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item;
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class EntityBoat extends Entity {

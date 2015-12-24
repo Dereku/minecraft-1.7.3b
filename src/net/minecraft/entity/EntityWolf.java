@@ -3,11 +3,11 @@ package net.minecraft.entity;
 import java.util.Iterator;
 import java.util.List;
 import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.client.item.Item;
-import net.minecraft.client.item.ItemFood;
-import net.minecraft.client.item.ItemStack;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.src.PathEntity;
 import net.minecraft.world.World;
 

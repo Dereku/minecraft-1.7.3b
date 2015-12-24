@@ -4,10 +4,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.item.Item;
+import net.minecraft.item.Item;
 import net.minecraft.client.render.TextureHDFX;
-import net.minecraft.src.TextureFX;
-import net.minecraft.src.TexturePackBase;
+import net.minecraft.client.texture.TextureFX;
+import net.minecraft.client.texture.TexturePackBase;
 
 public class TextureHDWatchFX extends TextureFX implements TextureHDFX {
 

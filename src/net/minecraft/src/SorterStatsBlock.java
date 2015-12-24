@@ -1,5 +1,8 @@
 package net.minecraft.src;
 
+import net.minecraft.stats.StatBase;
+import net.minecraft.stats.StatCrafting;
+import net.minecraft.stats.StatList;
 import java.util.Comparator;
 import net.minecraft.client.gui.GuiSlotStatsBlock;
 import net.minecraft.client.gui.GuiStats;

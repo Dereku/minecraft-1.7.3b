@@ -5,8 +5,8 @@ import net.minecraft.client.gui.GuiSelectWorld;
 import net.minecraft.client.gui.GuiSlot;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.SaveFormatComparator;
-import net.minecraft.src.SaveFormatComparator;
+import net.minecraft.storage.SaveFormatComparator;
+import net.minecraft.storage.SaveFormatComparator;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.Tessellator;
 

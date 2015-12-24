@@ -13,7 +13,7 @@ import net.minecraft.src.CompressedStreamTools;
 import net.minecraft.src.IChunkLoader;
 import net.minecraft.src.ISaveHandler;
 import net.minecraft.src.MinecraftException;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.WorldInfo;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldProviderHell;

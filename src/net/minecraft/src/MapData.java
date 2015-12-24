@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.client.item.ItemStack;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.MapCoord;
 import net.minecraft.src.MapDataBase;
 import net.minecraft.src.MapInfo;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 
 public class MapData extends MapDataBase {
 

@@ -2,8 +2,8 @@ package net.minecraft.client.gui;
 
 import java.io.File;
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.FontRenderer;
-import net.minecraft.src.FontRenderer;
+import net.minecraft.client.render.FontRenderer;
+import net.minecraft.client.render.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiSmallButton;

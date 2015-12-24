@@ -6,16 +6,16 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityItem;
 import net.minecraft.src.EnumArt;
 import net.minecraft.src.EnumArt;
-import net.minecraft.client.item.Item;
-import net.minecraft.client.item.Item;
-import net.minecraft.client.item.ItemStack;
-import net.minecraft.client.item.ItemStack;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class EntityPainting extends Entity {

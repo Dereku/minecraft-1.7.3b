@@ -13,12 +13,12 @@ import net.minecraft.src.EnumStatus;
 import net.minecraft.src.EnumStatus;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.IBlockAccess;
-import net.minecraft.client.item.Item;
-import net.minecraft.client.item.Item;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item;
 import net.minecraft.src.Material;
 import net.minecraft.src.Material;
-import net.minecraft.src.ModelBed;
-import net.minecraft.src.ModelBed;
+import net.minecraft.client.models.ModelBed;
+import net.minecraft.client.models.ModelBed;
 import net.minecraft.world.World;
 import net.minecraft.world.World;
 

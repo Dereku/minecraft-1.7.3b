@@ -2,8 +2,9 @@ package net.minecraft.client.render;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.block.Block;
-import net.minecraft.client.item.ItemRenderer;
-import net.minecraft.client.item.ItemStack;
+import net.minecraft.item.ItemRenderer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.client.render.RenderBlocks;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.src.Config;
 import net.minecraft.src.Tessellator;
@@ -30,10 +31,10 @@ public class ItemRendererHD extends ItemRenderer {
             } else {
                 GL11.glPushMatrix();
                 if (itemstack.itemID < 256) {
-                    GL11.glBindTexture(3553, this.minecraft.renderEngine.getTexture("/assets/terrain.png"));
+                    GL11.glBindTexture(3553, this.minecraft.renderEngine.getTexture("/terrain.png"));
                     num = Config.getIconWidthTerrain();
                 } else {
-                    GL11.glBindTexture(3553, this.minecraft.renderEngine.getTexture("/assets/gui/items.png"));
+                    GL11.glBindTexture(3553, this.minecraft.renderEngine.getTexture("/gui/items.png"));
                     num = Config.getIconWidthItems();
                 }
 

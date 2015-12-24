@@ -1,7 +1,7 @@
 package net.minecraft.world.tiles;
 
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.tiles.TileEntity;
 
 public class TileEntitySign extends TileEntity {

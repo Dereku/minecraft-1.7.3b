@@ -1,8 +1,8 @@
 package net.minecraft.client.gui;
 
 import net.minecraft.entity.EntityClientPlayerMP;
-import net.minecraft.src.NetClientHandler;
-import net.minecraft.src.Packet19EntityAction;
+import net.minecraft.network.NetClientHandler;
+import net.minecraft.network.packets.Packet19EntityAction;
 import net.minecraft.src.StringTranslate;
 import org.lwjgl.input.Keyboard;
 

@@ -2,8 +2,8 @@ package net.minecraft.client.block;
 
 import java.util.Random;
 import net.minecraft.client.block.BlockSand;
-import net.minecraft.client.item.Item;
-import net.minecraft.client.item.Item;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item;
 
 public class BlockGravel extends BlockSand {
 

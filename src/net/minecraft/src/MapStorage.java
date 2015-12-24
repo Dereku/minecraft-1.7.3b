@@ -13,9 +13,9 @@ import java.util.Map;
 import net.minecraft.src.CompressedStreamTools;
 import net.minecraft.src.ISaveHandler;
 import net.minecraft.src.MapDataBase;
-import net.minecraft.src.NBTBase;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagShort;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagShort;
 
 public class MapStorage {
 

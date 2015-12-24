@@ -4,9 +4,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.item.Item;
-import net.minecraft.src.TextureFX;
-import net.minecraft.src.TexturePackBase;
+import net.minecraft.item.Item;
+import net.minecraft.client.texture.TextureFX;
+import net.minecraft.client.texture.TexturePackBase;
 import net.minecraft.world.chunk.ChunkCoordinates;
 
 public class TextureHDCompassFX extends TextureFX implements TextureHDFX {

@@ -3,8 +3,8 @@ package net.minecraft.client.gui;
 import java.util.ArrayList;
 import java.util.Iterator;
 import net.minecraft.src.SorterStatsItem;
-import net.minecraft.src.StatCrafting;
-import net.minecraft.src.StatList;
+import net.minecraft.stats.StatCrafting;
+import net.minecraft.stats.StatList;
 import net.minecraft.src.Tessellator;
 
 public class GuiSlotStatsItem extends GuiSlotStats {

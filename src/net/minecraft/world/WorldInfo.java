@@ -3,8 +3,8 @@ package net.minecraft.world;
 import java.util.List;
 import net.minecraft.entity.EntityPlayer;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 
 public class WorldInfo {
 

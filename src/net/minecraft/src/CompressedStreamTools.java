@@ -9,8 +9,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
-import net.minecraft.src.NBTBase;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
 
 public class CompressedStreamTools {
 

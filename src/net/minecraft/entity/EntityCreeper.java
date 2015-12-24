@@ -1,7 +1,7 @@
 package net.minecraft.entity;
 
-import net.minecraft.client.item.Item;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class EntityCreeper extends EntityMob {
