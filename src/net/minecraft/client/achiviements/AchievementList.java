@@ -32,7 +32,7 @@ public class AchievementList {
    public static Achievement craftDiamondHoe = (new Achievement(17, "craftDiamondHoe", 3, -4, Item.hoeDiamond, AchievementList.buildHoe)).setSpecial().registerAchievement();
 
 
-   public static void func_27374_a() {}
+   public static void call() {}
 
    static {
       System.out.println(AchievementList.achievementList.size() + " achievements");

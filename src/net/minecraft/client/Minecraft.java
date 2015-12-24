@@ -112,7 +112,7 @@ public abstract class Minecraft implements Runnable {
     public int displayWidth;
     public int displayHeight;
     private OpenGlCapsChecker glCapabilities;
-    private Timer timer = new Timer(20.0F);
+    private final Timer timer = new Timer(20.0F);
     public World theWorld;
     public RenderGlobal renderGlobal;
     public EntityPlayerSP thePlayer;
@@ -151,8 +151,8 @@ public abstract class Minecraft implements Runnable {
     public StatFileWriter statFileWriter;
     private String serverName;
     private int serverPort;
-    private TextureWaterFX textureWaterFX = new TextureWaterFX();
-    private TextureLavaFX textureLavaFX = new TextureLavaFX();
+    private final TextureWaterFX textureWaterFX = new TextureWaterFX();
+    private final TextureLavaFX textureLavaFX = new TextureLavaFX();
     private static File minecraftDir = null;
     public volatile boolean running = true;
     public String debug = "";
@@ -1143,8 +1143,7 @@ public abstract class Minecraft implements Runnable {
             this.convertMapFormat(var1, var2);
         } else {
             ISaveHandler var5 = this.saveLoader.getSaveLoader(var1, false);
-            World var6 = null;
-            var6 = new World(var5, var2, var3, var1);
+            World var6 = new World(var5, var2, var3, var1);
             this.initStatWriter(var6);
             if (var6.isNewWorld) {
                 this.statFileWriter.readStat(StatList.createWorldStat, 1);
@@ -1181,7 +1180,6 @@ public abstract class Minecraft implements Runnable {
                 this.theWorld.updateEntityWithOptionalForce(this.thePlayer, false);
             }
 
-            var7 = null;
             var7 = new World(this.theWorld, WorldProvider.getProviderForDimension(-1));
             this.changeWorld(var7, "Entering the Nether", this.thePlayer);
         } else {
@@ -1192,7 +1190,6 @@ public abstract class Minecraft implements Runnable {
                 this.theWorld.updateEntityWithOptionalForce(this.thePlayer, false);
             }
 
-            var7 = null;
             var7 = new World(this.theWorld, WorldProvider.getProviderForDimension(0));
             this.changeWorld(var7, "Leaving the Nether", this.thePlayer);
         }
@@ -1342,7 +1339,6 @@ public abstract class Minecraft implements Runnable {
         }
 
         this.loadingScreen.displayLoadingString("Simulating world for a bit");
-        boolean var9 = true;
         this.theWorld.dropOldChucks();
     }
 
@@ -1478,14 +1474,11 @@ public abstract class Minecraft implements Runnable {
     }
 
     public static void main(String[] var0) {
-        String var1 = null;
-        String var2 = null;
-        var1 = "Anonymous";
+        String var1 = null, var2 = null;
         if (var0.length > 0) {
             var1 = var0[0];
         }
 
-        var2 = "NoSession";
         if (var0.length > 1) {
             var2 = var0[1];
         }
