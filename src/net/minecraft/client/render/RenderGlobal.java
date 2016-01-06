@@ -532,8 +532,6 @@ public class RenderGlobal implements IWorldAccess {
         }
 
         byte b0 = 0;
-        int i = 0;
-
         if (this.occlusionEnabled && this.mc.gameSettings.advancedOpengl && !this.mc.gameSettings.anaglyph && renderPass == 0) {
             byte firstIndex = 0;
             byte b1 = 20;
@@ -627,7 +625,6 @@ public class RenderGlobal implements IWorldAccess {
                             wr.callOcclusionQueryList();
                             ARBOcclusionQuery.glEndQueryARB('褔');
                             wr.isWaitingOnOcclusionQuery = true;
-                            ++i;
                         }
                     }
                 }

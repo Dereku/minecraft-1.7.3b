@@ -1,17 +1,15 @@
 package net.minecraft.client.gui;
 
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.FontRenderer;
-import net.minecraft.client.render.FontRenderer;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiParticle;
-import net.minecraft.src.Tessellator;
 import net.minecraft.src.Tessellator;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -24,7 +22,7 @@ public class GuiScreen extends Gui {
    public int height;
    protected List controlList = new ArrayList();
    public boolean allowUserInput = false;
-   protected FontRenderer fontRenderer;
+   public FontRenderer fontRenderer;
    public GuiParticle guiParticles;
    private GuiButton selectedButton = null;
 
@@ -52,8 +50,7 @@ public class GuiScreen extends Gui {
             String var1 = (String)var0.getTransferData(DataFlavor.stringFlavor);
             return var1;
          }
-      } catch (Exception var2) {
-         ;
+      } catch (HeadlessException | UnsupportedFlavorException | IOException var2) {
       }
 
       return null;

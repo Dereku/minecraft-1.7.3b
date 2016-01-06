@@ -643,7 +643,6 @@ public class RenderEngine {
     public void refreshTextures() {
         this.textureDataMap.clear();
         this.dynamicTexturesUpdated = false;
-        Config.setFontRendererUpdated(false);
         TexturePackBase texturepackbase = this.texturePack.selectedTexturePack;
         for (int i : this.textureNameToImageMap.keySet()) {
             BufferedImage bufferedimage = this.textureNameToImageMap.get(i);

@@ -123,13 +123,6 @@ public class WorldRenderer {
                 this.skipRenderPass[lightCache] = true;
             }
 
-            Object object = Config.getFieldValue("LightCache", "cache");
-
-            if (object != null) {
-                Config.callVoid(object, "clear", new Object[0]);
-                Config.callVoid("BlockCoord", "resetPool", new Object[0]);
-            }
-
             Chunk.isLit = false;
             HashSet hashset = new HashSet();
 

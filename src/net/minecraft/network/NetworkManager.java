@@ -5,7 +5,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.SocketAddress;
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,9 +22,9 @@ public class NetworkManager {
     private DataInputStream socketInputStream;
     private DataOutputStream socketOutputStream;
     private boolean isRunning = true;
-    private List readPackets = Collections.synchronizedList(new ArrayList());
+    private List<Packet> readPackets = Collections.synchronizedList(new ArrayList());
     private List dataPackets = Collections.synchronizedList(new ArrayList());
-    private List chunkDataPackets = Collections.synchronizedList(new ArrayList());
+    private List<Packet> chunkDataPackets = Collections.synchronizedList(new ArrayList());
     private NetHandler netHandler;
     private boolean isServerTerminating = false;
     private final Thread writeThread;
@@ -194,7 +193,7 @@ public class NetworkManager {
             this.timeSinceLastRead = 0;
         }
 
-        int var1 = 100;
+        int var1 = 1024;
 
         while (!this.readPackets.isEmpty() && var1-- >= 0) {
             Packet var2 = (Packet) this.readPackets.remove(0);

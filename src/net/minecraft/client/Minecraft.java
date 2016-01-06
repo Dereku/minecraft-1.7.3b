@@ -593,8 +593,7 @@ public abstract class Minecraft implements Runnable {
                     System.gc();
                 }
             }
-        } catch (MinecraftError | Exception var21) {
-            var21.printStackTrace();
+        } catch (Throwable var21) {
             this.onMinecraftCrash(new UnexpectedThrowable("Unexpected error", var21));
         } finally {
             this.shutdownMinecraftApplet();

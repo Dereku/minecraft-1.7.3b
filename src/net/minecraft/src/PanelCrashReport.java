@@ -9,81 +9,68 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import net.minecraft.src.CanvasCrashReport;
-import net.minecraft.src.CanvasMojangLogo;
-import net.minecraft.src.UnexpectedThrowable;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
 
 public class PanelCrashReport extends Panel {
 
-   public PanelCrashReport(UnexpectedThrowable var1) {
-      this.setBackground(new Color(3028036));
-      this.setLayout(new BorderLayout());
-      StringWriter var2 = new StringWriter();
-      var1.exception.printStackTrace(new PrintWriter(var2));
-      String var3 = var2.toString();
-      String var4 = "";
-      String var5 = "";
+    public PanelCrashReport(UnexpectedThrowable var1) {
+        this.setBackground(new Color(3028036));
+        this.setLayout(new BorderLayout());
+        StringWriter var2 = new StringWriter();
+        var1.exception.printStackTrace(new PrintWriter(var2));
+        StringBuilder sysProp = new StringBuilder();
+        StringBuilder panelText = new StringBuilder();
+        String exception = var2.toString();
 
-      try {
-         var5 = var5 + "Generated " + (new SimpleDateFormat()).format(new Date()) + "\n";
-         var5 = var5 + "\n";
-         var5 = var5 + "Minecraft: Minecraft Beta 1.7.3\n";
-         var5 = var5 + "OS: " + System.getProperty("os.name") + " (" + System.getProperty("os.arch") + ") version " + System.getProperty("os.version") + "\n";
-         var5 = var5 + "Java: " + System.getProperty("java.version") + ", " + System.getProperty("java.vendor") + "\n";
-         var5 = var5 + "VM: " + System.getProperty("java.vm.name") + " (" + System.getProperty("java.vm.info") + "), " + System.getProperty("java.vm.vendor") + "\n";
-         var5 = var5 + "LWJGL: " + Sys.getVersion() + "\n";
-         var4 = GL11.glGetString(7936 /*GL_VENDOR*/);
-         var5 = var5 + "OpenGL: " + GL11.glGetString(7937 /*GL_RENDERER*/) + " version " + GL11.glGetString(7938 /*GL_VERSION*/) + ", " + GL11.glGetString(7936 /*GL_VENDOR*/) + "\n";
-      } catch (Throwable var8) {
-         var5 = var5 + "[failed to get system properties (" + var8 + ")]\n";
-      }
+        try {
+            sysProp.append("Generated ").append((new SimpleDateFormat()).format(new Date())).append("\n")
+                    .append("\n")
+                    .append("Minecraft: Minecraft Beta 1.7.3\n")
+                    .append("OS: ").append(System.getProperty("os.name")).append(" (").append(System.getProperty("os.arch")).append(") version ").append(System.getProperty("os.version"))
+                    .append("\n")
+                    .append("Java: ").append(System.getProperty("java.version")).append(", ").append(System.getProperty("java.vendor")).append("\n")
+                    .append("VM: ").append(System.getProperty("java.vm.name")).append(" (").append(System.getProperty("java.vm.info")).append("), ").append(System.getProperty("java.vm.vendor")).append("\n")
+                    .append("LWJGL: ").append(Sys.getVersion())
+                    .append("\n").append(GL11.glGetString(7936 /*GL_VENDOR*/))
+                    .append("OpenGL: ").append(GL11.glGetString(7937 /*GL_RENDERER*/))
+                    .append(" version ").append(GL11.glGetString(7938 /*GL_VERSION*/)).append(", ").append(GL11.glGetString(7936 /*GL_VENDOR*/)).append("\n");
+        } catch (Throwable var8) {
+            sysProp.append("[failed to get system properties (").append(var8).append(")]\n");
+        }
+        
+        panelText.append("\n\n");
+        if (exception.contains("Pixel format not accelerated")) {
+            panelText.append("      Bad video card drivers!      \n")
+                    .append("      -----------------------      \n")
+                    .append("\n")
+                    .append("Minecraft was unable to start because it failed to find an accelerated OpenGL mode.\n")
+                    .append("This can usually be fixed by updating the video card drivers.\n");
+        } else {
+            panelText.append("      Minecraft has crashed!      \n")
+                    .append("      ----------------------      \n")
+                    .append("\n")
+                    .append("Minecraft has stopped running because it encountered a problem.\n")
+                    .append("\n")
+                    .append("If you wish to report this, please copy this entire text and email it to support@mojang.com.\n")
+                    .append("Please include a description of what you did when the error occured.\n");
+        }
 
-      var5 = var5 + "\n";
-      var5 = var5 + var3;
-      String var6 = "";
-      var6 = var6 + "\n";
-      var6 = var6 + "\n";
-      if(var3.contains("Pixel format not accelerated")) {
-         var6 = var6 + "      Bad video card drivers!      \n";
-         var6 = var6 + "      -----------------------      \n";
-         var6 = var6 + "\n";
-         var6 = var6 + "Minecraft was unable to start because it failed to find an accelerated OpenGL mode.\n";
-         var6 = var6 + "This can usually be fixed by updating the video card drivers.\n";
-         if(var4.toLowerCase().contains("nvidia")) {
-            var6 = var6 + "\n";
-            var6 = var6 + "You might be able to find drivers for your video card here:\n";
-            var6 = var6 + "  http://www.nvidia.com/\n";
-         } else if(var4.toLowerCase().contains("ati")) {
-            var6 = var6 + "\n";
-            var6 = var6 + "You might be able to find drivers for your video card here:\n";
-            var6 = var6 + "  http://www.amd.com/\n";
-         }
-      } else {
-         var6 = var6 + "      Minecraft has crashed!      \n";
-         var6 = var6 + "      ----------------------      \n";
-         var6 = var6 + "\n";
-         var6 = var6 + "Minecraft has stopped running because it encountered a problem.\n";
-         var6 = var6 + "\n";
-         var6 = var6 + "If you wish to report this, please copy this entire text and email it to support@mojang.com.\n";
-         var6 = var6 + "Please include a description of what you did when the error occured.\n";
-      }
-
-      var6 = var6 + "\n";
-      var6 = var6 + "\n";
-      var6 = var6 + "\n";
-      var6 = var6 + "--- BEGIN ERROR REPORT " + Integer.toHexString(var6.hashCode()) + " --------\n";
-      var6 = var6 + var5;
-      var6 = var6 + "--- END ERROR REPORT " + Integer.toHexString(var6.hashCode()) + " ----------\n";
-      var6 = var6 + "\n";
-      var6 = var6 + "\n";
-      TextArea var7 = new TextArea(var6, 0, 0, 1);
-      var7.setFont(new Font("Monospaced", 0, 12));
-      this.add(new CanvasMojangLogo(), "North");
-      this.add(new CanvasCrashReport(80), "East");
-      this.add(new CanvasCrashReport(80), "West");
-      this.add(new CanvasCrashReport(100), "South");
-      this.add(var7, "Center");
-   }
+        
+        panelText.append("\n\n\n")
+                .append("--- BEGIN ERROR REPORT ").append(Integer.toHexString(panelText.toString().hashCode())).append(" --------\n")
+                .append(sysProp)
+                .append("\n\n")
+                .append(exception)
+                .append("--- END ERROR REPORT ").append(Integer.toHexString(panelText.toString().hashCode())).append(" ----------\n")
+                .append("\n\n");
+        TextArea var7 = new TextArea(panelText.toString(), 0, 0, 1);
+        var7.setFont(new Font("Monospaced", 0, 12));
+        this.add(new CanvasMojangLogo(), "North");
+        this.add(new CanvasCrashReport(80), "East");
+        this.add(new CanvasCrashReport(80), "West");
+        this.add(new CanvasCrashReport(100), "South");
+        this.add(var7, "Center");
+        System.err.println(panelText.toString());
+    }
 }

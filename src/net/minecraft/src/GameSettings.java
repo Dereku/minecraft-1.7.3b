@@ -121,21 +121,6 @@ public class GameSettings {
         Config.setGameSettings(this);
     }
 
-    public GameSettings() {
-        this.keyBindings = new KeyBinding[]{this.keyBindForward, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindDrop, this.keyBindInventory, this.keyBindChat, this.keyBindToggleFog};
-        this.difficulty = 2;
-        this.hideGUI = false;
-        this.thirdPersonView = false;
-        this.showDebugInfo = false;
-        this.lastServer = "";
-        this.field_22275_C = false;
-        this.smoothCamera = false;
-        this.field_22273_E = false;
-        this.field_22272_F = 1.0F;
-        this.field_22271_G = 1.0F;
-        this.guiScale = 0;
-    }
-
     public String getKeyBindingDescription(int i) {
         StringTranslate stringtranslate = StringTranslate.getInstance();
 
@@ -530,7 +515,6 @@ public class GameSettings {
             return !this.advancedOpengl ? s + "OFF" : (this.ofOcclusionFancy ? s + "Fancy" : s + "Fast");
         } else if (enumoptions.getEnumBoolean()) {
             boolean flag = this.getOptionOrdinalValue(enumoptions);
-
             return flag ? s + stringtranslate.translateKey("options.on") : s + stringtranslate.translateKey("options.off");
         } else if (enumoptions == EnumOptions.RENDER_DISTANCE) {
             return s + stringtranslate.translateKey(GameSettings.RENDER_DISTANCES[this.renderDistance]);
@@ -674,7 +658,7 @@ public class GameSettings {
         }
     }
 
-    public void loadOptions() {
+    private void loadOptions() {
         try {
             if (!this.optionsFile.exists()) {
                 return;
@@ -685,59 +669,59 @@ public class GameSettings {
 
             while ((s = exception.readLine()) != null) {
                 try {
-                    String[] exception1 = s.split(":");
+                    String[] line = s.split(":");
 
-                    if (exception1[0].equals("music")) {
-                        this.musicVolume = this.parseFloat(exception1[1]);
+                    if (line[0].equals("music")) {
+                        this.musicVolume = this.parseFloat(line[1]);
                     }
 
-                    if (exception1[0].equals("sound")) {
-                        this.soundVolume = this.parseFloat(exception1[1]);
+                    if (line[0].equals("sound")) {
+                        this.soundVolume = this.parseFloat(line[1]);
                     }
 
-                    if (exception1[0].equals("mouseSensitivity")) {
-                        this.mouseSensitivity = this.parseFloat(exception1[1]);
+                    if (line[0].equals("mouseSensitivity")) {
+                        this.mouseSensitivity = this.parseFloat(line[1]);
                     }
 
-                    if (exception1[0].equals("invertYMouse")) {
-                        this.invertMouse = exception1[1].equals("true");
+                    if (line[0].equals("invertYMouse")) {
+                        this.invertMouse = line[1].equals("true");
                     }
 
-                    if (exception1[0].equals("viewDistance")) {
-                        this.renderDistance = Integer.parseInt(exception1[1]);
+                    if (line[0].equals("viewDistance")) {
+                        this.renderDistance = Integer.parseInt(line[1]);
                     }
 
-                    if (exception1[0].equals("guiScale")) {
-                        this.guiScale = Integer.parseInt(exception1[1]);
+                    if (line[0].equals("guiScale")) {
+                        this.guiScale = Integer.parseInt(line[1]);
                     }
 
-                    if (exception1[0].equals("bobView")) {
-                        this.viewBobbing = exception1[1].equals("true");
+                    if (line[0].equals("bobView")) {
+                        this.viewBobbing = line[1].equals("true");
                     }
 
-                    if (exception1[0].equals("anaglyph3d")) {
-                        this.anaglyph = exception1[1].equals("true");
+                    if (line[0].equals("anaglyph3d")) {
+                        this.anaglyph = line[1].equals("true");
                     }
 
-                    if (exception1[0].equals("advancedOpengl")) {
-                        this.advancedOpengl = exception1[1].equals("true");
+                    if (line[0].equals("advancedOpengl")) {
+                        this.advancedOpengl = line[1].equals("true");
                     }
 
-                    if (exception1[0].equals("fpsLimit")) {
-                        this.limitFramerate = Integer.parseInt(exception1[1]);
+                    if (line[0].equals("fpsLimit")) {
+                        this.limitFramerate = Integer.parseInt(line[1]);
                         Display.setVSyncEnabled(this.limitFramerate == 3);
                     }
 
-                    if (exception1[0].equals("difficulty")) {
-                        this.difficulty = Integer.parseInt(exception1[1]);
+                    if (line[0].equals("difficulty")) {
+                        this.difficulty = Integer.parseInt(line[1]);
                     }
 
-                    if (exception1[0].equals("fancyGraphics")) {
-                        this.fancyGraphics = exception1[1].equals("true");
+                    if (line[0].equals("fancyGraphics")) {
+                        this.fancyGraphics = line[1].equals("true");
                     }
 
-                    if (exception1[0].equals("ao")) {
-                        this.ambientOcclusion = exception1[1].equals("true");
+                    if (line[0].equals("ao")) {
+                        this.ambientOcclusion = line[1].equals("true");
                         if (this.ambientOcclusion) {
                             this.ofAoLevel = 1.0F;
                         } else {
@@ -745,26 +729,26 @@ public class GameSettings {
                         }
                     }
 
-                    if (exception1[0].equals("skin")) {
-                        this.skin = exception1[1];
+                    if (line[0].equals("skin")) {
+                        this.skin = line[1];
                     }
 
-                    if (exception1[0].equals("lastServer") && exception1.length >= 2) {
-                        this.lastServer = exception1[1];
+                    if (line[0].equals("lastServer") && line.length >= 2) {
+                        this.lastServer = line[1];
                     }
 
                     for (int i = 0; i < this.keyBindings.length; ++i) {
-                        if (exception1[0].equals("key_" + this.keyBindings[i].keyDescription)) {
-                            this.keyBindings[i].keyCode = Integer.parseInt(exception1[1]);
+                        if (line[0].equals("key_" + this.keyBindings[i].keyDescription)) {
+                            this.keyBindings[i].keyCode = Integer.parseInt(line[1]);
                         }
                     }
 
-                    if (exception1[0].equals("ofFogFancy") && exception1.length >= 2) {
-                        this.ofFogFancy = exception1[1].equals("true");
+                    if (line[0].equals("ofFogFancy") && line.length >= 2) {
+                        this.ofFogFancy = line[1].equals("true");
                     }
 
-                    if (exception1[0].equals("ofFogStart") && exception1.length >= 2) {
-                        this.ofFogStart = Float.valueOf(exception1[1]).floatValue();
+                    if (line[0].equals("ofFogStart") && line.length >= 2) {
+                        this.ofFogStart = Float.parseFloat(line[1]);
                         if (this.ofFogStart < 0.2F) {
                             this.ofFogStart = 0.2F;
                         }
@@ -774,8 +758,8 @@ public class GameSettings {
                         }
                     }
 
-                    if (exception1[0].equals("ofMipmapLevel") && exception1.length >= 2) {
-                        this.ofMipmapLevel = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofMipmapLevel") && line.length >= 2) {
+                        this.ofMipmapLevel = Integer.parseInt(line[1]);
                         if (this.ofMipmapLevel < 0) {
                             this.ofMipmapLevel = 0;
                         }
@@ -785,16 +769,16 @@ public class GameSettings {
                         }
                     }
 
-                    if (exception1[0].equals("ofMipmapLinear") && exception1.length >= 2) {
-                        this.ofMipmapLinear = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofMipmapLinear") && line.length >= 2) {
+                        this.ofMipmapLinear = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofLoadFar") && exception1.length >= 2) {
-                        this.ofLoadFar = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofLoadFar") && line.length >= 2) {
+                        this.ofLoadFar = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofPreloadedChunks") && exception1.length >= 2) {
-                        this.ofPreloadedChunks = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofPreloadedChunks") && line.length >= 2) {
+                        this.ofPreloadedChunks = Integer.parseInt(line[1]);
                         if (this.ofPreloadedChunks < 0) {
                             this.ofPreloadedChunks = 0;
                         }
@@ -804,140 +788,140 @@ public class GameSettings {
                         }
                     }
 
-                    if (exception1[0].equals("ofOcclusionFancy") && exception1.length >= 2) {
-                        this.ofOcclusionFancy = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofOcclusionFancy") && line.length >= 2) {
+                        this.ofOcclusionFancy = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofSmoothFps") && exception1.length >= 2) {
-                        this.ofSmoothFps = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofSmoothFps") && line.length >= 2) {
+                        this.ofSmoothFps = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofSmoothInput") && exception1.length >= 2) {
-                        this.ofSmoothInput = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofSmoothInput") && line.length >= 2) {
+                        this.ofSmoothInput = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofBrightness") && exception1.length >= 2) {
-                        this.ofBrightness = Float.valueOf(exception1[1]).floatValue();
+                    if (line[0].equals("ofBrightness") && line.length >= 2) {
+                        this.ofBrightness = Float.parseFloat(line[1]);
                         this.ofBrightness = Config.limit(this.ofBrightness, 0.0F, 1.0F);
                         this.updateWorldLightLevels();
                     }
 
-                    if (exception1[0].equals("ofAoLevel") && exception1.length >= 2) {
-                        this.ofAoLevel = Float.valueOf(exception1[1]).floatValue();
+                    if (line[0].equals("ofAoLevel") && line.length >= 2) {
+                        this.ofAoLevel = Float.parseFloat(line[1]);
                         this.ofAoLevel = Config.limit(this.ofAoLevel, 0.0F, 1.0F);
                         this.ambientOcclusion = this.ofAoLevel > 0.0F;
                     }
 
-                    if (exception1[0].equals("ofClouds") && exception1.length >= 2) {
-                        this.ofClouds = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofClouds") && line.length >= 2) {
+                        this.ofClouds = Integer.parseInt(line[1]);
                         this.ofClouds = Config.limit(this.ofClouds, 0, 3);
                     }
 
-                    if (exception1[0].equals("ofCloudsHeight") && exception1.length >= 2) {
-                        this.ofCloudsHeight = Float.valueOf(exception1[1]).floatValue();
+                    if (line[0].equals("ofCloudsHeight") && line.length >= 2) {
+                        this.ofCloudsHeight = Float.parseFloat(line[1]);
                         this.ofCloudsHeight = Config.limit(this.ofCloudsHeight, 0.0F, 1.0F);
                     }
 
-                    if (exception1[0].equals("ofTrees") && exception1.length >= 2) {
-                        this.ofTrees = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofTrees") && line.length >= 2) {
+                        this.ofTrees = Integer.parseInt(line[1]);
                         this.ofTrees = Config.limit(this.ofTrees, 0, 2);
                     }
 
-                    if (exception1[0].equals("ofGrass") && exception1.length >= 2) {
-                        this.ofGrass = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofGrass") && line.length >= 2) {
+                        this.ofGrass = Integer.parseInt(line[1]);
                         this.ofGrass = Config.limit(this.ofGrass, 0, 2);
                     }
 
-                    if (exception1[0].equals("ofRain") && exception1.length >= 2) {
-                        this.ofRain = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofRain") && line.length >= 2) {
+                        this.ofRain = Integer.parseInt(line[1]);
                         this.ofRain = Config.limit(this.ofRain, 0, 3);
                     }
 
-                    if (exception1[0].equals("ofWater") && exception1.length >= 2) {
-                        this.ofWater = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofWater") && line.length >= 2) {
+                        this.ofWater = Integer.parseInt(line[1]);
                         this.ofWater = Config.limit(this.ofWater, 0, 3);
                     }
 
-                    if (exception1[0].equals("ofAnimatedWater") && exception1.length >= 2) {
-                        this.ofAnimatedWater = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofAnimatedWater") && line.length >= 2) {
+                        this.ofAnimatedWater = Integer.parseInt(line[1]);
                         this.ofAnimatedWater = Config.limit(this.ofAnimatedWater, 0, 2);
                     }
 
-                    if (exception1[0].equals("ofAnimatedLava") && exception1.length >= 2) {
-                        this.ofAnimatedLava = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofAnimatedLava") && line.length >= 2) {
+                        this.ofAnimatedLava = Integer.parseInt(line[1]);
                         this.ofAnimatedLava = Config.limit(this.ofAnimatedLava, 0, 2);
                     }
 
-                    if (exception1[0].equals("ofAnimatedFire") && exception1.length >= 2) {
-                        this.ofAnimatedFire = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofAnimatedFire") && line.length >= 2) {
+                        this.ofAnimatedFire = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofAnimatedPortal") && exception1.length >= 2) {
-                        this.ofAnimatedPortal = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofAnimatedPortal") && line.length >= 2) {
+                        this.ofAnimatedPortal = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofAnimatedRedstone") && exception1.length >= 2) {
-                        this.ofAnimatedRedstone = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofAnimatedRedstone") && line.length >= 2) {
+                        this.ofAnimatedRedstone = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofAnimatedExplosion") && exception1.length >= 2) {
-                        this.ofAnimatedExplosion = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofAnimatedExplosion") && line.length >= 2) {
+                        this.ofAnimatedExplosion = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofAnimatedFlame") && exception1.length >= 2) {
-                        this.ofAnimatedFlame = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofAnimatedFlame") && line.length >= 2) {
+                        this.ofAnimatedFlame = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofAnimatedSmoke") && exception1.length >= 2) {
-                        this.ofAnimatedSmoke = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofAnimatedSmoke") && line.length >= 2) {
+                        this.ofAnimatedSmoke = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofFastDebugInfo") && exception1.length >= 2) {
-                        this.ofFastDebugInfo = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofFastDebugInfo") && line.length >= 2) {
+                        this.ofFastDebugInfo = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofAutoSaveTicks") && exception1.length >= 2) {
-                        this.ofAutoSaveTicks = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofAutoSaveTicks") && line.length >= 2) {
+                        this.ofAutoSaveTicks = Integer.parseInt(line[1]);
                         this.ofAutoSaveTicks = Config.limit(this.ofAutoSaveTicks, 40, '鱀');
                     }
 
-                    if (exception1[0].equals("ofBetterGrass") && exception1.length >= 2) {
-                        this.ofBetterGrass = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofBetterGrass") && line.length >= 2) {
+                        this.ofBetterGrass = Integer.parseInt(line[1]);
                         this.ofBetterGrass = Config.limit(this.ofBetterGrass, 1, 3);
                     }
 
-                    if (exception1[0].equals("ofWeather") && exception1.length >= 2) {
-                        this.ofWeather = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofWeather") && line.length >= 2) {
+                        this.ofWeather = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofSky") && exception1.length >= 2) {
-                        this.ofSky = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofSky") && line.length >= 2) {
+                        this.ofSky = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofStars") && exception1.length >= 2) {
-                        this.ofStars = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofStars") && line.length >= 2) {
+                        this.ofStars = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofChunkUpdates") && exception1.length >= 2) {
-                        this.ofChunkUpdates = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofChunkUpdates") && line.length >= 2) {
+                        this.ofChunkUpdates = Integer.parseInt(line[1]);
                         this.ofChunkUpdates = Config.limit(this.ofChunkUpdates, 1, 5);
                     }
 
-                    if (exception1[0].equals("ofChunkUpdatesDynamic") && exception1.length >= 2) {
-                        this.ofChunkUpdatesDynamic = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofChunkUpdatesDynamic") && line.length >= 2) {
+                        this.ofChunkUpdatesDynamic = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofFarView") && exception1.length >= 2) {
-                        this.ofFarView = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofFarView") && line.length >= 2) {
+                        this.ofFarView = Boolean.parseBoolean(line[1]);
                     }
 
-                    if (exception1[0].equals("ofTime") && exception1.length >= 2) {
-                        this.ofTime = Integer.valueOf(exception1[1]).intValue();
+                    if (line[0].equals("ofTime") && line.length >= 2) {
+                        this.ofTime = Integer.parseInt(line[1]);
                         this.ofTime = Config.limit(this.ofTime, 0, 2);
                     }
 
-                    if (exception1[0].equals("ofClearWater") && exception1.length >= 2) {
-                        this.ofClearWater = Boolean.valueOf(exception1[1]).booleanValue();
+                    if (line[0].equals("ofClearWater") && line.length >= 2) {
+                        this.ofClearWater = Boolean.parseBoolean(line[1]);
                         this.updateWaterOpacity();
                     }
                 } catch (Exception ex) {
@@ -958,67 +942,64 @@ public class GameSettings {
     }
 
     public void saveOptions() {
-        try {
-            PrintWriter exception = new PrintWriter(new FileWriter(this.optionsFile));
-
-            exception.println("music:" + this.musicVolume);
-            exception.println("sound:" + this.soundVolume);
-            exception.println("invertYMouse:" + this.invertMouse);
-            exception.println("mouseSensitivity:" + this.mouseSensitivity);
-            exception.println("viewDistance:" + this.renderDistance);
-            exception.println("guiScale:" + this.guiScale);
-            exception.println("bobView:" + this.viewBobbing);
-            exception.println("anaglyph3d:" + this.anaglyph);
-            exception.println("advancedOpengl:" + this.advancedOpengl);
-            exception.println("fpsLimit:" + this.limitFramerate);
-            exception.println("difficulty:" + this.difficulty);
-            exception.println("fancyGraphics:" + this.fancyGraphics);
-            exception.println("ao:" + this.ambientOcclusion);
-            exception.println("skin:" + this.skin);
-            exception.println("lastServer:" + this.lastServer);
-
-            for (int i = 0; i < this.keyBindings.length; ++i) {
-                exception.println("key_" + this.keyBindings[i].keyDescription + ":" + this.keyBindings[i].keyCode);
-            }
-
-            exception.println("ofFogFancy:" + this.ofFogFancy);
-            exception.println("ofFogStart:" + this.ofFogStart);
-            exception.println("ofMipmapLevel:" + this.ofMipmapLevel);
-            exception.println("ofMipmapLinear:" + this.ofMipmapLinear);
-            exception.println("ofLoadFar:" + this.ofLoadFar);
-            exception.println("ofPreloadedChunks:" + this.ofPreloadedChunks);
-            exception.println("ofOcclusionFancy:" + this.ofOcclusionFancy);
-            exception.println("ofSmoothFps:" + this.ofSmoothFps);
-            exception.println("ofSmoothInput:" + this.ofSmoothInput);
-            exception.println("ofBrightness:" + this.ofBrightness);
-            exception.println("ofAoLevel:" + this.ofAoLevel);
-            exception.println("ofClouds:" + this.ofClouds);
-            exception.println("ofCloudsHeight:" + this.ofCloudsHeight);
-            exception.println("ofTrees:" + this.ofTrees);
-            exception.println("ofGrass:" + this.ofGrass);
-            exception.println("ofRain:" + this.ofRain);
-            exception.println("ofWater:" + this.ofWater);
-            exception.println("ofAnimatedWater:" + this.ofAnimatedWater);
-            exception.println("ofAnimatedLava:" + this.ofAnimatedLava);
-            exception.println("ofAnimatedFire:" + this.ofAnimatedFire);
-            exception.println("ofAnimatedPortal:" + this.ofAnimatedPortal);
-            exception.println("ofAnimatedRedstone:" + this.ofAnimatedRedstone);
-            exception.println("ofAnimatedExplosion:" + this.ofAnimatedExplosion);
-            exception.println("ofAnimatedFlame:" + this.ofAnimatedFlame);
-            exception.println("ofAnimatedSmoke:" + this.ofAnimatedSmoke);
-            exception.println("ofFastDebugInfo:" + this.ofFastDebugInfo);
-            exception.println("ofAutoSaveTicks:" + this.ofAutoSaveTicks);
-            exception.println("ofBetterGrass:" + this.ofBetterGrass);
-            exception.println("ofWeather:" + this.ofWeather);
-            exception.println("ofSky:" + this.ofSky);
-            exception.println("ofStars:" + this.ofStars);
-            exception.println("ofChunkUpdates:" + this.ofChunkUpdates);
-            exception.println("ofChunkUpdatesDynamic:" + this.ofChunkUpdatesDynamic);
-            exception.println("ofFarView:" + this.ofFarView);
-            exception.println("ofTime:" + this.ofTime);
-            exception.println("ofClearWater:" + this.ofClearWater);
-            exception.close();
-        } catch (Exception exception) {
+            try (PrintWriter writer = new PrintWriter(new FileWriter(this.optionsFile))) {
+                writer.println("music:" + this.musicVolume);
+                writer.println("sound:" + this.soundVolume);
+                writer.println("invertYMouse:" + this.invertMouse);
+                writer.println("mouseSensitivity:" + this.mouseSensitivity);
+                writer.println("viewDistance:" + this.renderDistance);
+                writer.println("guiScale:" + this.guiScale);
+                writer.println("bobView:" + this.viewBobbing);
+                writer.println("anaglyph3d:" + this.anaglyph);
+                writer.println("advancedOpengl:" + this.advancedOpengl);
+                writer.println("fpsLimit:" + this.limitFramerate);
+                writer.println("difficulty:" + this.difficulty);
+                writer.println("fancyGraphics:" + this.fancyGraphics);
+                writer.println("ao:" + this.ambientOcclusion);
+                writer.println("skin:" + this.skin);
+                writer.println("lastServer:" + this.lastServer);
+                
+                for (int i = 0; i < this.keyBindings.length; ++i) {
+                    writer.println("key_" + this.keyBindings[i].keyDescription + ":" + this.keyBindings[i].keyCode);
+                }
+                
+                writer.println("ofFogFancy:" + this.ofFogFancy);
+                writer.println("ofFogStart:" + this.ofFogStart);
+                writer.println("ofMipmapLevel:" + this.ofMipmapLevel);
+                writer.println("ofMipmapLinear:" + this.ofMipmapLinear);
+                writer.println("ofLoadFar:" + this.ofLoadFar);
+                writer.println("ofPreloadedChunks:" + this.ofPreloadedChunks);
+                writer.println("ofOcclusionFancy:" + this.ofOcclusionFancy);
+                writer.println("ofSmoothFps:" + this.ofSmoothFps);
+                writer.println("ofSmoothInput:" + this.ofSmoothInput);
+                writer.println("ofBrightness:" + this.ofBrightness);
+                writer.println("ofAoLevel:" + this.ofAoLevel);
+                writer.println("ofClouds:" + this.ofClouds);
+                writer.println("ofCloudsHeight:" + this.ofCloudsHeight);
+                writer.println("ofTrees:" + this.ofTrees);
+                writer.println("ofGrass:" + this.ofGrass);
+                writer.println("ofRain:" + this.ofRain);
+                writer.println("ofWater:" + this.ofWater);
+                writer.println("ofAnimatedWater:" + this.ofAnimatedWater);
+                writer.println("ofAnimatedLava:" + this.ofAnimatedLava);
+                writer.println("ofAnimatedFire:" + this.ofAnimatedFire);
+                writer.println("ofAnimatedPortal:" + this.ofAnimatedPortal);
+                writer.println("ofAnimatedRedstone:" + this.ofAnimatedRedstone);
+                writer.println("ofAnimatedExplosion:" + this.ofAnimatedExplosion);
+                writer.println("ofAnimatedFlame:" + this.ofAnimatedFlame);
+                writer.println("ofAnimatedSmoke:" + this.ofAnimatedSmoke);
+                writer.println("ofFastDebugInfo:" + this.ofFastDebugInfo);
+                writer.println("ofAutoSaveTicks:" + this.ofAutoSaveTicks);
+                writer.println("ofBetterGrass:" + this.ofBetterGrass);
+                writer.println("ofWeather:" + this.ofWeather);
+                writer.println("ofSky:" + this.ofSky);
+                writer.println("ofStars:" + this.ofStars);
+                writer.println("ofChunkUpdates:" + this.ofChunkUpdates);
+                writer.println("ofChunkUpdatesDynamic:" + this.ofChunkUpdatesDynamic);
+                writer.println("ofFarView:" + this.ofFarView);
+                writer.println("ofTime:" + this.ofTime);
+                writer.println("ofClearWater:" + this.ofClearWater);
+            } catch (Exception exception) {
             System.out.println("Failed to save options");
             exception.printStackTrace();
         }

@@ -151,14 +151,10 @@ public class Config {
             }
 
             FileOutputStream e = new FileOutputStream(Config.logFile, true);
-            OutputStreamWriter logFileWriter = new OutputStreamWriter(e, "UTF-8");
-
-            try {
+            try (OutputStreamWriter logFileWriter = new OutputStreamWriter(e, "UTF-8")) {
                 logFileWriter.write(s);
                 logFileWriter.write("\n");
                 logFileWriter.flush();
-            } finally {
-                logFileWriter.close();
             }
         } catch (IOException ioexception) {
             ioexception.printStackTrace();
@@ -277,142 +273,8 @@ public class Config {
         Config.lightLevels = levels;
     }
 
-    public static boolean callBoolean(String className, String methodName, Object[] params) {
-        try {
-            Class e = getClass(className);
-
-            if (e == null) {
-                return false;
-            } else {
-                Method method = getMethod(e, methodName, params);
-
-                if (method == null) {
-                    return false;
-                } else {
-                    Boolean retVal = (Boolean) method.invoke((Object) null, params);
-
-                    return retVal.booleanValue();
-                }
-            }
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-            return false;
-        }
-    }
-
-    public static void callVoid(String className, String methodName, Object[] params) {
-        try {
-            Class e = getClass(className);
-
-            if (e == null) {
-                return;
-            }
-
-            Method method = getMethod(e, methodName, params);
-
-            if (method == null) {
-                return;
-            }
-
-            method.invoke((Object) null, params);
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-
-    }
-
-    public static void callVoid(Object obj, String methodName, Object[] params) {
-        try {
-            if (obj == null) {
-                return;
-            }
-
-            Class e = obj.getClass();
-
-            if (e == null) {
-                return;
-            }
-
-            Method method = getMethod(e, methodName, params);
-
-            if (method == null) {
-                return;
-            }
-
-            method.invoke(obj, params);
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-
-    }
-
-    public static Object getFieldValue(String className, String fieldName) {
-        try {
-            Class e = getClass(className);
-
-            if (e == null) {
-                return null;
-            } else {
-                Field field = e.getDeclaredField(fieldName);
-
-                if (field == null) {
-                    return null;
-                } else {
-                    Object value = field.get((Object) null);
-
-                    return value;
-                }
-            }
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-            return null;
-        }
-    }
-
-    public static Object getFieldValue(Object obj, String fieldName) {
-        try {
-            if (obj == null) {
-                return null;
-            } else {
-                Class e = obj.getClass();
-
-                if (e == null) {
-                    return null;
-                } else {
-                    Field field = e.getField(fieldName);
-
-                    if (field == null) {
-                        return null;
-                    } else {
-                        Object value = field.get(obj);
-
-                        return value;
-                    }
-                }
-            }
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-            return null;
-        }
-    }
-
-    private static Method getMethod(Class cls, String methodName, Object[] params) {
-        Method[] methods = cls.getMethods();
-
-        for (int i = 0; i < methods.length; ++i) {
-            Method m = methods[i];
-
-            if (m.getName().equals(methodName) && m.getParameterTypes().length == params.length) {
-                return m;
-            }
-        }
-
-        dbg("No method found for: " + cls.getName() + "." + methodName + "(" + arrayToString(params) + ")");
-        return null;
-    }
-
     public static String arrayToString(Object[] arr) {
-        StringBuffer buf = new StringBuffer(arr.length * 5);
+        StringBuilder buf = new StringBuilder();
 
         for (int i = 0; i < arr.length; ++i) {
             Object obj = arr[i];
@@ -425,33 +287,6 @@ public class Config {
         }
 
         return buf.toString();
-    }
-
-    public static boolean hasModLoader() {
-        Class cls = getClass("ModLoader");
-
-        return cls != null;
-    }
-
-    private static Class getClass(String className) {
-        Class cls = (Class) Config.foundClassesMap.get(className);
-
-        if (cls != null) {
-            return cls;
-        } else if (Config.foundClassesMap.containsKey(className)) {
-            return null;
-        } else {
-            try {
-                cls = Class.forName(className);
-            } catch (ClassNotFoundException classnotfoundexception) {
-                log("Class not found: " + className);
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
-
-            Config.foundClassesMap.put(className, cls);
-            return cls;
-        }
     }
 
     public static void setMinecraft(Minecraft mc) {
@@ -555,14 +390,6 @@ public class Config {
 
     public static boolean isBetterGrassFancy() {
         return Config.gameSettings == null ? false : Config.gameSettings.ofBetterGrass == 2;
-    }
-
-    public static boolean isFontRendererUpdated() {
-        return Config.fontRendererUpdated;
-    }
-
-    public static void setFontRendererUpdated(boolean fontRendererUpdated) {
-        Config.fontRendererUpdated = fontRendererUpdated;
     }
 
     public static boolean isWeatherEnabled() {

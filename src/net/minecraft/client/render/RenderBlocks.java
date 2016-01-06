@@ -113,7 +113,7 @@ public class RenderBlocks {
         int l = block.getRenderType();
 
         block.setBlockBoundsBasedOnState(this.blockAccess, i, j, k);
-        return l == 0 ? this.renderStandardBlock(block, i, j, k) : (l == 4 ? this.renderBlockFluids(block, i, j, k) : (l == 13 ? this.renderBlockCactus(block, i, j, k) : (l == 1 ? this.renderBlockReed(block, i, j, k) : (l == 6 ? this.renderBlockCrops(block, i, j, k) : (l == 2 ? this.renderBlockTorch(block, i, j, k) : (l == 3 ? this.renderBlockFire(block, i, j, k) : (l == 5 ? this.renderBlockRedstoneWire(block, i, j, k) : (l == 8 ? this.renderBlockLadder(block, i, j, k) : (l == 7 ? this.renderBlockDoor(block, i, j, k) : (l == 9 ? this.renderBlockMinecartTrack((BlockRail) block, i, j, k) : (l == 10 ? this.renderBlockStairs(block, i, j, k) : (l == 11 ? this.renderBlockFence(block, i, j, k) : (l == 12 ? this.renderBlockLever(block, i, j, k) : (l == 14 ? this.renderBlockBed(block, i, j, k) : (l == 15 ? this.renderBlockRepeater(block, i, j, k) : (l == 16 ? this.func_31074_b(block, i, j, k, false) : (l == 17 ? this.func_31080_c(block, i, j, k, true) : (Config.hasModLoader() ? Config.callBoolean("ModLoader", "RenderWorldBlock", new Object[]{this, this.blockAccess, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), block, Integer.valueOf(l)}) : false))))))))))))))))));
+        return l == 0 ? this.renderStandardBlock(block, i, j, k) : (l == 4 ? this.renderBlockFluids(block, i, j, k) : (l == 13 ? this.renderBlockCactus(block, i, j, k) : (l == 1 ? this.renderBlockReed(block, i, j, k) : (l == 6 ? this.renderBlockCrops(block, i, j, k) : (l == 2 ? this.renderBlockTorch(block, i, j, k) : (l == 3 ? this.renderBlockFire(block, i, j, k) : (l == 5 ? this.renderBlockRedstoneWire(block, i, j, k) : (l == 8 ? this.renderBlockLadder(block, i, j, k) : (l == 7 ? this.renderBlockDoor(block, i, j, k) : (l == 9 ? this.renderBlockMinecartTrack((BlockRail) block, i, j, k) : (l == 10 ? this.renderBlockStairs(block, i, j, k) : (l == 11 ? this.renderBlockFence(block, i, j, k) : (l == 12 ? this.renderBlockLever(block, i, j, k) : (l == 14 ? this.renderBlockBed(block, i, j, k) : (l == 15 ? this.renderBlockRepeater(block, i, j, k) : (l == 16 ? this.func_31074_b(block, i, j, k, false) : (l == 17 ? this.func_31080_c(block, i, j, k, true) : false)))))))))))))))));
     }
 
     private boolean renderBlockBed(Block block, int i, int j, int k) {
@@ -3686,8 +3686,6 @@ public class RenderBlocks {
                     }
 
                     block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-                } else if (Config.hasModLoader()) {
-                    Config.callVoid("ModLoader", "RenderInvBlock", new Object[]{this, block, Integer.valueOf(i), Integer.valueOf(k)});
                 }
             }
         } else {
@@ -3727,7 +3725,7 @@ public class RenderBlocks {
     }
 
     public static boolean renderItemIn3d(int i) {
-        return i == 0 ? true : (i == 13 ? true : (i == 10 ? true : (i == 11 ? true : (i == 16 ? true : (Config.hasModLoader() ? Config.callBoolean("ModLoader", "RenderBlockIsItemFull3D", new Object[]{Integer.valueOf(i)}) : false)))));
+        return i == 0 ? true : (i == 13 ? true : (i == 10 ? true : (i == 11 ? true : i == 16)));
     }
 
     static {
