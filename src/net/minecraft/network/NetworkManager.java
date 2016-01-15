@@ -193,7 +193,7 @@ public class NetworkManager {
             this.timeSinceLastRead = 0;
         }
 
-        int var1 = 1024;
+        int var1 = 1024; //This
 
         while (!this.readPackets.isEmpty() && var1-- >= 0) {
             Packet var2 = (Packet) this.readPackets.remove(0);

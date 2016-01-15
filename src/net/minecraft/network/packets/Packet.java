@@ -28,14 +28,14 @@ public abstract class Packet {
       } else if(packetClassToIdMap.containsKey(var3)) {
          throw new IllegalArgumentException("Duplicate packet class:" + var3);
       } else {
-         packetIdToClassMap.put(Integer.valueOf(var0), var3);
-         packetClassToIdMap.put(var3, Integer.valueOf(var0));
+         packetIdToClassMap.put(var0, var3);
+         packetClassToIdMap.put(var3, var0);
          if(var1) {
-            clientPacketIdList.add(Integer.valueOf(var0));
+            clientPacketIdList.add(var0);
          }
 
          if(var2) {
-            serverPacketIdList.add(Integer.valueOf(var0));
+            serverPacketIdList.add(var0);
          }
 
       }
@@ -45,7 +45,7 @@ public abstract class Packet {
       try {
          Class var1 = (Class)packetIdToClassMap.get(Integer.valueOf(var0));
          return var1 == null?null:(Packet)var1.newInstance();
-      } catch (Exception var2) {
+      } catch (InstantiationException | IllegalAccessException var2) {
          var2.printStackTrace();
          System.out.println("Skipping packet with id " + var0);
          return null;
@@ -53,11 +53,10 @@ public abstract class Packet {
    }
 
    public final int getPacketId() {
-      return ((Integer)packetClassToIdMap.get(this.getClass())).intValue();
+      return ((Integer)packetClassToIdMap.get(this.getClass()));
    }
 
    public static Packet readPacket(DataInputStream var0, boolean var1) throws IOException {
-      boolean var2 = false;
       Packet var3 = null;
 
       int var6;
@@ -67,7 +66,7 @@ public abstract class Packet {
             return null;
          }
 
-         if(var1 && !serverPacketIdList.contains(Integer.valueOf(var6)) || !var1 && !clientPacketIdList.contains(Integer.valueOf(var6))) {
+         if(var1 && !serverPacketIdList.contains(var6) || !var1 && !clientPacketIdList.contains(var6)) {
             throw new IOException("Bad packet id " + var6);
          }
 
@@ -80,18 +79,6 @@ public abstract class Packet {
       } catch (EOFException var5) {
          System.out.println("Reached end of stream");
          return null;
-      }
-
-      PacketCounter var4 = (PacketCounter)packetStats.get(Integer.valueOf(var6));
-      if(var4 == null) {
-         var4 = new PacketCounter();
-         packetStats.put(var6, var4);
-      }
-
-      var4.addPacket(var3.getPacketSize());
-      ++totalPacketsCount;
-      if(totalPacketsCount % 1000 == 0) {
-         ;
       }
 
       return var3;

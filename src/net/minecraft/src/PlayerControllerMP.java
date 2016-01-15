@@ -31,7 +31,7 @@ public class PlayerControllerMP extends PlayerController {
    public PlayerControllerMP(Minecraft var1, NetClientHandler var2) {
       super(var1);
       this.netClientHandler = var2;
-      var1.initStatWriter(null, var2.var4.getInetAddress().toString().replace("/", ""));
+      var1.initStatWriter(null, var2.socket.getInetAddress().toString().replace("/", ""));
    }
 
    @Override

@@ -26,6 +26,7 @@ public class ChunkProviderClient implements IChunkProvider {
       this.worldObj = var1;
    }
 
+   @Override
    public boolean chunkExists(int var1, int var2) {
       if(this != null) {
          return true;
@@ -35,7 +36,7 @@ public class ChunkProviderClient implements IChunkProvider {
       }
    }
 
-   public void func_539_c(int var1, int var2) {
+   public void unloadChunk(int var1, int var2) {
       Chunk var3 = this.provideChunk(var1, var2);
       if(!var3.func_21167_h()) {
          var3.onChunkUnload();
@@ -45,6 +46,7 @@ public class ChunkProviderClient implements IChunkProvider {
       this.field_889_c.remove(var3);
    }
 
+   @Override
    public Chunk loadChunk(int var1, int var2) {
       ChunkCoordIntPair var3 = new ChunkCoordIntPair(var1, var2);
       byte[] var4 = new byte['\u8000'];

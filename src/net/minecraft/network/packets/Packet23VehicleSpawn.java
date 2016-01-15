@@ -4,8 +4,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import net.minecraft.network.NetHandler;
-import net.minecraft.network.NetHandler;
-import net.minecraft.network.packets.Packet;
 
 public class Packet23VehicleSpawn extends Packet {
 
@@ -20,6 +18,7 @@ public class Packet23VehicleSpawn extends Packet {
    public int field_28044_i;
 
 
+   @Override
    public void readPacketData(DataInputStream var1) throws IOException {
       this.entityId = var1.readInt();
       this.type = var1.readByte();
@@ -35,6 +34,7 @@ public class Packet23VehicleSpawn extends Packet {
 
    }
 
+   @Override
    public void writePacketData(DataOutputStream var1) throws IOException {
       var1.writeInt(this.entityId);
       var1.writeByte(this.type);
@@ -50,10 +50,12 @@ public class Packet23VehicleSpawn extends Packet {
 
    }
 
+   @Override
    public void processPacket(NetHandler var1) {
       var1.handleVehicleSpawn(this);
    }
 
+   @Override
    public int getPacketSize() {
       return 21 + this.field_28044_i > 0?6:0;
    }
