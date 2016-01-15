@@ -30,7 +30,7 @@ public class TexturePackList {
          this.texturePackDir.mkdirs();
       }
 
-      this.currentTexturePack = var1.gameSettings.skin;
+      this.currentTexturePack = var1.gameSettings.texturepack;
       this.updateAvaliableTexturePacks();
       this.selectedTexturePack.func_6482_a();
    }
@@ -42,7 +42,7 @@ public class TexturePackList {
          this.selectedTexturePack.closeTexturePackFile();
          this.currentTexturePack = var1.texturePackFileName;
          this.selectedTexturePack = var1;
-         this.mc.gameSettings.skin = this.currentTexturePack;
+         this.mc.gameSettings.texturepack = this.currentTexturePack;
          this.mc.gameSettings.saveOptions();
          this.selectedTexturePack.func_6482_a();
          return true;
