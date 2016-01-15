@@ -8,11 +8,7 @@ public class BlockStationary extends BlockFluid {
 
     protected BlockStationary(int var1, Material var2) {
         super(var1, var2);
-        this.setTickOnLoad(false);
-        if (var2 == Material.lava) {
-            this.setTickOnLoad(true);
-        }
-
+        this.setTickOnLoad(var2 == Material.lava);
     }
 
     @Override

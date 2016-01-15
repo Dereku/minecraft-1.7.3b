@@ -2,8 +2,6 @@ package net.minecraft.client.texture;
 
 import net.minecraft.client.block.Block;
 import net.minecraft.src.Config;
-import net.minecraft.client.texture.TextureFX;
-import net.minecraft.client.texture.TexturePackBase;
 
 public class TextureHDWaterFX extends TextureFX implements TextureHDFX {
 
