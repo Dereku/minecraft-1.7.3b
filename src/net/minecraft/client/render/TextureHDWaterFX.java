@@ -26,6 +26,7 @@ public class TextureHDWaterFX extends TextureFX implements TextureHDFX {
         this.tickCounter = 0;
     }
 
+    @Override
     public void setTileWidth(int tileWidth) {
         if (tileWidth > Config.getMaxDynamicTileWidth()) {
             tileWidth = Config.getMaxDynamicTileWidth();
@@ -40,10 +41,12 @@ public class TextureHDWaterFX extends TextureFX implements TextureHDFX {
         this.tickCounter = 0;
     }
 
+    @Override
     public void setTexturePackBase(TexturePackBase tpb) {
         this.texturePackBase = tpb;
     }
 
+    @Override
     public void onTick() {
         if (!Config.isAnimatedWater()) {
             this.imageData = null;

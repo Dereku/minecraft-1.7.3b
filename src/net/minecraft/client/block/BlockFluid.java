@@ -12,14 +12,13 @@ public abstract class BlockFluid extends Block {
 
    protected BlockFluid(int var1, Material var2) {
       super(var1, (var2 == Material.lava?14:12) * 16 + 13, var2);
-      float var3 = 0.0F;
-      float var4 = 0.0F;
-      this.setBlockBounds(0.0F + var4, 0.0F + var3, 0.0F + var4, 1.0F + var4, 1.0F + var3, 1.0F + var4);
+      this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
       this.setTickOnLoad(true);
    }
 
+   @Override
    public int colorMultiplier(IBlockAccess var1, int var2, int var3, int var4) {
-      return 16777215;
+      return 0xffffff;
    }
 
    public static float getFluidHeightPercent(int var0) {
@@ -31,8 +30,9 @@ public abstract class BlockFluid extends Block {
       return var1;
    }
 
+   @Override
    public int getBlockTextureFromSide(int var1) {
-      return var1 != 0 && var1 != 1?this.blockIndexInTexture + 1:this.blockIndexInTexture;
+      return var1 != 0 && var1 != 1 ? this.blockIndexInTexture + 1 : this.blockIndexInTexture;
    }
 
    protected int getFlowDecay(World var1, int var2, int var3, int var4) {

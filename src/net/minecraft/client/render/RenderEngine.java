@@ -770,23 +770,39 @@ public class RenderEngine {
     }
 
     public boolean updateCustomTexture(TextureFX texturefx, ByteBuffer imgData, int tileWidth) {
-        return texturefx.iconIndex == Block.waterStill.blockIndexInTexture
-                ? (Config.isGeneratedWater() ? false
-                        : this.updateCustomTexture(texturefx, "/custom_water_still.png", imgData, tileWidth, Config.isAnimatedWater(), 1))
-                : (texturefx.iconIndex == Block.waterStill.blockIndexInTexture + 1 ? (Config.isGeneratedWater() ? false
-                                : this.updateCustomTexture(texturefx, "/custom_water_flowing.png", imgData, tileWidth, Config.isAnimatedWater(), 1))
-                        : (texturefx.iconIndex == Block.lavaStill.blockIndexInTexture ? (Config.isGeneratedLava() ? false
-                                        : this.updateCustomTexture(texturefx, "/custom_lava_still.png", imgData, tileWidth, Config.isAnimatedLava(), 1))
-                                : (texturefx.iconIndex == Block.lavaStill.blockIndexInTexture + 1 ? (Config.isGeneratedLava() ? false
-                                                : this.updateCustomTexture(texturefx, "/custom_lava_flowing.png", imgData, tileWidth, Config.isAnimatedLava(), 1))
-                                        : (texturefx.iconIndex == Block.portal.blockIndexInTexture ? this.updateCustomTexture(texturefx, "/custom_portal.png", imgData, tileWidth, Config.isAnimatedPortal(), 1)
-                                                : (texturefx.iconIndex == Block.fire.blockIndexInTexture ? this.updateCustomTexture(texturefx, "/custom_fire_n_s.png", imgData, tileWidth, Config.isAnimatedFire(), 1)
-                                                        : (texturefx.iconIndex == Block.fire.blockIndexInTexture + 16 ? this.updateCustomTexture(texturefx, "/custom_fire_e_w.png", imgData, tileWidth, Config.isAnimatedFire(), 1)
-                                                                : false))))));
+        if (texturefx.iconIndex == Block.waterStill.blockIndexInTexture) {
+            return Config.isGeneratedWater() ? false : this.updateCustomTexture(texturefx, "/custom_water_still.png", imgData, tileWidth, Config.isAnimatedWater(), 1);
+        } else if (texturefx.iconIndex == Block.waterStill.blockIndexInTexture + 1) {
+            return Config.isGeneratedWater() ? false : this.updateCustomTexture(texturefx, "/custom_water_flowing.png", imgData, tileWidth, Config.isAnimatedWater(), 1);
+        } else if (texturefx.iconIndex == Block.lavaStill.blockIndexInTexture) {
+            return Config.isGeneratedLava() ? false : this.updateCustomTexture(texturefx, "/custom_lava_still.png", imgData, tileWidth, Config.isAnimatedLava(), 1);
+        } else if (texturefx.iconIndex == Block.lavaStill.blockIndexInTexture + 1) {
+            return Config.isGeneratedLava() ? false : this.updateCustomTexture(texturefx, "/custom_lava_flowing.png", imgData, tileWidth, Config.isAnimatedLava(), 1);
+        } else if (texturefx.iconIndex == Block.portal.blockIndexInTexture) {
+            return this.updateCustomTexture(texturefx, "/custom_portal.png", imgData, tileWidth, Config.isAnimatedPortal(), 1);
+        } else if (texturefx.iconIndex == Block.fire.blockIndexInTexture) {
+            return this.updateCustomTexture(texturefx, "/custom_fire_n_s.png", imgData, tileWidth, Config.isAnimatedFire(), 1);
+        } else if (texturefx.iconIndex == Block.fire.blockIndexInTexture + 16) {
+            return this.updateCustomTexture(texturefx, "/custom_fire_e_w.png", imgData, tileWidth, Config.isAnimatedFire(), 1);
+        } else {
+            return false;
+        }
     }
 
     private boolean updateDefaultTexture(TextureFX texturefx, ByteBuffer imgData, int tileWidth) {
-        return this.texturePack.selectedTexturePack instanceof TexturePackDefault ? false : (texturefx.iconIndex == Block.waterStill.blockIndexInTexture ? (Config.isGeneratedWater() ? false : this.updateDefaultTexture(texturefx, imgData, tileWidth, false, 1)) : (texturefx.iconIndex == Block.waterStill.blockIndexInTexture + 1 ? (Config.isGeneratedWater() ? false : this.updateDefaultTexture(texturefx, imgData, tileWidth, Config.isAnimatedWater(), 1)) : (texturefx.iconIndex == Block.lavaStill.blockIndexInTexture ? (Config.isGeneratedLava() ? false : this.updateDefaultTexture(texturefx, imgData, tileWidth, false, 1)) : (texturefx.iconIndex == Block.lavaStill.blockIndexInTexture + 1 ? (Config.isGeneratedLava() ? false : this.updateDefaultTexture(texturefx, imgData, tileWidth, Config.isAnimatedLava(), 3)) : false))));
+        if (this.texturePack.selectedTexturePack instanceof TexturePackDefault) {
+            return false;
+        } else if (texturefx.iconIndex == Block.waterStill.blockIndexInTexture) {
+            return Config.isGeneratedWater() ? false : this.updateDefaultTexture(texturefx, imgData, tileWidth, false, 1);
+        } else if (texturefx.iconIndex == Block.waterStill.blockIndexInTexture + 1) {
+            return Config.isGeneratedWater() ? false : this.updateDefaultTexture(texturefx, imgData, tileWidth, Config.isAnimatedWater(), 1);
+        } else if (texturefx.iconIndex == Block.lavaStill.blockIndexInTexture) {
+            return Config.isGeneratedLava() ? false : this.updateDefaultTexture(texturefx, imgData, tileWidth, false, 1);
+        } else if (texturefx.iconIndex == Block.lavaStill.blockIndexInTexture + 1) {
+            return Config.isGeneratedLava() ? false : this.updateDefaultTexture(texturefx, imgData, tileWidth, Config.isAnimatedLava(), 3);
+        } else {
+            return false;
+        }
     }
 
     private boolean updateDefaultTexture(TextureFX texturefx, ByteBuffer imgData, int tileWidth, boolean scrolling, int scrollDiv) {
