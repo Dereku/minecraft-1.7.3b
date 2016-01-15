@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +12,7 @@ import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLContext;
 
+//TODO: Remove this class.
 public class Config {
 
     private static GameSettings gameSettings = null;
@@ -24,18 +23,18 @@ public class Config {
     private static Map foundClassesMap = new HashMap();
     private static boolean fontRendererUpdated = false;
     private static File logFile = null;
-    public static final Boolean DEF_FOG_FANCY = Boolean.valueOf(true);
-    public static final Float DEF_FOG_START = Float.valueOf(0.2F);
-    public static final Boolean DEF_OPTIMIZE_RENDER_DISTANCE = Boolean.valueOf(false);
-    public static final Boolean DEF_OCCLUSION_ENABLED = Boolean.valueOf(false);
-    public static final Integer DEF_MIPMAP_LEVEL = Integer.valueOf(0);
-    public static final Integer DEF_MIPMAP_TYPE = Integer.valueOf(9984);
-    public static final Float DEF_ALPHA_FUNC_LEVEL = Float.valueOf(0.1F);
-    public static final Boolean DEF_LOAD_CHUNKS_FAR = Boolean.valueOf(false);
-    public static final Integer DEF_PRELOADED_CHUNKS = Integer.valueOf(0);
-    public static final Integer DEF_CHUNKS_LIMIT = Integer.valueOf(25);
-    public static final Integer DEF_UPDATES_PER_FRAME = Integer.valueOf(3);
-    public static final Boolean DEF_DYNAMIC_UPDATES = Boolean.valueOf(false);
+    public static final Boolean DEF_FOG_FANCY = true;
+    public static final Float DEF_FOG_START = 0.2F;
+    public static final Boolean DEF_OPTIMIZE_RENDER_DISTANCE = false;
+    public static final Boolean DEF_OCCLUSION_ENABLED = false;
+    public static final Integer DEF_MIPMAP_LEVEL = 0;
+    public static final Integer DEF_MIPMAP_TYPE = 9984;
+    public static final Float DEF_ALPHA_FUNC_LEVEL = 0.1F;
+    public static final Boolean DEF_LOAD_CHUNKS_FAR = false;
+    public static final Integer DEF_PRELOADED_CHUNKS = 0;
+    public static final Integer DEF_CHUNKS_LIMIT = 25;
+    public static final Integer DEF_UPDATES_PER_FRAME = 3;
+    public static final Boolean DEF_DYNAMIC_UPDATES = false;
 
     private static String getVersion() {
         return "OptiFine_1.7.3_HD_G";
@@ -95,21 +94,21 @@ public class Config {
     }
 
     public static int getMipmapLevel() {
-        return Config.gameSettings == null ? Config.DEF_MIPMAP_LEVEL.intValue() : Config.gameSettings.ofMipmapLevel;
+        return Config.gameSettings == null ? Config.DEF_MIPMAP_LEVEL : Config.gameSettings.ofMipmapLevel;
     }
 
     public static int getMipmapType() {
-        return Config.gameSettings == null ? Config.DEF_MIPMAP_TYPE.intValue() : (Config.gameSettings.ofMipmapLinear ? 9986 : 9984);
+        return Config.gameSettings == null ? Config.DEF_MIPMAP_TYPE : (Config.gameSettings.ofMipmapLinear ? 9986 : 9984);
     }
 
     public static boolean isUseAlphaFunc() {
         float alphaFuncLevel = getAlphaFuncLevel();
 
-        return alphaFuncLevel > Config.DEF_ALPHA_FUNC_LEVEL.floatValue() + 1.0E-5F;
+        return alphaFuncLevel > Config.DEF_ALPHA_FUNC_LEVEL + 1.0E-5F;
     }
 
     public static float getAlphaFuncLevel() {
-        return Config.DEF_ALPHA_FUNC_LEVEL.floatValue();
+        return Config.DEF_ALPHA_FUNC_LEVEL;
     }
 
     public static boolean isFogFancy() {
@@ -117,11 +116,11 @@ public class Config {
     }
 
     public static float getFogStart() {
-        return Config.gameSettings == null ? Config.DEF_FOG_START.floatValue() : Config.gameSettings.ofFogStart;
+        return Config.gameSettings == null ? Config.DEF_FOG_START : Config.gameSettings.ofFogStart;
     }
 
     public static boolean isOcclusionEnabled() {
-        return Config.gameSettings == null ? Config.DEF_OCCLUSION_ENABLED.booleanValue() : Config.gameSettings.advancedOpengl;
+        return Config.gameSettings == null ? Config.DEF_OCCLUSION_ENABLED : Config.gameSettings.advancedOpengl;
     }
 
     public static boolean isOcclusionFancy() {
@@ -129,11 +128,11 @@ public class Config {
     }
 
     public static boolean isLoadChunksFar() {
-        return Config.gameSettings == null ? Config.DEF_LOAD_CHUNKS_FAR.booleanValue() : Config.gameSettings.ofLoadFar;
+        return Config.gameSettings == null ? Config.DEF_LOAD_CHUNKS_FAR : Config.gameSettings.ofLoadFar;
     }
 
     public static int getPreloadedChunks() {
-        return Config.gameSettings == null ? Config.DEF_PRELOADED_CHUNKS.intValue() : Config.gameSettings.ofPreloadedChunks;
+        return Config.gameSettings == null ? Config.DEF_PRELOADED_CHUNKS : Config.gameSettings.ofPreloadedChunks;
     }
 
     public static void dbg(String s) {
