@@ -105,6 +105,7 @@ public abstract class Minecraft implements Runnable {
 
     public static final String TERRAIN_TEXTURE = "/assets/terrain.png";
     public static final String PARTICLES_TEXTURE = "/assets/particles.png";
+    public static final String ITEMS_TEXTURE = "/assets/gui/items.png";
     private static Minecraft theMinecraft;
     public PlayerController playerController;
     private boolean fullscreen = false;
@@ -147,7 +148,6 @@ public abstract class Minecraft implements Runnable {
     public static long[] frameTimes = new long[512];
     public static long[] tickTimes = new long[512];
     public static int numRecordedFrameTimes = 0;
-    public static long hasPaidCheckTime = 0L;
     public StatFileWriter statFileWriter;
     private String serverName;
     private int serverPort;

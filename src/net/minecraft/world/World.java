@@ -2086,11 +2086,6 @@ public class World implements IBlockAccess {
         if (this.blockExists(var1, var2, var3)) {
             this.getChunkFromBlockCoords(var1, var3).setChunkModified();
         }
-
-        for (int var5 = 0; var5 < this.worldAccesses.size(); ++var5) {
-            ((IWorldAccess) this.worldAccesses.get(var5)).doNothingWithTileEntity(var1, var2, var3, var4);
-        }
-
     }
 
     public int countEntities(Class var1) {

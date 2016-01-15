@@ -24,7 +24,7 @@ public class TextureFX {
       if(this.tileImage == 0) {
          GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var1.getTexture(Minecraft.TERRAIN_TEXTURE));
       } else if(this.tileImage == 1) {
-         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var1.getTexture("/assets/gui/items.png"));
+         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var1.getTexture(Minecraft.ITEMS_TEXTURE));
       }
 
    }

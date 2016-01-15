@@ -1,5 +1,14 @@
 package net.minecraft.client.render;
 
+import net.minecraft.client.texture.TextureHDFlamesFX;
+import net.minecraft.client.texture.TextureHDWaterFlowFX;
+import net.minecraft.client.texture.TextureHDLavaFX;
+import net.minecraft.client.texture.TextureHDCompassFX;
+import net.minecraft.client.texture.TextureHDFX;
+import net.minecraft.client.texture.TextureHDWatchFX;
+import net.minecraft.client.texture.TextureHDPortalFX;
+import net.minecraft.client.texture.TextureHDWaterFX;
+import net.minecraft.client.texture.TextureHDLavaFlowFX;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -14,7 +23,6 @@ import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import javax.imageio.ImageIO;
 import net.minecraft.client.Minecraft;
@@ -154,11 +162,11 @@ public class RenderEngine {
                     if (inputstream == null) {
                         this.setupTexture(this.missingTextureImage, id);
                     } else {
-                        if (path.equals("/assets/terrain.png")) {
+                        if (path.equals(Minecraft.TERRAIN_TEXTURE)) {
                             this.terrainTextureId = id;
                         }
 
-                        if (path.equals("/assets/gui/items.png")) {
+                        if (path.equals(Minecraft.ITEMS_TEXTURE)) {
                             this.guiItemsTextureId = id;
                         }
 
@@ -498,7 +506,7 @@ public class RenderEngine {
         this.checkHdTextures();
         ++this.tickCounter;
         this.terrainTextureId = this.getTexture(Minecraft.TERRAIN_TEXTURE);
-        this.guiItemsTextureId = this.getTexture("/assets/gui/items.png");
+        this.guiItemsTextureId = this.getTexture(Minecraft.ITEMS_TEXTURE);
 
         int i;
         TextureFX texturefx1;
@@ -506,8 +514,7 @@ public class RenderEngine {
         for (i = 0; i < this.textureList.size(); ++i) {
             texturefx1 = this.textureList.get(i);
             texturefx1.anaglyphEnabled = this.options.anaglyph;
-            if (!texturefx1.getClass().getName().equals("ModTextureStatic") || !this.dynamicTexturesUpdated) {
-                boolean tid = false;
+            if (!this.dynamicTexturesUpdated) {
                 int ii;
 
                 if (texturefx1.tileImage == 0) {
@@ -557,7 +564,6 @@ public class RenderEngine {
                     }
 
                     texturefx1.bindImage(this);
-                    fastColor = this.scalesWithFastColor(texturefx1);
 
                     for (int ix = 0; ix < texturefx1.tileSize; ++ix) {
                         for (int iy = 0; iy < texturefx1.tileSize; ++iy) {
@@ -566,7 +572,7 @@ public class RenderEngine {
 
                             GL11.glTexSubImage2D(3553, 0, xOffset, yOffset, tileWidth, tileHeight, 6408, 5121, this.imageData);
                             if (RenderEngine.useMipmaps && ix == 0 && iy == 0) {
-                                this.generateMipMapsSub(xOffset, yOffset, tileWidth, tileHeight, this.imageData, texturefx1.tileSize, fastColor);
+                                this.generateMipMapsSub(xOffset, yOffset, tileWidth, tileHeight, this.imageData, texturefx1.tileSize, false);
                             }
                         }
                     }
@@ -585,7 +591,7 @@ public class RenderEngine {
                 GL11.glBindTexture(3553, texturefx1.textureId);
                 GL11.glTexSubImage2D(3553, 0, 0, 0, 16, 16, 6408, 5121, this.imageData);
                 if (RenderEngine.useMipmaps) {
-                    this.generateMipMapsSub(0, 0, 16, 16, this.imageData, texturefx1.tileSize, false);
+                    this.generateMipMapsSub(0, 0, 16, 16, this.imageData, texturefx1.tileSize, true);
                 }
             }
         }
@@ -593,10 +599,10 @@ public class RenderEngine {
     }
 
     private int averageColor(int i, int j) {
-        int k = (i & -16777216) >> 24 & 255;
-        int l = (j & -16777216) >> 24 & 255;
+        int k = (i & 0xff000000) >> 24 & 255;
+        int l = (j & 0xff000000) >> 24 & 255;
 
-        return (k + l >> 1 << 24) + ((i & 16711422) + (j & 16711422) >> 1);
+        return (k + l >> 1 << 24) + ((i & 0xfefefe) + (j & 0xfefefe) >> 1);
     }
 
     private int weightedAverageColor(int c1, int c2, int c3, int c4) {
@@ -608,8 +614,8 @@ public class RenderEngine {
     }
 
     private int weightedAverageColor(int c1, int c2) {
-        int a1 = (c1 & -16777216) >> 24 & 255;
-        int a2 = (c2 & -16777216) >> 24 & 255;
+        int a1 = (c1 & 0xff000000) >> 24 & 255;
+        int a2 = (c2 & 0xff000000) >> 24 & 255;
         int ax = (a1 + a2) / 2;
 
         if (a1 == 0 && a2 == 0) {
@@ -1053,7 +1059,6 @@ public class RenderEngine {
         int srcWidth = (int) Math.sqrt((double) (buf.length / 4));
         int scale = dstWidth / srcWidth;
         byte[] buf4 = new byte[4];
-        int len = dstWidth * dstWidth;
 
         dstBuf.clear();
         if (scale > 1) {
@@ -1086,9 +1091,5 @@ public class RenderEngine {
         }
 
         dstBuf.position(0).limit(dstWidth * dstWidth * 4);
-    }
-
-    private boolean scalesWithFastColor(TextureFX texturefx) {
-        return !texturefx.getClass().getName().equals("ModTextureStatic");
     }
 }

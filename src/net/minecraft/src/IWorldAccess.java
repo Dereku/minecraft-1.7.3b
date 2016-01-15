@@ -2,7 +2,6 @@ package net.minecraft.src;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.world.tiles.TileEntity;
 
 public interface IWorldAccess {
 
@@ -21,8 +20,6 @@ public interface IWorldAccess {
    void updateAllRenderers();
 
    void playRecord(String var1, int var2, int var3, int var4);
-
-   void doNothingWithTileEntity(int var1, int var2, int var3, TileEntity var4);
 
    void playAuxSFX(EntityPlayer var1, int var2, int var3, int var4, int var5, int var6);
 }

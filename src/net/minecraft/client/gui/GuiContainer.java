@@ -1,5 +1,6 @@
 package net.minecraft.client.gui;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Container;
 import net.minecraft.client.gui.GuiScreen;
@@ -108,7 +109,7 @@ public abstract class GuiContainer extends GuiScreen {
          int var5 = var1.getBackgroundIconIndex();
          if(var5 >= 0) {
             GL11.glDisable(2896 /*GL_LIGHTING*/);
-            this.mc.renderEngine.bindTexture(this.mc.renderEngine.getTexture("/assets/gui/items.png"));
+            this.mc.renderEngine.bindTexture(this.mc.renderEngine.getTexture(Minecraft.ITEMS_TEXTURE));
             this.drawTexturedModalRect(var2, var3, var5 % 16 * 16, var5 / 16 * 16, 16, 16);
             GL11.glEnable(2896 /*GL_LIGHTING*/);
             return;

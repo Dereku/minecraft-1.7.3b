@@ -1,4 +1,4 @@
-package net.minecraft.client.render;
+package net.minecraft.client.texture;
 
 import java.util.Random;
 import net.minecraft.client.block.Block;

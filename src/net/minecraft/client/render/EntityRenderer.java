@@ -409,7 +409,6 @@ public class EntityRenderer {
             this.updatedWorldProvider = this.mc.theWorld.worldProvider;
         }
 
-        Minecraft.hasPaidCheckTime = 0L;
         RenderBlocks.fancyGrass = Config.isGrassFancy();
         if (Config.isBetterGrassFancy()) {
             RenderBlocks.fancyGrass = true;
@@ -490,14 +489,14 @@ public class EntityRenderer {
             int l = scaledresolution.getScaledHeight();
             int i1 = Mouse.getX() * k / this.mc.displayWidth;
             int j1 = l - Mouse.getY() * l / this.mc.displayHeight - 1;
-            short short0 = 200;
+            short fpsLimit = 200;
 
             if (this.mc.gameSettings.limitFramerate == 1) {
-                short0 = 120;
+                fpsLimit = 120;
             }
 
             if (this.mc.gameSettings.limitFramerate == 2) {
-                short0 = 40;
+                fpsLimit = 40;
             }
 
             long k1;
@@ -506,11 +505,11 @@ public class EntityRenderer {
                 if (this.mc.gameSettings.limitFramerate == 0) {
                     this.renderWorld(f, 0L);
                 } else {
-                    this.renderWorld(f, this.renderEndNanoTime + (long) (1.0E9D / (double) short0));
+                    this.renderWorld(f, this.renderEndNanoTime + (long) (1.0E9D / (double) fpsLimit));
                 }
 
                 if (this.mc.gameSettings.limitFramerate == 2) {
-                    k1 = (this.renderEndNanoTime + (long) (1.0E9D / (double) short0) - System.nanoTime()) / 1000000L;
+                    k1 = (this.renderEndNanoTime + (long) (1.0E9D / (double) fpsLimit) - System.nanoTime()) / 1000000L;
                     if (k1 > 0L && k1 < 500L) {
                         try {
                             Thread.sleep(k1);
@@ -523,7 +522,6 @@ public class EntityRenderer {
                 this.renderEndNanoTime = System.nanoTime();
                 if (!this.mc.gameSettings.hideGUI || this.mc.currentScreen != null) {
                     if (this.mc.gameSettings.ofFastDebugInfo) {
-                        Minecraft minecraft = this.mc;
 
                         if (Minecraft.isDebugInfoEnabled()) {
                             this.showDebugInfo = !this.showDebugInfo;
@@ -547,7 +545,7 @@ public class EntityRenderer {
                 GL11.glLoadIdentity();
                 this.func_905_b();
                 if (this.mc.gameSettings.limitFramerate == 2) {
-                    k1 = (this.renderEndNanoTime + (long) (1.0E9D / (double) short0) - System.nanoTime()) / 1000000L;
+                    k1 = (this.renderEndNanoTime + (long) (1.0E9D / (double) fpsLimit) - System.nanoTime()) / 1000000L;
                     if (k1 < 0L) {
                         k1 += 10L;
                     }
@@ -646,10 +644,10 @@ public class EntityRenderer {
                 renderglobal.renderSky(f);
             }
 
-            GL11.glEnable(2912 /*GL_FOG*/);
+            GL11.glEnable(GL11.GL_FOG);
             this.setupFog(1, f);
             if (this.mc.gameSettings.ambientOcclusion) {
-                GL11.glShadeModel(7425 /*GL_SMOOTH*/);
+                GL11.glShadeModel(GL11.GL_SMOOTH);
             }
 
             Frustrum frustrum = new Frustrum();
@@ -668,7 +666,7 @@ public class EntityRenderer {
 
             this.setupFog(0, f);
             GL11.glEnable(2912 /*GL_FOG*/);
-            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/terrain.png"));
+            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE));
             RenderHelper.disableStandardItemLighting();
             if (Config.isUseAlphaFunc()) {
                 GL11.glAlphaFunc(516, Config.getAlphaFuncLevel());
@@ -696,7 +694,7 @@ public class EntityRenderer {
             this.setupFog(0, f);
             GL11.glEnable(3042 /*GL_BLEND*/);
             GL11.glDisable(2884 /*GL_CULL_FACE*/);
-            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/terrain.png"));
+            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE));
             if (Config.isWaterFancy()) {
                 if (this.mc.gameSettings.ambientOcclusion) {
                     GL11.glShadeModel(7425 /*GL_SMOOTH*/);
@@ -737,10 +735,6 @@ public class EntityRenderer {
 
             this.renderRainSnow(f);
             GL11.glDisable(2912 /*GL_FOG*/);
-            if (this.pointedEntity == null) {
-                ;
-            }
-
             this.setupFog(0, f);
             GL11.glEnable(2912 /*GL_FOG*/);
             renderglobal.renderClouds(f);

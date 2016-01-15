@@ -1,7 +1,6 @@
 package net.minecraft.src;
 
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.src.IProgressUpdate;
 
 public interface IChunkProvider {
 

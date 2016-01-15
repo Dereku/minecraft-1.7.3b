@@ -1,11 +1,12 @@
-package net.minecraft.client.render;
+package net.minecraft.client.texture;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.render.RenderEngine;
 import net.minecraft.item.Item;
-import net.minecraft.client.render.TextureHDFX;
+import net.minecraft.client.texture.TextureHDFX;
 import net.minecraft.client.texture.TextureFX;
 import net.minecraft.client.texture.TexturePackBase;
 
@@ -44,10 +45,10 @@ public class TextureHDWatchFX extends TextureFX implements TextureHDFX {
         this.tileImage = 1;
 
         try {
-            BufferedImage ioexception = ImageIO.read(Minecraft.class.getResource("/assets/gui/items.png"));
+            BufferedImage ioexception = ImageIO.read(Minecraft.class.getResource(Minecraft.ITEMS_TEXTURE));
 
             if (this.texturePackBase != null) {
-                ioexception = ImageIO.read(this.texturePackBase.getResourceAsStream("/assets/gui/items.png"));
+                ioexception = ImageIO.read(this.texturePackBase.getResourceAsStream(Minecraft.ITEMS_TEXTURE));
             }
 
             int x = this.iconIndex % 16 * this.tileWidth;

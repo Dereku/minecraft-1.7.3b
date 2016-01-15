@@ -48,7 +48,7 @@ public class ItemRenderer {
          if(var2.itemID < 256) {
             GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE));
          } else {
-            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/assets/gui/items.png"));
+            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture(Minecraft.ITEMS_TEXTURE));
          }
 
          Tessellator var3 = Tessellator.instance;

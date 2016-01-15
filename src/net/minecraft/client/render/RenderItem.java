@@ -75,7 +75,7 @@ public class RenderItem extends Render {
          if(var10.itemID < 256) {
             this.loadTexture(Minecraft.TERRAIN_TEXTURE);
          } else {
-            this.loadTexture("/assets/gui/items.png");
+            this.loadTexture(Minecraft.ITEMS_TEXTURE);
          }
 
          Tessellator var15 = Tessellator.instance;
@@ -154,7 +154,7 @@ public class RenderItem extends Render {
          if(var3 < 256) {
             var2.bindTexture(var2.getTexture(Minecraft.TERRAIN_TEXTURE));
          } else {
-            var2.bindTexture(var2.getTexture("/assets/gui/items.png"));
+            var2.bindTexture(var2.getTexture(Minecraft.ITEMS_TEXTURE));
          }
 
          int var8 = Item.itemsList[var3].getColorFromDamage(var4);

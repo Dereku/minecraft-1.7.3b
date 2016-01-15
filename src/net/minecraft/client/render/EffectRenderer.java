@@ -79,7 +79,7 @@ public class EffectRenderer {
             }
 
             if(var8 == 2) {
-               var9 = this.renderer.getTexture("/assets/gui/items.png");
+               var9 = this.renderer.getTexture(Minecraft.ITEMS_TEXTURE);
             }
 
             GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var9);

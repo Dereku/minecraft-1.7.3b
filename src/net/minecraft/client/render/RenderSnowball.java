@@ -1,9 +1,7 @@
 package net.minecraft.client.render;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.Entity;
-import net.minecraft.client.render.Render;
-import net.minecraft.src.Tessellator;
 import net.minecraft.src.Tessellator;
 import org.lwjgl.opengl.GL11;
 
@@ -21,7 +19,7 @@ public class RenderSnowball extends Render {
       GL11.glTranslatef((float)var2, (float)var4, (float)var6);
       GL11.glEnable('\u803a');
       GL11.glScalef(0.5F, 0.5F, 0.5F);
-      this.loadTexture("/assets/gui/items.png");
+      this.loadTexture(Minecraft.ITEMS_TEXTURE);
       Tessellator var10 = Tessellator.instance;
       float var11 = (float)(this.itemIconIndex % 16 * 16 + 0) / 256.0F;
       float var12 = (float)(this.itemIconIndex % 16 * 16 + 16) / 256.0F;

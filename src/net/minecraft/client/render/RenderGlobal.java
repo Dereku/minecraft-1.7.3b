@@ -52,22 +52,22 @@ public class RenderGlobal implements IWorldAccess {
     private long lastMovedTime = System.currentTimeMillis();
     public List tileEntities = new ArrayList();
     private World worldObj;
-    private RenderEngine renderEngine;
-    private List worldRenderersToUpdate = new ArrayList();
+    private final RenderEngine renderEngine;
+    private final List worldRenderersToUpdate = new ArrayList();
     private WorldRenderer[] sortedWorldRenderers;
     private WorldRenderer[] worldRenderers;
     private int renderChunksWide;
     private int renderChunksTall;
     private int renderChunksDeep;
-    private int glRenderListBase;
-    private Minecraft mc;
+    private final int glRenderListBase;
+    private final Minecraft mc;
     private RenderBlocks globalRenderBlocks;
     private IntBuffer glOcclusionQueryBase;
     private boolean occlusionEnabled = false;
     private int cloudOffsetX = 0;
-    private int starGLCallList;
-    private int glSkyList;
-    private int glSkyList2;
+    private final int starGLCallList;
+    private final int glSkyList;
+    private final int glSkyList2;
     private int minBlockX;
     private int minBlockY;
     private int minBlockZ;
@@ -79,7 +79,6 @@ public class RenderGlobal implements IWorldAccess {
     private int countEntitiesTotal;
     private int countEntitiesRendered;
     private int countEntitiesHidden;
-    int[] dummyBuf50k = new int['썐'];
     IntBuffer occlusionResult = GLAllocation.createDirectIntBuffer(64);
     private int renderersLoaded;
     private int renderersBeingClipped;
@@ -87,9 +86,7 @@ public class RenderGlobal implements IWorldAccess {
     private int renderersBeingRendered;
     private int renderersSkippingRenderPass;
     private int worldRenderersCheckIndex;
-    private IntBuffer field_22019_aY = BufferUtils.createIntBuffer(65536);
-    int dummyInt0 = 0;
-    int glDummyList = GLAllocation.generateDisplayLists(1);
+    private final IntBuffer intBuffer = BufferUtils.createIntBuffer(65536);
     double prevSortX = -9999.0D;
     double prevSortY = -9999.0D;
     double prevSortZ = -9999.0D;
@@ -670,7 +667,7 @@ public class RenderGlobal implements IWorldAccess {
     }
 
     private int renderSortedRenderers(int startIndex, int endIndex, int renderPass, double partialTicks) {
-        this.field_22019_aY.clear();
+        this.intBuffer.clear();
         int l = 0;
 
         for (int entityliving = startIndex; entityliving < endIndex; ++entityliving) {
@@ -691,20 +688,20 @@ public class RenderGlobal implements IWorldAccess {
                 int partialX = this.sortedWorldRenderers[entityliving].getGLCallListForPass(renderPass);
 
                 if (partialX >= 0) {
-                    this.field_22019_aY.put(partialX);
+                    this.intBuffer.put(partialX);
                     ++l;
                 }
             }
         }
 
-        this.field_22019_aY.flip();
+        this.intBuffer.flip();
         EntityLiving entityliving = this.mc.thePlayer;
         double d0 = entityliving.lastTickPosX + (entityliving.posX - entityliving.lastTickPosX) * partialTicks;
         double partialY = entityliving.lastTickPosY + (entityliving.posY - entityliving.lastTickPosY) * partialTicks;
         double partialZ = entityliving.lastTickPosZ + (entityliving.posZ - entityliving.lastTickPosZ) * partialTicks;
 
         GL11.glTranslatef((float) (-d0), (float) (-partialY), (float) (-partialZ));
-        GL11.glCallLists(this.field_22019_aY);
+        GL11.glCallLists(this.intBuffer);
         GL11.glTranslatef((float) d0, (float) partialY, (float) partialZ);
         return l;
     }
@@ -944,7 +941,7 @@ public class RenderGlobal implements IWorldAccess {
         GL11.glBindTexture(3553, this.renderEngine.getTexture("/assets/environment/clouds.png"));
         GL11.glEnable(3042);
         GL11.glBlendFunc(770, 771);
-        Vec3D vec3d = this.worldObj.drawClouds(f);//.func_628_d(f);
+        Vec3D vec3d = this.worldObj.drawClouds(f);
         float f5 = (float) vec3d.xCoord;
         float f6 = (float) vec3d.yCoord;
         float f7 = (float) vec3d.zCoord;
@@ -961,8 +958,6 @@ public class RenderGlobal implements IWorldAccess {
             f7 = f13;
         }
 
-        f9 = (float) (d * 0.0D);
-        f11 = (float) (d1 * 0.0D);
         f13 = 0.00390625F;
         f9 = (float) MathHelper.floor_double(d) * f13;
         f11 = (float) MathHelper.floor_double(d1) * f13;
@@ -1226,7 +1221,7 @@ public class RenderGlobal implements IWorldAccess {
         if (i == 0) {
             if (this.damagePartialTime > 0.0F) {
                 GL11.glBlendFunc(774, 768);
-                int f1 = this.renderEngine.getTexture("/assets/terrain.png");
+                int f1 = this.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE);
 
                 GL11.glBindTexture(3553, f1);
                 GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.5F);
@@ -1264,7 +1259,7 @@ public class RenderGlobal implements IWorldAccess {
             float ff = MathHelper.sin((float) System.currentTimeMillis() / 100.0F) * 0.2F + 0.8F;
 
             GL11.glColor4f(ff, ff, ff, MathHelper.sin((float) System.currentTimeMillis() / 200.0F) * 0.2F + 0.5F);
-            l = this.renderEngine.getTexture("/assets/terrain.png");
+            l = this.renderEngine.getTexture(Minecraft.TERRAIN_TEXTURE);
             GL11.glBindTexture(3553, l);
             int i1 = movingobjectposition.blockX;
             int j = movingobjectposition.blockY;
@@ -1397,10 +1392,12 @@ public class RenderGlobal implements IWorldAccess {
 
     }
 
+    @Override
     public void markBlockAndNeighborsNeedsUpdate(int i, int j, int k) {
         this.func_949_a(i - 1, j - 1, k - 1, i + 1, j + 1, k + 1);
     }
 
+    @Override
     public void markBlockRangeNeedsUpdate(int i, int j, int k, int l, int i1, int j1) {
         this.func_949_a(i - 1, j - 1, k - 1, l + 1, i1 + 1, j1 + 1);
     }
@@ -1415,6 +1412,7 @@ public class RenderGlobal implements IWorldAccess {
         ++this.frustrumCheckOffset;
     }
 
+    @Override
     public void playRecord(String s, int i, int j, int k) {
         if (s != null) {
             this.mc.ingameGUI.setRecordPlayingMessage("C418 - " + s);
@@ -1423,6 +1421,7 @@ public class RenderGlobal implements IWorldAccess {
         this.mc.sndManager.playStreaming(s, (float) i, (float) j, (float) k, 1.0F, 1.0F);
     }
 
+    @Override
     public void playSound(String s, double d, double d1, double d2, float f, float f1) {
         float f2 = 16.0F;
 
@@ -1502,6 +1501,7 @@ public class RenderGlobal implements IWorldAccess {
         }
     }
 
+    @Override
     public void obtainEntitySkin(Entity entity) {
         entity.updateCloak();
         if (entity.skinUrl != null) {
@@ -1514,6 +1514,7 @@ public class RenderGlobal implements IWorldAccess {
 
     }
 
+    @Override
     public void releaseEntitySkin(Entity entity) {
         if (entity.skinUrl != null) {
             this.renderEngine.releaseImageData(entity.skinUrl);
@@ -1525,6 +1526,7 @@ public class RenderGlobal implements IWorldAccess {
 
     }
 
+    @Override
     public void updateAllRenderers() {
         if (this.worldRenderers != null) {
             for (int i = 0; i < this.worldRenderers.length; ++i) {
@@ -1542,11 +1544,7 @@ public class RenderGlobal implements IWorldAccess {
             for (int i = 0; i < this.worldRenderers.length; ++i) {
                 this.worldRenderers[i].isVisible = true;
             }
-
         }
-    }
-
-    public void doNothingWithTileEntity(int i, int j, int k, TileEntity tileentity) {
     }
 
     public void func_28137_f() {

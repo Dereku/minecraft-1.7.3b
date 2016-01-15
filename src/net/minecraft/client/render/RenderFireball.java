@@ -1,13 +1,9 @@
 package net.minecraft.client.render;
 
-import net.minecraft.entity.Entity;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFireball;
-import net.minecraft.entity.EntityFireball;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item;
-import net.minecraft.client.render.Render;
-import net.minecraft.src.Tessellator;
 import net.minecraft.src.Tessellator;
 import org.lwjgl.opengl.GL11;
 
@@ -20,7 +16,7 @@ public class RenderFireball extends Render {
       float var10 = 2.0F;
       GL11.glScalef(var10 / 1.0F, var10 / 1.0F, var10 / 1.0F);
       int var11 = Item.snowball.getIconFromDamage(0);
-      this.loadTexture("/assets/gui/items.png");
+      this.loadTexture(Minecraft.ITEMS_TEXTURE);
       Tessellator var12 = Tessellator.instance;
       float var13 = (float)(var11 % 16 * 16 + 0) / 256.0F;
       float var14 = (float)(var11 % 16 * 16 + 16) / 256.0F;
